@@ -1,0 +1,243 @@
+SELECT GETDATE() AS CurrentTime;
+
+SELECT name FROM sys.databases;
+
+CREATE DATABASE SigmaTB;
+
+--Use the DB
+USE SigmaTB;
+
+-- create ROP data table
+CREATE TABLE ROPData (
+    [Unnamed: 0] VARCHAR(34),
+    [Unnamed: 1] VARCHAR(6),
+    [Unnamed: 2] VARCHAR(8),
+    [Unnamed: 3] VARCHAR(8),
+    [Unnamed: 4] VARCHAR(8),
+    [Unnamed: 5] VARCHAR(13),
+    [Unnamed: 6] VARCHAR(8),
+    [Unnamed: 7] VARCHAR(7),
+    [Unnamed: 8] VARCHAR(7),
+    [Unnamed: 9] VARCHAR(8),
+    [Unnamed: 10] VARCHAR(8),
+    [Unnamed: 11] VARCHAR(16),
+    [Unnamed: 12] VARCHAR(8),
+    [Unnamed: 13] VARCHAR(9),
+    [Unnamed: 14] VARCHAR(9),
+    [Unnamed: 15] VARCHAR(9),
+    [Unnamed: 16] VARCHAR(7),
+    [Unnamed: 17] VARCHAR(7),
+    [Unnamed: 18] VARCHAR(9),
+    [Unnamed: 19] VARCHAR(9),
+    [Unnamed: 20] VARCHAR(9),
+    [Unnamed: 21] DECIMAL(18,2),
+    [Unnamed: 22] DECIMAL(18,2),
+    [Unnamed: 23] VARCHAR(7),
+    [Unnamed: 24] DECIMAL(18,2),
+    [Unnamed: 25] DECIMAL(18,2),
+    [Unnamed: 26] DECIMAL(18,2),
+    [Unnamed: 27] DECIMAL(18,2),
+    [Unnamed: 28] DECIMAL(18,2)
+);
+
+--Create BasePrice table
+CREATE TABLE BasePrice (
+    [IOITEM] INT,
+    [IOBPRC] DECIMAL(18,2)
+);
+
+--Create SalesData table
+CREATE TABLE SalesData (
+    [OORECD] VARCHAR(6),
+    [ODTYPE] VARCHAR(6),
+    [ODITEM] VARCHAR(6),
+    [OOCUST] VARCHAR(6),
+    [ODTLBS] VARCHAR(8),
+    [ ODTFTS ] VARCHAR(11),
+    [ ODORDR ] VARCHAR(6),
+    [ CALPHA ] VARCHAR(26),
+    [ 00009 ] INT,
+    [Unnamed: 9] INT,
+    [Unnamed: 10] VARCHAR(11),
+    [Unnamed: 11] DECIMAL(18,2),
+    [ 22,121.244 ] DECIMAL(18,2)
+);
+
+--Create UsageData table
+CREATE TABLE UsageData (
+    [Unnamed: 0] VARCHAR(6),
+    [Unnamed: 1] VARCHAR(6),
+    [Unnamed: 2] VARCHAR(6),
+    [Unnamed: 3] VARCHAR(8),
+    [Unnamed: 4] VARCHAR(8),
+    [ Start Date ] VARCHAR(9),
+    [Unnamed: 6] VARCHAR(8),
+    [Unnamed: 7] VARCHAR(8),
+    [Unnamed: 8] VARCHAR(8),
+    [Unnamed: 9] VARCHAR(8),
+    [2024 02 29] VARCHAR(31),
+    [ item_XxDocmntVendrCstmrDatedate ] VARCHAR(10),
+    [Unnamed: 12] VARCHAR(7),
+    [Unnamed: 13] DECIMAL(18,2),
+    [Unnamed: 14] VARCHAR(6),
+    [Unnamed: 15] VARCHAR(3),
+    [Unnamed: 16] DECIMAL(18,2),
+    [Unnamed: 17] DECIMAL(18,2),
+    [Unnamed: 18] VARCHAR(6),
+    [Unnamed: 19] DECIMAL(18,2),
+    [Unnamed: 20] DECIMAL(18,2),
+    [Unnamed: 21] DECIMAL(18,2),
+    [Unnamed: 22] VARCHAR(6),
+    [Unnamed: 23] VARCHAR(6),
+    [Unnamed: 24] VARCHAR(8),
+    [Unnamed: 25] VARCHAR(29),
+    [Unnamed: 26] DECIMAL(18,2)
+);
+
+--Create TagData
+CREATE TABLE TagData (
+    [Item] VARCHAR(6),
+    [Tag] VARCHAR(7),
+    [Description] VARCHAR(20),
+    [Pc Len] VARCHAR(6),
+    [Pcs] VARCHAR(6),
+    [ Length ] VARCHAR(9),
+    [ Heat ] VARCHAR(8),
+    [ Lot ] VARCHAR(8),
+    [ Loc ] VARCHAR(8),
+    [ OnHand ] VARCHAR(9),
+    [ Reserved ] VARCHAR(9),
+    [ Avail ] VARCHAR(9),
+    [Unnamed: 12] VARCHAR(28),
+    [ remnants ] VARCHAR(6),
+    [Unnamed: 14] DECIMAL(18,2),
+    [Unnamed: 15] VARCHAR(7),
+    [Unnamed: 16] DECIMAL(18,2)
+);
+
+-- Create POData
+CREATE TABLE POData (
+    [ PO ] VARCHAR(8),
+    [ V# ] VARCHAR(8),
+    [Vendor] VARCHAR(8),
+    [Code] VARCHAR(6),
+    [Item] VARCHAR(6),
+    [Description] VARCHAR(24),
+    [Original] VARCHAR(10),
+    [Due Date] VARCHAR(10),
+    [Received] VARCHAR(10),
+    [ Ordered ] VARCHAR(8),
+    [ Received ] VARCHAR(8),
+    [UOM] VARCHAR(6),
+    [ Due ] VARCHAR(8),
+    [Unnamed: 13] DECIMAL(18,2),
+    [Unnamed: 14] VARCHAR(8),
+    [Unnamed: 15] VARCHAR(7),
+    [Unnamed: 16] VARCHAR(20),
+    [Unnamed: 17] VARCHAR(6),
+    [Unnamed: 18] VARCHAR(6),
+    [Unnamed: 19] VARCHAR(32),
+    [Unnamed: 20] VARCHAR(10),
+    [Unnamed: 21] VARCHAR(10),
+    [Unnamed: 22] VARCHAR(10),
+    [Unnamed: 23] VARCHAR(8),
+    [Unnamed: 24] VARCHAR(9),
+    [Unnamed: 25] VARCHAR(6),
+    [Unnamed: 26] VARCHAR(8)
+);
+
+--Verify that the tables were created
+Select TABLE_NAME from INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE';
+
+--check permissions
+SELECT SUSER_NAME();
+
+
+--Enable FileAccess for SQL server
+EXEC sp_configure 'show advanced options', 1;
+RECONFIGURE;
+EXEC sp_configure 'Ad Hoc Distributed Queries', 1;
+RECONFIGURE;
+
+--Get the CSV files into the S3 repository into the RDC environment.. crazy complexity
+EXEC msdb.dbo.rds_download_from_s3
+    'arn:aws:s3:::esmbucket2/ROPData.csv',  -- S3 file ARN
+    'D:\S3\ROPData.csv',  -- Target path in RDS
+    1;  -- Overwrite if file exists
+
+--Verify if file was imported
+EXEC msdb.dbo.rds_file_list;
+
+--Edition doesnt allow
+SELECT SERVERPROPERTY('Edition'), SERVERPROPERTY('EngineEdition');
+
+
+--Verify the import
+SELECT * FROM ROPData;
+
+
+BULK INSERT BasePrice FROM '/Users/bmate/Downloads/BasePrice.csv'
+
+
+-- Now, import the data
+BULK INSERT BasePrice FROM 'C:\Administrator\Downloads\BasePrice.csv'
+WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
+
+BULK INSERT ROPData FROM 'C:\Administrator\Downloads\ROPData.csv'
+WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
+
+BULK INSERT SalesData FROM 'C:\Administrator\Downloads\SalesData.csv'
+WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
+
+BULK INSERT UsageData FROM 'C:\Administrator\Downloads\UsageData.csv'
+WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
+
+BULK INSERT TagData FROM 'C:\Administrator\Downloads\TagData.csv'
+WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
+
+BULK INSERT POData FROM 'C:\Administrator\Downloads\POData.csv'
+WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
+
+
+--Delete all tables and start again
+DECLARE @sql NVARCHAR(MAX) = N'';
+
+-- Generate DROP TABLE commands for all user tables
+SELECT @sql += 'DROP TABLE IF EXISTS ' + QUOTENAME(TABLE_SCHEMA) + '.' + QUOTENAME(TABLE_NAME) + '; ' + CHAR(13)
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE';
+
+-- Execute the generated SQL
+EXEC sp_executesql @sql;
+
+-- end deleting tables
+
+
+
+-- Generate a COUNT(*) query for each table
+    DECLARE @sql NVARCHAR(MAX) = N'';   
+
+    -- Generate a COUNT(*) query for each table
+    SELECT @sql += 'SELECT ''' + TABLE_SCHEMA + '.' + TABLE_NAME + ''' AS TableName, COUNT(*) AS RecordCount FROM ' + QUOTENAME(TABLE_SCHEMA) + '.' + QUOTENAME(TABLE_NAME) + ' UNION ALL '
+    FROM INFORMATION_SCHEMA.TABLES
+    WHERE TABLE_TYPE = 'BASE TABLE';
+
+    -- Remove the last "UNION ALL"
+    SET @sql = LEFT(@sql, LEN(@sql) - 10);
+
+    -- Execute the generated SQL
+    EXEC sp_executesql @sql;
+
+
+select * from ROPData
+select count(*) from ropdata
+select unique
+
+select count(*) from ropdata where Vndr NOT LIKE 'N%';
+SELECT * FROM ROPData WHERE Vndr NOT LIKE 'N%' AND OD like '14';
+SELECT * FROM ROPData WHERE Vndr NOT LIKE 'N%' AND Vndr like 'HAL';
+
+
+SELECT Item, Description,[con/wk] FROM ROPDATA WHERE Item = '51503';
+
+SELECT * FROM SalesData WHERE CALPHA LIKE 'AERO%';
