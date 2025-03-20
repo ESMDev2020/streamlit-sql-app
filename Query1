@@ -241,3 +241,5 @@ SELECT * FROM ROPData WHERE Vndr NOT LIKE 'N%' AND Vndr like 'HAL';
 SELECT Item, Description,[con/wk] FROM ROPDATA WHERE Item = '51503';
 
 SELECT * FROM SalesData WHERE CALPHA LIKE 'AERO%';
+
+TEST
