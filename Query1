@@ -241,5 +241,88 @@ SELECT * FROM ROPData WHERE Vndr NOT LIKE 'N%' AND Vndr like 'HAL';
 SELECT Item, Description,[con/wk] FROM ROPDATA WHERE Item = '51503';
 
 SELECT * FROM SalesData WHERE CALPHA LIKE 'AERO%';
+sELECT COUNT(*) FROM ROPData;
 
-TEST
+--let me try to get the MP processing
+SELECT * from UsageData where IHITEM = 50002;
+SELECT [IHITEM], [IHTRNT],[IHTQTY], [Column2]   from UsageData where IHITEM = 50002;
+
+select '50002IN950654000000075320240503'
+
+SELECT 
+    CASE 
+        WHEN CHARINDEX('202405', [Column2]) > 0 THEN 'Yes'
+        ELSE 'No'
+    END AS ContainsText
+FROM UsageData;
+
+
+SELECT [IHITEM], [IHTRNT],[IHTQTY], [Column2] 
+FROM UsageData
+WHERE CHARINDEX('202405', [Column2]) > 0;
+
+
+--///////////////////////////////////////////
+--Get cost of material processing on 1 item
+SELECT 
+    SUM(IHTQTY) AS TotalQuantity
+FROM 
+    UsageData
+WHERE 
+    [Column2] LIKE '50002MP________________202409__';
+--///////////////////////////////////////////
+--///////////////////////////////////////////
+--///////////////////////////////////////////
+
+
+
+SELECT 
+    SUM(IHTQTY) AS total_quantity
+FROM 
+    UsageData
+WHERE 
+    IHITEM = 50002
+    AND CAST(IHTRNT AS VARCHAR(MAX)) = 'MP'
+    AND IHTRN# = 402074
+    AND IHVNDR = 121
+    AND LEFT(CAST(Column1 AS VARCHAR(20)), 6) = '202409';
+
+
+SELECT 
+    IHITEM, IHTRNT, IHTRN#, IHVNDR, Column1, IHTQTY
+FROM 
+    UsageData
+WHERE 
+    IHITEM = 50002
+    AND CAST(IHTRNT AS VARCHAR(MAX)) = 'MP'
+    AND IHTRN# = 402074
+    AND IHVNDR = 121
+    AND LEFT(CAST(Column1 AS VARCHAR(20)), 6) = '202409';
+
+
+SELECT * FROM UsageData WHERE IHITEM = '50002';
+SELECT DISTINCT IHTRNT FROM UsageData;
+SELECT DISTINCT IHTRN# FROM UsageData WHERE IHITEM = 50002;
+
+SELECT DISTINCT Column1 FROM UsageData WHERE IHITEM = 50002;
+
+
+SELECT TOP 10 IHTRNT 
+FROM UsageData 
+WHERE CAST(IHTRNT AS VARCHAR(MAX)) LIKE '%MP%';
+
+--How many transactions are by transaction types?
+    
+SELECT 
+    CAST(IHTRNT AS VARCHAR(10)) AS TransactionType,
+    SUM(IHTQTY) AS TotalQuantity
+FROM 
+    UsageData
+WHERE 
+    CAST(IHTRNT AS VARCHAR(10)) IN ('CR', 'IA', 'IN', 'OW', 'OR')
+GROUP BY 
+    CAST(IHTRNT AS VARCHAR(10))
+ORDER BY 
+    TransactionType;
+
+
