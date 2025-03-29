@@ -1,4 +1,5 @@
 streamlit
-pyodbc
+pyodbc==5.0.1
 pandas
 altair
+sqlalchemy
