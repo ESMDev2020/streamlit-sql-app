@@ -1,18 +1,18 @@
 import streamlit as st
-import pyodbc
 import pandas as pd
 import altair as alt
+import pyodbc
 
 st.title("📦 Full Inventory Report for Item 50002")
 
-# Connection string
+# ODBC connection string
 conn_str = (
-    f"DRIVER={{ODBC Driver 18 for SQL Server}};"
-    f"SERVER=database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com,1433;"
-    f"DATABASE=SigmaTB;"
-    f"UID=admin;"
-    f"PWD=Er1c41234$;"
-    f"TrustServerCertificate=yes;"
+    "DRIVER={ODBC Driver 18 for SQL Server};"
+    "SERVER=database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com,1433;"
+    "DATABASE=SigmaTB;"
+    "UID=admin;"
+    "PWD=Er1c41234$;"
+    "TrustServerCertificate=yes;"
 )
 
 if st.button("Run Full Report"):
@@ -75,9 +75,7 @@ if st.button("Run Full Report"):
             WHERE Item = 50002;
             """
 
-            cursor.execute(query)
             result_sets = []
-
             while True:
                 try:
                     rows = cursor.fetchall()
@@ -103,14 +101,14 @@ if st.button("Run Full Report"):
                 st.subheader(titles[i] if i < len(titles) else f"Result {i + 1}")
                 st.dataframe(df)
 
-            # Add chart using 3rd dataset (Inventory On Hand vs Reserved)
+            # Chart
             inventory_df = result_sets[2]
             if not inventory_df.empty:
                 chart_data = pd.DataFrame({
                     "Metric": ["OnHand", "Reserved", "Available"],
                     "Value": [
                         float(inventory_df.at[0, "OnHand"]),
-                        float(-inventory_df.at[0, "Rsrv"]),  # Negative to show impact
+                        float(-inventory_df.at[0, "Rsrv"]),
                         float(inventory_df.at[0, "Available Inv"])
                     ]
                 })
@@ -119,16 +117,11 @@ if st.button("Run Full Report"):
 
                 bar_chart = alt.Chart(chart_data).mark_bar().encode(
                     x=alt.X("Metric", title="Metric", sort=["OnHand", "Reserved", "Available"]),
-                    y=alt.Y("Value", title="Feet", scale=alt.Scale(zero=True)),  # force proper baseline
+                    y=alt.Y("Value", title="Feet", scale=alt.Scale(zero=True)),
                     color=alt.Color("Metric", legend=None)
-                ).properties(
-                    width=500,
-                    height=300
-                )
+                ).properties(width=500, height=300)
 
                 st.altair_chart(bar_chart)
-
-
 
     except Exception as e:
         st.error(f"❌ Failed to run the report: {e}")
