@@ -1,25 +1,24 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-
-import pyodbc
+import pymssql
 
 st.title("📦 Full Inventory Report for Item 50002")
 
-# ODBC connection string
-conn_str = (
-    "DRIVER={ODBC Driver 18 for SQL Server};"
-    "SERVER=database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com,1433;"
-    "DATABASE=SigmaTB;"
-    "UID=admin;"
-    "PWD=Er1c41234$;"
-    "TrustServerCertificate=yes;"
-)
+# Updated pymssql connection params
+db_config = {
+    "server": "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com",
+    "port": 1433,
+    "user": "admin",
+    "password": "Er1c41234$",
+    "database": "SigmaTB"
+}
 
 if st.button("Run Full Report"):
     try:
-        with pyodbc.connect(conn_str) as conn:
+        with pymssql.connect(**db_config) as conn:
             cursor = conn.cursor()
+
             query = """
             -- 1. Item being reviewed
             SELECT [Size Text], Description, SMO
@@ -77,16 +76,16 @@ if st.button("Run Full Report"):
             """
 
             result_sets = []
-            while True:
-                try:
-                    rows = cursor.fetchall()
-                    columns = [column[0] for column in cursor.description]
-                    df = pd.DataFrame.from_records(rows, columns=columns)
-                    result_sets.append(df)
-                except:
-                    pass
-                if not cursor.nextset():
-                    break
+            for sql in query.strip().split(";"):
+                if sql.strip():
+                    cursor.execute(sql)
+                    try:
+                        rows = cursor.fetchall()
+                        columns = [column[0] for column in cursor.description]
+                        df = pd.DataFrame.from_records(rows, columns=columns)
+                        result_sets.append(df)
+                    except:
+                        continue
 
             st.success("✅ All data loaded successfully!")
 
@@ -103,8 +102,8 @@ if st.button("Run Full Report"):
                 st.dataframe(df)
 
             # Chart
-            inventory_df = result_sets[2]
-            if not inventory_df.empty:
+            if len(result_sets) >= 3 and not result_sets[2].empty:
+                inventory_df = result_sets[2]
                 chart_data = pd.DataFrame({
                     "Metric": ["OnHand", "Reserved", "Available"],
                     "Value": [
