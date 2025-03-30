@@ -117,3 +117,5 @@ if st.button("Run Full Report"):
 
     except Exception as e:
         st.error(f"❌ Failed to run the report: {e}")
+
+#force rebuild
