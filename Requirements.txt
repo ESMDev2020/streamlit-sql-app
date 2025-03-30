@@ -1,4 +1,5 @@
 streamlit
-pymssql
 pandas
 altair
+sqlalchemy
+pytds
