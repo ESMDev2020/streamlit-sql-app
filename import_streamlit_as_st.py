@@ -5,26 +5,30 @@ import seaborn as sns
 import altair as alt
 from sqlalchemy import create_engine
 
-# Page title
-st.title("📦 Full Inventory Report")
+# ---------- Titles for each query result ----------
+query_titles = [
+    "🔍 Item Being Reviewed",
+    "📈 IA / MP / SO Summary (Last 13 Months)",
+    "📦 Inventory On Hand vs Reserved",
+    "🔪 Usage and Vendor",
+    "🗓 Depletion Forecast",
+    "🧪 Family Breakdown (if any)"
+]
 
-# Database connection
+# ---------- Database connection ----------
 server = "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com"
 database = "SigmaTB"
 username = "admin"
 password = "Er1c41234$"
-
 engine = create_engine(f"mssql+pytds://{username}:{password}@{server}:1433/{database}")
 
-# Text input for item ID
+# ---------- Input ----------
 item_id = st.text_input("Enter Item Number", value="50002")
 
-# ---------- Button 1: Report by ITEM ----------
+# ---------- Report by ITEM ----------
 if st.button("Report by ITEM"):
     full_report_query = f"""
-        SELECT [Size Text], Description, SMO
-        FROM ROPData
-        WHERE Item = {item_id};
+        SELECT [Size Text], Description, SMO FROM ROPData WHERE Item = {item_id};
 
         WITH Months AS (
             SELECT FORMAT(DATEADD(MONTH, -n, CAST(GETDATE() AS DATE)), 'yyyy-MM') AS Month
@@ -33,12 +37,10 @@ if st.button("Report by ITEM"):
         Aggregated AS (
             SELECT
                 FORMAT(DATEFROMPARTS(2000 + IHTRYY, IHTRMM, 1), 'yyyy-MM') AS Month,
-                CASE 
-                    WHEN CONVERT(VARCHAR(10), IHTRNT) = 'IA' THEN IHTQTY
-                    WHEN CONVERT(VARCHAR(10), IHTRNT) IN ('OW', 'OR') THEN IHTQTY
-                    WHEN CONVERT(VARCHAR(10), IHTRNT) = 'IN' THEN IHTQTY
-                    ELSE 0
-                END AS Qty,
+                CASE WHEN CONVERT(VARCHAR(10), IHTRNT) = 'IA' THEN IHTQTY
+                     WHEN CONVERT(VARCHAR(10), IHTRNT) IN ('OW', 'OR') THEN IHTQTY
+                     WHEN CONVERT(VARCHAR(10), IHTRNT) = 'IN' THEN IHTQTY
+                     ELSE 0 END AS Qty,
                 CONVERT(VARCHAR(10), IHTRNT) AS Type
             FROM UsageData
             WHERE IHITEM = {item_id}
@@ -46,61 +48,70 @@ if st.button("Report by ITEM"):
         )
         SELECT 
             m.Month,
-            CASE 
-                WHEN SUM(CASE WHEN a.Type = 'IA' THEN a.Qty ELSE 0 END) = 0 THEN '-'
-                ELSE FORMAT(SUM(CASE WHEN a.Type = 'IA' THEN a.Qty ELSE 0 END), 'N2')
-            END AS [IA (Inventory Adjustments)],
-            CASE 
-                WHEN SUM(CASE WHEN a.Type IN ('OW', 'OR') THEN a.Qty ELSE 0 END) = 0 THEN '-'
-                ELSE FORMAT(SUM(CASE WHEN a.Type IN ('OW', 'OR') THEN a.Qty ELSE 0 END), 'N2')
-            END AS [MP (Material Processed)],
-            CASE 
-                WHEN SUM(CASE WHEN a.Type = 'IN' THEN a.Qty ELSE 0 END) = 0 THEN '-'
-                ELSE FORMAT(SUM(CASE WHEN a.Type = 'IN' THEN a.Qty ELSE 0 END), 'N2')
-            END AS [SO (Sales Orders)]
+            CASE WHEN SUM(CASE WHEN a.Type = 'IA' THEN a.Qty ELSE 0 END) = 0 THEN '-' ELSE FORMAT(SUM(CASE WHEN a.Type = 'IA' THEN a.Qty ELSE 0 END), 'N2') END AS [IA (Inventory Adjustments)],
+            CASE WHEN SUM(CASE WHEN a.Type IN ('OW', 'OR') THEN a.Qty ELSE 0 END) = 0 THEN '-' ELSE FORMAT(SUM(CASE WHEN a.Type IN ('OW', 'OR') THEN a.Qty ELSE 0 END), 'N2') END AS [MP (Material Processed)],
+            CASE WHEN SUM(CASE WHEN a.Type = 'IN' THEN a.Qty ELSE 0 END) = 0 THEN '-' ELSE FORMAT(SUM(CASE WHEN a.Type = 'IN' THEN a.Qty ELSE 0 END), 'N2') END AS [SO (Sales Orders)]
         FROM Months m
         LEFT JOIN Aggregated a ON m.Month = a.Month
         GROUP BY m.Month
         ORDER BY m.Month;
 
-        SELECT [OnHand], [Rsrv], [OnHand] - [Rsrv] AS [Available Inv]
-        FROM ROPData
-        WHERE Item = {item_id};
+        SELECT [OnHand], [Rsrv], [OnHand] - [Rsrv] AS [Available Inv] FROM ROPData WHERE Item = {item_id};
 
-        SELECT 'Usage and Vendor' AS [Title], [#/ft], [UOM], [$/ft], [con/wk], [Vndr]
-        FROM ROPData
-        WHERE Item = {item_id};
+        SELECT 'Usage and Vendor' AS [Title], [#/ft], [UOM], [$/ft], [con/wk], [Vndr] FROM ROPData WHERE Item = {item_id};
 
-        SELECT 'When do we need to purchase and how much' AS [Question],
+        SELECT 'When and how much' AS [Question],
             [OnHand] - [Rsrv] AS [Available Inv],
             ([#/ft] * ([OnHand] - [Rsrv])) AS [Pounds],
             [$/ft] * ([OnHand] - [Rsrv]) AS [Dollars],
             ([OnHand] - [Rsrv]) / [con/wk] AS [Weeks],
             DATEADD(WEEK, ([OnHand] - [Rsrv]) / [con/wk], CAST(GETDATE() AS DATE)) AS [Expected Depletion Date]
-        FROM ROPData
-        WHERE Item = {item_id};
+        FROM ROPData WHERE Item = {item_id};
+
+        SELECT ropdata.Item,
+               (ropdata.OnHand - ropdata.Rsrv) AS [Available],
+               ropdata.OnPO,
+               ropdata.[#/ft],
+               ropdata.[#/ft] + (
+                   SELECT -SUM(usagedata.IHTQTY)
+                   FROM usagedata
+                   WHERE usagedata.IHITEM = ropdata.Item
+                   AND CAST(usagedata.column4 AS VARCHAR(10)) = CAST(ropdata.Item AS VARCHAR(10))
+               ) AS net_consumption,
+               (ropdata.TotCons / 26.1428571428571) AS [wk use],
+               (
+                   SELECT -SUM(usagedata.IHTQTY)
+                   FROM usagedata
+                   WHERE usagedata.IHITEM = ropdata.Item
+                   AND CAST(usagedata.column4 AS VARCHAR(10)) = CAST(ropdata.Item AS VARCHAR(10))
+               ) AS total_usage,
+               ropdata.description, ropdata.[Size Text] as "Size"
+        FROM (
+            SELECT CAST(comment AS VARCHAR(MAX)) AS comment, Item
+            FROM ROPData WHERE Item = {item_id}
+        ) base
+        OUTER APPLY (
+            SELECT TRIM(value) AS val FROM STRING_SPLIT(base.comment, '!') WHERE value <> ''
+        ) RawParts
+        CROSS APPLY (
+            SELECT TRY_CAST(LEFT(val, CHARINDEX(':', val + ':') - 1) AS INT) AS Item
+        ) Parsed
+        JOIN ROPData ropdata ON ropdata.Item = Parsed.Item;
     """
 
     try:
         result_sets = []
         with engine.begin() as conn:
-            for sql in full_report_query.strip().split(";"):
+            for i, sql in enumerate(full_report_query.strip().split(";")):
                 if sql.strip():
-                    result = pd.read_sql(sql, conn)
-                    result_sets.append(result)
+                    df = pd.read_sql(sql, conn)
+                    result_sets.append(df)
 
         st.success("✅ All data loaded successfully!")
 
-        titles = [
-            "🔍 Item Being Reviewed",
-            "📈 IA / MP / SO Summary (Last 13 Months)",
-            "📦 Inventory On Hand vs Reserved",
-            "🧪 Usage and Vendor",
-            "📅 Depletion Forecast",
-        ]
-
         for i, df in enumerate(result_sets):
-            st.subheader(titles[i] if i < len(titles) else f"Result {i + 1}")
+            title = query_titles[i] if i < len(query_titles) else f"Result {i + 1}"
+            st.subheader(title)
             st.dataframe(df)
 
         if len(result_sets) >= 3 and not result_sets[2].empty:
@@ -114,7 +125,7 @@ if st.button("Report by ITEM"):
                 ]
             })
 
-            st.subheader("📊 Inventory Overview Chart")
+            st.subheader(f"🌍 Item {item_id} Overview Chart")
             bar_chart = alt.Chart(chart_data).mark_bar().encode(
                 x=alt.X("Metric", title="Metric"),
                 y=alt.Y("Value", title="Feet", scale=alt.Scale(zero=True)),
@@ -133,6 +144,7 @@ if st.button("Show ROP Table"):
             st.write("🔄 Fetching full ROP table...")
             df = pd.read_sql("SELECT * FROM ROP", conn)
             st.success("✅ ROP table loaded successfully!")
+            st.write(f"📌 Total Rows: {len(df)}")
             st.dataframe(df)
     except Exception as e:
         st.error(f"❌ Failed to fetch ROP table: {e}")

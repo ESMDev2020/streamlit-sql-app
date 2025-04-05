@@ -7,210 +7,9 @@ CREATE DATABASE SigmaTB;
 --Use the DB
 USE SigmaTB;
 
--- create ROP data table
-CREATE TABLE ROPData (
-    [Unnamed: 0] VARCHAR(34),
-    [Unnamed: 1] VARCHAR(6),
-    [Unnamed: 2] VARCHAR(8),
-    [Unnamed: 3] VARCHAR(8),
-    [Unnamed: 4] VARCHAR(8),
-    [Unnamed: 5] VARCHAR(13),
-    [Unnamed: 6] VARCHAR(8),
-    [Unnamed: 7] VARCHAR(7),
-    [Unnamed: 8] VARCHAR(7),
-    [Unnamed: 9] VARCHAR(8),
-    [Unnamed: 10] VARCHAR(8),
-    [Unnamed: 11] VARCHAR(16),
-    [Unnamed: 12] VARCHAR(8),
-    [Unnamed: 13] VARCHAR(9),
-    [Unnamed: 14] VARCHAR(9),
-    [Unnamed: 15] VARCHAR(9),
-    [Unnamed: 16] VARCHAR(7),
-    [Unnamed: 17] VARCHAR(7),
-    [Unnamed: 18] VARCHAR(9),
-    [Unnamed: 19] VARCHAR(9),
-    [Unnamed: 20] VARCHAR(9),
-    [Unnamed: 21] DECIMAL(18,2),
-    [Unnamed: 22] DECIMAL(18,2),
-    [Unnamed: 23] VARCHAR(7),
-    [Unnamed: 24] DECIMAL(18,2),
-    [Unnamed: 25] DECIMAL(18,2),
-    [Unnamed: 26] DECIMAL(18,2),
-    [Unnamed: 27] DECIMAL(18,2),
-    [Unnamed: 28] DECIMAL(18,2)
-);
-
---Create BasePrice table
-CREATE TABLE BasePrice (
-    [IOITEM] INT,
-    [IOBPRC] DECIMAL(18,2)
-);
-
---Create SalesData table
-CREATE TABLE SalesData (
-    [OORECD] VARCHAR(6),
-    [ODTYPE] VARCHAR(6),
-    [ODITEM] VARCHAR(6),
-    [OOCUST] VARCHAR(6),
-    [ODTLBS] VARCHAR(8),
-    [ ODTFTS ] VARCHAR(11),
-    [ ODORDR ] VARCHAR(6),
-    [ CALPHA ] VARCHAR(26),
-    [ 00009 ] INT,
-    [Unnamed: 9] INT,
-    [Unnamed: 10] VARCHAR(11),
-    [Unnamed: 11] DECIMAL(18,2),
-    [ 22,121.244 ] DECIMAL(18,2)
-);
-
---Create UsageData table
-CREATE TABLE UsageData (
-    [Unnamed: 0] VARCHAR(6),
-    [Unnamed: 1] VARCHAR(6),
-    [Unnamed: 2] VARCHAR(6),
-    [Unnamed: 3] VARCHAR(8),
-    [Unnamed: 4] VARCHAR(8),
-    [ Start Date ] VARCHAR(9),
-    [Unnamed: 6] VARCHAR(8),
-    [Unnamed: 7] VARCHAR(8),
-    [Unnamed: 8] VARCHAR(8),
-    [Unnamed: 9] VARCHAR(8),
-    [2024 02 29] VARCHAR(31),
-    [ item_XxDocmntVendrCstmrDatedate ] VARCHAR(10),
-    [Unnamed: 12] VARCHAR(7),
-    [Unnamed: 13] DECIMAL(18,2),
-    [Unnamed: 14] VARCHAR(6),
-    [Unnamed: 15] VARCHAR(3),
-    [Unnamed: 16] DECIMAL(18,2),
-    [Unnamed: 17] DECIMAL(18,2),
-    [Unnamed: 18] VARCHAR(6),
-    [Unnamed: 19] DECIMAL(18,2),
-    [Unnamed: 20] DECIMAL(18,2),
-    [Unnamed: 21] DECIMAL(18,2),
-    [Unnamed: 22] VARCHAR(6),
-    [Unnamed: 23] VARCHAR(6),
-    [Unnamed: 24] VARCHAR(8),
-    [Unnamed: 25] VARCHAR(29),
-    [Unnamed: 26] DECIMAL(18,2)
-);
-
---Create TagData
-CREATE TABLE TagData (
-    [Item] VARCHAR(6),
-    [Tag] VARCHAR(7),
-    [Description] VARCHAR(20),
-    [Pc Len] VARCHAR(6),
-    [Pcs] VARCHAR(6),
-    [ Length ] VARCHAR(9),
-    [ Heat ] VARCHAR(8),
-    [ Lot ] VARCHAR(8),
-    [ Loc ] VARCHAR(8),
-    [ OnHand ] VARCHAR(9),
-    [ Reserved ] VARCHAR(9),
-    [ Avail ] VARCHAR(9),
-    [Unnamed: 12] VARCHAR(28),
-    [ remnants ] VARCHAR(6),
-    [Unnamed: 14] DECIMAL(18,2),
-    [Unnamed: 15] VARCHAR(7),
-    [Unnamed: 16] DECIMAL(18,2)
-);
-
--- Create POData
-CREATE TABLE POData (
-    [ PO ] VARCHAR(8),
-    [ V# ] VARCHAR(8),
-    [Vendor] VARCHAR(8),
-    [Code] VARCHAR(6),
-    [Item] VARCHAR(6),
-    [Description] VARCHAR(24),
-    [Original] VARCHAR(10),
-    [Due Date] VARCHAR(10),
-    [Received] VARCHAR(10),
-    [ Ordered ] VARCHAR(8),
-    [ Received ] VARCHAR(8),
-    [UOM] VARCHAR(6),
-    [ Due ] VARCHAR(8),
-    [Unnamed: 13] DECIMAL(18,2),
-    [Unnamed: 14] VARCHAR(8),
-    [Unnamed: 15] VARCHAR(7),
-    [Unnamed: 16] VARCHAR(20),
-    [Unnamed: 17] VARCHAR(6),
-    [Unnamed: 18] VARCHAR(6),
-    [Unnamed: 19] VARCHAR(32),
-    [Unnamed: 20] VARCHAR(10),
-    [Unnamed: 21] VARCHAR(10),
-    [Unnamed: 22] VARCHAR(10),
-    [Unnamed: 23] VARCHAR(8),
-    [Unnamed: 24] VARCHAR(9),
-    [Unnamed: 25] VARCHAR(6),
-    [Unnamed: 26] VARCHAR(8)
-);
-
---Verify that the tables were created
-Select TABLE_NAME from INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE';
-
---check permissions
-SELECT SUSER_NAME();
 
 
---Enable FileAccess for SQL server
-EXEC sp_configure 'show advanced options', 1;
-RECONFIGURE;
-EXEC sp_configure 'Ad Hoc Distributed Queries', 1;
-RECONFIGURE;
 
---Get the CSV files into the S3 repository into the RDC environment.. crazy complexity
-EXEC msdb.dbo.rds_download_from_s3
-    'arn:aws:s3:::esmbucket2/ROPData.csv',  -- S3 file ARN
-    'D:\S3\ROPData.csv',  -- Target path in RDS
-    1;  -- Overwrite if file exists
-
---Verify if file was imported
-EXEC msdb.dbo.rds_file_list;
-
---Edition doesnt allow
-SELECT SERVERPROPERTY('Edition'), SERVERPROPERTY('EngineEdition');
-
-
---Verify the import
-SELECT * FROM ROPData;
-
-
-BULK INSERT BasePrice FROM '/Users/bmate/Downloads/BasePrice.csv'
-
-
--- Now, import the data
-BULK INSERT BasePrice FROM 'C:\Administrator\Downloads\BasePrice.csv'
-WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
-
-BULK INSERT ROPData FROM 'C:\Administrator\Downloads\ROPData.csv'
-WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
-
-BULK INSERT SalesData FROM 'C:\Administrator\Downloads\SalesData.csv'
-WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
-
-BULK INSERT UsageData FROM 'C:\Administrator\Downloads\UsageData.csv'
-WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
-
-BULK INSERT TagData FROM 'C:\Administrator\Downloads\TagData.csv'
-WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
-
-BULK INSERT POData FROM 'C:\Administrator\Downloads\POData.csv'
-WITH (FORMAT = 'CSV', FIRSTROW = 2, FIELDTERMINATOR = ',', ROWTERMINATOR = '\n', TABLOCK);
-
-
---Delete all tables and start again
-DECLARE @sql NVARCHAR(MAX) = N'';
-
--- Generate DROP TABLE commands for all user tables
-SELECT @sql += 'DROP TABLE IF EXISTS ' + QUOTENAME(TABLE_SCHEMA) + '.' + QUOTENAME(TABLE_NAME) + '; ' + CHAR(13)
-FROM INFORMATION_SCHEMA.TABLES
-WHERE TABLE_TYPE = 'BASE TABLE';
-
--- Execute the generated SQL
-EXEC sp_executesql @sql;
-
--- end deleting tables
 
 
 
@@ -604,39 +403,6 @@ WHERE ITEMONHD.IOITEM = ITEMMAST.IMITEM AND ((ITEMMAST.IMRECD='A') AND (ITEMMAST
 ORDER BY ITEMMAST.IMFSP2
 
 
---GET THE NAME AND DATATYPE OF FIELDS - INFORMATION SCHEMA
-SELECT 
-    COLUMN_NAME, 
-    DATA_TYPE, 
-    CHARACTER_MAXIMUM_LENGTH,
-    IS_NULLABLE
-FROM 
-    INFORMATION_SCHEMA.COLUMNS
-WHERE 
-    TABLE_NAME = 'ROPData'  -- Replace with your actual table name
-    AND TABLE_SCHEMA = 'dbo';
-
-
---////////////////////////////////////////////////////////
---GET THE NAME AND DATATYPE FROM SYS.COLUMNS
-SELECT 
-    c.name AS ColumnName,
-    t.name AS DataType,
-    c.max_length AS MaxLength,
-    c.precision,
-    c.scale,
-    CASE 
-        WHEN c.is_nullable = 1 THEN 'YES'
-        ELSE 'NO'
-    END AS IsNullable
-FROM 
-    sys.columns c
-JOIN 
-    sys.types t ON c.user_type_id = t.user_type_id
-WHERE 
-    c.object_id = OBJECT_ID('dbo.ROPData');  -- Replace with your table name
-
---///////////////////////////////////////////////////////
 
 
 
@@ -713,3 +479,192 @@ EXEC sp_rename 'ROPData.Time_num', 'Time', 'COLUMN';
 select [Size Text], Description, SMO
 from ROPData
 WHERE item = 50002;
+
+--////////////////////////////////////////////////////////////////
+--////////////////////////////////////////////////////////////////
+USE SigmaTB;
+
+
+-- 1. Item being reviewed
+            SELECT [Size Text], Description, SMO
+            FROM ROPData
+            WHERE Item = 50002;
+
+            -- 2. IA, MP, SO Summary by Month
+            WITH Months AS (
+                SELECT FORMAT(DATEADD(MONTH, -n, CAST(GETDATE() AS DATE)), 'yyyy-MM') AS Month
+                FROM (SELECT TOP 13 ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) - 1 AS n FROM sys.all_objects) AS x
+            ),
+            Aggregated AS (
+                SELECT
+                    FORMAT(DATEFROMPARTS(2000 + IHTRYY, IHTRMM, 1), 'yyyy-MM') AS Month,
+                    CASE 
+                        WHEN CONVERT(VARCHAR(10), IHTRNT) = 'IA' THEN IHTQTY
+                        WHEN CONVERT(VARCHAR(10), IHTRNT) IN ('OW', 'OR') THEN IHTQTY
+                        WHEN CONVERT(VARCHAR(10), IHTRNT) = 'IN' THEN IHTQTY
+                        ELSE 0
+                    END AS Qty,
+                    CONVERT(VARCHAR(10), IHTRNT) AS Type
+                FROM UsageData
+                WHERE IHITEM = 50002
+                  AND DATEFROMPARTS(2000 + IHTRYY, IHTRMM, 1) >= DATEADD(MONTH, -13, CAST(GETDATE() AS DATE))
+            )
+            SELECT 
+                m.Month,
+                FORMAT(SUM(CASE WHEN a.Type = 'IA' THEN a.Qty ELSE 0 END), 'N2') AS [IA (Inventory Adjustments)],
+                FORMAT(SUM(CASE WHEN a.Type IN ('OW', 'OR') THEN a.Qty ELSE 0 END), 'N2') AS [MP (Material Processed)],
+                FORMAT(SUM(CASE WHEN a.Type = 'IN' THEN a.Qty ELSE 0 END), 'N2') AS [SO (Sales Orders)]
+            FROM Months m
+            LEFT JOIN Aggregated a ON m.Month = a.Month
+            GROUP BY m.Month
+            ORDER BY m.Month;
+
+            -- 3. Inventory Availability
+            SELECT [OnHand], [Rsrv], [OnHand] - [Rsrv] AS [Available Inv]
+            FROM ROPData
+            WHERE Item = 50002;
+
+            -- 4. Usage and Vendor
+            SELECT 'Usage and Vendor' AS [Title], [#/ft], [UOM], [$/ft], [con/wk], [Vndr]
+            FROM ROPData
+            WHERE Item = 50002;
+
+            -- 5. Depletion Forecast
+            SELECT 'When and how much purchase' AS [Question],
+                [OnHand] - [Rsrv] AS [Available Inv],
+                ([#/ft] * ([OnHand] - [Rsrv])) AS [Pounds],
+                [$/ft] * ([OnHand] - [Rsrv]) AS [Dollars],
+                ([OnHand] - [Rsrv]) / [con/wk] AS [Weeks],
+                DATEADD(WEEK, ([OnHand] - [Rsrv]) / [con/wk], CAST(GETDATE() AS DATE)) AS [Expected Depletion Date]
+            FROM ROPData
+            WHERE Item = 50002;
+
+            --6.- Purchases
+            Select ROPDATA.[OnPO],ROP.[Rems], ROP.[Level] from ROPData, ROP WHERE ropdata.Item = 50002 and rop.imitem=50002;
+            
+            --7.- Max Inventory (Available + rems + PO
+            select 
+            ((ROPDATA.[#/ft] * (ROPDATA.[OnHand] - ROPDATA.[Rsrv]))  +
+            ROP.[Rems] +
+            ROPDATA.[Rsrv]) AS [Pounds]
+            FROM ROPDATA, ROP
+            where ropdata.Item = 50002 and rop.imitem=50002;
+
+
+
+           DECLARE @item INT = 50002;
+            DECLARE @onHand FLOAT;
+            DECLARE @reserved FLOAT;
+            DECLARE @rems FLOAT;
+            DECLARE @Lb_ft FLOAT;
+            DECLARE @quantity FLOAT;
+            DECLARE @quantity_LbFt FLOAT;
+            DECLARE @quantity_USDFt FLOAT;
+            DECLARE @quantity_USD FLOAT;
+
+            -- Get the values once
+            SELECT 
+                @onHand = ROPDATA.[OnHand],
+                @reserved = ROPDATA.[Rsrv],
+                @Lb_ft = ROPDATA.[#/ft],
+                @quantity_USDFt = ROPDATA.[$/ft]
+            FROM ROPDATA
+            WHERE ROPDATA.Item = @item;
+
+            -- Get Rems
+            SELECT 
+                @rems = ROP.[Rems]
+            FROM ROP
+            WHERE ROP.IMItem = @item;
+
+            -- Do the math
+            SET @quantity = ((@onHand - @reserved) + @rems + @reserved);
+            SET @quantity_LbFt = (@quantity * @Lb_ft);
+            SET @quantity_USD = (@quantity_LbFt * @quantity_USDFt);
+
+            -- Show results
+            SELECT 
+                @quantity AS Quantity,
+                @quantity_LbFt AS Quantity_Lbs,
+                @quantity_USDFt AS PricePerFtUSD,
+                @quantity_USD AS TotalValueUSD;
+
+
+--///////////////////////////////////////////////
+
+-- What is the data of ROP?
+use Sigmatb;
+SELECT DISTINCT CAST(Column3 AS VARCHAR(MAX)) AS Column3
+FROM ROP;
+
+--How many types 
+SELECT 
+    RTRIM(CAST(Column3 AS VARCHAR(MAX))) AS Type,
+    COUNT(*) AS Total
+FROM ROP
+WHERE Column3 IS NOT NULL
+GROUP BY RTRIM(CAST(Column3 AS VARCHAR(MAX)))
+ORDER BY total DESC;
+
+--how much
+select IMITEM, column3, avail, 
+from ROP where avail >0
+order by avail desc;
+
+-- add icons ⚪⬛,
+USE SigmaTB;
+
+SELECT 
+  ROP.IMITEM,  ROP.Column3,  ROP.Avail, ROP.[con], ROPData.[con/wk],
+  (ROPData.[OnHand] - ROPData.[Rsrv]) / ROPData.[con/wk] AS [Weeks],
+    DATEADD(WEEK, (ROPData.[OnHand] - ROPData.[Rsrv]) / ROPData.[con/wk], CAST(GETDATE() AS DATE)) AS [Expected Depletion Date],
+  CASE 
+    WHEN ROP.IMSIZ2 > 0 THEN 'O'
+    ELSE '⬛'
+  END AS Icon
+FROM ROP, ROPDATA WHERE   ROPDAta.Item = ROP.IMITEM ORDER BY Avail DESC;
+ROP.Avail > 0 AND
+
+
+SELECT 
+    ROP.IMITEM,  ROP.Column3,  ROP.Avail,  ROP.[con],  ROPData.[con/wk],
+    (ROPData.[OnHand] - ROPData.[Rsrv]) / NULLIF(ROPData.[con/wk], 0)  AS [Weeks],
+    DATEADD( WEEK,    (ROPData.[OnHand] - ROPData.[Rsrv]) / NULLIF(ROPData.[con/wk], 0),    CAST(GETDATE() AS DATE)  ) AS [Expected Depletion Date],
+    ropdata.[$/ft] * (ropdata.[OnHand] - ropdata.[Rsrv]) AS [Dollars],
+  CASE 
+    WHEN ROP.IMSIZ2 > 0 THEN 'O'
+    ELSE '⬛'
+  END AS Icon
+FROM ROP 
+JOIN ROPDATA ON ROP.IMITEM = ROPDATA.Item
+where ROP.Avail > 0
+ORDER BY ROP.Avail DESC;
+
+---IMPROVED QUERY TO AVOID MULTIPLE QUERIES FOR CALCULATIONS
+SELECT 
+    ROP.IMITEM,
+    ROP.Column3,
+    ROP.Avail,
+    ROP.[con],
+    ROPData.[con/wk],
+    calc.AvailableFeet / NULLIF(ROPData.[con/wk], 0),  AS [Weeks],
+    DATEADD(
+        WEEK,
+        calc.AvailableFeet / NULLIF(ROPData.[con/wk], 0),
+        CAST(GETDATE() AS DATE)
+    ) AS [Expected Depletion Date],
+    ROPData.[$/ft] * calc.AvailableFeet AS [Dollars],
+    CASE 
+        WHEN ROP.IMSIZ2 > 0 THEN 'O'
+        ELSE '⬛'
+    END AS Icon
+FROM ROP
+JOIN ROPDATA ON ROP.IMITEM = ROPDATA.Item
+CROSS APPLY (
+    SELECT ROPDATA.[OnHand] - ROPDATA.[Rsrv] AS AvailableFeet
+) AS calc
+WHERE ROP.Avail > 0
+ORDER BY ROP.Avail DESC;
+
+CREATE NONCLUSTERED INDEX IX_ROP_IMITEM ON ROP(IMITEM);
+CREATE NONCLUSTERED INDEX IX_ROPDATA_ITEM ON ROPDATA(Item);
