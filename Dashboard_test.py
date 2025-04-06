@@ -12,6 +12,8 @@ query_titles = [
     "📦 Inventory On Hand vs Reserved",
     "🔪 Usage and Vendor",
     "🗓 Depletion Forecast",
+    "🧪 Inventory + PO",
+    "🧪 Purchase Orders",
     "🧪 Family Breakdown (if any)"
 ]
 
@@ -37,7 +39,7 @@ try:
     myDataFrame = myDataFrame.rename(columns={
         "OnHand": "In Stock (ft)",
         "OnPO": "PO Incoming (ft)",
-        "#/ft": "Feet per Unit",
+        "lbs/ft": "Pounds per",
         "con/wk": "Usage/Week",
         "FastPathSort": "Grade"
     })
@@ -167,6 +169,31 @@ try:
                     ([OnHand] - [Rsrv]) / [con/wk] AS [Weeks],
                     DATEADD(WEEK, ([OnHand] - [Rsrv]) / [con/wk], CAST(GETDATE() AS DATE)) AS [Expected Depletion Date]
                 FROM ROPData WHERE Item = {item_id};
+
+                SELECT 
+                    CAST(CAST(ROPData.[OnPO] AS VARCHAR(50)) AS FLOAT) AS [OnPO],
+                    tagdata.remnants, 
+                    ROPData.[Level],
+                    CAST(CAST(ROPData.[OnPO] AS VARCHAR(50)) AS FLOAT) / NULLIF(CAST(CAST(ROPData.[con/wk] AS VARCHAR(50)) AS FLOAT), 0) AS [PO Weeks],
+                    DATEADD(
+                        WEEK, 
+                        (
+                            CAST(CAST(ROPData.[OnHand] AS VARCHAR(50)) AS FLOAT)
+                            - CAST(CAST(ROPData.[Rsrv] AS VARCHAR(50)) AS FLOAT)
+                            + CAST(CAST(ROPData.[OnPO] AS VARCHAR(50)) AS FLOAT)
+                        ) / NULLIF(CAST(CAST(ROPData.[con/wk] AS VARCHAR(50)) AS FLOAT), 0),
+                        GETDATE()
+                    ) AS [New Depletion Date]
+                FROM 
+                    ROPData 
+                LEFT JOIN 
+                    tagdata ON ROPData.Item = tagdata.item
+                WHERE 
+                    ROPData.Item =  {item_id};
+
+                SELECT podata.due, podata.[Due Date], podata.Vendor, podata.PO, podata.Ordered, podata.Received
+                FROM POData podata WHERE podata.Item = {item_id};
+
 
                 SELECT ropdata.Item,
                        (ropdata.OnHand - ropdata.Rsrv) AS [Available],
