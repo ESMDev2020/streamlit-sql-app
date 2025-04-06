@@ -270,3 +270,15 @@ WHERE
 
 --///////////////////////////////////////////////////////
 
+USE SigmaTB;
+
+CREATE TABLE VendorLead (
+    [Unique] BIT,                -- Whether the row is unique/applicable (converted from TRUE/FALSE)
+    Description NVARCHAR(255),   -- Description of the vendor or group
+    Notes NVARCHAR(255),         -- Additional notes or alternate name
+    Code NVARCHAR(10),           -- Short code for the vendor
+    wks INT,                     -- Lead time in weeks (may include -363, for review)
+    Used INT,                    -- Number of times used
+    Updated DATE,                -- Last update date
+    Delivery DATE                -- Optional delivery date (some values may be empty)
+);

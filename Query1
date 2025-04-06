@@ -1,23 +1,19 @@
-SELECT GETDATE() AS CurrentTime;
 
+--Date
+SELECT  GETDATE() AS CurrentTime;
+
+--Name
 SELECT name FROM sys.databases;
-
-CREATE DATABASE SigmaTB;
+Select 'create database.. muted' --CREATE DATABASE SigmaTB;
 
 --Use the DB
 USE SigmaTB;
-
-
-
-
-
-
 
 -- Generate a COUNT(*) query for each table
     DECLARE @sql NVARCHAR(MAX) = N'';   
 
     -- Generate a COUNT(*) query for each table
-    SELECT @sql += 'SELECT ''' + TABLE_SCHEMA + '.' + TABLE_NAME + ''' AS TableName, COUNT(*) AS RecordCount FROM ' + QUOTENAME(TABLE_SCHEMA) + '.' + QUOTENAME(TABLE_NAME) + ' UNION ALL '
+    SELECT  @sql += 'SELECT ''' + TABLE_SCHEMA + '.' + TABLE_NAME + ''' AS TableName, COUNT(*) AS RecordCount FROM ' + QUOTENAME(TABLE_SCHEMA) + '.' + QUOTENAME(TABLE_NAME) + ' UNION ALL '
     FROM INFORMATION_SCHEMA.TABLES
     WHERE TABLE_TYPE = 'BASE TABLE';
 
@@ -27,6 +23,7 @@ USE SigmaTB;
     -- Execute the generated SQL
     EXEC sp_executesql @sql;
 
+/***************************************/
 
 select * from ROPData
 select count(*) from ropdata
@@ -668,3 +665,351 @@ ORDER BY ROP.Avail DESC;
 
 CREATE NONCLUSTERED INDEX IX_ROP_IMITEM ON ROP(IMITEM);
 CREATE NONCLUSTERED INDEX IX_ROPDATA_ITEM ON ROPDATA(Item);
+
+
+-- NEW QUERIES
+
+USE SIGMATB;
+SELECT * FROM PODATA WHERE ITEM = 50002;
+
+select 'ROP' AS 'TABLE',  * from ROP WHERE dbo.rop.IMITEM IN('50002', '51527');       --ROP has available (onhand-reserve)
+select 'ROPData' AS 'TABLE',  * from ROPdata WHERE dbo.ropdata.Item IN (50002,51527);   --ROPData has onhand
+select * from UsageData where usagedata.IHITEM = 50002;
+select sum   ( usagedata.IHTQTY) from usagedata where usagedata.IHITEM = 50002; --returns 30
+select sum   ( usagedata.IHTQTY) from usagedata where usagedata.IHITEM = 50002 AND CAST(usagedata.IHTRNT AS VARCHAR(10)) = 'IN';  -- returns -107
+select sum   ( usagedata.IHTQTY) from usagedata where usagedata.IHITEM = 50002 AND CAST(usagedata.Column4 as varchar(10)) <> 'no';  -- returns -84
+
+--safety level
+select ropdata.level, ropdata.Vndr, ropdata.comment, time = 26.1428571428571, ropdata.[#/ft]  from ropdata where ropdata.Item = 50002;
+
+
+--consumption
+--select usagedata.column4, usagedata.IHTQTY from usagedata  where usagedata.IHITEM = 50002  and cast(usagedata.column4 as varchar(10)) = '50002';
+--select sum( usagedata.IHTQTY) from usagedata  where usagedata.IHITEM = 50002  and cast(usagedata.column4 as varchar(10)) = '50002';
+
+SELECT 
+    ropdata.level,
+    ropdata.Vndr,
+    ropdata.comment,
+    26.1428571428571 AS time,
+    ropdata.[#/ft],
+    (
+        SELECT -SUM(usagedata.IHTQTY)
+        FROM usagedata
+        WHERE usagedata.IHITEM = 50002
+          AND CAST(usagedata.column4 AS VARCHAR(10)) = '50002'
+    ) AS total_usage,
+    ropdata.[#/ft] + (
+        SELECT -SUM(usagedata.IHTQTY)
+        FROM usagedata
+        WHERE usagedata.IHITEM = 50002
+          AND CAST(usagedata.column4 AS VARCHAR(10)) = '50002'
+    ) AS net_consumption
+FROM ropdata
+WHERE ropdata.Item = 50002;
+
+--Consumption per week
+select ropdata.TotCons, ropdata.time  from ROPData where ropdata.Item = 50002;
+select ropdata.TotCons / ropdata.time from ROPData where ropdata.Item = 50002;
+
+
+--Remnants
+select tagdata.remnants from tagdata where tagdata.Item = 50002;    --IMFSP3
+
+--Availability
+--Inventory onhand - reserved
+select ropdata.OnHand, ropdata.Rsrv, (ropdata.OnHand- ropdata.Rsrv) as 'Available' from ropdata where ropdata.Item = 50002;
+
+--On purchase orders
+select ropdata.OnPO from ropdata where ropdata.Item = 50002;
+
+--safety levels
+select ropdata.[Level] from ropdata where ropdata.Item = 50002;
+
+--vendor
+select ropdata.Vndr from ropdata where ropdata.Item = 50002;
+
+--lead time
+select ropdata.time from ropdata where ropdata.Item = 50002;
+
+--Ground zero
+--Take everything I have (available + on order), subtract the safety stock and leftovers, divide by how much I consume each week, and subtract the time it takes to get more (lead time)
+
+
+
+
+
+use sigmatb;
+
+--try lead time
+SELECT 
+    ISNULL(VL.LeadWeeks, -363) AS Lead
+FROM 
+    ROP R
+LEFT JOIN 
+    VendorLead VL
+    ON CAST(R.Column3 AS VARCHAR(10)) = VL.Code
+WHERE 
+    R.IMITEM = '50002';
+
+
+--Ground zero, but depends on code to update lead time, so we will create another one
+SELECT 
+    rop.IMITEM,
+    rop.Avail,
+    ropdata.OnHand,
+    ropdata.OnPO,
+    rop.Rems,
+    rop.[Level],
+    ropdata.[con/wk],
+    rop.Lead,
+    CASE 
+        WHEN ropdata.[con/wk] IS NULL OR ropdata.[con/wk] = 0 THEN 363
+        ELSE ROUND(
+            (
+                (rop.Avail + ropdata.OnHand + CAST(CAST(ropdata.OnPO AS VARCHAR(50)) AS FLOAT)) 
+                - (rop.Rems + rop.[Level])
+            ) / NULLIF(ropdata.[con/wk], 0) - rop.Lead,
+        0)
+    END AS GroundZeroWeeks
+FROM ROP, ROPData
+WHERE rop.IMITEM = 50002 AND ropdata.Item = 50002;
+
+-- Ground zero with default lead time if missing
+SELECT 
+    rop.IMITEM,
+    rop.Avail,
+    ropdata.OnHand,
+    ropdata.OnPO,
+    rop.Rems,
+    rop.[Level],
+    ropdata.[con/wk],
+    ISNULL(rop.Lead, -363) AS Lead,
+    CASE 
+        WHEN ropdata.[con/wk] IS NULL OR ropdata.[con/wk] = 0 THEN 363
+        ELSE ROUND(
+            (
+                (rop.Avail + ropdata.OnHand + CAST(CAST(ropdata.OnPO AS VARCHAR(50)) AS FLOAT)) 
+                - (rop.Rems + rop.[Level])
+            ) / NULLIF(ropdata.[con/wk], 0) - ISNULL(rop.Lead, -363),
+        0)
+    END AS GroundZeroWeeks
+FROM ROP rop
+JOIN ROPData ropdata ON rop.IMITEM = ropdata.Item
+WHERE rop.IMITEM = 50002;
+
+
+/*SELECT 
+    rop.IMITEM,
+    rop.Avail,
+    ropdata.OnHand,
+    ropdata.OnPO,
+    rop.Rems,
+    rop.[Level],
+    ropdata.[con/wk],
+    rop.Lead,
+    -- Ground Zero calculation with proper text-to-float conversion
+    CASE 
+        WHEN ropdata.[con/wk] IS NULL OR ropdata.[con/wk] = 0 THEN 363
+        ELSE 
+            ISNULL(ROUND(
+                (
+                    (rop.Avail + ropdata.OnHand + CAST(CAST(ropdata.OnPO AS VARCHAR(100)) AS FLOAT)) 
+                    - (rop.Rems + rop.[Level])
+                ) / NULLIF(ropdata.[con/wk], 0) 
+                - ISNULL(rop.Lead, 0),
+            0), 363)
+    END AS GroundZeroWeeks
+FROM ROP rop
+JOIN ROPData ropdata ON rop.IMITEM = ropdata.Item
+WHERE rop.IMITEM = 50002;
+*/
+
+select ropdata.comment from ropdata where ropdata.Item = 50002;
+
+--all together
+select ropdata.[Level], ropdata.Vndr, ropdata.comment, time = 26.1428571428571,   ropdata.[#/ft],
+    (
+        SELECT -SUM(usagedata.IHTQTY)
+        FROM usagedata
+        WHERE usagedata.IHITEM = 50002
+          AND CAST(usagedata.column4 AS VARCHAR(10)) = '50002'
+    ) AS total_usage,
+    ropdata.[#/ft] + (
+        SELECT -SUM(usagedata.IHTQTY)
+        FROM usagedata
+        WHERE usagedata.IHITEM = 50002
+          AND CAST(usagedata.column4 AS VARCHAR(10)) = '50002'
+    ) AS net_consumption, 
+    (ropdata.TotCons / ropdata.time ) as 'wk use', 
+    sum(cast(cast(tagdata.remnants as varchar(10)) as float)), (ropdata.OnHand- ropdata.Rsrv) as 'Available', 
+    ropdata.OnPO, ropdata.[Level], ropdata.Vndr, ropdata.time
+    from ROPData, tagdata
+    where ropdata.Item = 50002 and tagdata.Item = 50002;
+
+--HERE WE GO!!!
+SELECT 
+    ropdata.item, ropdata.[Level],
+    ropdata.Vndr,
+    CAST(ropdata.comment AS VARCHAR(255)) AS comment,
+    time = 26.1428571428571,
+    ropdata.[#/ft],
+
+    -- Total usage
+    (
+        SELECT -SUM(usagedata.IHTQTY)
+        FROM usagedata
+        WHERE usagedata.IHITEM = 50002
+          AND CAST(usagedata.column4 AS VARCHAR(10)) = '50002'
+    ) AS total_usage,
+
+    -- Net consumption
+    ropdata.[#/ft] + (
+        SELECT -SUM(usagedata.IHTQTY)
+        FROM usagedata
+        WHERE usagedata.IHITEM = 50002
+          AND CAST(usagedata.column4 AS VARCHAR(10)) = '50002'
+    ) AS net_consumption,
+
+    -- Weekly use
+    (ropdata.TotCons / ropdata.time) AS [wk use],
+
+    -- Total remnants from tagdata
+    tagdata_sum.total_remnants,
+
+    -- Available inventory
+    (ropdata.OnHand - ropdata.Rsrv) AS [Available],
+    ropdata.OnPO,
+    ropdata.time
+
+FROM 
+    ROPData ropdata
+CROSS APPLY (
+    SELECT 
+        SUM(CAST(CAST(remnants AS VARCHAR(100)) AS FLOAT)) AS total_remnants
+    FROM tagdata
+    WHERE tagdata.Item = 50002
+) tagdata_sum
+WHERE ropdata.Item = 50002;
+
+
+----------------------
+--HERE WE GO FOR THE FULL FAMILY
+--select ropdata.item, ropdata.comment, * from ropdata where ropdata.Item in (50002)
+
+
+
+--/////////////////////////////////////
+-- 1. Get comment from ROPData
+DECLARE @comment NVARCHAR(MAX)
+
+SELECT @comment = CAST(comment AS VARCHAR(MAX))
+FROM ROPData
+WHERE Item = 50002;
+
+-- 2. Parse bar items (extract after "!" and ignore anything with ":")
+WITH RawParts AS (
+    SELECT TRIM(value) AS val
+    FROM STRING_SPLIT(@comment, '!')
+    WHERE value <> ''
+),
+BarItems AS (
+    SELECT TRY_CAST(LEFT(val, CHARINDEX(':', val + ':') - 1) AS INT) AS Item
+    FROM RawParts
+    WHERE TRY_CAST(LEFT(val, CHARINDEX(':', val + ':') - 1) AS INT) IS NOT NULL
+)
+
+-- 3. Final query for each bar item
+SELECT 
+    ropdata.Item,
+    ropdata.[Level],
+    ropdata.Vndr,
+    CAST(ropdata.comment AS VARCHAR(255)) AS comment,
+    time = 26.1428571428571,
+    ropdata.[#/ft],
+
+    -- Total usage
+    (
+        SELECT -SUM(usagedata.IHTQTY)
+        FROM usagedata
+        WHERE usagedata.IHITEM = ropdata.Item
+          AND CAST(usagedata.column4 AS VARCHAR(10)) = CAST(ropdata.Item AS VARCHAR(10))
+    ) AS total_usage,
+
+    -- Net consumption
+    ropdata.[#/ft] + (
+        SELECT -SUM(usagedata.IHTQTY)
+        FROM usagedata
+        WHERE usagedata.IHITEM = ropdata.Item
+          AND CAST(usagedata.column4 AS VARCHAR(10)) = CAST(ropdata.Item AS VARCHAR(10))
+    ) AS net_consumption,
+
+    -- Weekly use
+    (ropdata.TotCons / ropdata.time) AS [wk use],
+
+    -- Total remnants
+    tagdata_sum.total_remnants,
+
+    (ropdata.OnHand - ropdata.Rsrv) AS [Available],
+    ropdata.OnPO,
+    ropdata.time
+
+FROM 
+    BarItems
+JOIN ROPData ropdata ON ropdata.Item = BarItems.Item
+CROSS APPLY (
+    SELECT 
+        SUM(CAST(CAST(remnants AS VARCHAR(100)) AS FLOAT)) AS total_remnants
+    FROM tagdata
+    WHERE tagdata.Item = ropdata.Item
+) tagdata_sum;
+
+
+select * from ropdata where item = 50002;
+use sigmatb;
+select count(*) from ropdata;
+
+
+SELECT 
+    ropdata.Item,    ropdata.Description,    ropdata.[Size Text],    ropdata.Comment,    ropdata.OnHand,    ropdata.Rsrv,    SUM(TRY_CAST(tagdata.remnants AS FLOAT)) AS total_remnants,
+    ropdata.[#/ft],    ropdata.[$/ft],    ropdata.Level,    ropdata.[con/wk],    ropdata.TotCons,    ropdata.OnPO,    ropdata.Vndr FROM ROPData ropdata
+JOIN tagdata ON tagdata.Item = ropdata.Item
+WHERE ropdata.Item = 50261
+GROUP BY 
+    ropdata.Item,    ropdata.Description,    ropdata.[Size Text],    ropdata.Comment,    ropdata.OnHand,    ropdata.Rsrv,    ropdata.[#/ft],    ropdata.[$/ft],    ropdata.Level,
+    ropdata.[con/wk],    ropdata.TotCons,    ropdata.OnPO,    ropdata.Vndr;
+
+--Purchase orders for an ITEM
+select *  from POData where podata.Item = 50261
+
+-- purchase orders useful data for an ITEM
+select podata.due, podata.[Due Date], podata.Vendor, podata.PO, podata.Ordered, podata.Received, podata.Ordered  from POData where podata.Item = 50261
+
+ SELECT 
+       
+    FROM tagdata
+    WHERE tagdata.Item
+
+
+SELECT 
+    CAST(CAST(ROPData.[OnPO] AS VARCHAR(50)) AS FLOAT) AS [OnPO],
+    tagdata.remnants, 
+    ROPData.[Level],
+    CAST(CAST(ROPData.[OnPO] AS VARCHAR(50)) AS FLOAT) / NULLIF(CAST(CAST(ROPData.[con/wk] AS VARCHAR(50)) AS FLOAT), 0) AS [PO Weeks],
+    DATEADD(
+        WEEK, 
+        (
+            CAST(CAST(ROPData.[OnHand] AS VARCHAR(50)) AS FLOAT)
+            - CAST(CAST(ROPData.[Rsrv] AS VARCHAR(50)) AS FLOAT)
+            + CAST(CAST(ROPData.[OnPO] AS VARCHAR(50)) AS FLOAT)
+        ) / NULLIF(CAST(CAST(ROPData.[con/wk] AS VARCHAR(50)) AS FLOAT), 0),
+        GETDATE()
+    ) AS [New Depletion Date]
+FROM 
+    ROPData 
+LEFT JOIN 
+    tagdata ON ROPData.Item = tagdata.item
+WHERE 
+    ROPData.Item = 50261;
+
+

@@ -125,6 +125,12 @@ try:
     #  INTERACTIVE TABLE 
     # .........................................................................................    
     st.write("## Full Inventory Data (Based on Filters Above)")
+
+    # Sort the table: "In Stock" ascending, "Usage/Week" descending
+    filtered_myDataFrame = filtered_myDataFrame.sort_values(
+        by=["In Stock (ft)", "Usage/Week"], ascending=[True, False]
+    )
+
     all_columns = list(filtered_myDataFrame.columns)
     default_columns = [col for col in [
         "Item", "In Stock (ft)", "Rsrv", "Level", "Weeks Left", "Reorder Flag",
@@ -133,7 +139,7 @@ try:
     ] if col in all_columns]
 
     st.dataframe(filtered_myDataFrame[default_columns])
-
+    
     # .........................................................................................
     # REPORT BY ITEM BUTTON
     # .........................................................................................    
@@ -246,16 +252,51 @@ try:
 
             st.success("✅ All data loaded successfully!")
 
+    # .........................................................................................
+    # CONSUMPTION CHART
+    # .........................................................................................
+
+            for i, df in enumerate(result_sets):
+                title = query_titles[i] if i < len(query_titles) else f"Result {i + 1}"
+
+                # 👉 Render chart before table 1 ("📈 IA / MP / SO Summary")
+                if i == 1 and len(result_sets) >= 4 and not result_sets[2].empty and not result_sets[3].empty:
+                    inventory_df = result_sets[2]  # Inventory On Hand vs Reserved
+                    usage_vendor_df = result_sets[3]  # Usage and Vendor
+                    extra_data = result_sets[5] if len(result_sets) > 5 else pd.DataFrame()
+
+                    def safe_float(df, col, default=0):
+                        try:
+                            value = df.at[0, col]
+                            return float(value) if pd.notnull(value) else default
+                        except Exception:
+                            return default
+
+                    onhand = safe_float(inventory_df, "OnHand")
+                    reserved = safe_float(inventory_df, "Rsrv")
+                    available = safe_float(inventory_df, "Available Inv")
+                    remnants = safe_float(extra_data, "remnants")
+                    onpo = safe_float(extra_data, "OnPO")
+                    conwk = safe_float(usage_vendor_df, "con/wk")
+
+                    metric_labels = ["OnHand", "Reserved", "Available", "Remnants", "OnPO", "- con/wk", "Avg Cons x 26 Weeks"]
+                    metric_values = [onhand, -reserved, available, remnants, onpo, -conwk, -(conwk * 26)]
+
+                    chart_data = pd.DataFrame({"Metric": metric_labels, "Value": metric_values})
+                    st.subheader(f"🌍 Item {item_id} Overview Chart")
+                    bar_chart = alt.Chart(chart_data).mark_bar().encode(
+                        x=alt.X("Metric", title="Metric", sort=metric_labels),
+                        y=alt.Y("Value", title="Feet", scale=alt.Scale(zero=True)),
+                        color=alt.Color("Metric", legend=None)
+                    ).properties(width=700, height=350)
+                    st.altair_chart(bar_chart)
 
     # .........................................................................................
     # WE FORMAT THE TABLES
     # .........................................................................................
-            for i, df in enumerate(result_sets):
-                title = query_titles[i] if i < len(query_titles) else f"Result {i + 1}"
-
+                # Then display the title and table
                 st.subheader(title)
 
-                # Apply formatting based on table name
                 if title == "🧪 Inventory + PO":
                     df["New Depletion Date"] = pd.to_datetime(df["New Depletion Date"]).dt.date
 
@@ -271,46 +312,11 @@ try:
                         df["wk use"] = df["wk use"].apply(lambda x: f"{x:,.2f}")
                     if "total_usage" in df.columns:
                         df["total_usage"] = df["total_usage"].apply(lambda x: f"{x:,.2f}")
-           
+
                 st.dataframe(df)
 
-    # .........................................................................................
-    # CONSUMPTION CHART
-    # .........................................................................................
 
-            if len(result_sets) >= 4 and not result_sets[2].empty and not result_sets[3].empty:
-                inventory_df = result_sets[2]  # Inventory On Hand vs Reserved
-                usage_vendor_df = result_sets[3]  # Usage and Vendor
-                extra_data = result_sets[5] if len(result_sets) > 5 else pd.DataFrame()
 
-                def safe_float(df, col, default=0):
-                    try:
-                        value = df.at[0, col]
-                        return float(value) if pd.notnull(value) else default
-                    except Exception:
-                        return default
-
-                onhand = safe_float(inventory_df, "OnHand")
-                reserved = safe_float(inventory_df, "Rsrv")
-                available = safe_float(inventory_df, "Available Inv")
-                remnants = safe_float(extra_data, "remnants")
-                onpo = safe_float(extra_data, "OnPO")
-                conwk = safe_float(usage_vendor_df, "con/wk")
-
-                # Explicit order of bars
-                metric_labels = ["OnHand", "Reserved", "Available", "Remnants", "OnPO", "- con/wk", "Avg Cons x 26 Weeks"]
-                metric_values = [onhand, -reserved, available, remnants, onpo, -conwk, -(conwk * 26)]
-
-                chart_data = pd.DataFrame({"Metric": metric_labels, "Value": metric_values})
-
-                st.subheader(f"🌍 Item {item_id} Overview Chart")
-                bar_chart = alt.Chart(chart_data).mark_bar().encode(
-                    x=alt.X("Metric", title="Metric", sort=metric_labels),
-                    y=alt.Y("Value", title="Feet", scale=alt.Scale(zero=True)),
-                    color=alt.Color("Metric", legend=None)
-                ).properties(width=700, height=350)
-
-                st.altair_chart(bar_chart)
 
 
 
