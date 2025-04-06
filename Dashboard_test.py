@@ -31,7 +31,9 @@ if "selected_item" not in st.session_state:
 # ---------- DASHBOARD TOP SECTION ----------
 st.title("📊 Inventory Dashboard")
 
-# Load main inventory data
+# .........................................................................................
+# LOAD INVENTORY DATA
+# .........................................................................................
 try:
     with engine.begin() as conn:
         myDataFrame = pd.read_sql("SELECT * FROM ROPData", conn)
@@ -68,7 +70,9 @@ try:
     col4.metric("Feet On Hand", f"{myDataFrame['In Stock (ft)'].astype(float).sum():,.0f}")
     col5.metric("PO Feet In Transit", f"{myDataFrame['PO Incoming (ft)'].astype(float).sum():,.0f}")
 
-    # Filters
+    # .........................................................................................
+    # FILTERS
+    # .........................................................................................    
     with st.expander("🔍 Filter Options", expanded=False):
         reorder_filter = st.multiselect(
             "Reorder Flag",
@@ -96,15 +100,18 @@ try:
 
     st.write(f"Displaying {len(filtered_myDataFrame)} items")
 
-    # Altair Chart
+    # .........................................................................................
+    # BEAUTIFUL INTERACTIVE ALTAIR CHART FOR INVENTORY WEEKS
+    # .........................................................................................    
     highlight = alt.selection_single(on='mouseover', fields=['Item'], nearest=True)
+
     alt_chart = alt.Chart(filtered_myDataFrame).mark_bar().encode(
         x=alt.X("Item:N", sort='-y', title="Item"),
         y=alt.Y("Weeks Left:Q", title="Weeks Left"),
         color=alt.Color("Reorder Flag:N",
-                       scale=alt.Scale(domain=["❌ Yes", "⚠️ Caution", "✅ No"],
-                                       range=["red", "orange", "green"]),
-                       legend=alt.Legend(title="Reorder Flag")),
+                        scale=alt.Scale(domain=["❌ Yes", "⚠️ Caution", "✅ No"],
+                                        range=["red", "orange", "green"]),
+                        legend=alt.Legend(title="Reorder Flag")),
         tooltip=["Item", "Weeks Left", "Reorder Flag"]
     ).add_selection(
         highlight
@@ -114,7 +121,9 @@ try:
 
     st.altair_chart(alt_chart, use_container_width=True)
 
-    # Show interactive dataframe
+    # .........................................................................................
+    #  INTERACTIVE TABLE 
+    # .........................................................................................    
     st.write("## Full Inventory Data (Based on Filters Above)")
     all_columns = list(filtered_myDataFrame.columns)
     default_columns = [col for col in [
@@ -125,7 +134,9 @@ try:
 
     st.dataframe(filtered_myDataFrame[default_columns])
 
-    # ---------- Input and Report by Item Button ----------
+    # .........................................................................................
+    # REPORT BY ITEM BUTTON
+    # .........................................................................................    
     item_id = st.text_input("Enter Item Number", value=st.session_state.selected_item)
     if st.button("Report by ITEM"):
         try:
@@ -140,13 +151,13 @@ try:
                     SELECT
                         FORMAT(DATEFROMPARTS(2000 + IHTRYY, IHTRMM, 1), 'yyyy-MM') AS Month,
                         CASE WHEN CONVERT(VARCHAR(10), IHTRNT) = 'IA' THEN IHTQTY
-                             WHEN CONVERT(VARCHAR(10), IHTRNT) IN ('OW', 'OR') THEN IHTQTY
-                             WHEN CONVERT(VARCHAR(10), IHTRNT) = 'IN' THEN IHTQTY
-                             ELSE 0 END AS Qty,
+                                WHEN CONVERT(VARCHAR(10), IHTRNT) IN ('OW', 'OR') THEN IHTQTY
+                                WHEN CONVERT(VARCHAR(10), IHTRNT) = 'IN' THEN IHTQTY
+                                ELSE 0 END AS Qty,
                         CONVERT(VARCHAR(10), IHTRNT) AS Type
                     FROM UsageData
                     WHERE IHITEM = {item_id}
-                      AND DATEFROMPARTS(2000 + IHTRYY, IHTRMM, 1) >= DATEADD(MONTH, -13, CAST(GETDATE() AS DATE))
+                        AND DATEFROMPARTS(2000 + IHTRYY, IHTRMM, 1) >= DATEADD(MONTH, -13, CAST(GETDATE() AS DATE))
                 )
                 SELECT 
                     m.Month,
@@ -196,23 +207,23 @@ try:
 
 
                 SELECT ropdata.Item,
-                       (ropdata.OnHand - ropdata.Rsrv) AS [Available],
-                       ropdata.OnPO,
-                       ropdata.[#/ft],
-                       ropdata.[#/ft] + (
-                           SELECT -SUM(usagedata.IHTQTY)
-                           FROM usagedata
-                           WHERE usagedata.IHITEM = ropdata.Item
-                           AND CAST(usagedata.column4 AS VARCHAR(10)) = CAST(ropdata.Item AS VARCHAR(10))
-                       ) AS net_consumption,
-                       (ropdata.TotCons / 26.1428571428571) AS [wk use],
-                       (
-                           SELECT -SUM(usagedata.IHTQTY)
-                           FROM usagedata
-                           WHERE usagedata.IHITEM = ropdata.Item
-                           AND CAST(usagedata.column4 AS VARCHAR(10)) = CAST(ropdata.Item AS VARCHAR(10))
-                       ) AS total_usage,
-                       ropdata.description, ropdata.[Size Text] as "Size"
+                        (ropdata.OnHand - ropdata.Rsrv) AS [Available],
+                        ropdata.OnPO,
+                        ropdata.[#/ft],
+                        ropdata.[#/ft] + (
+                            SELECT -SUM(usagedata.IHTQTY)
+                            FROM usagedata
+                            WHERE usagedata.IHITEM = ropdata.Item
+                            AND CAST(usagedata.column4 AS VARCHAR(10)) = CAST(ropdata.Item AS VARCHAR(10))
+                        ) AS net_consumption,
+                        (ropdata.TotCons / 26.1428571428571) AS [wk use],
+                        (
+                            SELECT -SUM(usagedata.IHTQTY)
+                            FROM usagedata
+                            WHERE usagedata.IHITEM = ropdata.Item
+                            AND CAST(usagedata.column4 AS VARCHAR(10)) = CAST(ropdata.Item AS VARCHAR(10))
+                        ) AS total_usage,
+                        ropdata.description, ropdata.[Size Text] as "Size"
                 FROM (
                     SELECT CAST(comment AS VARCHAR(MAX)) AS comment, Item
                     FROM ROPData WHERE Item = {item_id}
@@ -235,30 +246,73 @@ try:
 
             st.success("✅ All data loaded successfully!")
 
+
+    # .........................................................................................
+    # WE FORMAT THE TABLES
+    # .........................................................................................
             for i, df in enumerate(result_sets):
                 title = query_titles[i] if i < len(query_titles) else f"Result {i + 1}"
+
                 st.subheader(title)
+
+                # Apply formatting based on table name
+                if title == "🧪 Inventory + PO":
+                    df["New Depletion Date"] = pd.to_datetime(df["New Depletion Date"]).dt.date
+
+                elif title == "🧪 Purchase Orders":
+                    df["Due Date"] = pd.to_datetime(df["Due Date"].astype(str), format="%Y%m%d", errors="coerce").dt.date
+                    df["Received"] = pd.to_datetime(df["Received"].astype(str), format="%Y%m%d", errors='coerce').dt.date
+                    df["Ordered"] = df["Ordered"].apply(lambda x: f"{x:,.0f}" if pd.notnull(x) else "")
+
+                elif title == "🧪 Family Breakdown (if any)":
+                    if "net_consumption" in df.columns:
+                        df["net_consumption"] = df["net_consumption"].apply(lambda x: f"{x:,.0f}")
+                    if "wk use" in df.columns:
+                        df["wk use"] = df["wk use"].apply(lambda x: f"{x:,.2f}")
+                    if "total_usage" in df.columns:
+                        df["total_usage"] = df["total_usage"].apply(lambda x: f"{x:,.2f}")
+           
                 st.dataframe(df)
 
-            if len(result_sets) >= 3 and not result_sets[2].empty:
-                inventory_df = result_sets[2]
-                chart_data = pd.DataFrame({
-                    "Metric": ["OnHand", "Reserved", "Available"],
-                    "Value": [
-                        float(inventory_df.at[0, "OnHand"]),
-                        float(-inventory_df.at[0, "Rsrv"]),
-                        float(inventory_df.at[0, "Available Inv"])
-                    ]
-                })
+    # .........................................................................................
+    # CONSUMPTION CHART
+    # .........................................................................................
+
+            if len(result_sets) >= 4 and not result_sets[2].empty and not result_sets[3].empty:
+                inventory_df = result_sets[2]  # Inventory On Hand vs Reserved
+                usage_vendor_df = result_sets[3]  # Usage and Vendor
+                extra_data = result_sets[5] if len(result_sets) > 5 else pd.DataFrame()
+
+                def safe_float(df, col, default=0):
+                    try:
+                        value = df.at[0, col]
+                        return float(value) if pd.notnull(value) else default
+                    except Exception:
+                        return default
+
+                onhand = safe_float(inventory_df, "OnHand")
+                reserved = safe_float(inventory_df, "Rsrv")
+                available = safe_float(inventory_df, "Available Inv")
+                remnants = safe_float(extra_data, "remnants")
+                onpo = safe_float(extra_data, "OnPO")
+                conwk = safe_float(usage_vendor_df, "con/wk")
+
+                # Explicit order of bars
+                metric_labels = ["OnHand", "Reserved", "Available", "Remnants", "OnPO", "- con/wk", "Avg Cons x 26 Weeks"]
+                metric_values = [onhand, -reserved, available, remnants, onpo, -conwk, -(conwk * 26)]
+
+                chart_data = pd.DataFrame({"Metric": metric_labels, "Value": metric_values})
 
                 st.subheader(f"🌍 Item {item_id} Overview Chart")
                 bar_chart = alt.Chart(chart_data).mark_bar().encode(
-                    x=alt.X("Metric", title="Metric"),
+                    x=alt.X("Metric", title="Metric", sort=metric_labels),
                     y=alt.Y("Value", title="Feet", scale=alt.Scale(zero=True)),
                     color=alt.Color("Metric", legend=None)
-                ).properties(width=500, height=300)
+                ).properties(width=700, height=350)
 
                 st.altair_chart(bar_chart)
+
+
 
         except Exception as e:
             st.error(f"❌ Failed to run the report: {e}")
