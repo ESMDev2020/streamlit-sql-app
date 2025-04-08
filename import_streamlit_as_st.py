@@ -22,7 +22,7 @@ ROP_page = st.Page(
 
 # --- Navigation Setup ---
 
-pg = st.navigation(pages=[Dashboard_page,DashboardCosts_page, ROP_page])
+pg = st.navigation(pages=[Dashboard_page,DashboardCosts_page,ROP_page])
 
 
 # --- SHARED ON ALL PAGES ---
