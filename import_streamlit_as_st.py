@@ -15,7 +15,6 @@ DashboardCosts_page = st.Page(
 ROP_page = st.Page(
     page="views/ROP.py",
     title="ROP",
-
 )
 
 
