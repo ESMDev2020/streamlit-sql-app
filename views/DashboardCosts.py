@@ -11,7 +11,7 @@ engine = create_engine(f"mssql+pymssql://{username}:{password}@{server}:1433/{da
 
 # --- Streamlit UI ---
 st.title("💰 Cost Dashboard by Order")
-order_number = st.text_input("Enter Order Number", value="965943")
+order_number = st.text_input("Enter Order Number", value="965943",key="ordernumber_cost")
 
 if st.button("Run Cost Report"):
     query = f"""
@@ -73,7 +73,7 @@ if st.button("Run Cost Report"):
 
 #-- Look for shipment
 st.title("📦 Shipment Dashboard by Order")
-order_number = st.text_input("Enter Order Number", value="965943")
+order_number = st.text_input("Enter Order Number", value="965943",key="ordernumber_shipment")
 if st.button("Run Shipment Report"):
     query = f"""
     SELECT S.SHDIST as "District Number",
