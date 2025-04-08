@@ -70,3 +70,68 @@ if st.button("Run Cost Report"):
 
     except Exception as e:
         st.error(f"❌ Error retrieving data: {e}")
+
+#-- Look for shipment
+st.title("📦 Shipment Dashboard by Order")
+order_number = st.text_input("Enter Order Number", value="965943")
+if st.button("Run Shipment Report"):
+    query = f"""
+    SELECT S.SHDIST as "District Number",
+    S.SHORDN as "Sales Order",
+    S.SHCORD as "Customer Order",
+    S.SHITEM as "Item",
+    S.SHIPCC as "Shipment Century",
+    S.SHIPYY,
+    S.SHIPMM,
+    S.SHIPDD,
+    S.SHBQTY as "Base quantity",
+    S.SHTLBS,
+    S.SHCUST as "Customer number",
+    S.SHORYY as "Original order year",
+    S.SHORMM,
+    S.SHORDD,
+    S.SHIVYY as "Invoice year",
+    S.SHIVMM,
+    S.SHIVDD,
+    S.SHMSLS as "Material sales",
+    S.SHMSLD as "Final sales",
+    S.SHFSLS as "Final issued sales",
+    S.SHMCSS as "Material cost",
+    S.SHSLSS as "Sales ledger",
+    S.SHSWGS as "swaged sales",
+    S.SHADPC as "additional processing",
+    S.SHFRGH as "freight cost",
+    S.SHTRCK as "truck route",
+    S.SHSHTO as "customer ship to",
+    S.SHBCTY as "Bill to country",
+    S.SHSCTY as "Ship to country",
+    S.SHTMPS as "temp ship to",
+    S.SHDSTO as "Orig cust dist",
+    S.SHCSTO as "Orig cust",
+    S.SHSMDO as "Orig sism dist",
+    S.SHSLMO as "Orig Slsmn",
+    S.SHICMP as "Inv comp",
+    S.SHADR1 as "Address 1",
+    S.SHADR2,
+    S.SHADR3,
+    S.SHCITY as "City 25 pos",
+    S.SHSTAT as "State",
+    S.SHZIP as "Zip"
+FROM 
+    [dbo].[SHIPMAST] S
+WHERE
+    S.SHORDN = {order_number}
+    """
+
+    try:
+        with engine.begin() as conn:
+            df = pd.read_sql(query, conn)
+
+        if df.empty:
+            st.warning("⚠️ No results found for this order number.")
+        else:
+            st.success("✅ Data loaded successfully.")
+            st.dataframe(df)
+
+    except Exception as e:
+        st.error(f"❌ Error retrieving data: {e}")
