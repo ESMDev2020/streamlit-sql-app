@@ -1,7 +1,0 @@
-streamlit
-pandas
-sqlalchemy
-altair
-pytds
-matplotlib.pyplot
-seaborn
