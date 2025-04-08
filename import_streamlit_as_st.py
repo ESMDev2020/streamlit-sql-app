@@ -4,10 +4,15 @@ import streamlit as st
 
 Dashboard_page = st.Page(
     page="views/Dashboard.py",
-    title="Dashboard",
+    title="ROP Dashboard",
     default=True,
 )
 
+DashboardCosts_page = st.Page(
+    page="views/DashboardCosts.py",
+    title="Cost Dashboard",
+    default=True,
+)
 ROP_page = st.Page(
     page="views/ROP.py",
     title="ROP",
@@ -18,7 +23,7 @@ ROP_page = st.Page(
 
 # --- Navigation Setup ---
 
-pg = st.navigation(pages=[Dashboard_page,ROP_page])
+pg = st.navigation(pages=[Dashboard_page,DashboardCosts_page, ROP_page])
 
 
 # --- SHARED ON ALL PAGES ---
