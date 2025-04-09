@@ -282,3 +282,41 @@ CREATE TABLE VendorLead (
     Updated DATE,                -- Last update date
     Delivery DATE                -- Optional delivery date (some values may be empty)
 );
+
+
+-- Check if the column exists, then drop it
+IF EXISTS (
+    SELECT 1 
+    FROM sys.columns 
+    WHERE Name = N'GLREF_REV' AND Object_ID = Object_ID(N'GLTRANS')
+)
+BEGIN
+    ALTER TABLE GLTRANS DROP COLUMN GLREF_REV;
+END
+
+/************************************
+Check indexes
+***************************************/
+SELECT 
+    i.name AS IndexName,
+    i.type_desc AS IndexType,
+    c.name AS ColumnName,
+    ic.key_ordinal AS OrdinalPosition
+FROM sys.indexes i
+JOIN sys.index_columns ic ON i.object_id = ic.object_id AND i.index_id = ic.index_id
+JOIN sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
+WHERE i.object_id = OBJECT_ID('GLTRANS')
+  AND c.name = 'GLREF_REV';
+
+
+/************************************
+***************************************/
+use sigmatb;
+select top 1 * from gltrans
+
+-- Step 1: Add reverse-computed column
+ALTER TABLE GLTRANS
+ADD GLREF_REV AS REVERSE(GLREF) PERSISTED;
+
+-- Step 2: Index the computed column
+CREATE INDEX IX_GLTRANS_GLREF_REV ON GLTRANS(GLREF_REV);
