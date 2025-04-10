@@ -184,68 +184,70 @@ GLRECD,[CO DS CS] [GARP3][GLACCT][GACDES][Period][GLDESC][GLREF][GLAMTQ][GLAPPL]
 --LETS GET THE MP
 /**********************************************************************************/
 
-USE SigmaTB;
+    BEGIN
+        USE SigmaTB;
 
-DECLARE @RefFilter VARCHAR(20);
-SET @RefFilter = '%965943%';    --965943
+        DECLARE @RefFilter VARCHAR(20);
+        SET @RefFilter = '%965943%';    --965943
 
-SELECT
-    -- Desc, ref
-    GLDESC AS Title_GLDESC, 
-    GLAMT,
-    GLA.GARP3 as GARP3_FS,
-    GLAPPL AS GLAPPL_APP,
+        SELECT
+            -- Desc, ref
+            GLDESC AS Title_GLDESC, 
+            GLAMT,
+            GLA.GARP3 as GARP3_FS,
+            GLAPPL AS GLAPPL_APP,
 
-    -- Account description from GLACCT
-    GLA.GACDES AS GACDES_AccountDescription,
-   
-    FORMAT(GLCOMP, '00') + ' ' + FORMAT(GLDIST, '00') + ' ' + FORMAT(GLCSTC, '00') AS [CO DS CS],
-    GLT.GLACCT AS GLAccount_GLACCT,
+            -- Account description from GLACCT
+            GLA.GACDES AS GACDES_AccountDescription,
+        
+            FORMAT(GLCOMP, '00') + ' ' + FORMAT(GLDIST, '00') + ' ' + FORMAT(GLCSTC, '00') AS [CO DS CS],
+            GLT.GLACCT AS GLAccount_GLACCT,
 
-    GLREF AS GLREF_Reference,
-    GLAPPL + RIGHT('00000000' + CAST(GLBTCH AS VARCHAR), 8) + '-0001' AS Reference,
+            GLREF AS GLREF_Reference,
+            GLAPPL + RIGHT('00000000' + CAST(GLBTCH AS VARCHAR), 8) + '-0001' AS Reference,
 
-    FORMAT(GLPPYY, '00') + ' ' + FORMAT(GLPERD, '00') AS Period,
+            FORMAT(GLPPYY, '00') + ' ' + FORMAT(GLPERD, '00') AS Period,
 
-    GLDESC AS Transaction_GLDESC,
-    GLPGM AS GLPGM_Prgm,
-    GLUSER AS GLUSER,
-    GLAPTR AS GLAPTR_Related,
-    GLTRN# AS [GLTRN#],
-    GLTRNT AS [GLTRNT_Tran],
-    GLTYPE AS GLTYPE,
-    GLDIST AS GLDIST,
-    GLREF AS GLREF_Document,
-    GLCRDB,
-    GLT.GLACCT AS GLACCT_FS,
-    GLRECD AS Ext,
+            GLDESC AS Transaction_GLDESC,
+            GLPGM AS GLPGM_Prgm,
+            GLUSER AS GLUSER,
+            GLAPTR AS GLAPTR_Related,
+            GLTRN# AS [GLTRN#],
+            GLTRNT AS [GLTRNT_Tran],
+            GLTYPE AS GLTYPE,
+            GLDIST AS GLDIST,
+            GLREF AS GLREF_Document,
+            GLCRDB,
+            GLT.GLACCT AS GLACCT_FS,
+            GLRECD AS Ext,
 
-    TRY_CAST(
-        CAST(GLRFYY AS VARCHAR(4)) + '-' + 
-        RIGHT('00' + CAST(GLRFMM AS VARCHAR(2)), 2) + '-' + 
-        RIGHT('00' + CAST(GLRFDD AS VARCHAR(2)), 2) 
-    AS DATE) AS Posting,
+            TRY_CAST(
+                CAST(GLRFYY AS VARCHAR(4)) + '-' + 
+                RIGHT('00' + CAST(GLRFMM AS VARCHAR(2)), 2) + '-' + 
+                RIGHT('00' + CAST(GLRFDD AS VARCHAR(2)), 2) 
+            AS DATE) AS Posting,
 
-    NULL AS System,
-    FORMAT(GLCUST, '00 00000') AS Custmr
+            NULL AS System,
+            FORMAT(GLCUST, '00 00000') AS Custmr
 
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
 
---WHERE GLREF LIKE '%965943%' AND LEFT(CAST(GLT.GLACCT AS VARCHAR), 1) IN ('4', '6')
-WHERE GLREF LIKE @RefFilter AND GLA.GARP3 in (500,600)
+        --WHERE GLREF LIKE '%965943%' AND LEFT(CAST(GLT.GLACCT AS VARCHAR), 1) IN ('4', '6')
+        WHERE GLREF LIKE @RefFilter AND GLA.GARP3 in (500,600)
 
-GROUP BY
-    GLRECD, GLCOMP, GLDIST, GLCSTC, GLT.GLACCT, GLDESC, GLPPYY, GLPERD, GLAPPL, GLBTCH, GLPGM,
-    GLUSER, GLAPTR, GLTRN#, GLTRNT, GLTYPE, GLREF, GLRFYY, GLRFMM, GLRFDD, GLCUST, GLCRDB, GLAMT,
-    GLA.GACDES, GLA.GARP3
+        GROUP BY
+            GLRECD, GLCOMP, GLDIST, GLCSTC, GLT.GLACCT, GLDESC, GLPPYY, GLPERD, GLAPPL, GLBTCH, GLPGM,
+            GLUSER, GLAPTR, GLTRN#, GLTRNT, GLTYPE, GLREF, GLRFYY, GLRFMM, GLRFDD, GLCUST, GLCRDB, GLAMT,
+            GLA.GACDES, GLA.GARP3
 
-ORDER BY GLTRN#;
+        ORDER BY GLTRN#;}
+    END
+
 
 /**********************************************************************************/
 /**********************************************************************************/
 
-select count(*) from gltrans
 
 /**********************************************************************************/
 --Lets find Cash Receipts for 25k for Feb, 2025
@@ -312,161 +314,26 @@ ORDER BY GLTRN#;
 
 
 
-select GLREF from GLTRANS;
-
-ALTER TABLE GLTRANS
-ADD GLREF_CLEAN AS RTRIM(GLREF) PERSISTED;
-
-CREATE INDEX IX_GLREF_CLEAN ON GLTRANS(GLREF_CLEAN);
-/**********************/
-
-SELECT TOP 100
-    GLREF, 
-    LEN(GLREF) AS Length,
-    '[' + GLREF + ']' AS VisibleWithBrackets
-FROM GLTRANS
-ORDER BY LEN(GLREF) DESC;
-
--- We check the index
-select TOP 10000 
-    GLREF_REV
-FROM GLTRANS
-
-/***************/
-
---we check if the index has data
-SELECT TOP 10 GLREF, GLREF_REV 
-FROM GLTRANS 
-WHERE GLREF IS NOT NULL;
 
 
 
--- List all columns in GLTRANS
-SELECT 
-    COLUMN_NAME, 
-    DATA_TYPE, 
-    CHARACTER_MAXIMUM_LENGTH, 
-    IS_NULLABLE
-FROM INFORMATION_SCHEMA.COLUMNS
-WHERE TABLE_NAME = 'GLTRANS';
-
--- Get the index info
-SELECT 
-    i.name AS IndexName,
-    i.type_desc AS IndexType,
-    c.name AS ColumnName,
-    ic.key_ordinal AS OrdinalPosition,
-    ic.is_descending_key AS IsDescending
-FROM sys.indexes i
-JOIN sys.index_columns ic ON i.object_id = ic.object_id AND i.index_id = ic.index_id
-JOIN sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
-WHERE i.object_id = OBJECT_ID('GLTRANS')
-ORDER BY i.name, ic.key_ordinal;
 
 
 
---QUERY USING THE FAST INDEXES
-USE SigmaTB;
-
-DECLARE @RefFilter VARCHAR(15);
-SET @RefFilter = '965943';  -- without %!
-
-SELECT
-    -- Desc, ref
-    GLDESC AS Title_GLDESC, 
-    GLAMT,
-    GLA.GARP3 as GARP3_FS,      
-    GLAPPL AS GLAPPL_APP,       
-
-    -- Account description from GLACCT
-    GLA.GACDES AS GACDES_AccountDescription,
-   
-    FORMAT(GLCOMP, '00') + ' ' + FORMAT(GLDIST, '00') + ' ' + FORMAT(GLCSTC, '00') AS [CO DS CS],
-    GLT.GLACCT AS GLAccount_GLACCT,
-
-    GLREF AS GLREF_Reference,
-    GLAPPL + RIGHT('00000000' + CAST(GLBTCH AS VARCHAR), 8) + '-0001' AS Reference,
-
-    FORMAT(GLPPYY, '00') + ' ' + FORMAT(GLPERD, '00') AS Period,
-
-    GLDESC AS Transaction_GLDESC,
-    GLPGM AS GLPGM_Prgm,
-    GLUSER AS GLUSER,
-    GLAPTR AS GLAPTR_Related,
-    GLTRN# AS [GLTRN#],
-    GLTRNT AS [GLTRNT_Tran],
-    GLTYPE AS GLTYPE,
-    GLDIST AS GLDIST,
-    GLREF AS GLREF_Document,
-    GLCRDB,
-    GLT.GLACCT AS GLACCT_FS,
-    GLRECD AS Ext,
-
-    TRY_CAST(
-        CAST(GLRFYY AS VARCHAR(4)) + '-' + 
-        RIGHT('00' + CAST(GLRFMM AS VARCHAR(2)), 2) + '-' + 
-        RIGHT('00' + CAST(GLRFDD AS VARCHAR(2)), 2) 
-    AS DATE) AS Posting,
-
-    NULL AS System,
-    FORMAT(GLCUST, '00 00000') AS Custmr
-
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-
--- ✅ Optimized filtering using index on GLREF_REV
-WHERE GLREF_REV LIKE REVERSE(@RefFilter) + '%' 
-  AND GLA.GARP3 IN (500, 600)
-
-GROUP BY
-    GLRECD, GLCOMP, GLDIST, GLCSTC, GLT.GLACCT, GLDESC, GLPPYY, GLPERD, GLAPPL, GLBTCH, GLPGM,
-    GLUSER, GLAPTR, GLTRN#, GLTRNT, GLTYPE, GLREF, GLRFYY, GLRFMM, GLRFDD, GLCUST, GLCRDB, GLAMT,
-    GLA.GACDES, GLA.GARP3
-
-ORDER BY GLTRN#;
 
 
---Lets confirm if we have the index working
-SELECT TOP 20 GLREF, GLREF_REV FROM GLTRANS
-WHERE GLREF IS NOT NULL AND GLREF_REV IS NULL;
-
---Diagnose
-SELECT TOP 20 GLREF, GLREF_REV 
-FROM GLTRANS 
-WHERE GLREF_REV LIKE '%34969%'  -- reverse of 965943
-
---Lets check the standardized version
-SELECT *
-FROM GLTRANS
-WHERE GLREF_REV = REVERSE('0E01896943–0001')
 
 
---Lets try the performance
-SET STATISTICS IO ON;
-SET STATISTICS TIME ON;
-
-SELECT *
-FROM GLTRANS
-WHERE GLREF_REV = REVERSE('965943')
 
 /************************************************/
 --FINANCIAL QUERIES
 /************************************************/
 
---Identify total sales 
-select SUM(GLT.[GLAMT]) as SalesfromFS
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE GLT.GLAPPL in ('IN') AND GLA.GARP3 IN (500, 530) and [GLPYY] = 25 AND [GLPMM]=2
-    
 
---Identify total sales 
-select SUM(GLT.[GLAMT]) as SalesfromFS
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE GLT.GLAPPL in ('IN') AND GLA.GARP3 IN (500, 530) and [GLPYY] = 25 AND [GLPMM]=2
 
--- Februay Sales Detail
+/**************************************************************************************/
+-- Februay Sales detail from order, customer, salesman from Sales Report
+/**************************************************************************************/
     SELECT 
         OEDETAIL.ODDIST * 1000000 + OEDETAIL.ODORDR AS OrderID,                                     -- ORDER ID
         SALESMAN.SMNAME AS SalesmanName,                                                            -- SALESMAN
@@ -491,66 +358,74 @@ WHERE GLT.GLAPPL in ('IN') AND GLA.GARP3 IN (500, 530) and [GLPYY] = 25 AND [GLP
         OEDETAIL.ODWCCS AS WeightCost,
         ARCUST.CSTAT AS CustomerState,
         ARCUST.CCTRY AS CustomerCountry
-    FROM 
-        ARCUST                                                                                      
-    INNER JOIN OEOPNORD ON                                                          
-        OEOPNORD.OOCDIS = ARCUST.CDIST AND                                                          
-        OEOPNORD.OOCUST = ARCUST.CCUST                                                          
-    INNER JOIN SALESMAN ON 
-        OEOPNORD.OOISMD = SALESMAN.SMDIST AND 
-        OEOPNORD.OOISMN = SALESMAN.SMSMAN
-    INNER JOIN OEDETAIL ON 
-        OEDETAIL.ODDIST = OEOPNORD.OODIST AND 
-        OEDETAIL.ODORDR = OEOPNORD.OOORDR
-    INNER JOIN SLSDSCOV ON 
-        OEDETAIL.ODDIST = SLSDSCOV.DXDIST AND 
-        OEDETAIL.ODORDR = SLSDSCOV.DXORDR AND 
-        OEDETAIL.ODMLIN = SLSDSCOV.DXMLIN
-    WHERE 
-        OEOPNORD.OOIYY = 25 AND OEOPNORD.OOIMM = 2
-        --OEDETAIL.ODORDR = {order_number}                                                            
+        FROM 
+            ARCUST                                                                                      
+        INNER JOIN OEOPNORD ON                                                          
+            OEOPNORD.OOCDIS = ARCUST.CDIST AND                                                          
+            OEOPNORD.OOCUST = ARCUST.CCUST                                                          
+        INNER JOIN SALESMAN ON 
+            OEOPNORD.OOISMD = SALESMAN.SMDIST AND 
+            OEOPNORD.OOISMN = SALESMAN.SMSMAN
+        INNER JOIN OEDETAIL ON 
+            OEDETAIL.ODDIST = OEOPNORD.OODIST AND 
+            OEDETAIL.ODORDR = OEOPNORD.OOORDR
+        INNER JOIN SLSDSCOV ON 
+            OEDETAIL.ODDIST = SLSDSCOV.DXDIST AND 
+            OEDETAIL.ODORDR = SLSDSCOV.DXORDR AND 
+            OEDETAIL.ODMLIN = SLSDSCOV.DXMLIN
+        WHERE 
+            OEOPNORD.OOIYY = 25 AND OEOPNORD.OOIMM = 2
+            --OEDETAIL.ODORDR = {order_number}                                                            
+
+
+
 
 /**************************************************************************************/
 -- Februay Sales Total from Sales Report
 /**************************************************************************************/
     SELECT 
-        SUM(OEDETAIL.ODSLSX) AS TotalSales,                                                              -- Total Sales
-        SUM(OEDETAIL.ODFRTS) AS TotalFreightCharges,                                                          -- Total Freight
-        SUM(OEDETAIL.ODCSTX) AS TotalMaterialCost,                                                            -- Total material cost
-        SUM(OEDETAIL.ODPRCC) AS TotalProcessingPrice,                                                            -- Unknown  
-        SUM(OEDETAIL.ODADCC) AS TotalAdditionalCharges,                                                       -- Additional
-        SUM(OEDETAIL.ODWCCS) AS TotalWeightCost                                                               -- Weight
-    FROM 
-        ARCUST                                                                                      
-    INNER JOIN OEOPNORD ON                                                          
-        OEOPNORD.OOCDIS = ARCUST.CDIST AND                                                          
-        OEOPNORD.OOCUST = ARCUST.CCUST                                                          
-    INNER JOIN SALESMAN ON 
-        OEOPNORD.OOISMD = SALESMAN.SMDIST AND 
-        OEOPNORD.OOISMN = SALESMAN.SMSMAN
-    INNER JOIN OEDETAIL ON 
-        OEDETAIL.ODDIST = OEOPNORD.OODIST AND 
-        OEDETAIL.ODORDR = OEOPNORD.OOORDR
-    INNER JOIN SLSDSCOV ON 
-        OEDETAIL.ODDIST = SLSDSCOV.DXDIST AND 
-        OEDETAIL.ODORDR = SLSDSCOV.DXORDR AND 
-        OEDETAIL.ODMLIN = SLSDSCOV.DXMLIN
-    WHERE 
-        OEOPNORD.OOIYY = 25 AND OEOPNORD.OOIMM = 2
+            SUM(OEDETAIL.ODSLSX) AS TotalSales,                                                              -- Total Sales
+            SUM(OEDETAIL.ODFRTS) AS TotalFreightCharges,                                                          -- Total Freight
+            SUM(OEDETAIL.ODCSTX) AS TotalMaterialCost,                                                            -- Total material cost
+            SUM(OEDETAIL.ODPRCC) AS TotalProcessingPrice,                                                            -- Processing Price  
+            SUM(OEDETAIL.ODADCC) AS TotalAdditionalCharges,                                                       -- Additional
+            SUM(OEDETAIL.ODWCCS) AS TotalWeightCost                                                               -- Weight
+        FROM 
+            ARCUST                                                                                      
+        INNER JOIN OEOPNORD ON                                                          
+            OEOPNORD.OOCDIS = ARCUST.CDIST AND                                                          
+            OEOPNORD.OOCUST = ARCUST.CCUST                                                          
+        INNER JOIN SALESMAN ON 
+            OEOPNORD.OOISMD = SALESMAN.SMDIST AND 
+            OEOPNORD.OOISMN = SALESMAN.SMSMAN
+        INNER JOIN OEDETAIL ON 
+            OEDETAIL.ODDIST = OEOPNORD.OODIST AND 
+            OEDETAIL.ODORDR = OEOPNORD.OOORDR
+        INNER JOIN SLSDSCOV ON 
+            OEDETAIL.ODDIST = SLSDSCOV.DXDIST AND 
+            OEDETAIL.ODORDR = SLSDSCOV.DXORDR AND 
+            OEDETAIL.ODMLIN = SLSDSCOV.DXMLIN
+        WHERE 
+            OEOPNORD.OOIYY = 25 AND OEOPNORD.OOIMM = 2
         --OEDETAIL.ODORDR = {order_number}     
 
 /**************************************************************************************/
--- Februay Sales Total from General Ledger
+-- Februay Sales Detail per account from General Ledger
 /**************************************************************************************/
     SELECT
         CAST(GARP3 AS VARCHAR(10)) AS GARP3,
         CAST(GA.GACCT AS VARCHAR(20)) AS GACCT,
         GA.GACDES AS AccountDescription,
-        SUM(GL.GLAMTQ) AS TotalAmount
+        SUM(CASE 
+            WHEN GLCRDB = 'C' THEN -GLAMT
+            WHEN GLCRDB = 'D' THEN  GLAMT
+            ELSE 0
+        END) AS TotalAmount,
+        CAST(GARP3 AS INT) AS SortKey
     FROM GLTRANS GL
     LEFT JOIN GLACCT GA ON GL.GLACCT = GA.GACCT
-    WHERE [GLPYY] = 25 AND [GLPMM] = 2
-    AND GARP3 IN (600, 610, 0)
+    WHERE GLPYY = 25 AND GLPMM = 2
+    AND GARP3 IN (500, 530, 600, 610)
     GROUP BY GARP3, GA.GACCT, GA.GACDES
 
     UNION ALL
@@ -559,43 +434,19 @@ WHERE GLT.GLAPPL in ('IN') AND GLA.GARP3 IN (500, 530) and [GLPYY] = 25 AND [GLP
         'TOTAL' AS GARP3,
         'TOTAL' AS GACCT,
         '🧮 Total' AS AccountDescription,
-        SUM(GL.GLAMTQ) AS TotalAmount
+        SUM(CASE 
+            WHEN GLCRDB = 'C' THEN -GLAMT
+            WHEN GLCRDB = 'D' THEN  GLAMT
+            ELSE 0
+        END) AS TotalAmount,
+        999 AS SortKey
+
     FROM GLTRANS GL
     LEFT JOIN GLACCT GA ON GL.GLACCT = GA.GACCT
-    WHERE [GLPYY] = 25 AND [GLPMM] = 2
-    AND GARP3 IN (600, 610, 0)
+    WHERE GLPYY = 25 AND GLPMM = 2
+    AND GARP3 IN (500, 530, 600, 610)
 
-    ORDER BY GACCT;
-
---------------
--- lets find out what to select
-    SELECT
-        CAST(GARP3 AS VARCHAR(10)) AS GARP3,
-        CAST(GA.GACCT AS VARCHAR(20)) AS GACCT,
-        GA.GACDES AS AccountDescription,
-        SUM(GL.GLAMTQ) AS TotalAmount
-    FROM GLTRANS GL
-    LEFT JOIN GLACCT GA ON GL.GLACCT = GA.GACCT
-    WHERE [GLPYY] = 25 AND [GLPMM] = 2
-    AND GARP3 IN (600, 610, 0)
-    AND [GLREF] LIKE '%965943%'
-    GROUP BY GARP3, GA.GACCT, GA.GACDES
-
-    UNION ALL
-
-    SELECT
-        'TOTAL' AS GARP3,
-        'TOTAL' AS GACCT,
-        '🧮 Total' AS AccountDescription,
-        SUM(GL.GLAMTQ) AS TotalAmount
-    FROM GLTRANS GL
-    LEFT JOIN GLACCT GA ON GL.GLACCT = GA.GACCT
-    WHERE [GLPYY] = 25 AND [GLPMM] = 2
-    AND GARP3 IN (600, 610, 0)
-
-    ORDER BY GACCT;
-
-
+    ORDER BY SortKey ASC;
 
 
 /**************************************************************************************/
@@ -634,134 +485,140 @@ GROUP BY GLT.GLAPPL;
 
 
 
------------------------------------------------
+
+/************************************************/
+--Identify total sales 
+/************************************************/
+    BEGIN
+        SELECT
+            GLA.GARP3,
+            SUM(CASE 
+                WHEN GLCRDB = 'C' THEN -GLAMT
+                WHEN GLCRDB = 'D' THEN GLAMT
+                ELSE 0
+            END) AS AdjustedAmount
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+        WHERE GLA.GARP3 IN (500, 530)
+        AND GLA.GARP3 IS NOT NULL
+        AND GLT.GLPYY = 25
+        AND GLT.GLPMM = 2
+        GROUP BY GLA.GARP3;
+    END    
+
+   
+
+/************************************************/
+-- Cost per transaction 
+
+/************************************************/
+    SELECT
+        CAST(GARP3 AS VARCHAR(10)) AS GARP3,
+        CAST(GA.GACCT AS VARCHAR(20)) AS GACCT,
+        GA.GACDES AS AccountDescription,
+        SUM(GL.GLAMTQ) AS TotalAmount
+    FROM GLTRANS GL
+    LEFT JOIN GLACCT GA ON GL.GLACCT = GA.GACCT
+    WHERE [GLPYY] = 25 AND [GLPMM] = 2
+    AND GARP3 IN (600, 610, 0)
+    AND [GLREF] LIKE '%965943%'
+    GROUP BY GARP3, GA.GACCT, GA.GACDES
+
+    UNION ALL
+
+    SELECT
+        'TOTAL' AS GARP3,
+        'TOTAL' AS GACCT,
+        '🧮 Total' AS AccountDescription,
+        SUM(GL.GLAMTQ) AS TotalAmount
+    FROM GLTRANS GL
+    LEFT JOIN GLACCT GA ON GL.GLACCT = GA.GACCT
+    WHERE [GLPYY] = 25 AND [GLPMM] = 2
+    AND GARP3 IN (600, 610, 0)
+
+    ORDER BY GACCT;
+
+
+
+
+
+
+
+
+/*+++++++++++++++++++++++++++++++++++++++++++++++++
 --ACCOUNTS PER GL
-SELECT  GARP3, GACDES, GACCT FROM GLACCT
------------------------------------------------
+***************************************************/
+    BEGIN
+        SELECT  GARP3, GACDES, GACCT FROM GLACCT
+    END
 
-select TOP 100 * -- (GLT.[GLAMT])
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE [GLPYY] = 25 AND [GLPMM]=2 AND   GLA.GARP3 IN (600, 610) 
-
-
-AND GLT.GLAPPL in ('CR', 'IN')
-
---Table structure
-select top 1 *
-from GLTRANS GLT
-LEFT JOIN GLACCT GLA 
-    ON GLT.GLACCT = GLA.GACCT
-WHERE GLT.GLAPPL in ('CR') AND GLA.GARP3 IN (500, 600) and [GLPYY] = 25 AND [GLPMM]=2
-
---Group reason (Write off). 
-select [GLCUST], gldesc, SUM(GLT.[GLAMT])
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE GLT.GLAPPL in ('CR') AND GLA.GARP3 IN (500, 600) and [GLPYY] = 25 AND [GLPMM]=2
-GROUP BY [GLCUST], GLDESC;            --Group by customer
 
 
 /*+++++++++++++++++++++++++++++++++++++++++++++++++
 --How are distributed the credits, by customer, and by order
 ***************************************************/
+    BEGIN
+        SELECT 
+            ARCUST.CALPHA AS CustomerName,
+            COUNT(DISTINCT GLT.GLTRN#) AS CreditOrderCount,
+            SUM(GLT.GLAMT) AS TotalCredits,
+            ISNULL(Sales.TotalSales, 0) AS TotalSales,
+            CASE 
+                WHEN ISNULL(Sales.TotalSales, 0) = 0 THEN NULL
+                ELSE ROUND(SUM(GLT.GLAMT) * 1.0 / Sales.TotalSales, 2)
+            END AS CreditRatio
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA 
+            ON GLT.GLACCT = GLA.GACCT
+        LEFT JOIN ARCUST 
+            ON GLT.GLCUST = ARCUST.CCUST
+        -- Join to pull in total sales per customer
+        LEFT JOIN (
+            SELECT 
+                GLCUST,
+                SUM(GLAMT) AS TotalSales
+            FROM GLTRANS
+            LEFT JOIN GLACCT ON GLTRANS.GLACCT = GLACCT.GACCT
+            WHERE 
+                GLAPPL IN ('IN') 
+                AND GARP3 BETWEEN 500 AND 599
+                AND GLPYY = 25 AND GLPMM = 2
+            GROUP BY GLCUST
+        ) AS Sales ON GLT.GLCUST = Sales.GLCUST
+        WHERE 
+            GLT.GLAPPL IN ('CR') 
+            AND GLA.GARP3 IN (500, 600) 
+            AND GLT.GLPYY = 25 
+            AND GLT.GLPMM = 2
+        GROUP BY 
+            ARCUST.CALPHA, Sales.TotalSales
+        ORDER BY 
+            TotalCredits DESC;
 
-SELECT 
-    ARCUST.CALPHA AS CustomerName,
-    COUNT(DISTINCT GLT.GLTRN#) AS CreditOrderCount,
-    SUM(GLT.GLAMT) AS TotalCredits,
-    ISNULL(Sales.TotalSales, 0) AS TotalSales,
-    CASE 
-        WHEN ISNULL(Sales.TotalSales, 0) = 0 THEN NULL
-        ELSE ROUND(SUM(GLT.GLAMT) * 1.0 / Sales.TotalSales, 2)
-    END AS CreditRatio
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA 
-    ON GLT.GLACCT = GLA.GACCT
-LEFT JOIN ARCUST 
-    ON GLT.GLCUST = ARCUST.CCUST
--- Join to pull in total sales per customer
-LEFT JOIN (
+    END
+
+
+
+
+
+
+/************************************************/
+--TOTAL SALES BY CUSTOMER
+/************************************************/
+
     SELECT 
-        GLCUST,
-        SUM(GLAMT) AS TotalSales
-    FROM GLTRANS
-    LEFT JOIN GLACCT ON GLTRANS.GLACCT = GLACCT.GACCT
+        ARCUST.CALPHA AS CustomerName,
+        SUM(GLT.GLAMT) AS TotalSales
+    FROM GLTRANS GLT
+    LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+    LEFT JOIN ARCUST ON GLT.GLCUST = ARCUST.CCUST
     WHERE 
-        GLAPPL IN ('IN') 
-        AND GARP3 BETWEEN 500 AND 599
-        AND GLPYY = 25 AND GLPMM = 2
-    GROUP BY GLCUST
-) AS Sales ON GLT.GLCUST = Sales.GLCUST
-WHERE 
-    GLT.GLAPPL IN ('CR') 
-    AND GLA.GARP3 IN (500, 600) 
-    AND GLT.GLPYY = 25 
-    AND GLT.GLPMM = 2
-GROUP BY 
-    ARCUST.CALPHA, Sales.TotalSales
-ORDER BY 
-    TotalCredits DESC;
-
-/*SELECT 
-    ARCUST.CALPHA AS CustomerName,
-    COUNT(DISTINCT GLT.GLTRN#) AS OrderCount,
-    SUM(GLT.GLAMT) AS TotalCredits
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA 
-    ON GLT.GLACCT = GLA.GACCT
-LEFT JOIN ARCUST 
-    ON GLT.GLCUST = ARCUST.CCUST
-WHERE 
-    GLT.GLAPPL IN ('CR') 
-    AND GLA.GARP3 IN (500, 600) 
-    AND GLT.GLPYY = 25 
-    AND GLT.GLPMM = 2
-GROUP BY 
-    ARCUST.CALPHA
-ORDER BY 
-    TotalCredits DESC;*/
-
---I want to know what customer and what salesman does the most credits. 
---BAD QUERY
-/*SELECT 
-    SM.SMNAME AS SalesmanName,
-    SUM(GLT.GLAMT) AS TotalCredits
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA 
-    ON GLT.GLACCT = GLA.GACCT
-LEFT JOIN ARCUST 
-    ON GLT.GLCUST = ARCUST.CCUST
-LEFT JOIN SALESMAN SM 
-    ON ARCUST.CDIST = SM.SMDIST
-WHERE 
-    GLT.GLAPPL = 'CR' 
-    AND GLA.GARP3 IN (500, 600)
-    AND GLT.GLPYY = 25 
-    AND GLT.GLPMM = 2
-GROUP BY 
-    SM.SMNAME
-ORDER BY 
-    TotalCredits DESC;*/
-
-
-
-
-
---Total sales by customer
-SELECT 
-    ARCUST.CALPHA AS CustomerName,
-    SUM(GLT.GLAMT) AS TotalSales
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-LEFT JOIN ARCUST ON GLT.GLCUST = ARCUST.CCUST
-WHERE 
-    GLT.GLAPPL IN ('IN')     -- Invoice-type transactions
-    AND GLA.GARP3 BETWEEN 500 AND 599
-    AND GLT.GLPYY = 25 
-    AND GLT.GLPMM = 2
-GROUP BY ARCUST.CALPHA
-ORDER BY TotalSales DESC;
+        GLT.GLAPPL IN ('IN')     -- Invoice-type transactions
+        AND GLA.GARP3 BETWEEN 500 AND 599
+        AND GLT.GLPYY = 25 
+        AND GLT.GLPMM = 2
+    GROUP BY ARCUST.CALPHA
+    ORDER BY TotalSales DESC;
 
 
 --We may identify which credits were done to any sales order
@@ -776,276 +633,295 @@ WHERE GLT.GLAPPL in ('IN') AND GLA.GARP3 IN (500) and [GLPYY] = 25 AND [GLPMM]=2
 /************************************************/
 --WORKING QUERY SALES AND COST BY ORDER NUMBER
 /************************************************/
+    BEGIN
+        USE SigmaTB;
 
-USE SigmaTB;
+        DECLARE @RefFilter VARCHAR(20);
+        SET @RefFilter = '%967137%'; --965835-----965943
 
-DECLARE @RefFilter VARCHAR(20);
-SET @RefFilter = '%967137%'; --965835-----965943
+        SELECT
+            GLTRN# as GLTRN#TransNum,                   -- Transaction number                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+            GLDESC AS Title_GLDESC,                     -- Customer name
+            GLT.GLACCT AS GLACCT_FS,                    -- FS Account
+            GLA.GARP3 AS GARP3_FS,                      -- General Ledger account
+            GLAMT,                                      -- Amount       
+            GLA.GACDES AS GACDES_AccountDescription,    -- Transaction description  
+            GLREF AS Type_Dist_GLREF_Document,          -- Transaction number
 
-SELECT
-    GLTRN# as GLTRN#TransNum,                   -- Transaction number                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-    GLDESC AS Title_GLDESC,                     -- Customer name
-    GLT.GLACCT AS GLACCT_FS,                    -- FS Account
-    GLA.GARP3 AS GARP3_FS,                      -- General Ledger account
-    GLAMT,                                      -- Amount       
-    GLA.GACDES AS GACDES_AccountDescription,    -- Transaction description  
-    GLREF AS Type_Dist_GLREF_Document,          -- Transaction number
+                                                                                                                                                                    
+            GLCRDB,
+            GLAPPL AS GLAPPL_APP,                       -- Type of transaction
+            GLPGM,                                      -- Transaction number
 
-                                                                                                                                                            
-    GLCRDB,
-    GLAPPL AS GLAPPL_APP,                       -- Type of transaction
-    GLPGM,                                      -- Transaction number
+            GLT.GLACCT AS GLAccount_GLACCT,             
+            GLREF AS GLREF_Reference,
+            GLCOMP, GLDIST, GLCSTC,                     -- Company, distribution center, customer
 
-    GLT.GLACCT AS GLAccount_GLACCT,             
-    GLREF AS GLREF_Reference,
-    GLCOMP, GLDIST, GLCSTC,                     -- Company, distribution center, customer
+            GLTYPE, GLDIST, 
+            GLAPPL, GLBTCH,                                 -- For future formatting in Python
+            GLPPYY, GLPERD, 
+            GLDESC AS Transaction_GLDESC,
+            GLUSER, GLAPTR,  GLTRNT,
+        
+            GLA.GARP3, GLAMT,
+            GLRECD, 
+            GLRFYY, GLRFMM, GLRFDD,
+            GLCUST
 
-    GLTYPE, GLDIST, 
-    GLAPPL, GLBTCH,                                 -- For future formatting in Python
-    GLPPYY, GLPERD, 
-    GLDESC AS Transaction_GLDESC,
-    GLUSER, GLAPTR,  GLTRNT,
- 
-    GLA.GARP3, GLAMT,
-    GLRECD, 
-    GLRFYY, GLRFMM, GLRFDD,
-    GLCUST
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+        WHERE GLREF LIKE @RefFilter
+        AND GLA.GARP3 IN (500, 530 ,600, 610) -- sales, allowances, cogs, cogs freight
 
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE GLREF LIKE @RefFilter
-  AND GLA.GARP3 IN (500, 530 ,600, 610) -- sales, allowances, cogs, cogs freight
-
-ORDER BY GLTRN#;
-
+        ORDER BY GLTRN#;
+    END
 
 
 ---------
 USE SigmaTB;
 
--- TOTALS BY TRANSACTION
-DECLARE @RefFilter VARCHAR(20);
-SET @RefFilter = '%967137%%'; --965835-----965943
+/**************************************************************************************/
+--  Sales and costs per transaction number
+/**************************************************************************************/
+    BEGIN
+        DECLARE @RefFilter VARCHAR(20);
+        SET @RefFilter = '%967137%%'; --965835-----965943
 
-SELECT
-    GLTRN# AS GLTRN#TransNum,
-    GLDESC AS Title_GLDESC,
-    GLCUST AS GLCUST_ID,
-    SUM(CASE WHEN GLA.GARP3 = 500 THEN GLAMT ELSE 0 END) AS TotalSales,
-    SUM(CASE WHEN GLA.GARP3 = 530 THEN GLAMT ELSE 0 END) AS ReturnAllow,
-    SUM(CASE WHEN GLA.GARP3 = 600 THEN GLAMT ELSE 0 END) AS COGs_Material,
-    SUM(CASE WHEN GLA.GARP3 = 610 THEN GLAMT ELSE 0 END) AS COGs_Freight
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE GLREF LIKE @RefFilter
-  AND GLA.GARP3 IN (500, 530, 600, 610)
-  GROUP BY GLTRN#, GLDESC, GLCUST;
+        SELECT
+                GLTRN# AS GLTRN#TransNum,
+                GLDESC AS Title_GLDESC,
+                GLCUST AS GLCUST_ID,
+                SUM(CASE WHEN GLA.GARP3 = 500 THEN GLAMT ELSE 0 END) AS TotalSales,
+                SUM(CASE WHEN GLA.GARP3 = 530 THEN GLAMT ELSE 0 END) AS ReturnAllow,
+                SUM(CASE WHEN GLA.GARP3 = 600 THEN GLAMT ELSE 0 END) AS COGs_Material,
+                SUM(CASE WHEN GLA.GARP3 = 610 THEN GLAMT ELSE 0 END) AS COGs_Freight
+            FROM GLTRANS GLT
+            LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+            WHERE GLREF LIKE @RefFilter
+            AND GLA.GARP3 IN (500, 530, 600, 610)
+            GROUP BY GLTRN#, GLDESC, GLCUST;
+    END
+
+/**************************************************************************************/
+-- GOOD QUERY FOR TOTALS OF FINANCIAL STATEMENTS
+/**************************************************************************************/
+BEGIN
+    SELECT
+        GLA.GARP3,
+        CASE GLA.GARP3
+            WHEN 500 THEN 'Sales'
+            WHEN 530 THEN 'Sales Returns'
+            WHEN 600 THEN 'Cost of Goods Sold'
+            WHEN 610 THEN 'Freight (COGS)'
+            ELSE 'Other'
+        END AS GARP3_Name,
+        SUM(CASE 
+            WHEN GLCRDB = 'C' THEN -GLAMT
+            WHEN GLCRDB = 'D' THEN GLAMT
+            ELSE 0
+        END) AS AdjustedAmount
+    FROM GLTRANS GLT
+    LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+    WHERE GLA.GARP3 IN (500, 530, 600, 610)
+    AND GLT.GLPYY = 25 AND GLT.GLPMM = 2                --FEBRUARY
+    GROUP BY GLA.GARP3,
+            CASE GLA.GARP3
+                WHEN 500 THEN 'Sales'
+                WHEN 530 THEN 'Sales Returns'
+                WHEN 600 THEN 'Cost of Goods Sold'
+                WHEN 610 THEN 'Freight (COGS)'
+                ELSE 'Other'
+            END
+    ORDER BY GARP3 ASC;
+END
+
+/**************************************************************************************/
+--  Sales, returns, COGS, from General Ledger  (review material)
+/**************************************************************************************/
+/***********************************************************************
+-- This query reproduces the sales and cost analysis per sales order, on the General Ledger
+***********************************************************************/
+    WITH SelectSalesGOGSfromGLperTransaction AS (
+        
+            SELECT 
+                SUM(CASE WHEN GLA.GARP3 = 30 THEN GLT.GLAMT ELSE 0 END) AS Total_Sales,
+                SUM(CASE WHEN GLA.GACDES = 'MATERIAL SALES' THEN GLT.GLAMT ELSE 0 END) AS Material_Sales,
+                SUM(CASE WHEN GLA.GACDES = 'OUTSIDE PROCESSING SALES' THEN GLT.GLAMT ELSE 0 END) AS Processing_Sales,
+                SUM(CASE WHEN GLA.GARP3 = 50 THEN GLT.GLAMT ELSE 0 END) AS Material_Cost,
+                SUM(CASE WHEN GLA.GARP3 = 175 AND GLAPPL NOT IN ('AP') THEN GLT.GLAMT ELSE 0 END) AS Processing_Cost,
+                SUM(CASE WHEN gla.gacct = 4103600000 THEN GLT.GLAMT ELSE 0 END) AS PurchasePriceVariance
+            FROM GLTRANS GLT
+            LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+            WHERE 
+                GLT.[GLTRN#] = 965943
+                AND GLA.GARP3 IN (30, 50, 500, 530, 600, 610, 175)
+                AND GLT.GLAPPL NOT IN ('IU', 'CR')
+    ),
+
+    -- THIS DOES NOT WORK
+    SelectSalesGOGSfromGLTotal_splitMP AS (
+    
+        SELECT 
+            SUM(CASE WHEN GLA.GARP3 = 30 THEN GLT.GLAMT ELSE 0 END) AS Total_Sales,
+            SUM(CASE WHEN GLA.GACDES = 'MATERIAL SALES' THEN GLT.GLAMT ELSE 0 END) AS Material_Sales,
+            SUM(CASE WHEN GLA.GACDES = 'OUTSIDE PROCESSING SALES' THEN GLT.GLAMT ELSE 0 END) AS Processing_Sales,
+            SUM(CASE WHEN GLA.GARP3 = 50 THEN GLT.GLAMT ELSE 0 END) AS Material_Cost,
+            SUM(CASE WHEN GLA.GARP3 = 175 AND GLAPPL NOT IN ('AP') THEN GLT.GLAMT ELSE 0 END) AS Processing_Cost,
+            SUM(CASE WHEN gla.gacct = 4103600000 THEN GLT.GLAMT ELSE 0 END) AS PurchasePriceVariance
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+        WHERE 
+            --GLT.[GLTRN#] = 965943
+            GLT.GLPYY = 25 AND GLT.GLPMM = 2                --FEBRUARY
+            AND GLA.GARP3 IN (30, 50, 500, 530, 600, 610, 175)
+            AND GLT.GLAPPL NOT IN ('IU', 'CR', 'AP')
+    ), 
+    SelectSalesGOGSfromGLTotal AS (
+    
+        --This query groups the totals per category
+        SELECT
+            GLA.GARP3,
+            CASE GLA.GARP3
+                WHEN 500 THEN 'Sales'
+                WHEN 530 THEN 'Sales Returns'
+                WHEN 600 THEN 'Cost of Goods Sold'
+                WHEN 610 THEN 'Freight (COGS)'
+                ELSE 'Other'
+            END AS GARP3_Name,
+            SUM(
+                CASE 
+                    WHEN GLCRDB = 'C' THEN -GLAMT
+                    WHEN GLCRDB = 'D' THEN GLAMT
+                    ELSE 0
+                END AS AdjustedAmount)
+            --GLAMTQ)--GLAMT)
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+        WHERE GLA.GARP3 IN (500, 530, 600, 610)
+        AND GLT.GLPYY = 25
+        AND GLT.GLPMM = 2
+        GROUP BY GLA.GARP3,
+                CASE GLA.GARP3
+                    WHEN 500 THEN 'Sales'
+                    WHEN 530 THEN 'Sales Returns'
+                    WHEN 600 THEN 'Cost of Goods Sold'
+                    WHEN 610 THEN 'Freight (COGS)'
+                    ELSE 'Other'
+                END
+        ORDER BY 
+            CASE GARP3
+                WHEN 500 THEN 1
+                WHEN 530 THEN 2
+                WHEN 600 THEN 3
+                WHEN 610 THEN 4
+                ELSE 5
+            END ASC;
+    )
+
+--Good
+SELECT * FROM SelectSalesGOGSfromGLperTransaction
+Select * FROM SelectSalesGOGSfromGLTotal
 
 
+-- Main categories
+    USE SigmaTB;
+    SELECT
+            GLA.GARP3,
+            SUM(
+                CASE 
+                    WHEN GLCRDB = 'C' THEN +GLAMT
+                    WHEN GLCRDB = 'D' THEN -GLAMT
+                    ELSE 0
+                END) AS AdjustedAmount
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+        WHERE 
+            GLA.GARP3 IN (500, 530, 600, 610)
+            AND GLT.GLPYY = 25
+            AND GLT.GLPMM = 2
+        GROUP BY 
+            GLA.GARP3,
+            CASE GLA.GARP3
+                WHEN 500 THEN 'Sales'
+                WHEN 530 THEN 'Sales Returns'
+                WHEN 600 THEN 'Cost of Goods Sold'
+                WHEN 610 THEN 'Freight (COGS)'
+                ELSE 'Other'
+            END
 
--- SELECT ALL THE TOTALS
-SELECT
-    SUM(CASE WHEN GLA.GARP3 = 500 THEN GLAMT ELSE 0 END) AS TotalSales,
-    SUM(CASE WHEN GLA.GARP3 = 530 THEN GLAMT ELSE 0 END) AS ReturnAllow,
-    SUM(CASE WHEN GLA.GARP3 = 600 THEN GLAMT ELSE 0 END) AS COGs_Material,
-    SUM(CASE WHEN GLA.GARP3 = 610 THEN GLAMT ELSE 0 END) AS COGs_Freight
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE 
-    GLA.GARP3 IN (500, 530, 600, 610)
-    AND GLTRN# <> '0'
-    AND GLAMT <> 0
-    AND GLT.GLPYY = 25        -- Year 2025
-    AND GLT.GLPMM = 2        -- February
+            
 
--- AUDIT COGS
-SELECT
-    GLREF,
-    GLDESC,
-    GLA.GACCT,
-    GLA.GACDES,
-    GLAMT,
-    GLCRDB,
-    GLPGM,
-    GLAPPL,
-    GLBTCH,
-    GLUSER,
-    *
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE 
-    GLA.GARP3 IN (600, 610)
-    AND GLTRN# <> '0'
-    AND GLAMT <> 0
-    AND GLPYY = 25
-    AND GLPMM = 2
-ORDER BY GLT.GLREF;
-
-
---BAD QUERY
-SELECT
-    SUM(CASE WHEN GLA.GARP3 = 500 THEN GLAMT ELSE 0 END) AS TotalSales,
-    SUM(CASE WHEN GLA.GARP3 = 530 THEN GLAMT ELSE 0 END) AS ReturnAllow,
-    SUM(CASE 
-        WHEN GLA.GARP3 = 600 AND GLA.GACDES LIKE '%COST OF GOODS SOLD%' 
-            AND GLA.GACDES NOT LIKE '%VARIANCE%' 
-        THEN GLAMT ELSE 0 
-    END) AS COGs_Material,
-    SUM(CASE WHEN GLA.GARP3 = 610 THEN GLAMT ELSE 0 END) AS COGs_Freight
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE GLA.GARP3 IN (500, 530, 600, 610)
-  AND GLTRN# <> '0'
-  AND GLAMT <> 0
-  AND GLT.GLPYY = 25
-  AND GLT.GLPMM = 2;
-
-SELECT
-    SUM(CASE WHEN GLA.GARP3 = 500 THEN GLAMT ELSE 0 END) AS TotalSales,
-    SUM(CASE WHEN GLA.GARP3 = 530 THEN GLAMT ELSE 0 END) AS ReturnAllow,
-    SUM(CASE 
-        WHEN GLA.GARP3 = 600 AND GLA.GACDES LIKE '%COST OF GOODS SOLD%' 
-            AND GLA.GACDES NOT LIKE '%VARIANCE%' 
-        THEN GLAMT ELSE 0 
-    END) AS COGs_Material,
-    SUM(CASE WHEN GLA.GARP3 = 610 THEN GLAMT ELSE 0 END) AS COGs_Freight
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE GLA.GARP3 IN (500, 530, 600, 610)
-  AND GLTRN# <> '0'
-  AND GLAMT <> 0
-  AND GLT.GLPYY = 25
-  AND GLT.GLPMM = 2;
-
-
---AUDIT THE BUYOUT
-SELECT 
-    GLTRN#,
-    GLDESC,
-    GLREF,
-    GLT.GLACCT,
+            SELECT
     GLA.GARP3,
-    GLA.GACDES,
-    GLAMT
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE GLA.GARP3 = 600
-  AND GLA.GACDES LIKE '%BUYOUT%'
-  AND GLT.GLPYY = 25
-  AND GLT.GLPMM = 2
-ORDER BY GLTRN#;
 
 
-USE SigmaTB;
 
---try with the buyout
-USE SigmaTB;
 
-SELECT
-    -- Revenue and Returns
-    SUM(CASE WHEN GLA.GARP3 = 500 THEN GLAMT ELSE 0 END) AS TotalSales,
-    SUM(CASE WHEN GLA.GARP3 = 530 THEN GLAMT ELSE 0 END) AS ReturnAllow,
 
-    -- Direct COGS
-    SUM(CASE WHEN GLA.GACCT = '4101100000' THEN GLAMT ELSE 0 END) AS COGS_Material,
-    SUM(CASE WHEN GLA.GACCT = '4203900000' THEN GLAMT ELSE 0 END) AS COGS_Freight,
-
-    -- Buyout components
-    SUM(CASE WHEN GLA.GACCT = '4101120000' THEN GLAMT ELSE 0 END) AS COGS_Buyout,
-    SUM(CASE WHEN GLA.GACCT = '4101200000' THEN GLAMT ELSE 0 END) AS COGS_PPV,
-
-    -- Net = Buyout minus PPV (if PPV is negative, subtracting will correct it)
-    SUM(CASE WHEN GLA.GACCT = '4101120000' THEN GLAMT ELSE 0 END) -
-    SUM(CASE WHEN GLA.GACCT = '4101200000' THEN GLAMT ELSE 0 END) AS NetBuyoutCOGS
-
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-
-WHERE GLA.GARP3 IN (500, 530, 600, 610)
-  AND GLT.GLTRN# <> '0'
-  AND GLAMT <> 0
-  AND GLT.GLPYY = 25
-  AND GLT.GLPMM = 2;
+    
 
 ---------------------------------
 /**********************************************************/
---FIND Sales by account
+--FIND Sales by Financial account
 /**********************************************************/
     SELECT
-        GACCT, GLA.GACDES,  SUM(GLAMT), GLCRDB
-    FROM GLTRANS GLT
-    LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-    WHERE GLA.GARP3 IN (500, 530, 600, 610)
-    AND GLTRN# <> '0'
-    AND GLAMT <> 0
-    AND GLT.GLPYY = 25
-    AND GLT.GLPMM = 2
-    GROUP BY GACCT, GLCRDB, GLA.GACDES;
+            GARP3,
+            GACCT,
+            GLA.GACDES,
+            SUM(CASE 
+                    WHEN GLCRDB = 'C' THEN -GLAMT
+                    WHEN GLCRDB = 'D' THEN GLAMT
+                    ELSE 0
+                END) AS AdjustedAmount
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+        WHERE GLA.GARP3 IN (500, 530, 600, 610)
+        --AND GLTRN# <> '0'
+        --AND GLAMT <> 0
+        AND GLT.GLPYY = 25
+        AND GLT.GLPMM = 2
+        GROUP BY GARP3, GACCT, GLA.GACDES 
+        Order by GARP3 asc;
 
 
 /**********************************************************/
 /**********************************************************/
-
-        SUM(CASE WHEN GLA.GARP3 = 500 THEN GLAMT ELSE 0 END) AS TotalSales,
-        SUM(CASE WHEN GLA.GARP3 = 530 THEN GLAMT ELSE 0 END) AS ReturnAllow,
-        SUM(CASE 
-            WHEN GLA.GARP3 = 600 AND GLA.GACDES LIKE '%COST OF GOODS SOLD%' 
-                AND GLA.GACDES NOT LIKE '%VARIANCE%' 
-            THEN GLAMT ELSE 0 
-        END) AS COGs_Material,
-        SUM(CASE WHEN GLA.GARP3 = 610 THEN GLAMT ELSE 0 END) AS COGs_Freight
-    FROM GLTRANS GLT
-    LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-    WHERE GLA.GARP3 IN (500, 530, 600, 610)
-    AND GLTRN# <> '0'
-    AND GLAMT <> 0
-    AND GLT.GLPYY = 25
-    AND GLT.GLPMM = 2;
-
-    SELECT
-        SUM(CASE WHEN GLA.GARP3 = 500 THEN GLAMT ELSE 0 END) AS TotalSales,
-        SUM(CASE WHEN GLA.GARP3 = 530 THEN GLAMT ELSE 0 END) AS ReturnAllow,
-        SUM(CASE 
-            WHEN GLA.GARP3 = 600 AND GLA.GACDES LIKE '%COST OF GOODS SOLD%' 
-                AND GLA.GACDES NOT LIKE '%VARIANCE%' 
-            THEN GLAMT ELSE 0 
-        END) AS COGs_Material,
-        SUM(CASE WHEN GLA.GARP3 = 610 THEN GLAMT ELSE 0 END) AS COGs_Freight
-    FROM GLTRANS GLT
-    LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-    WHERE GLA.GARP3 IN (500, 530, 600, 610)
-    AND GLTRN# <> '0'
-    AND GLAMT <> 0
-    AND GLT.GLPYY = 25
-    AND GLT.GLPMM = 2;
 
 ---------------------------------
 
 
---Query to create totals for 1 transaction
-SELECT
-    SUM(CASE WHEN GLA.GARP3 = 500 THEN GLAMT ELSE 0 END) AS TotalSales,
-    SUM(CASE WHEN GLA.GARP3 = 530 THEN GLAMT ELSE 0 END) AS ReturnAllow,
-    SUM(CASE WHEN GLA.GARP3 = 600 THEN GLAMT ELSE 0 END) AS COGs_Material,
-    SUM(CASE WHEN GLA.GARP3 = 610 THEN GLAMT ELSE 0 END) AS COGs_Freight
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE GLREF LIKE '%965835%'
-  AND GLA.GARP3 IN (500, 530, 600, 610)
-  AND GLTRN# <> '0'
-  AND GLAMT <> 0
 
 
-SELECT
-    GLTRN# AS GLTRN#TransNum,
-    GLDESC AS Title_GLDESC,
-    GLCUST AS GLCUST_ID,
-    SUM(CASE WHEN GLA.GARP3 = 500 THEN GLAMT ELSE 0 END) AS TotalSales,
-    SUM(CASE WHEN GLA.GARP3 = 530 THEN GLAMT ELSE 0 END) AS ReturnAllow,
-    SUM(CASE WHEN GLA.GARP3 = 600 THEN GLAMT ELSE 0 END) AS COGs_Material,
-    SUM(CASE WHEN GLA.GARP3 = 610 THEN GLAMT ELSE 0 END) AS COGs_Freight
-FROM GLTRANS GLT
-LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
-WHERE  GLT.GLPYY = 25     AND GLT.GLPMM = 2  AND GLTRN#<>'0'
-  AND GLA.GARP3 IN (500, 530, 600, 610)
-  GROUP BY GLTRN#, GLDESC, GLCUST;
+
+/**********************************************************/
+--SALES TOTAL BY CUSTOMER, SALESMAN, FROM SALES REPORT - USED FOR THE CHART
+/**********************************************************/
+
+        SELECT 
+            ARCUST.CALPHA AS CustomerName,
+            SALESMAN.SMNAME AS SalesmanName,
+            SUM(OEDETAIL.ODSLSX) AS TotalSales,
+            SUM(OEDETAIL.ODFRTS) AS TotalFreightCharges,
+            SUM(OEDETAIL.ODCSTX) AS TotalMaterialCost,
+            SUM(OEDETAIL.ODPRCC) AS TotalProcessingPrice,
+            SUM(OEDETAIL.ODADCC) AS TotalAdditionalCharges,
+            SUM(OEDETAIL.ODWCCS) AS TotalWeightCost
+        FROM ARCUST
+        INNER JOIN OEOPNORD ON 
+            OEOPNORD.OOCDIS = ARCUST.CDIST AND 
+            OEOPNORD.OOCUST = ARCUST.CCUST
+        INNER JOIN SALESMAN ON 
+            OEOPNORD.OOISMD = SALESMAN.SMDIST AND 
+            OEOPNORD.OOISMN = SALESMAN.SMSMAN
+        INNER JOIN OEDETAIL ON 
+            OEDETAIL.ODDIST = OEOPNORD.OODIST AND 
+            OEDETAIL.ODORDR = OEOPNORD.OOORDR
+        INNER JOIN SLSDSCOV ON 
+            OEDETAIL.ODDIST = SLSDSCOV.DXDIST AND 
+            OEDETAIL.ODORDR = SLSDSCOV.DXORDR AND 
+            OEDETAIL.ODMLIN = SLSDSCOV.DXMLIN
+        WHERE 
+            OEOPNORD.OOIYY = 25 AND OEOPNORD.OOIMM = 2
+        GROUP BY ARCUST.CALPHA, SALESMAN.SMNAME
+
+

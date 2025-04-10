@@ -1012,4 +1012,411 @@ LEFT JOIN
 WHERE 
     ROPData.Item = 50261;
 
+Use sigmatb;
+select count(*) from GLTRANS
+select *  from GLTRANS WHERE GLSYY = 25 AND GLSMM = 2 AND GLSDD = 04
+    AND GLTRANS.GLDESC LIKE '%FAITH%';
 
+  select max(glsyy) from GLTRANS
+
+SELECT * FROM GLTRANS WHERE GLREF like '%965943%'
+SELECT * FROM GLTRANS WHERE GLREF = '965943';
+
+--Query to look like the excel
+SELECT
+    GLRECD AS Ext,
+    FORMAT(GLCOMP, '00') + ' ' + 
+    FORMAT(GLDIST, '00') + ' ' + 
+    FORMAT(GLCSTC, '00') AS [CO DS CS],
+    LEFT(CAST(GLACCT AS VARCHAR), 3) AS FS,
+    GLACCT AS Account,
+    GLDESC AS Title,
+    FORMAT(GLPPYY, '00') + ' ' + FORMAT(GLPERD, '00') AS Period,
+    '' AS [Transaction],  -- Not available in GLTRANS
+    GLBTCH AS Reference,
+    CASE 
+        WHEN GLCRDB = 'D' THEN CAST(GLAMT AS decimal(12,2))
+        ELSE CAST(-1 * GLAMT AS decimal(12,2))
+    END AS Amount,
+    GLAPPL AS APP,
+    GLPGM AS Prgm,
+    GLUSER AS [User],
+    GLAPTR AS Related,
+    GLTRN# AS [#],
+    GLTRNT AS [Tran],
+    GLTYPE AS Type,
+    GLDIST AS Dist,
+    GLREF AS Document,
+    TRY_CAST(
+        CAST(GLRFYY AS VARCHAR(4)) + '-' + 
+        RIGHT('00' + CAST(GLRFMM AS VARCHAR(2)), 2) + '-' + 
+        RIGHT('00' + CAST(GLRFDD AS VARCHAR(2)), 2) 
+    AS DATE) AS Posting,
+    NULL AS System,  -- Placeholder for system date or code
+    FORMAT(GLCUST, '00 00000') AS Custmr
+FROM GLTRANS
+WHERE GLREF LIKE '%965943%'
+ORDER BY GLTRN#;
+
+
+SELECT
+    GLRECD AS Ext,
+    FORMAT(GLCOMP, '00') + ' ' + 
+    FORMAT(GLDIST, '00') + ' ' + 
+    FORMAT(GLCSTC, '00') AS [CO DS CS],
+    LEFT(CAST(GLACCT AS VARCHAR), 3) AS FS,
+    GLACCT AS Account,
+    GLDESC AS Title,
+    FORMAT(GLPPYY, '00') + ' ' + FORMAT(GLPERD, '00') AS Period,
+    '' AS [Transaction],  -- Placeholder
+    GLAPPL + RIGHT('00000000' + CAST(GLBTCH AS VARCHAR), 8) + '-0001' AS Reference,
+    SUM(CASE 
+            WHEN GLCRDB = 'D' THEN CAST(GLAMT AS decimal(12,2))
+            ELSE -CAST(GLAMT AS decimal(12,2))
+        END) AS NetAmount,
+    GLAPPL AS APP,
+    GLPGM AS Prgm,
+    GLUSER AS [User],
+    GLAPTR AS Related,
+    GLTRN# AS [#],
+    GLTRNT AS [Tran],
+    GLTYPE AS Type,
+    GLDIST AS Dist,
+    GLBTCH AS Document,
+    TRY_CAST(
+        CAST(GLRFYY AS VARCHAR(4)) + '-' + 
+        RIGHT('00' + CAST(GLRFMM AS VARCHAR(2)), 2) + '-' + 
+        RIGHT('00' + CAST(GLRFDD AS VARCHAR(2)), 2) 
+    AS DATE) AS Posting,
+    NULL AS System,
+    FORMAT(GLCUST, '00 00000') AS Custmr
+FROM GLTRANS
+WHERE GLREF LIKE '%965943%'
+GROUP BY
+    GLRECD,
+    GLCOMP,
+    GLDIST,
+    GLCSTC,
+    GLACCT,
+    GLDESC,
+    GLPPYY,
+    GLPERD,
+    GLAPPL,
+    GLBTCH,
+    GLPGM,
+    GLUSER,
+    GLAPTR,
+    GLTRN#,
+    GLTRNT,
+    GLTYPE,
+    GLRFYY,
+    GLRFMM,
+    GLRFDD,
+    GLCUST
+ORDER BY GLTRN#;
+
+
+SELECT
+    GLRECD AS Ext,
+    FORMAT(GLCOMP, '00') + ' ' + 
+    FORMAT(GLDIST, '00') + ' ' + 
+    FORMAT(GLCSTC, '00') AS [CO DS CS],
+    LEFT(CAST(GLACCT AS VARCHAR), 3) AS FS,
+    GLACCT AS GLAccount_GLACCT,
+
+    -- Title: show description only for revenue/cost accounts (e.g., 400s or 600s)
+    CASE 
+        WHEN LEFT(CAST(GLACCT AS VARCHAR), 1) IN ('4', '6') THEN GLDESC 
+        ELSE NULL 
+    END AS Title,
+
+    FORMAT(GLPPYY, '00') + ' ' + FORMAT(GLPERD, '00') AS Period,
+
+    -- Transaction: show customer name if account is 1021xxxxx
+    CASE 
+        WHEN LEFT(CAST(GLACCT AS VARCHAR), 4) = '1021' THEN GLDESC
+        ELSE NULL
+    END AS [Transaction],
+
+    -- Constructed Reference value (APP + padded GLBTCH)
+    GLAPPL + RIGHT('00000000' + CAST(GLBTCH AS VARCHAR), 8) + '-0001' AS Reference,
+
+    SUM(CASE 
+            WHEN GLCRDB = 'D' THEN CAST(GLAMT AS decimal(12,2))
+            ELSE -CAST(GLAMT AS decimal(12,2))
+        END) AS NetAmount,
+
+    GLAPPL AS GRAP,
+    GLPGM AS Prgm,
+    GLUSER AS [User],
+    GLAPTR AS Related,
+    GLTRN# AS [#],
+    GLTRNT AS [Tran],
+    GLTYPE AS Type,
+    GLDIST AS Dist,
+    GLREF AS Document,
+
+    TRY_CAST(
+        CAST(GLRFYY AS VARCHAR(4)) + '-' + 
+        RIGHT('00' + CAST(GLRFMM AS VARCHAR(2)), 2) + '-' + 
+        RIGHT('00' + CAST(GLRFDD AS VARCHAR(2)), 2) 
+    AS DATE) AS Posting,
+
+    NULL AS System,
+    FORMAT(GLCUST, '00 00000') AS Custmr
+
+FROM GLTRANS
+WHERE GLREF LIKE '%965943%'
+GROUP BY
+    GLRECD,    GLCOMP,    GLDIST,    GLCSTC,    GLACCT,    GLDESC,    GLPPYY,    GLPERD,    GLAPPL,    GLBTCH,    GLPGM,
+    GLUSER,    GLAPTR,    GLTRN#,    GLTRNT,    GLTYPE,    GLREF,    GLRFYY,    GLRFMM,    GLRFDD,    GLCUST
+ORDER BY GLTRN#;
+
+/************************************************/
+--Lets try to get the MP... this works but i will erase the sum and allow the query by account number
+SELECT
+    GLRECD AS Ext,
+    FORMAT(GLCOMP, '00') + ' ' + 
+    FORMAT(GLDIST, '00') + ' ' + 
+    FORMAT(GLCSTC, '00') AS [CO DS CS],
+    LEFT(CAST(GLACCT AS VARCHAR), 3) AS FS,
+    GLACCT AS GLAccount_GLACCT,
+
+    -- Desc, ref
+    GLDESC AS Title_GLDESC, 
+    [GLREF] as GLREF_Reference,
+    
+     -- Constructed Reference value (APP + padded GLBTCH)
+    GLAPPL + RIGHT('00000000' + CAST(GLBTCH AS VARCHAR), 8) + '-0001' AS Reference,
+
+    --Net amount
+    SUM(CASE 
+        WHEN GLCRDB = 'D' THEN CAST(GLAMT AS decimal(12,2))
+        ELSE -CAST(GLAMT AS decimal(12,2))
+    END) AS NetAmount,
+
+    --app
+    
+    FORMAT(GLPPYY, '00') + ' ' + FORMAT(GLPERD, '00') AS Period,
+
+    -- Transaction: show customer name if account is 1021xxxxx
+    GLDESC as Transaction_GLDESC,
+    GLAPPL AS GLAPPL_APP,
+    GLPGM AS GLPGM_Prgm,
+    GLUSER AS GLUSER,
+    GLAPTR AS GLAPTR_Related,
+    GLTRN# AS [GLTRN#],
+    GLTRNT AS [GLTRNT_Tran],
+    GLTYPE AS GLTYPE,
+    GLDIST AS GLDIST,
+    GLREF AS GLREF_Document,
+
+    TRY_CAST(
+        CAST(GLRFYY AS VARCHAR(4)) + '-' + 
+        RIGHT('00' + CAST(GLRFMM AS VARCHAR(2)), 2) + '-' + 
+        RIGHT('00' + CAST(GLRFDD AS VARCHAR(2)), 2) 
+    AS DATE) AS Posting,
+
+    NULL AS System,
+    FORMAT(GLCUST, '00 00000') AS Custmr
+
+FROM GLTRANS
+WHERE GLREF LIKE '%965943%'
+GROUP BY
+    GLRECD,    GLCOMP,    GLDIST,    GLCSTC,    GLACCT,    GLDESC,    GLPPYY,    GLPERD,    GLAPPL,    GLBTCH,    GLPGM,
+    GLUSER,    GLAPTR,    GLTRN#,    GLTRNT,    GLTYPE,    GLREF,    GLRFYY,    GLRFMM,    GLRFDD,    GLCUST
+ORDER BY GLTRN#;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************************/
+
+/************************************************/
+--Lets try to get the MP... 
+SELECT
+    -- Desc, ref
+    GLDESC AS Title_GLDESC, 
+    --Net amount
+    [GLCRDB], [GLAMT],
+
+    GLACCT  AS GLACCT_FS,
+
+    GLRECD AS Ext,
+    FORMAT(GLCOMP, '00') + ' ' + 
+    FORMAT(GLDIST, '00') + ' ' + 
+    FORMAT(GLCSTC, '00') AS [CO DS CS],
+    GLACCT AS GLAccount_GLACCT,
+
+
+    [GLREF] as GLREF_Reference,
+    
+     -- Constructed Reference value (APP + padded GLBTCH)
+    GLAPPL + RIGHT('00000000' + CAST(GLBTCH AS VARCHAR), 8) + '-0001' AS Reference,
+
+    --app
+    
+    FORMAT(GLPPYY, '00') + ' ' + FORMAT(GLPERD, '00') AS Period,
+
+    -- Transaction: show customer name if account is 1021xxxxx
+    GLDESC as Transaction_GLDESC,
+    GLAPPL AS GLAPPL_APP,
+    GLPGM AS GLPGM_Prgm,
+    GLUSER AS GLUSER,
+    GLAPTR AS GLAPTR_Related,
+    GLTRN# AS [GLTRN#],
+    GLTRNT AS [GLTRNT_Tran],
+    GLTYPE AS GLTYPE,
+    GLDIST AS GLDIST,
+    GLREF AS GLREF_Document,
+
+    TRY_CAST(
+        CAST(GLRFYY AS VARCHAR(4)) + '-' + 
+        RIGHT('00' + CAST(GLRFMM AS VARCHAR(2)), 2) + '-' + 
+        RIGHT('00' + CAST(GLRFDD AS VARCHAR(2)), 2) 
+    AS DATE) AS Posting,
+
+    NULL AS System,
+    FORMAT(GLCUST, '00 00000') AS Custmr
+
+FROM GLTRANS
+WHERE GLREF LIKE '%965943%' AND LEFT(CAST(GLACCT AS VARCHAR), 1) IN ('4', '6')
+GROUP BY
+    GLRECD, GLCOMP, GLDIST, GLCSTC, GLACCT, GLDESC, GLPPYY, GLPERD, GLAPPL, GLBTCH, GLPGM,
+    GLUSER, GLAPTR, GLTRN#, GLTRNT, GLTYPE, GLREF, GLRFYY, GLRFMM, GLRFDD, GLCUST,
+    GLCRDB, GLAMT
+
+ORDER BY GLTRN#;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/************************************************/
+-- Now I will try to add the description
+SELECT
+    -- Desc, ref
+    GLDESC AS Title_GLDESC, 
+    GLCRDB, GLAMT,
+
+    GLT.GLACCT AS GLACCT_FS,
+    GLRECD AS Ext,
+    FORMAT(GLCOMP, '00') + ' ' + FORMAT(GLDIST, '00') + ' ' + FORMAT(GLCSTC, '00') AS [CO DS CS],
+    GLT.GLACCT AS GLAccount_GLACCT,
+
+    GLREF AS GLREF_Reference,
+    GLAPPL + RIGHT('00000000' + CAST(GLBTCH AS VARCHAR), 8) + '-0001' AS Reference,
+
+    -- Account description from GLACCT
+    GLA.GACDES AS AccountDescription,
+
+    FORMAT(GLPPYY, '00') + ' ' + FORMAT(GLPERD, '00') AS Period,
+
+    GLDESC AS Transaction_GLDESC,
+    GLAPPL AS GLAPPL_APP,
+    GLPGM AS GLPGM_Prgm,
+    GLUSER AS GLUSER,
+    GLAPTR AS GLAPTR_Related,
+    GLTRN# AS [GLTRN#],
+    GLTRNT AS [GLTRNT_Tran],
+    GLTYPE AS GLTYPE,
+    GLDIST AS GLDIST,
+    GLREF AS GLREF_Document,
+
+    TRY_CAST(
+        CAST(GLRFYY AS VARCHAR(4)) + '-' + 
+        RIGHT('00' + CAST(GLRFMM AS VARCHAR(2)), 2) + '-' + 
+        RIGHT('00' + CAST(GLRFDD AS VARCHAR(2)), 2) 
+    AS DATE) AS Posting,
+
+    NULL AS System,
+    FORMAT(GLCUST, '00 00000') AS Custmr
+
+FROM GLTRANS GLT
+LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GLACCT
+
+WHERE GLREF LIKE '%965943%' AND LEFT(CAST(GLT.GLACCT AS VARCHAR), 1) IN ('4', '6')
+
+GROUP BY
+    GLRECD, GLCOMP, GLDIST, GLCSTC, GLT.GLACCT, GLDESC, GLPPYY, GLPERD, GLAPPL, GLBTCH, GLPGM,
+    GLUSER, GLAPTR, GLTRN#, GLTRNT, GLTYPE, GLREF, GLRFYY, GLRFMM, GLRFDD, GLCUST, GLCRDB, GLAMT,
+    GLA.GACDES
+
+ORDER BY GLTRN#;
+
+
+
+/***************************************************/
+use SigmaTB;
+
+select * from GLTRANS WHERE GLTRANS.GLREF LIKE '%965943%'
+select * from GLTRANS WHERE [GLAPPL]    LIKE '%IA%' AND GLPYY = 25 AND GLPMM = 2;
+
+select count(*) from gltrans
+
+
+-------lOOK FOR NULLS
+SELECT 
+    CASE 
+        WHEN EXISTS (
+            SELECT 1 
+            FROM GLTRANS 
+            WHERE GLTRN# IS NULL
+        )
+        THEN 'Yes'
+        ELSE 'No'
+    END AS NullExists;
+
+
+
+    select garp3, * from GLACCT
+
+
+/***********************************************************************
+-- This query reproduces the sales and cost analysis per sales order, on the General Ledger
+***********************************************************************/
+SELECT 
+    SUM(CASE WHEN GLA.GARP3 = 30 THEN GLT.GLAMT ELSE 0 END) AS Total_Sales,
+    SUM(CASE WHEN GLA.GACDES = 'MATERIAL SALES' THEN GLT.GLAMT ELSE 0 END) AS Material_Sales,
+    SUM(CASE WHEN GLA.GACDES = 'OUTSIDE PROCESSING SALES' THEN GLT.GLAMT ELSE 0 END) AS Processing_Sales,
+    SUM(CASE WHEN GLA.GARP3 = 50 THEN GLT.GLAMT ELSE 0 END) AS Material_Cost,
+    SUM(CASE WHEN GLA.GARP3 = 175 AND GLAPPL NOT IN ('AP') THEN GLT.GLAMT ELSE 0 END) AS Processing_Cost,
+    SUM(CASE WHEN gla.gacct = 4103600000 THEN GLT.GLAMT ELSE 0 END) AS PurchasePriceVariance
+FROM GLTRANS GLT
+LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+WHERE 
+    GLT.[GLTRN#] = 965943
+    AND GLA.GARP3 IN (30, 50, 500, 530, 600, 610, 175)
+    AND GLT.GLAPPL NOT IN ('IU', 'CR');
+
+
+select * from GLACCT GLA where gla.gacdes like '%COGS - PROCESSING PUR PRICE VARIANC%'
+select * from GLACCT GLA where gla.gacct = 4103600000
