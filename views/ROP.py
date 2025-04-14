@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import altair as alt
+
 from sqlalchemy import create_engine
 
 # ---------- Titles for each query result ----------
@@ -20,7 +21,7 @@ server = "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com"
 database = "SigmaTB"
 username = "admin"
 password = "Er1c41234$"
-engine = create_engine(f"mssql+pymssql://{username}:{password}@{server}:1433/{database}")
+engine = create_engine(f"mssql+pytds://{username}:{password}@{server}:1433/{database}")
 
 # ---------- Input ----------
 item_id = st.text_input("Enter Item Number", value="50002")

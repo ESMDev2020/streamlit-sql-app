@@ -1322,6 +1322,8 @@ ORDER BY GLTRN#;
 
 /************************************************/
 -- Now I will try to add the description
+use sigmatb;
+
 SELECT
     -- Desc, ref
     GLDESC AS Title_GLDESC, 
@@ -1378,6 +1380,8 @@ ORDER BY GLTRN#;
 use SigmaTB;
 
 select * from GLTRANS WHERE GLTRANS.GLREF LIKE '%965943%'
+select GLTRN#, GLREF, GLCUST, * from GLTRANS WHERE gltrn# = 0 AND [GLPYY] = 25 AND [GLPMM] = 2
+
 select * from GLTRANS WHERE [GLAPPL]    LIKE '%IA%' AND GLPYY = 25 AND GLPMM = 2;
 
 select count(*) from gltrans

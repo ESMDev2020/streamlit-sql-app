@@ -11,7 +11,7 @@ Dashboard_page = st.Page(
 DashboardCosts_page = st.Page(
     page="views/DashboardCosts.py",
     title="Cost Dashboard",
-    default=True,
+    #default=True,
 )
 ROP_page = st.Page(
     page="views/ROP.py",

@@ -639,3 +639,114 @@ END
         select * from GLACCT GLA where gla.gacdes like '%COGS - PROCESSING PUR PRICE VARIANC%'
             select * from GLACCT GLA where gla.gacct = 4103600000
 
+
+SELECT *
+FROM OEOPNORD
+WHERE OOORDR IN (334622, 335295, 221719, 51257);
+
+SELECT *
+FROM ARCUST
+WHERE CCUST IN (334622, 335295, 221719, 51257);
+
+SELECT *
+FROM ITEMTAG
+WHERE ITEMTAG.ITAGN LIKE ('%334622%', '%335295%', '%221719%', '%51257%');
+
+SELECT TOP 1 * FROM GLHIST WHERE GLHISTID = 334622;
+
+
+
+ -- lets get the 380k - TOTAL
+        SELECT         
+            SUM(
+                CASE 
+                    WHEN GLCRDB = 'C' THEN -GLAMT
+                    WHEN GLCRDB = 'D' THEN GLAMT
+                    ELSE 0
+                END) AS AdjustedAmount 
+         
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+        WHERE GLA.GARP3 IN (500, 530, 600, 610)
+        AND GLT.[GLTRN#] = 0
+        AND GLT.GLPYY = 25
+        AND GLT.GLPMM = 2
+        ORDER BY
+            GARP3
+
+-- Lets get the 380k by GACDES
+        SELECT GLA.GACDES,
+            SUM(
+                CASE 
+                    WHEN GLCRDB = 'C' THEN +GLAMT
+                    WHEN GLCRDB = 'D' THEN -GLAMT
+                    ELSE 0
+                END) AS AdjustedAmount 
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+        WHERE GLA.GARP3 IN (500, 530, 600, 610)
+        AND GLT.[GLTRN#] = 0
+        AND GLT.GLPYY = 25
+        AND GLT.GLPMM = 2
+        GROUP BY GLA.GACDES;
+   
+-- Lets get the 380k by GLDESC -- all rows
+        SELECT GLT.GLDESC,
+            SUM(
+                CASE 
+                    WHEN GLCRDB = 'C' THEN +GLAMT
+                    WHEN GLCRDB = 'D' THEN -GLAMT
+                    ELSE 0
+                END) AS AdjustedAmount 
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+        WHERE GLA.GARP3 IN (500, 530, 600, 610)
+        AND GLT.[GLTRN#] = 0
+        AND GLT.GLPYY = 25
+        AND GLT.GLPMM = 2
+        GROUP BY GLT.GLDESC; -- ORDER BY GARP3
+
+
+-- Lets get the 380k by GLDESC -- only numeric rows
+    SELECT 
+        LTRIM(RTRIM(GLT.GLDESC)) AS GLDESC,
+        GLA.GACDES,
+        SUM(
+            CASE 
+                WHEN GLCRDB = 'C' THEN +GLAMT
+                WHEN GLCRDB = 'D' THEN -GLAMT
+                ELSE 0
+            END
+        ) AS AdjustedAmount 
+    FROM 
+        GLTRANS GLT
+    LEFT JOIN 
+        GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+    WHERE 
+        GLA.GARP3 IN (500, 530, 600, 610)
+        AND GLT.[GLTRN#] = 0
+        AND GLT.GLPYY = 25
+        AND GLT.GLPMM = 2
+        AND LEN(LTRIM(RTRIM(GLT.GLDESC))) <> 6  -- Exclude exactly 6-character trimmed values
+    GROUP BY 
+        LTRIM(RTRIM(GLT.GLDESC)), GLA.GACDES;
+
+
+
+
+
+-- no
+-- Lets get the 380k by GACDES
+        SELECT GLA.GACDES, 
+            SUM(glt.GLAMT)
+        FROM GLTRANS GLT
+        LEFT JOIN GLACCT GLA ON GLT.GLACCT = GLA.GACCT
+        WHERE GLA.GARP3 IN (500, 530, 600, 610)
+        AND GLT.[GLTRN#] = 0
+        AND GLT.GLPYY = 25
+        AND GLT.GLPMM = 2
+        GROUP BY GLA.GACDES; -- ORDER BY GARP3
+
+
+USE SigmaTB;
+SELECT DISTINCT(ITTDES) FROM ITEMTAG;

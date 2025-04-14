@@ -22,7 +22,7 @@ server = "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com"
 database = "SigmaTB"
 username = "admin"
 password = "Er1c41234$"
-engine = create_engine(f"mssql+pymssql://{username}:{password}@{server}:1433/{database}")
+engine = create_engine(f"mssql+pytds://{username}:{password}@{server}:1433/{database}")
 
 # ---------- SESSION STATE for interactive item click ----------
 if "selected_item" not in st.session_state:
