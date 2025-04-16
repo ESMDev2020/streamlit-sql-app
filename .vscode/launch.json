@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Streamlit App",
+      "type": "python",
+      "request": "launch",
+      "program": "/Library/Frameworks/Python.framework/Versions/3.13/bin/streamlit",
+      "args": [
+        "run",
+        "01_SigmaTBMain2.py"  // Replace with your Streamlit script name if different
+      ],
+      "console": "integratedTerminal"
+    }
+  ]
+}
+
