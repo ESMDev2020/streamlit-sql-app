@@ -28,3 +28,16 @@ WHERE
 GROUP BY 
     LTRIM(RTRIM(GLT.GLDESC)), 
     GLA.GACDES;
+
+
+
+--Example info
+
+BEGIN
+    USE SigmaTB;
+    SELECT * 
+    FROM [dbo].[z_General_Ledger_Transaction_File_____GLTRANS]
+    WHERE 
+        [Posting_Year_____GLPYY] = 25
+        AND [Posting_Month_____GLPMM] = 2
+END
