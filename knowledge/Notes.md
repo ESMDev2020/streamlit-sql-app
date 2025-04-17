@@ -237,32 +237,27 @@ STREAMLIT
      Add progress bar & messages when running cycles or multiple commands. 
 4.- Error handling
 	Add error control and description
+-----------------------
+REARRANGING IN FUNCTIONS AND SUBPROCEDURES
+- IMPORTS
+- CONSTANTS
+- FUNCTIONS
+- Function 1
+- Function 2
+- Function 3...n
+- if has a GUI like STREAMLIT UI, leave the code (for local testing) 
+- 
+------------------------
 
 email when finish
 add progress bar, messages and error control and description
-
------------------------
-REARRANGING IN FUNCTIONS AND SUBPROCEDURES
-
-------------------------
+---------------------------
 
 
 rearrange it like it is the file "01_SigmaTBMain2.py", meaning:
 
 
-- IMPORTS
 
-- CONSTANTS
-
-- FUNCTIONS
-
-- Function 1
-
-- Function 2
-
-- Function 3...n
-
-- STREAMLIT UI (for local testing) 
 
 ---------------------------------------------------------
 

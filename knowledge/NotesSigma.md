@@ -11,3 +11,6 @@ GLTRANS
 
 ----------------------------------------------------------------
 
+
+        myListSourceColumns     (  'Record_Code_____GLRECD', 'GLRECD', 1)
+        myStrSourceTableDesc    'z_General_Ledger_Transaction_File_____GLTRANS'

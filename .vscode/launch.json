@@ -1,23 +1,16 @@
 {
   "version": "0.2.0",
   "configurations": [
-    {
-      "name": "Python: Extended Properties Updater",
-      "type": "python",
-      "request": "launch",
-      "program": "${workspaceFolder}/extended_properties_updater.py",
-      "console": "integratedTerminal",
-      "justMyCode": true,
-      "python": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
-      "env": {
-        "PYTHONPATH": "${workspaceFolder}"
+      {
+          "name": "Python: Column Relationship Finder",
+          "type": "python",
+          "request": "launch",
+          "program": "${workspaceFolder}/column_relationship_finder.py",
+          "console": "integratedTerminal",
+          "justMyCode": true,
+          "env": {
+              "PYTHONPATH": "${workspaceFolder}"
+          }
       }
-    },
-    {
-      "name": "Python Debugger: Python File",
-      "type": "debugpy",
-      "request": "launch",
-      "program": "${file}"
-    }
   ]
 }

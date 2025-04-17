@@ -187,3 +187,5 @@ FROM
 USE SIGMATB;    
 Select count(*) from [z_A/P_History_____APHIST];
 
+USE SIGMATB;    
+select TOP(100) * FROM [z_General_Ledger_Transaction_File_____GLTRANS]
