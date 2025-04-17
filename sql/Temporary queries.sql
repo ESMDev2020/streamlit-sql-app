@@ -870,3 +870,92 @@ USE Sigmatb;
                              GLUSER, GLAPTR, GLTRN#, GLTRNT, GLTYPE, GLREF, GLRFYY, GLRFMM, GLRFDD, GLCUST, GLCRDB, GLAMT,
                              GLA.GACDES, GLA.GARP3
                     ORDER BY GLTRN#
+
+
+
+USE SigmaTB;
+select  [Transaction_#_____shordn], 
+        [Cust_P/O#_____SHORDN],
+        [Cust_P/O#_____SHCORD]
+        *  from 
+        [dbo].[z_Shipments_File_____SHIPMAST]
+WHERE Shipment_Year_____SHIPYY = 25
+AND shipment_Month_____SHIPMM = 2;
+
+/
+USE SigmaTB;
+
+
+
+/*********************************************************************
+SHIPMAST
+************************************************************************/
+
+
+SELECT
+
+    [Transaction_#_____SHORDN], 
+    [Cust_P/O#_____SHCORD], 
+    ITEM_NUMBER_____SHITEM, 
+    Shipment_Year_____SHIPYY, Shipment_Month_____SHIPMM, 
+	[3_POSITION_CLASS_____SHCLS3], Shipped_Qty_____SHSQTY,                                          -- SHIPPED_QTY_UOM_____SHUOM, 
+	Billing_Qty_____SHBQTY,                         --BILLING_QTY_UOM_____SHBUOM,  
+    Order_Qty_____SHOQTY,                           --ORDER_QTY_UOM_____SHOUOM, 
+	Shipped_Total_LBS_____SHTLBS, Shipped_Total_PCS_____SHTPCS, Shipped_Total_FTS_____SHTFTS, [Shipped_Total_Sq.Ft_____SHTSFT], 
+	[Theo._Meters_____SHTMTR], Theo_Kilos_____SHTKG, Actual_Scrap_LBS_____SHSCLB, Actual_Scrap_KGS_____SHSCKG, 
+    Material_Cost_Stock_____SHMCSS,Material_Sales_Stock_____SHMSLS,Sales_Qty_Stock_____SHSLSS, Sales_Weight_Stock_____SHSWGS,
+    [Adjusted_GP%_____SHADPC], UNIT_PRICE_____SHUNSP,    Actual_Scrap_Dollars_____SHSCDL, 
+
+
+	CUSTOMER_NUMBER_____SHCUST,  Outside_Salesman_____SHOUTS,  Date_Ordered_Century_____SHORCC, 
+	Date_Ordered_Year_____SHORYY, Date_Ordered_Month_____SHORMM, Date_Ordered_Day_____SHORDD, Prom_Date_Century_____SHPRCC, Prom_Date_Year_____SHPRYY, 
+	Prom_Date_Month_____SHPRMM, Prom_Date_Day_____SHPRDD, Date_Inv_Century_____SHIVCC, Date_Inv_Year_____SHIVYY, Date_Inv_Month_____SHIVMM, 
+	Date_Inv_Day_____SHIVDD,  Matl_Sales_Direct_____SHMSLD, 
+	Proc_Sales_Stock_____SHPSLS, Process_Sales_Direct_____SHPSLD, Other_Sales_Stock_____SHOSLS, Other__Sales_Direct_____SHOSLD, 
+	Discount_Sales_Stock_____SHDSLS, Discnt_Sales_Direct_____SHDSLD,  Material_Cost_Direct_____SHMCSD, 
+	[Freight-In_Cost_Direct_____SHFISD], [Frght-Out_Cost_Stock_____SHFOSS], [Frght-Out_Cost_Direct_____SHFOSD],
+	Fin_Scrap_Fctr_Stock_____SHFSFS, Fin_Scrap_Fctr_Direct_____SHFSFD, Processing_Cost_Stock_____SHPCSS, Processing_Cost_Direct_____SHPCSD, 
+	Other_Cost_Stock_____SHOCSS, Other_Cost_Direct_____SHOCSD, Admin_Burden_Stock_____SHADBS, Admin_Burden_Direct_____SHADBD, 
+	Oper_Burden_Stock_____SHOPBS, Oper_Burden_Direct_____SHOPBD, Inv_Adj_Stock_____SHIAJS, Inv_Adj_Direct_____SHIAJD, 
+	Sales_Qty_Direct_____SHSLSD,  Sales_Weight_Direct_____SHSWGD,  
+	Unit_Selling_Price_UOM_____SHUUOM, [S/A_addition_flag_____SHSAFL], [Century_added_to_S/A_____SHSACC], [Year_added_to_S/A_____SHSAYY], 
+	[Month_added_to_S/A_____SHSAMM], [Day_added_to_S/A_____SHSADD], [Freight_local+road_____SHFRGH], 
+    [Valid_Values_1_-_PRODUCT_NOT_STOCKED_____SHDBDC], [SHIP-TO_COUNTRY_____SHSCTY], Zip_Code_____SHZIP, 
+    Truck_Route_____SHTRCK, 
+    ADDRESS_ONE_____SHADR1, ADDRESS_TWO_____SHADR2, [Orig_cust#_____SHCSTO],
+
+	Order_designation_Code_____SHODES, Shop_OLD_____SHSHOP, [CUSTOMER_SHIP-TO_____SHSHTO], [BILL-TO_COUNTRY_____SHBCTY], 
+	[TEMP_SHIP-TO?_____SHTMPS], Sale_Territory_____SHSTER, Customer_Trade_____SHTRAD, [Bus._Potential_Class_____SHBPCC], EEC_Code_____SHEEC, 
+	Sector_Code_____SHSEC, Invoice_Type_____SHITYP, In_Sales_Dept_____SHDPTI, Out_Sales_Dept_____SHDPTO, [Orig_cust_dist#_____SHDSTO], 
+	[Orig_Slsmn_Dist_____SHSMDO], Orig_Slsmn_____SHSLMO, Inv_Comp_____SHICMP, 
+	 ADDRESS_THREE_____SHADR3, CITY_25_POS_____SHCITY, State_Code_____SHSTAT, Job_Name_____SHJOB, 
+	Shape_____SHSHAP,     Scrap_Flag_____SHSCRP, [Cutting/Process_Flag_____SHCUTC],
+    Processing_Charge_____SHPRCG, Handling_Charge_____SHHAND,    Frght_Sales_Stock_____SHFSLS, Frght_Sales_Direct_____SHFSLD,
+    [Freight-In_Cost_Stock_____SHFISS], [Freight-In_Cost_Direct_____SHFISD],[Frght-Out_Cost_Direct_____SHFOSD], [Frght-Out_Cost_Direct_____SHFOSD],
+    Fin_Scrap_Fctr_Direct_____SHFSFD
+FROM
+	SigmaTB.dbo.z_Shipments_File_____SHIPMAST T
+WHERE   
+    Shipment_Year_____SHIPYY = 25 
+    AND Shipment_Month_____SHIPMM = 2;
+
+GO
+
+
+SELECT DISTINCT([Customer_Dist_____SHCDIS]) FROM [dbo].[z_Shipments_File_____SHIPMAST] T;
+SELECT count(DISTINCT([Zip_Code_____SHZIP])) FROM [dbo].[z_Shipments_File_____SHIPMAST] ;
+
+ SELECT [Zip_Code_____SHZIP], 
+    ADDRESS_ONE_____SHADR1, 
+    ADDRESS_TWO_____SHADR2,
+    Truck_Route_____SHTRCK,
+    COUNT(*) as 'Registers' 
+FROM [dbo].[z_Shipments_File_____SHIPMAST] 
+GROUP BY [Zip_Code_____SHZIP], 
+    ADDRESS_ONE_____SHADR1, 
+    ADDRESS_TWO_____SHADR2,    -- Added this line to GROUP BY
+    Truck_Route_____SHTRCK
+ORDER BY [Zip_Code_____SHZIP],
+        ADDRESS_ONE_____SHADR1,
+        ADDRESS_TWO_____SHADR2,
+        Truck_Route_____SHTRCK;

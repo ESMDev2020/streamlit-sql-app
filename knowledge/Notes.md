@@ -267,6 +267,33 @@ rearrange it like it is the file "01_SigmaTBMain2.py", meaning:
 ---------------------------------------------------------
 
 
+SAVE GIT 
+git add .
+git commit -m "Your commit message"
+git push vssafe SigmaGit
+
+
+GITHUB
+My repository is SigmaTB_GitRepo
+    -1 branches
+        - SigmaBranch
+
+    LOCAL machine
+        Mac - SigmaTB_LocalRepo
+        
+
+    cd ~/Documents/GitHub/SigmaTB_LocalRepo
+    git init
+    git remote add origin https://github.com/ESMDev2020/SigmaTB_GitRepo.git
+    git remote -v
+    Branches:   https://github.com/ESMDev2020/SigmaTB_GitRepo/branches
+
+    update local clone
+    git branch -m SigmaGit SigmaBranch
+    git fetch origin
+    git branch -u origin/SigmaBranch SigmaBranch
+    git remote set-head origin -a
+
 CURSOR APP FOR PROGRAMMING
 
 
