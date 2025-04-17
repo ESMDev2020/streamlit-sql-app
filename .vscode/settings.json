@@ -1,0 +1,20 @@
+{
+    "sqltools.connections": [
+        {
+            "connectionTimeout": 15,
+            "mssqlOptions": {
+                "appName": "SQLTools",
+                "useUTC": true,
+                "encrypt": true,
+                "trustServerCertificate": true
+            },
+            "previewLimit": 50,
+            "server": "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com",
+            "port": 1433,
+            "driver": "MSSQL",
+            "name": "SigmaTB_AWS",
+            "database": "SigmaTB",
+            "username": "admin"
+        }
+    ]
+}
