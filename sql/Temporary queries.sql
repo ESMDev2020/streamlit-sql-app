@@ -959,3 +959,16 @@ ORDER BY [Zip_Code_____SHZIP],
         ADDRESS_ONE_____SHADR1,
         ADDRESS_TWO_____SHADR2,
         Truck_Route_____SHTRCK;
+
+
+
+
+
+USE SigmaTB;
+SELECT * FROM sys.extended_properties ep
+WHERE ep.major_id = 706101556
+
+AND ep.minor_id = 41
+AND ep.name = 'ATPTXA'
+
+

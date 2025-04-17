@@ -2,16 +2,22 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug Streamlit App",
+      "name": "Python: Extended Properties Updater",
       "type": "python",
       "request": "launch",
-      "program": "/Library/Frameworks/Python.framework/Versions/3.13/bin/streamlit",
-      "args": [
-        "run",
-        "01_SigmaTBMain2.py"  // Replace with your Streamlit script name if different
-      ],
-      "console": "integratedTerminal"
+      "program": "${workspaceFolder}/extended_properties_updater.py",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "python": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3",
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    },
+    {
+      "name": "Python Debugger: Python File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}"
     }
   ]
 }
-
