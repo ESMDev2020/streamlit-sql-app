@@ -291,7 +291,7 @@ Check extended properties for all tables
 -- WARNING: Backup database before running.
 -- WARNING: Uses non-standard approach of dynamic property names.
 -- =============================================
-USE YourDatabaseName; -- <<<<<<<<<<<< CHANGE THIS TO YOUR DATABASE NAME
+USE SigmaTB; -- <<<<<<<<<<<< CHANGE THIS TO YOUR DATABASE NAME
 GO
 
 BEGIN TRANSACTION;
