@@ -295,3 +295,5 @@ CURSOR APP FOR PROGRAMMING
 Print the names and values of an array in the debug console
 [print("\r\n".join(f"{k}: {v}" for k, v in item.items()) + "\r\n") for item in myListRelationships]
 
+terminal - pwd - local directory
+
