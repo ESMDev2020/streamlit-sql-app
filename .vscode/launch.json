@@ -5,7 +5,7 @@
           "name": "Python: Column Relationship Finder",
           "type": "python",
           "request": "launch",
-          "program": "${workspaceFolder}/column_relationship_finder.py",
+          "program": "${workspaceFolder}/python/Translate_Queries.py",
           "console": "integratedTerminal",
           "justMyCode": true,
           "env": {

@@ -14,6 +14,7 @@ from collections import defaultdict
 import sys
 from datetime import datetime
 import time
+import csv
 
 # ===================================================
 # CONSTANTS
@@ -42,6 +43,9 @@ myConListTargetColumns: List[str] = [
     'GLAMTQ'
 ]
 
+# Control Constants
+myConBoolExitAfterFirstMatch: bool = False  # Set to True to exit after first match, False to find all matches
+
 # ===================================================
 # FUNCTIONS
 # ===================================================
@@ -49,10 +53,10 @@ myConListTargetColumns: List[str] = [
 def fun_initialize_logging() -> None:
     """
     Initializes logging configuration for the application.
-    Sets up both file and console logging with debug level.
+    Sets up both file and console logging with info level.
     """
     logging.basicConfig(
-        level=logging.DEBUG,
+        level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
         handlers=[
             logging.FileHandler('column_relationships.log'),
@@ -71,12 +75,9 @@ def fun_get_column_code(myStrColumnName: str, myStrSeparator: str) -> str:
     Returns:
         The extracted code part of the column name
     """
-    #logging.debug(f"Extracting code from column: {myStrColumnName}")
     if myStrSeparator not in myStrColumnName:
-        #logging.debug(f"No separator found, returning full name: {myStrColumnName}")
         return myStrColumnName
     myStrCode: str = myStrColumnName.split(myStrSeparator)[-1]
-    #logging.debug(f"Extracted code: {myStrCode}")
     return myStrCode
 
 def fun_get_table_columns(myObjCursor, myStrTableName: str, myStrSeparator: str) -> List[Tuple[str, str, int]]:
@@ -91,7 +92,6 @@ def fun_get_table_columns(myObjCursor, myStrTableName: str, myStrSeparator: str)
     Returns:
         List of tuples containing (column_name, column_code, column_id)
     """
-    #logging.debug(f"Getting columns for table: {myStrTableName}")
     myStrQuery: str = """
     SELECT c.name, c.column_id
     FROM sys.columns c
@@ -104,9 +104,7 @@ def fun_get_table_columns(myObjCursor, myStrTableName: str, myStrSeparator: str)
     for myStrName, myIntColumnId in myObjCursor.fetchall():
         myStrCode: str = fun_get_column_code(myStrName, myStrSeparator)
         myListColumns.append((myStrName, myStrCode, myIntColumnId))
-        #logging.debug(f"Found column: {myStrName} (ID: {myIntColumnId}, Code: {myStrCode})")
     
-    #logging.debug(f"Total columns found: {len(myListColumns)}")
     return myListColumns
 
 def fun_get_table_description(myObjCursor, myStrTableName: str) -> str:
@@ -120,7 +118,6 @@ def fun_get_table_description(myObjCursor, myStrTableName: str) -> str:
     Returns:
         Table description or table name if no description exists
     """
-    #logging.debug(f"Getting description for table: {myStrTableName}")
     myStrQuery: str = """
     SELECT CAST(value AS NVARCHAR(MAX))
     FROM sys.extended_properties 
@@ -130,7 +127,6 @@ def fun_get_table_description(myObjCursor, myStrTableName: str) -> str:
     myObjCursor.execute(myStrQuery, (myStrTableName,))
     myObjResult = myObjCursor.fetchone()
     myStrDescription: str = myObjResult[0] if myObjResult else myStrTableName
-    #logging.debug(f"Table description: {myStrDescription}")
     return myStrDescription
 
 def fun_get_column_description(myObjCursor, myStrTableName: str, myIntColumnId: int) -> str:
@@ -145,7 +141,6 @@ def fun_get_column_description(myObjCursor, myStrTableName: str, myIntColumnId: 
     Returns:
         Column description or empty string if no description exists
     """
-    logging.debug(f"Getting description for column ID {myIntColumnId} in table {myStrTableName}")
     myStrQuery: str = """
     SELECT CAST(value AS NVARCHAR(MAX))
     FROM sys.extended_properties 
@@ -155,8 +150,61 @@ def fun_get_column_description(myObjCursor, myStrTableName: str, myIntColumnId: 
     myObjCursor.execute(myStrQuery, (myStrTableName, myIntColumnId))
     myObjResult = myObjCursor.fetchone()
     myStrDescription: str = myObjResult[0] if myObjResult else ''
-    logging.debug(f"Column description: {myStrDescription}")
     return myStrDescription
+
+def fun_get_table_XP_code(myObjCursor, myStrTableName: str) -> str:
+    """
+    Retrieves the code (extended property) of a table.
+    The code is the part after the separator in the table name.
+    
+    Args:
+        myObjCursor: Database cursor
+        myStrTableName: Name of the table
+        
+    Returns:
+        Table code (part after separator) or table name if no separator exists
+    """
+    if myConStrSeparator not in myStrTableName:
+        return myStrTableName
+    myStrTableCode: str = myStrTableName.split(myConStrSeparator)[-1]
+    return myStrTableCode
+
+def fun_get_column_XP_code(myObjCursor, myStrTableName: str, myIntColumnId: int, myStrColumnName: str) -> str:
+    """
+    Retrieves the code (extended property) of a column.
+    The code is the part after the separator in the column name.
+    
+    Args:
+        myObjCursor: Database cursor
+        myStrTableName: Name of the table
+        myIntColumnId: ID of the column
+        myStrColumnName: Full column name
+        
+    Returns:
+        Column code (part after separator) or column name if no separator exists
+    """
+    if myConStrSeparator not in myStrColumnName:
+        return myStrColumnName
+    myStrColumnCode: str = myStrColumnName.split(myConStrSeparator)[-1]
+    return myStrColumnCode
+
+def fun_compare_column_codes(myStrSourceCode: str, myStrTargetCode: str) -> bool:
+    """
+    Compares two column codes, allowing for different prefixes but matching the rest.
+    For example: GLTRANS.GLRECD and SHIPMAST.SHRECD would match because RECD is the same.
+    
+    Args:
+        myStrSourceCode: Source column code (e.g., 'GLRECD')
+        myStrTargetCode: Target column code (e.g., 'SHRECD')
+        
+    Returns:
+        True if the codes match (ignoring prefix), False otherwise
+    """
+    # Remove any prefix (first 2 characters) and compare the rest
+    myStrSourceBase = myStrSourceCode[2:] if len(myStrSourceCode) > 2 else myStrSourceCode
+    myStrTargetBase = myStrTargetCode[2:] if len(myStrTargetCode) > 2 else myStrTargetCode
+    
+    return myStrSourceBase == myStrTargetBase
 
 def fun_find_relationships(myStrConnectionString: str) -> List[Dict]:
     """
@@ -175,76 +223,88 @@ def fun_find_relationships(myStrConnectionString: str) -> List[Dict]:
     myListRelationships: List[Dict] = []
     
     try:
+        # Get total number of columns in tables starting with 'z_'
+        myStrQuery: str = """
+        SELECT COUNT(c.column_id) as total_columns
+        FROM sys.columns c
+        JOIN sys.tables t ON c.object_id = t.object_id
+        WHERE t.name LIKE 'z_%'
+        """
+        myObjCursor.execute(myStrQuery)
+        myIntTotalColumns = myObjCursor.fetchone()[0]
+        
+        # Calculate total iterations (columns * target columns to search)
+        myIntTotalIterations = myIntTotalColumns * len(myConListTargetColumns)
+        logging.info(f"Total columns in z_ tables: {myIntTotalColumns}")
+        logging.info(f"Total iterations to process: {myIntTotalIterations} (columns * target columns)")
+        
         # Get source table information
         logging.info(f"Starting relationship analysis for table {myConStrSourceTable}")
         myListSourceColumns = fun_get_table_columns(myObjCursor, myConStrSourceTable, myConStrSeparator)
         myStrSourceTableDesc = fun_get_table_description(myObjCursor, myConStrSourceTable)
         
         # Filter source columns
-        logging.debug("Filtering source columns")
         myListSourceColumns = [(myStrName, myStrCode, myIntColId) 
                               for myStrName, myStrCode, myIntColId in myListSourceColumns 
                               if myStrCode in myConListTargetColumns]
-        logging.debug(f"Filtered source columns: {myListSourceColumns}")
         
-        # Get all tables
-        logging.debug("Getting all tables in database")
-        myStrQuery: str = """
+        # Get all tables starting with 'z_'
+        myStrQuery = """
         SELECT TABLE_SCHEMA + '.' + TABLE_NAME
         FROM INFORMATION_SCHEMA.TABLES
         WHERE TABLE_TYPE = 'BASE TABLE'
+        AND TABLE_NAME LIKE 'z_%'
         AND TABLE_NAME != ?
         """
         myObjCursor.execute(myStrQuery, (myConStrSourceTable,))
         myListAllTables = [myStrRow[0] for myStrRow in myObjCursor.fetchall()]
-        logging.debug(f"Found {len(myListAllTables)} tables to analyze")
         
-        # Initialize counters
-        myIntTotalColumns: int = 0
-        myIntCurrentColumn: int = 0
+        # Initialize counter
+        myIntCurrentIteration: int = 0
         
         # Process each source column
         for myStrSourceName, myStrSourceCode, myIntSourceColId in myListSourceColumns:
-            logging.debug(f"\nAnalyzing source column: {myStrSourceName} (Code: {myStrSourceCode})")
             myStrSourceDesc = fun_get_column_description(myObjCursor, myConStrSourceTable, myIntSourceColId)
             
             # Process each target table
             for myStrTableName in myListAllTables:
-                #logging.debug(f"Checking table: {myStrTableName}")
                 myListTargetColumns = fun_get_table_columns(myObjCursor, myStrTableName, myConStrSeparator)
                 myStrTableDesc = fun_get_table_description(myObjCursor, myStrTableName)
                 
-                # Update total columns count
-                myIntTotalColumns += len(myListTargetColumns)
-                
                 # Check each target column
                 for myStrTargetName, myStrTargetCode, myIntTargetColId in myListTargetColumns:
-                    myIntCurrentColumn += 1
+                    myIntCurrentIteration += 1
                     
-                    # Log progress every 100 columns
-                    if myIntCurrentColumn % 1000 == 0:
-                        logging.info(f"Processing column {myIntCurrentColumn} of {myIntTotalColumns} ({(myIntCurrentColumn/myIntTotalColumns)*100:.1f}%)")
+                    # Log progress every 2000 iterations
+                    if myIntCurrentIteration % 2000 == 0:
+                        logging.info(f"Processing iteration {myIntCurrentIteration} of {myIntTotalIterations} ({(myIntCurrentIteration/myIntTotalIterations)*100:.1f}%)")
                     
-                    # Check for code match
-                    if myStrSourceCode == myStrTargetCode:
-                        logging.debug(f"MATCH FOUND: {myStrSourceCode} == {myStrTargetCode}")
+                    # Check for code match using the new comparison function
+                    if fun_compare_column_codes(myStrSourceCode, myStrTargetCode):
                         myStrTargetDesc = fun_get_column_description(myObjCursor, myStrTableName, myIntTargetColId)
                         
                         # Create relationship record
                         myDictRelationship = {
-                            'SourceTableName': myStrSourceTableDesc,
-                            'ForeignTableName': myStrTableDesc,
-                            'SourceColumnName': myStrSourceDesc,
-                            'ForeignColumnName': myStrTargetDesc,
-                            'SourceTableCode': myConStrSourceTable,
-                            'ForeignTableCode': myStrTableName,
-                            'SourceColumnCode': myStrSourceName,
-                            'ForeignColumnCode': myStrTargetName
+                            'Source_Table_Name': myConStrSourceTable,      # Table name
+                            'Foreign_Table_Name': myStrTableName,          # Table name
+                            'Source_Table_XP_Code': fun_get_table_XP_code(myObjCursor, myConStrSourceTable),  # Table XP code
+                            'Foreign_Table_XP_Code': fun_get_table_XP_code(myObjCursor, myStrTableName),      # Table XP code
+                            'Source_Column_Name': myStrSourceName,         # Full column name
+                            'Foreign_Column_Name': myStrTargetName,        # Full column name
+                            'Source_Column_XP_Code': fun_get_column_XP_code(myObjCursor, myConStrSourceTable, myIntSourceColId, myStrSourceName),  # Column XP code
+                            'Foreign_Column_XP_Code': fun_get_column_XP_code(myObjCursor, myStrTableName, myIntTargetColId, myStrTargetName)       # Column XP code
                         }
+                        # Print debug information for myDictRel
+                        logging.debug("Relationship Dictionary Contents:")
+                        for key, value in myDictRelationship.items():
+                            logging.debug(f"{key}: {value}")
                         myListRelationships.append(myDictRelationship)
-                        logging.info(f"Found relationship: {myStrSourceName} -> {myStrTargetName}")
-                    #else:
-                        #logging.debug(f"No match: {myStrSourceCode} != {myStrTargetCode}")
+                        logging.info(f"Found relationship: [{myStrSourceName}] -> [{myStrTargetName}]")
+                        
+                        # Exit after first match if configured
+                        if myConBoolExitAfterFirstMatch:
+                            logging.info("Exiting after first match as configured")
+                            return myListRelationships
         
         logging.info(f"Total relationships found: {len(myListRelationships)}")
         return myListRelationships
@@ -258,17 +318,51 @@ def fun_find_relationships(myStrConnectionString: str) -> List[Dict]:
 
 def sub_print_relationships(myListRelationships: List[Dict]) -> None:
     """
-    Prints the found relationships in a formatted way.
+    Prints the found relationships in a formatted way and saves to CSV.
     
     Args:
         myListRelationships: List of relationship dictionaries to print
     """
+    # Print to console
     print("\nFound Relationships:")
     print("=" * 100)
     for myDictRel in myListRelationships:
-        print(f"Source: {myDictRel['SourceTableName']}.{myDictRel['SourceColumnName']} ({myDictRel['SourceColumnCode']})")
-        print(f"Target: {myDictRel['ForeignTableName']}.{myDictRel['ForeignColumnName']} ({myDictRel['ForeignColumnCode']})")
+        print(f"Source: [{myDictRel['Source_Table_XP_Code']}].[{myDictRel['Source_Column_XP_Code']}] ->>>>>>>>>>> [{myDictRel['Foreign_Table_XP_Code']}].[{myDictRel['Foreign_Column_XP_Code']}]")
         print("-" * 100)
+    
+    # Save to CSV
+    myStrTimestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    myStrCsvFilename = f"column_relationships_{myStrTimestamp}.csv"
+    
+    with open(myStrCsvFilename, 'w', newline='') as myObjCsvFile:
+        myObjWriter = csv.writer(myObjCsvFile)
+        
+        # Write header
+        myObjWriter.writerow([
+            'Source Table XP Code',
+            'Source Column XP Code',
+            'Foreign Table XP Code',
+            'Foreign Column XP Code',
+            'Source Table Name',
+            'Source Column Name',
+            'Foreign Table Name',
+            'Foreign Column Name'
+        ])
+        
+        # Write data
+        for myDictRel in myListRelationships:
+            myObjWriter.writerow([
+                myDictRel['Source_Table_XP_Code'],
+                myDictRel['Source_Column_XP_Code'],
+                myDictRel['Foreign_Table_XP_Code'],
+                myDictRel['Foreign_Column_XP_Code'],
+                myDictRel['Source_Table_Name'],
+                myDictRel['Source_Column_Name'],
+                myDictRel['Foreign_Table_Name'],
+                myDictRel['Foreign_Column_Name']
+            ])
+    
+    print(f"\nResults have been saved to: {myStrCsvFilename}")
 
 def main():
     """

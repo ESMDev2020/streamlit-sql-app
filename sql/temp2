@@ -1,0 +1,113 @@
+USE SigmaTB;
+GO
+
+-- Declare input query (replace with your actual query containing table/column codes)
+DECLARE @InputQuery NVARCHAR(MAX) = 'SELECT GLTRNT, GLTRN# FROM GLTRANS WHERE GLTRN# IS NOT NULL;';
+PRINT '-- Declared @InputQuery: ' + @InputQuery;
+
+-- Extract the table name from the input query (assuming a simple SELECT ... FROM table_name ...)
+DECLARE @TableNameFromQuery NVARCHAR(128);
+SELECT @TableNameFromQuery = PARSENAME(OBJECT_NAME(OBJECT_ID(SUBSTRING(@InputQuery, CHARINDEX('FROM', @InputQuery) + 5, CHARINDEX(' ', @InputQuery, CHARINDEX('FROM', @InputQuery) + 6) - (CHARINDEX('FROM', @InputQuery) + 5)))), 1);
+PRINT '-- Extracted Table Name from Query: ' + ISNULL(@TableNameFromQuery, '(Could not extract table name)');
+
+-- Create a temporary table to store relevant column mappings for the specific table
+IF OBJECT_ID('tempdb..#ColumnMappingsForTable') IS NOT NULL
+    DROP TABLE #ColumnMappingsForTable;
+
+CREATE TABLE #ColumnMappingsForTable (
+    ColumnCode NVARCHAR(128),
+    ColumnName NVARCHAR(128),
+    ColumnDescription NVARCHAR(MAX)
+);
+PRINT '-- Created temporary table #ColumnMappingsForTable';
+
+-- Insert column information for the specific table into the temporary table
+IF @TableNameFromQuery IS NOT NULL
+BEGIN
+    INSERT INTO #ColumnMappingsForTable (ColumnCode, ColumnName, ColumnDescription)
+    SELECT
+        CONVERT(NVARCHAR(128), ep.name) AS ColumnCode,
+        CONVERT(NVARCHAR(128), c.name) AS ColumnName,
+        CONVERT(NVARCHAR(MAX), ep.value) AS ColumnDescription
+    FROM sys.columns AS c
+    INNER JOIN sys.tables AS t ON c.object_id = t.object_id
+    INNER JOIN sys.extended_properties AS ep
+        ON ep.major_id = c.object_id
+        AND ep.minor_id = c.column_id
+    WHERE t.name = @TableNameFromQuery
+      AND ep.class = 1;
+    PRINT '-- Populated #ColumnMappingsForTable with extended property data for table: ' + @TableNameFromQuery;
+END
+ELSE
+BEGIN
+    PRINT '-- Could not populate #ColumnMappingsForTable as table name extraction failed.';
+END;
+
+-- Declare a variable to hold the formatted query
+DECLARE @FormattedQuery NVARCHAR(MAX) = @InputQuery;
+PRINT '-- Initialized @FormattedQuery with the input query';
+
+-- Replace column codes with actual names and add column descriptions
+DECLARE @ColumnCode NVARCHAR(128);
+DECLARE @ColumnName NVARCHAR(128);
+DECLARE @ColumnDescription NVARCHAR(MAX);
+DECLARE @Descriptions NVARCHAR(MAX) = '';
+
+DECLARE column_cursor CURSOR FOR
+SELECT ColumnCode, ColumnName, ColumnDescription
+FROM #ColumnMappingsForTable;
+PRINT '-- Declared column cursor';
+
+OPEN column_cursor;
+PRINT '-- Opened column cursor';
+
+FETCH NEXT FROM column_cursor INTO @ColumnCode, @ColumnName, @ColumnDescription;
+PRINT '-- Fetched first column from cursor';
+
+WHILE @@FETCH_STATUS = 0
+BEGIN
+    PRINT '-- Processing column code: [' + ISNULL(@ColumnCode, '(null)') + '], name: [' + ISNULL(@ColumnName, '(null)') + ']';
+    PRINT '-- @FormattedQuery BEFORE replace: ' + @FormattedQuery;
+
+    -- Replace column codes with actual names
+    -- Handle different cases where the column code might appear
+    SET @FormattedQuery = REPLACE(@FormattedQuery, @ColumnCode, @ColumnName);
+    SET @FormattedQuery = REPLACE(@FormattedQuery, '[' + @ColumnCode + ']', '[' + @ColumnName + ']');
+    SET @FormattedQuery = REPLACE(@FormattedQuery, '"' + @ColumnCode + '"', '"' + @ColumnName + '"');
+    SET @FormattedQuery = REPLACE(@FormattedQuery, '''' + @ColumnCode + '''', '''' + @ColumnName + '''');
+
+    PRINT '-- @FormattedQuery AFTER replace: ' + @FormattedQuery;
+
+    IF @ColumnDescription IS NOT NULL
+    BEGIN
+        -- Accumulate descriptions with proper line breaks
+        SET @Descriptions = @Descriptions + '-- Column: [' + @ColumnName + '] - ' + @ColumnDescription + CHAR(13) + CHAR(10);
+        PRINT '-- Accumulated description for column: [' + @ColumnName + ']';
+    END
+
+    FETCH NEXT FROM column_cursor INTO @ColumnCode, @ColumnName, @ColumnDescription;
+    PRINT '-- Fetched next column from cursor';
+END;
+
+CLOSE column_cursor;
+DEALLOCATE column_cursor;
+PRINT '-- Closed and deallocated column cursor';
+
+-- Prepend accumulated descriptions to the final query with proper line breaks
+SET @FormattedQuery = @Descriptions + CHAR(13) + CHAR(10) + @FormattedQuery;
+PRINT '-- Prepended descriptions to the final query';
+
+-- Output the formatted query
+SELECT @FormattedQuery AS FormattedQuery;
+PRINT '-- Displayed the formatted query';
+
+-- Clean up temporary table
+IF OBJECT_ID('tempdb..#ColumnMappingsForTable') IS NOT NULL
+    DROP TABLE #ColumnMappingsForTable;
+PRINT '-- Dropped temporary table #ColumnMappingsForTable';
+
+
+-- Column: [GLAMTQ] - G/L Amount - Queries 
+--Column: [GLRFDD] - Reference Day
+-- Column: [GLRFMM] Reference Month
+-- Column: [GLRFYY] - Reference Year-- Column: [GLRFCC] - Reference Cent-- Column: [GLLOCK] - Lock Box Number-- Column: [GLAPTR] - A/P Trans-- Column: [GLCUST] - CUSTOMER NUMBER-- Column: [GLCDIS] - Cust Dist-- Column: [GLMLIN] - Main Line-- Column: [GLTRN#] - Trans#-- Column: [GLTRDS] - Trans Dist-- Column: [GLTYPE] - Order Type-- Column: [GLTRNT] - Transaction Type-- Column: [GLTIME] - Time-- Column: [GLUSER] - User-- Column: [GLDSP] - Display ID-- Column: [GLPGM] - Program ID-- Column: [GLEXTM] - Extract Time-- Column: [GLEXDT] - Extract Date-- Column: [GLRP#] - Related Party Customer or Vendor-- Column: [GLRPTY] - Related Parties-- Column: [GLREF] - Reference Number-- Column: [GLBTCH] - Batch Number-- Column: [GLBDIS] - Batch District-- Column: [GLDESC] - Vendor Name / Customer Name / Application-- Column: [GLSDD] - System Day-- Column: [GLSMM] - System Month-- Column: [GLSYY] - System Year-- Column: [GLPDD] - Posting Day-- Column: [GLPMM] - Posting Month-- Column: [GLPYY] - Posting Year-- Column: [GLPCC] - Posting Century-- Column: [GLAMT] - G/L Amount-- Column: [GLACCT] - G/L Account Number-- Column: [GLCRDB] - Credit / Debit Code-- Column: [GLCSTC] - Cost Center-- Column: [GLPPYY] - G/L Posting Year-- Column: [GLPERD] - G/L Posting Period-- Column: [GLAPPL] - Application Code-- Column: [GLDIST] - District Number-- Column: [GLCOMP] - Company Number-- Column: [GLRECD] - Record CodeSELECT GLTRNT, GLTRN# FROM GLTRANS WHERE GLTRN# IS NOT NULL;

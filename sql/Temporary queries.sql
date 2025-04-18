@@ -972,3 +972,54 @@ AND ep.minor_id = 41
 AND ep.name = 'ATPTXA'
 
 
+--We check the consistency of the data
+USE SigmaTB;
+SELECT DISTINCT(Record_Code_____GLRECD) FROM [dbo].[z_General_Ledger_Transaction_File_____GLTRANS]
+
+
+
+
+-- SP to find the count, and list, of unique values by column
+EXEC mysp_find_unique_values_table_column_by_code 
+    @InputTableCode = N'SHIPMAST',
+    @InputColumnCode = N'SHORDH';
+
+
+--ERRORS
+
+-- Translate querys from code to names
+EXEC sp_format_query_with_descriptions 
+    @InputQuery = 'SELECT SHORDN, SHCORD FROM SHIPMAST WHERE SHORDN IS NULL'
+
+
+USE SIGMATB;
+
+
+'EXEC my_sp_getXPfromObjects @InputSearchTerm = 'GLTRN#';'
+EXEC my_sp_getXPfromObjects 'GLTRANS'
+
+
+Use SigmaTB;
+SELECT [Transaction_Type_____GLTRNT], [Trans#_____GLTRN#] FROM myRenamedSchema.[z_General_Ledger_Transaction_File_____GLTRANS] WHERE [Trans#_____GLTRN#] IS NOT NULL AND myRenamedSchema.[z_General_Ledger_Transaction_File_____GLTRANS].[z_General_Ledger_Account_file_____GLACCT] = '12345';
+
+select top(1) * from myRenamedSchema.[z_General_Ledger_Transaction_File_____GLTRANS]
+
+
+
+
+ SELECT *
+                FROM sys.extended_properties AS ep
+                INNER JOIN sys.tables AS t ON ep.major_id = t.object_id
+                WHERE ep.class = 1
+                  AND ep.minor_id = 0
+                  AND ep.name = 'GLTRANS'
+
+
+
+
+-- Assume these variables are declared and populated beforehand:
+-- DECLARE @my_var_int_table_object_id int = OBJECT_ID('SchemaName.TableName'); -- e.g., get object_id for the target table
+-- DECLARE @my_var_nvarchar_column_name sql_variant = N'YourColumnXPValue'; -- e.g., the value like 'GLACCT' to find
+
+
+

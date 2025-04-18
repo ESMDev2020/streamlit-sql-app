@@ -1,40 +1,63 @@
--- ==================================================================
--- Create Helper Function to Derive Code for SigmaTB Database
--- ==================================================================
-USE SigmaTB; -- Database name updated
-GO
+-- Debug query for extended properties lookup
+-- This query tests the same logic as the stored procedure for column lookups
 
-IF OBJECT_ID('dbo.udf_GetDerivedCode', 'FN') IS NOT NULL
-    DROP FUNCTION dbo.udf_GetDerivedCode;
-GO
+USE sigmatb;
 
-CREATE FUNCTION dbo.udf_GetDerivedCode
-(
-    @OriginalName NVARCHAR(MAX),
-    @Separator NVARCHAR(5)
-)
-RETURNS NVARCHAR(128) -- Max length for extended property name
-AS
-BEGIN
-    DECLARE @DerivedCode NVARCHAR(128) = NULL;
+-- First, let's see all extended properties
+SELECT 
+    ep.name AS property_name,
+    ep.value AS property_value,
+    ep.class,
+    ep.major_id,
+    ep.minor_id
+FROM sys.extended_properties ep
+ORDER BY ep.name;
 
-    -- Check if separator exists to avoid errors with CHARINDEX returning 0
-    IF CHARINDEX(@Separator, @OriginalName) > 0
-    BEGIN
-        -- Calculate using RIGHT()
-        SET @DerivedCode = NULLIF(RIGHT(@OriginalName, CHARINDEX(REVERSE(@Separator), REVERSE(@OriginalName)) - 1), '');
-    END
-    -- ELSE: @DerivedCode remains NULL
+-- Now let's look for the specific property we're looking for
+SELECT 
+    ep.name AS property_name,
+    ep.value AS property_value,
+    ep.class,
+    ep.major_id,
+    ep.minor_id
+FROM sys.extended_properties ep
+WHERE ep.name = 'GLACCT'
+ORDER BY ep.name;
 
-    RETURN @DerivedCode;
-END;
-GO
+-- Let's see what objects these properties are attached to
+SELECT 
+    ep.name AS property_name,
+    ep.value AS property_value,
+    ep.class,
+    ep.major_id,
+    ep.minor_id,
+    CASE 
+        WHEN ep.minor_id = 0 THEN 'Table'
+        ELSE 'Column'
+    END AS object_type,
+    t.name AS table_name,
+    c.name AS column_name
+FROM sys.extended_properties ep
+LEFT JOIN sys.tables t ON ep.major_id = t.object_id
+LEFT JOIN sys.columns c ON ep.major_id = c.object_id AND ep.minor_id = c.column_id
+WHERE ep.name = 'GLACCT'
+ORDER BY ep.name;
 
-PRINT N'Function dbo.udf_GetDerivedCode created successfully in SigmaTB.';
-GO
-
-/***********************************************************************************
-NOW WE CREATE THE STORED PROCEDURE
-***********************************************************************************/
-
-
+-- Let's check all properties that might be related to our search
+SELECT 
+    ep.name AS property_name,
+    ep.value AS property_value,
+    ep.class,
+    ep.major_id,
+    ep.minor_id,
+    CASE 
+        WHEN ep.minor_id = 0 THEN 'Table'
+        ELSE 'Column'
+    END AS object_type,
+    t.name AS table_name,
+    c.name AS column_name
+FROM sys.extended_properties ep
+LEFT JOIN sys.tables t ON ep.major_id = t.object_id
+LEFT JOIN sys.columns c ON ep.major_id = c.object_id AND ep.minor_id = c.column_id
+WHERE ep.name LIKE '%GL%'
+ORDER BY ep.name;

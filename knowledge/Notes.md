@@ -225,6 +225,7 @@ STREAMLIT
 	Add comments describing what execution block does 
 2.- Naming convention
     All variables and constants must be explicity defined
+    All variables and constants must be declared at the beginning of the file, as well as initial values
 	Rename variables. They should start with "my" & "var" & datatype & name
 	Rename constants. They should start with "my" & "con" & datatype & name
 	Subprocedures and functions should start with "sub_" & name of subprocedure.
@@ -291,5 +292,6 @@ My repository is SigmaTB_GitRepo
 
 CURSOR APP FOR PROGRAMMING
 
+Print the names and values of an array in the debug console
+[print("\r\n".join(f"{k}: {v}" for k, v in item.items()) + "\r\n") for item in myListRelationships]
 
-This expanded document now includes common and important commands or functionalities associated with each application or concept in your list. Remember that the specific commands and options can be extensive, so this focuses on the most fundamental ones to get you started.
