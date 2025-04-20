@@ -1,0 +1,8 @@
+-------------------------------------------
+Translated query:
+SELECT TOP(100) [z_Customer_Master_File_____ARCUST].[z_Customer_Master_File_____ARCUST].NOT FOUND,],
+[z_Customer_Master_File_____ARCUST].[z_Customer_Master_File_____ARCUST].NOT FOUND,],
+[z_Customer_Master_File_____ARCUST].[z_Customer_Master_File_____ARCUST].NOT FOUND,],
+[z_Customer_Master_File_____ARCUST].[z_Customer_Master_File_____ARCUST].NOT FOUND],
+[z_Customer_Master_File_____ARCUST].[z_Customer_Master_File_____ARCUST];] FROM [z_Customer_Master_File_____ARCUST]
+---------------------------------------------

@@ -1023,3 +1023,14 @@ select top(1) * from myRenamedSchema.[z_General_Ledger_Transaction_File_____GLTR
 
 
 
+/*********************************************************************/
+USE SigmaTB;
+
+SELECT TOP(100) z_Shipments_File_____SHIPMAST.Transaction_#_____SHORDN
+from  myRenamedSchema.z_Shipments_File_____SHIPMAST
+
+
+
+
+
+

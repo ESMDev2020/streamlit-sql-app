@@ -209,7 +209,7 @@ WHERE TABLE_NAME LIKE 'z_%';
 
 
 /******************************************
-MOve from schema to schema
+MOve *z_* tables from dbo to myRenamedSchema
 ********************************************/
     USE SigmaTB;
     GO
@@ -289,3 +289,103 @@ MOve from schema to schema
     END CATCH;
 
     
+
+/******************************************
+Create Schema mrs and move all tables from myRenamedSchema to mrs
+********************************************/
+    USE SigmaTB;
+    GO
+
+    -- Create the new schema
+    CREATE SCHEMA mrs;
+    GO
+
+    PRINT 'Schema mrs created successfully';
+    GO
+
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        
+        -- Create a temporary table to store the tables to be moved
+        CREATE TABLE #TablesToMove (
+            TableName NVARCHAR(128),
+            OldSchema NVARCHAR(128),
+            NewSchema NVARCHAR(128)
+        );
+
+        -- Insert all tables from myRenamedSchema into the temporary table
+        INSERT INTO #TablesToMove (TableName, OldSchema, NewSchema)
+        SELECT 
+            t.name AS TableName,
+            s.name AS OldSchema,
+            'mrs' AS NewSchema
+        FROM sys.tables t
+        INNER JOIN sys.schemas s ON t.schema_id = s.schema_id
+        WHERE s.name = 'myRenamedSchema';
+
+        -- Declare variables for cursor
+        DECLARE @TableName NVARCHAR(128);
+        DECLARE @OldSchema NVARCHAR(128);
+        DECLARE @NewSchema NVARCHAR(128);
+        DECLARE @SQL NVARCHAR(MAX);
+
+        -- Create cursor to iterate through tables
+        DECLARE mrs_table_cursor CURSOR FOR
+        SELECT TableName, OldSchema, NewSchema
+        FROM #TablesToMove;
+
+        OPEN mrs_table_cursor;
+        FETCH NEXT FROM mrs_table_cursor INTO @TableName, @OldSchema, @NewSchema;
+
+        -- Move each table
+        WHILE @@FETCH_STATUS = 0
+        BEGIN
+            SET @SQL = 'ALTER SCHEMA ' + QUOTENAME(@NewSchema) + ' TRANSFER ' + QUOTENAME(@OldSchema) + '.' + QUOTENAME(@TableName);
+            EXEC sp_executesql @SQL;
+            PRINT 'Moved table ' + @TableName + ' from ' + @OldSchema + ' to ' + @NewSchema;
+
+            FETCH NEXT FROM mrs_table_cursor INTO @TableName, @OldSchema, @NewSchema;
+        END;
+
+        CLOSE mrs_table_cursor;
+        DEALLOCATE mrs_table_cursor;
+
+        -- Drop temporary table
+        DROP TABLE #TablesToMove;
+
+        -- Drop the old schema if it exists and is empty
+        IF EXISTS (SELECT * FROM sys.schemas WHERE name = 'myRenamedSchema')
+        BEGIN
+            -- Check if there are any objects left in the schema
+            IF NOT EXISTS (
+                SELECT 1 
+                FROM sys.objects o
+                INNER JOIN sys.schemas s ON o.schema_id = s.schema_id
+                WHERE s.name = 'myRenamedSchema'
+            )
+            BEGIN
+                EXEC('DROP SCHEMA myRenamedSchema');
+                PRINT 'Schema myRenamedSchema dropped successfully';
+            END
+            ELSE
+            BEGIN
+                PRINT 'Warning: Schema myRenamedSchema still contains objects and was not dropped';
+            END
+        END
+
+        -- If we get here, everything worked
+        COMMIT TRANSACTION;
+        PRINT 'All tables moved successfully to mrs schema';
+    END TRY
+    BEGIN CATCH
+        -- If there's an error, roll back the transaction
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+        
+        -- Print error information
+        PRINT 'Error occurred:';
+        PRINT 'Error Number: ' + CAST(ERROR_NUMBER() AS VARCHAR(10));
+        PRINT 'Error Message: ' + ERROR_MESSAGE();
+        PRINT 'Error Line: ' + CAST(ERROR_LINE() AS VARCHAR(10));
+    END CATCH;
+

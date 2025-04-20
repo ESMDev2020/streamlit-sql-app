@@ -5,7 +5,7 @@
 USE SigmaTB;
 GO
 
-CREATE OR ALTER PROCEDURE sp_format_query_with_descriptions
+CREATE OR ALTER PROCEDURE mysp_format_query_with_descriptions
     @InputQuery NVARCHAR(MAX)
 AS
 BEGIN

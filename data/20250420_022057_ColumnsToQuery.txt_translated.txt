@@ -1,0 +1,10 @@
+-------------------------------------------
+Translated query:
+SELECT TOP(100) [z_General_Ledger_Transaction_File_____GLTRANS].[z_General_Ledger_Account_file_____GLACCT],
+[z_General_Ledger_Transaction_File_____GLTRANS].[Batch_Number_____GLBTCH],
+[z_General_Ledger_Transaction_File_____GLTRANS].[Reference_Number_____GLREF],
+[z_General_Ledger_Transaction_File_____GLTRANS].[Transaction_Type_____GLTRNT],
+[z_General_Ledger_Transaction_File_____GLTRANS].[Trans#_____GLTRN#],
+[z_General_Ledger_Transaction_File_____GLTRANS].[G/L_Amount_____GLAMT],
+[z_General_Ledger_Transaction_File_____GLTRANS].[G/L_Amount_-_Queries_____GLAMTQ] FROM [z_General_Ledger_Transaction_File_____GLTRANS]
+---------------------------------------------

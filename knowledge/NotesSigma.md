@@ -9,6 +9,13 @@ PREFIX: GL
     - VALUES                                        
         - GLAMT             Amount                  454.11
         - GLAMTQ            Amount queries          -454.11
+    
+    Count_TotalGLRecords	    31951
+    Count_DistinctAccounts	    80
+    Count_DistinctBatches	    1635
+    Count_DistinctReferences	4222
+    Count_DistinctTransTypes	6
+    Count_DistinctTransNumbers	2980
 
 ----------------------------------------------------------------
 TABLE: SHIPMAST
@@ -51,7 +58,7 @@ PREFIX: SH
         - SHDSLD        	Discnt Sales Direct
         - SHMCSS	        Material Cost Stock
         - SHMCSD        	Material Cost Direct
-        - SHSLSS        Sales Qty Stock
+        - SHSLSS            Sales Qty Stock
         - SHSLSD        	Sales Qty Direct
         - SHSWGS	        Sales Weight Stock
         - SHSWGD        	Sales Weight Direct
@@ -63,7 +70,7 @@ PREFIX: SH
         - SHSCKG	        Actual Scrap KGS 
         - SHTRCK	        Truck Route
         - SHBCTY	        BILL-TO COUNTRY
-        - SHSCTY	        SHIP-TO COUNTRY
+        - SHSCTY	        S HIP-TO COUNTRY
         - SHDPTI	        In Sales Dept
         - SHDPTO	        Out Sales Dept
         - SHCSTO	        Orig cust#
@@ -74,7 +81,20 @@ PREFIX: SH
         - SHSTAT	        State Code
         - SHZIP	            Zip Code
 
+Count_TotalShipmentRecords	1509
+Count_DistinctOrders	1509
+Count_DistinctCustomers	240
+Count_DistinctSalesmen	8
+Count_DistinctRoutes	16
+Count_DistinctCountries	9
+Count_DistinctCities	91
+Count_DistinctStates	20
+Count_DistinctZipCodes	143
 
+
+python python/run_sql_generator.py
+python python/sql_translator.py
+translate_sql_components
 
 
 
@@ -131,3 +151,67 @@ Shipment Orders
         O	35          - Oval
         P	418         - Plate
         T	72946       - Tube
+
+
+--------------------------------------------
+SALES REPORT
+--------------------------------------------
+SELECT 
+    [z_Customer_Master_File_____ARCUST].[Customer_Alpha_Name_____CALPHA]
+    [z_Customer_Master_File_____ARCUST].[Salesman_One_District_Number_____CSMDI1], 
+    [z_Customer_Master_File_____ARCUST].[Salesman_One_Number_____CSLMN1], 
+    [z_Customer_Master_File_____ARCUST].[CUSTOMER_NUMBER_____CCUST]
+FROM 
+    [SigmaTB].mrs.[z_Customer_Master_File_____ARCUST];
+
+SELECT TOP(100) [z_Order_Detail_File_____OEDETAIL].[Order_Type_____ODTYPE],],
+[z_Order_Detail_File_____OEDETAIL].[ITEM_NUMBER_____ODITEM],],
+[z_Order_Detail_File_____OEDETAIL].[Transaction_#_____ODORDR],],
+[z_Order_Detail_File_____OEDETAIL].[TOTAL_LBS_____ODTLBS],],
+[z_Order_Detail_File_____OEDETAIL].[TOTAL_FTS_____ODTFTS]] FROM [z_Order_Detail_File_____OEDETAIL]
+
+SELECT TOP(100) [z_Open_Order_File_____OEOPNORD].[Record_Code_____OORECD],],
+[z_Open_Order_File_____OEOPNORD].[CUSTOMER_NUMBER_____OOCUST],],
+[z_Open_Order_File_____OEOPNORD].[ORDER_NUMBER_____OOORDR],],
+[z_Open_Order_File_____OEOPNORD].[ORDER_DATE_CENTURY_____OOOCC],],
+[z_Open_Order_File_____OEOPNORD].[ORDER_DATE_YEAR_____OOOYY],],
+[z_Open_Order_File_____OEOPNORD].[ORDER_DATE_MONTH_____OOOMM],],
+[z_Open_Order_File_____OEOPNORD].[ORDER_DATE_DAY_____OOODD]] FROM [z_Open_Order_File_____OEOPNORD]
+
+
+TABLE: ARCUST
+PREFIX: GL
+--ROP_query_
+--Sales Data	
+SELECT OEOPNORD.OORECD, OEDETAIL.ODTYPE, OEDETAIL.ODITEM, OEDETAIL.ODORDR, OEOPNORD.OOCUST, ARCUST.CALPHA, OEDETAIL.ODTLBS, OEDETAIL.ODTFTS, ooocc*1000000+oooyy*10000+ooomm*100+ooodd, csmdi1*100+cslmn1
+FROM ARCUST ARCUST, OEDETAIL OEDETAIL, OEOPNORD OEOPNORD
+WHERE OEDETAIL.ODORDR = OEOPNORD.OOORDR AND OEOPNORD.OOCUST = ARCUST.CCUST AND ((OEOPNORD.OORECD='A') AND (OEDETAIL.ODTYPE In ('A','C')))
+ORDER BY OEDETAIL.ODITEM
+
+
+
+
+SELECT 
+    [OEOPNORD].[OORECD], 
+    [OEDETAIL].[ODTYPE], 
+    [OEDETAIL].[ODITEM], 
+    [OEDETAIL].[ODORDR], 
+    [OEOPNORD].[OOCUST], 
+    [ARCUST].[CALPHA], 
+    [OEDETAIL].[ODTLBS], 
+    [OEDETAIL].[ODTFTS], 
+    [OEOPNORD].[OOOCC] * 1000000 + [OEOPNORD].[OOOYY] * 10000 + [OEOPNORD].[OOOMM] * 100 + [OEOPNORD].[OOODD], 
+    [ARCUST].[CSMDI1] * 100 + [ARCUST].[CSLMN1]
+FROM 
+    [ARCUST] [ARCUST], 
+    [OEDETAIL] [OEDETAIL], 
+    [OEOPNORD] [OEOPNORD]
+WHERE 
+    [OEDETAIL].[ODORDR] = [OEOPNORD].[OOORDR] 
+    AND [OEOPNORD].[OOCUST] = [ARCUST].[CCUST] 
+    AND (
+        [OEOPNORD].[OORECD] = 'A' 
+        AND [OEDETAIL].[ODTYPE] IN ('A', 'C')
+    )
+ORDER BY 
+    [OEDETAIL].[ODITEM];

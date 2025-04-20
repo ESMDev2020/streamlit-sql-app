@@ -1,62 +1,13 @@
-TABLE: SHIPMAST
-PREFIX: SH
-    - PK, FO
-        - SHORDN            Shipment order transaction# 804,176
-        - SHCORD            Customer PO             #########
-    - Date                  
-        - SHIPYY            
-        - SHIPMM            
-        - SHIPDD            
-    - Details               
-        - SHSHAP            shape                   T,B,
-        - SHINSM            Inside Salesman
-    - Core                  
-        - SHSQTY            Shipped quantity
-        - SHUOM                 
-        - SHBQTY            Billing qty
-        - SHBUOM            Billing qty uom
-        - SHOINC           Order quantity inches
-        - SHOQTY            Order quantity
-        - SHOUOM
-        - SHTLBS            Shipped total lbs
-        - SHTPCS            Shipped total PCS
-        - SHTFTS            Shipped total feet
-        - SHTSFT            Shipped total sq ft
-        - SHTMTR            Theo meters
-        - SHTKG             Theo kilos
-        - SHPRCG            Zero Processing Charge
-        - SHHAND            Zero Handling Charge
-        - SHMSLS	        Material Sales Stock
-        - SHMSLD	        Matl Sales Direct
-        - SHFSLS	        Frght Sales Stock
-        - SHFSLD	        Frght Sales Direct
-        - SHPSLS	        Proc Sales Stock
-        - SHPSLD	        Process Sales Direct
-        - SHOSLS	        Other Sales Stock
-        - SHOSLD	        Other  Sales Direct
-        - SHDSLS	        Discount Sales Stock
-        - SHDSLD        	Discnt Sales Direct
-        - SHMCSS	        Material Cost Stock
-        - SHMCSD        	Material Cost Direct
-        - SHSLSS        Sales Qty Stock
-        - SHSLSD        	Sales Qty Direct
-        - SHSWGS	        Sales Weight Stock
-        - SHSWGD        	Sales Weight Direct
-        - SHADPC        	Adjusted GP%
-        - SHUNSP        	UNIT PRICE
-        - SHUUOM	        Unit Selling Price UOM
-        - SHSCDL	        Actual Scrap Dollars
-        - SHSCLB	        Actual Scrap LBS
-        - SHSCKG	        Actual Scrap KGS 
-        - SHTRCK	        Truck Route
-        - SHBCTY	        BILL-TO COUNTRY
-        - SHSCTY	        SHIP-TO COUNTRY
-        - SHDPTI	        In Sales Dept
-        - SHDPTO	        Out Sales Dept
-        - SHCSTO	        Orig cust#
-        - SHADR1	        ADDRESS ONE
-        - SHADR2	        ADDRESS TWO
-        - SHADR3	        ADDRESS THREE
-        - SHCITY	        CITY 25 POS
-        - SHSTAT	        State Code
-        - SHZIP	            Zip Code
+TABLE: OEOPNORD
+PREFIX: OO
+
+SELECT 
+    [OEOPNORD].[OORECD], 
+    [OEOPNORD].[OOCUST], 
+    [OEOPNORD].[OOORDR], 
+    [OEOPNORD].[OOOCC], 
+    [OEOPNORD].[OOOYY], 
+    [OEOPNORD].[OOOMM], 
+    [OEOPNORD].[OOODD]
+FROM 
+    [OEOPNORD];

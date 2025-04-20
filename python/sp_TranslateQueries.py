@@ -54,6 +54,7 @@ my_var_list_output_data = []
 my_var_tuple_item = None
 my_var_str_modified_query = ""
 
+
 def fun_get_xp_info(my_var_str_connection_string, my_var_str_sql_statement, my_var_str_output_format):
     """
     Description:

@@ -2,12 +2,13 @@
   "version": "0.2.0",
   "configurations": [
       {
-          "name": "Python: Column Relationship Finder",
+          "name": "Python: Current File",
           "type": "python",
           "request": "launch",
-          "program": "${workspaceFolder}/python/my_py_all_functions.py",
+          "program": "${file}",
           "console": "integratedTerminal",
-          "justMyCode": true,
+          "justMyCode": false,
+          "stopOnEntry": true,
           "env": {
               "PYTHONPATH": "${workspaceFolder}"
           }

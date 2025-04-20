@@ -1,45 +1,13 @@
-/*********************************************************
-THIS RETURNS BOTH, THE TABLE AND COLUMN NAME BASED ON CODE
-*******************************************************/
-USE SigmaTB;
-GO
 
-CREATE OR ALTER PROCEDURE mysp_find_table_column_by_code
-    @InputTableCode SYSNAME,
-    @InputColumnCode SYSNAME
-AS
-BEGIN
-    SET NOCOUNT ON;
+--NOooooooooo
+EXEC mysp_format_query_with_descriptions @InputQuery = N'SELECT TOP(100) [SHIPMAST].[SHIPMAST], [SHIPMAST].[SH], [SHIPMAST].[SHORDN], [SHIPMAST].[Shipment], [SHIPMAST].[SHCORD], [SHIPMAST].[SHIPYY], [SHIPMAST].[SHIPMM], [SHIPMAST].[SHIPDD], [SHIPMAST].[SHSHAP], [SHIPMAST].[shape], [SHIPMAST].[SHINSM], [SHIPMAST].[SHSQTY], [SHIPMAST].[Shipped], [SHIPMAST].[SHUOM], [SHIPMAST].[SHBQTY], [SHIPMAST].[SHBUOM], [SHIPMAST].[SHOINC], [SHIPMAST].[SHOQTY], [SHIPMAST].[SHOUOM], [SHIPMAST].[SHTLBS], [SHIPMAST].[SHTPCS], [SHIPMAST].[SHTFTS], [SHIPMAST].[SHTSFT], [SHIPMAST].[SHTMTR], [SHIPMAST].[SHTKG], [SHIPMAST].[SHPRCG], [SHIPMAST].[SHHAND], [SHIPMAST].[SHMSLS], [SHIPMAST].[SHMSLD], [SHIPMAST].[SHFSLS], [SHIPMAST].[SHFSLD], [SHIPMAST].[SHPSLS], [SHIPMAST].[SHPSLD], [SHIPMAST].[SHOSLS], [SHIPMAST].[SHOSLD], [SHIPMAST].[SHDSLS], [SHIPMAST].[SHDSLD], [SHIPMAST].[SHMCSS], [SHIPMAST].[SHMCSD], [SHIPMAST].[SHSLSS], [SHIPMAST].[SHSLSD], [SHIPMAST].[SHSWGS], [SHIPMAST].[SHSWGD], [SHIPMAST].[SHADPC], [SHIPMAST].[SHUNSP], [SHIPMAST].[SHUUOM], [SHIPMAST].[SHSCDL], [SHIPMAST].[SHSCLB], [SHIPMAST].[SHSCKG], [SHIPMAST].[SHTRCK], [SHIPMAST].[SHBCTY], [SHIPMAST].[SHSCTY], [SHIPMAST].[SHIP-TO], [SHIPMAST].[SHDPTI], [SHIPMAST].[SHDPTO], [SHIPMAST].[SHCSTO], [SHIPMAST].[SHADR1], [SHIPMAST].[SHADR2], [SHIPMAST].[SHADR3], [SHIPMAST].[SHCITY], [SHIPMAST].[SHSTAT], [SHIPMAST].[SHZIP]
+FROM [SHIPMAST]'
 
-    SELECT TOP 1
-        s.name AS SchemaName,
-        @InputTableCode AS FoundTableCode,
-        ep_t.value AS TableDescription,
-        @InputColumnCode AS FoundColumnCode,
-        ep_c.value AS ColumnDescription
-    FROM
-        sys.extended_properties AS ep_t
-    INNER JOIN
-        sys.tables AS t ON ep_t.major_id = t.object_id
-    INNER JOIN
-        sys.schemas AS s ON t.schema_id = s.schema_id
-    INNER JOIN
-        sys.columns AS c ON t.object_id = c.object_id
-    INNER JOIN
-        sys.extended_properties AS ep_c
-        ON ep_c.major_id = c.object_id
-        AND ep_c.minor_id = c.column_id
-    WHERE
-        ep_t.class = 1
-        AND ep_t.minor_id = 0
-        AND ep_t.name = @InputTableCode
-        AND ep_c.class = 1
-        AND ep_c.name = @InputColumnCode;
-END;
-GO
+--Rename
+EXEC sp_rename 'dbo.sp_format_query_with_descriptions', 'mysp_format_query_with_descriptions';
 
 
-
+EXEC sp_format_query_with_descriptions @InputQuery = N'SELECT TOP(100) ... FROM [SHIPMAST]'
 
 /********************************************************
 CHECK XP PROPERTIES
@@ -98,6 +66,8 @@ EXEC mysp_find_unique_values_table_column_by_code
     @InputColumnDescription = 'Shipment Flag'
     
 
-my_sp_getXPfromObjects
-mysp_find_table_column_by_code
-sp_format_query_with_descriptions
+EXEC my_sp_getXPfromObjects  'SHIPMAST', 'table', 'code'        -- bad
+EXEC my_sp_getXPfromObjects @lookfor = '[GLTRANS].[GLACCT]', @isobject = 'column', @returnvalue = 'name';
+
+EXEC mysp_find_table_column_by_code    'SHIPMAST', 'SHPFLG'  
+EXEC sp_format_query_with_descriptions 'SELECT TOP(100) [SHIPMAST].[SHIPMAST], [SHIPMAST].[SH], [SHIPMAST].[SHORDN], [SHIPMAST].[Shipment], [SHIPMAST].[SHCORD], [SHIPMAST].[SHIPYY], [SHIPMAST].[SHIPMM], [SHIPMAST].[SHIPDD], [SHIPMAST].[SHSHAP], [SHIPMAST].[shape], [SHIPMAST].[SHINSM], [SHIPMAST].[SHSQTY], [SHIPMAST].[Shipped], [SHIPMAST].[SHUOM], [SHIPMAST].[SHBQTY
