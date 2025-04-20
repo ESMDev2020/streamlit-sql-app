@@ -768,3 +768,30 @@ SELECT TOP 100
     SHJOB AS SHJOB_Job_Name
 FROM SHIPMAST
 WHERE SHORDN > 950000;
+
+
+
+/*******************************************************
+LETS CHECK IF THE COLUMN VALUE MATCHES IN DIFFERENT TABLES
+*********************************************************/
+USE SIGMATB;
+
+SELECT 
+    t1.[G/L_Account_Number_____GLACCT], 
+    t2.[G/L_Account_Number_____GLACCT]
+FROM 
+    [z_General_Ledger_Transaction_File_____GLTRANS] AS t1 -- Alias t1
+INNER JOIN 
+    [z_mp_debits/credits_from_gl_trans_file_____GLDEBCRED] AS t2 -- Alias t2
+    -- Explicit JOIN condition:
+    ON t1.[G/L_Account_Number_____GLACCT] = t2.[G/L_Account_Number_____GLACCT] 
+WHERE 
+    -- Filter condition applied after joining:
+    t1.[G/L_Posting_Year_____GLPPYY] = 25;
+
+
+
+
+
+SELECT TOP (1) [G/L_Account_Number_____GLACCT] FROM [z_General_Ledger_Transaction_File_____GLTRANS]
+SELECT TOP (1) [G/L_Account_Number_____GLACCT] FROM [z_mp_debits/credits_from_gl_trans_file_____GLDEBCRED]

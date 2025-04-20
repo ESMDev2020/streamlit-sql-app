@@ -32781,25 +32781,159 @@ CHECK THE RESULT
 *******************************************************************/
 
 --check descriptions
-SELECT t.name AS TableName, c.name AS ColumnName, ep.value AS Description
+USE SigmaTB;
+SELECT t.name AS TableName, c.name AS ColumnName, ep.name, ep.value 
 FROM sys.columns c
 JOIN sys.tables t ON c.object_id = t.object_id
 LEFT JOIN sys.extended_properties ep 
     ON ep.major_id = c.object_id 
     AND ep.minor_id = c.column_id 
-    AND ep.name = 'MS_Description'
-WHERE t.name = 'GLTRANS';
+WHERE t.name = 'z_mp_debits/credits_from_gl_trans_file_____GLDEBCRED';
 
 
 
 
 
 
+USE SigmaTB; -- Make sure this is the correct database context
+
+SELECT 
+    t.name AS TableName, 
+    -- Table's Extended Properties
+    ep_t.name AS TablePropName, 
+    ep_t.value AS TablePropValue, 
+    -- Column Details
+    c.name AS ColumnName, 
+    -- Column's Extended Properties
+    ep_c.name AS ColumnPropName, 
+    ep_c.value AS ColumnPropValue
+FROM 
+    sys.tables t
+INNER JOIN 
+    sys.columns c ON c.object_id = t.object_id -- Join tables and columns
+LEFT JOIN 
+    sys.extended_properties ep_c -- Join for COLUMN properties
+    ON ep_c.major_id = c.object_id 
+    AND ep_c.minor_id = c.column_id 
+    AND ep_c.class = 1 -- class 1 = Object or column
+LEFT JOIN 
+    sys.extended_properties ep_t -- Join again for TABLE properties
+    ON ep_t.major_id = t.object_id -- Match the table
+    AND ep_t.minor_id = 0          -- minor_id = 0 means property is ON THE TABLE itself
+    AND ep_t.class = 1             -- class 1 = Object or column
+WHERE 
+    t.name = 'z_mp_debits/credits_from_gl_trans_file_____GLDEBCRED'; -- Filter for the specific table
 
 
 
+/********************************************************
+THIS RETURNS THE TABLE OR COLUMN DESCRIPTION BASED ON THE CODE
+*********************************************************/
+    USE SigmaTB; -- Make sure this is the correct database context
+    GO
+
+    -- Declare parameters to hold your input
+    DECLARE @InputCode SYSNAME = N'GLACCT'; -- <<<<<< CHANGE THIS to the Code you want to search for
+    DECLARE @InputObjectType VARCHAR(10) = N'Column'; -- <<<<<< CHANGE THIS to 'Table' or 'Column'
+
+    -- ==================================================
+    -- Search based on the Input Object Type
+    -- ==================================================
+
+    IF UPPER(@InputObjectType) = 'TABLE'
+    BEGIN
+        PRINT N'Searching for TABLE with Code: ' + @InputCode;
+
+        SELECT 
+            s.name AS SchemaName,
+            t.name AS ObjectName, -- The actual table name
+            ep.value AS ObjectDescription -- The description stored in the value field
+        FROM 
+            sys.extended_properties AS ep
+        INNER JOIN 
+            sys.tables AS t ON ep.major_id = t.object_id
+        INNER JOIN
+            sys.schemas AS s ON t.schema_id = s.schema_id
+        WHERE 
+            ep.class = 1          -- Class 1 = Object or Column
+            AND ep.minor_id = 0   -- minor_id = 0 means property is ON THE TABLE itself
+            AND ep.name = @InputCode; -- Filter by the Code (stored in the property name)
+
+    END
+    ELSE IF UPPER(@InputObjectType) = 'COLUMN'
+    BEGIN
+        PRINT N'Searching for COLUMN with Code: ' + @InputCode;
+
+        SELECT 
+            s.name AS SchemaName,
+            t.name AS TableName,       -- Table context for the column
+            c.name AS ObjectName,      -- The actual column name
+            ep.value AS ObjectDescription -- The description stored in the value field
+        FROM 
+            sys.extended_properties AS ep
+        INNER JOIN 
+            sys.columns AS c ON ep.major_id = c.object_id AND ep.minor_id = c.column_id
+        INNER JOIN
+            sys.tables AS t ON c.object_id = t.object_id -- Join back to tables to get TableName
+        INNER JOIN
+            sys.schemas AS s ON t.schema_id = s.schema_id
+        WHERE 
+            ep.class = 1          -- Class 1 = Object or Column
+            -- minor_id > 0 is implied by the join to sys.columns on minor_id = column_id
+            AND ep.name = @InputCode; -- Filter by the Code (stored in the property name)
+
+    END
+    ELSE
+    BEGIN
+        -- Handle invalid input type
+        PRINT N'Error: Invalid object type specified. Please use ''Table'' or ''Column''.';
+    END
+    GO
 
 
+/*********************************************************
+THIS RETURNS BOTH, THE TABLE AND COLUMN NAME BASED ON CODE
+*******************************************************/
+    USE SigmaTB; -- Make sure this is the correct database context
+    GO
+
+    -- Declare parameters to hold your input codes
+    DECLARE @InputTableCode SYSNAME = N'GLDEBCRED'; -- <<<<<< CHANGE THIS to the Table Code
+    DECLARE @InputColumnCode SYSNAME = N'GLACCT';    -- <<<<<< CHANGE THIS to the Column Code
+
+    -- ==================================================
+    -- Find Table and Column Descriptions based on Codes
+    -- ==================================================
+
+    SELECT TOP 1 -- Added TOP 1 in case of unexpected duplicate properties (shouldn't happen with unique codes)
+        s.name AS SchemaName,
+        @InputTableCode AS FoundTableCode,
+        ep_t.value AS TableDescription,          -- The Table Name/Description from the property value
+        -- t.name AS ActualSystemTableName,      -- Uncomment if you also want the actual system table name
+        @InputColumnCode AS FoundColumnCode,
+        ep_c.value AS ColumnDescription         -- The Column Name/Description from the property value
+        -- c.name AS ActualSystemColumnName     -- Uncomment if you also want the actual system column name
+    FROM 
+        sys.extended_properties AS ep_t -- Start with table properties matching the table code
+    INNER JOIN 
+        sys.tables AS t ON ep_t.major_id = t.object_id -- Find the table
+    INNER JOIN 
+        sys.schemas AS s ON t.schema_id = s.schema_id -- Get schema name
+    INNER JOIN 
+        sys.columns AS c ON t.object_id = c.object_id -- Find columns within that table
+    INNER JOIN 
+        sys.extended_properties AS ep_c -- Find column properties matching the column code
+        ON ep_c.major_id = c.object_id 
+        AND ep_c.minor_id = c.column_id
+    WHERE 
+        ep_t.class = 1             -- Property is on an Object or Column
+        AND ep_t.minor_id = 0      -- Ensure ep_t is a TABLE property
+        AND ep_t.name = @InputTableCode -- Filter TABLE property by Table Code
+        AND ep_c.class = 1             -- Property is on an Object or Column
+        AND ep_c.name = @InputColumnCode; -- Filter COLUMN property by Column Code 
+                                          -- AND ensure it's linked via the joins to the SAME table as ep_t
+
+    GO
 
 
 
