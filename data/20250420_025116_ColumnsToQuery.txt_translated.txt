@@ -1,0 +1,10 @@
+-------------------------------------------
+Translated query:
+SELECT TOP(100) [z_Open_Order_File_____OEOPNORD].[Record_Code_____OORECD],],
+[z_Open_Order_File_____OEOPNORD].[CUSTOMER_NUMBER_____OOCUST],],
+[z_Open_Order_File_____OEOPNORD].[ORDER_NUMBER_____OOORDR],],
+[z_Open_Order_File_____OEOPNORD].[ORDER_DATE_CENTURY_____OOOCC],],
+[z_Open_Order_File_____OEOPNORD].[ORDER_DATE_YEAR_____OOOYY],],
+[z_Open_Order_File_____OEOPNORD].[ORDER_DATE_MONTH_____OOOMM],],
+[z_Open_Order_File_____OEOPNORD].[ORDER_DATE_DAY_____OOODD]] FROM [z_Open_Order_File_____OEOPNORD]
+---------------------------------------------

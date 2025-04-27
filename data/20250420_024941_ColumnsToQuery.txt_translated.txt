@@ -1,0 +1,8 @@
+-------------------------------------------
+Translated query:
+SELECT TOP(100) [z_Order_Detail_File_____OEDETAIL].[Order_Type_____ODTYPE],],
+[z_Order_Detail_File_____OEDETAIL].[ITEM_NUMBER_____ODITEM],],
+[z_Order_Detail_File_____OEDETAIL].[Transaction_#_____ODORDR],],
+[z_Order_Detail_File_____OEDETAIL].[TOTAL_LBS_____ODTLBS],],
+[z_Order_Detail_File_____OEDETAIL].[TOTAL_FTS_____ODTFTS]] FROM [z_Order_Detail_File_____OEDETAIL]
+---------------------------------------------

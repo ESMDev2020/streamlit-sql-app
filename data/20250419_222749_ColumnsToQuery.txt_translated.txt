@@ -1,0 +1,4 @@
+-------------------------------------------
+Translated query:
+No table or column references found in the query.
+---------------------------------------------
