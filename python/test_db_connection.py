@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine, text
 
 # Database connection parameters
-DB_SERVER = "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com"
+DB_SERVER = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com"
 DB_DATABASE = "SigmaTB"
 DB_USERNAME = "admin"
 DB_PASSWORD = "Er1c41234$"

@@ -165,7 +165,7 @@ def main():
     # ODBC connection string
     connection_string = (
         "Driver={ODBC Driver 17 for SQL Server};"
-        "Server=database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com;"
+        "Server=database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com;"
         "Database=SigmaTB;"
         "UID=admin;"
         "PWD=Er1c41234$;"

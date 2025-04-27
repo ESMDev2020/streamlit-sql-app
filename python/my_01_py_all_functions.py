@@ -28,7 +28,7 @@ myCon_booShouldSave = True # Set to True to enable saving and SP call
 
 # --- Database Connection Constants ---
 myCon_strDbDriver = '{ODBC Driver 17 for SQL Server}' # Adjust if needed
-myCon_strDbServer = "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com"
+myCon_strDbServer = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com"
 myCon_strDbDatabase = "SigmaTB"
 myCon_strDbUsername = "admin"
 # !!! SECURITY WARNING: Avoid hardcoding passwords in production code !!!

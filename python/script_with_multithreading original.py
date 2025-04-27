@@ -1,5 +1,3 @@
-
-
 # -*- coding: utf-8 -*-
 """
 MIGRATION SCRIPT WITH MULTITHREADING SUPPORT
@@ -38,10 +36,7 @@ import winsound  # For Windows beep sound
 import time  # For retry delays
 import threading
 import re   # For regular expressions
-from concurrent.futures import ThreadPoolExecutor
-
 print_lock = threading.Lock()
-output_lock = threading.Lock()
 
 # --------------------------------------------
 # CONSTANTS
@@ -54,7 +49,7 @@ myCon_intAS400Timeout = 30  # AS400 connection timeout in seconds
 # SQL Server connection settings
 myCon_strSQLDriver = "{ODBC Driver 17 for SQL Server}"  # SQL Server driver
 #myCon_strSQLServer = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com,1433"  # SQL Server address
-myCon_strSQLServer = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com,1433"  # SQL Server address
+myCon_strSQLServer = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com, 1433"  # SQL Server address
 myCon_strSQLDb = "SigmaTB"  # SQL Server database name
 myCon_strSQLUid = "admin"  # SQL Server user ID
 myCon_strSQLPwd = "Er1c41234$"  # SQL Server password
@@ -67,7 +62,7 @@ myCon_intBatchSize = 1000  # Batch size for data processing. Higher values impro
                             # Consider system resources and database limits when adjusting this value.
                             # Current value: 50,000 rows per batch
 myCon_strLogFilePath = "failed_inserts.log"  # Path for error logging
-myCon_intMaxThreads = 1  # Set to 1 for debugging purposes
+myCon_intMaxThreads = 1  # Increased maximum number of concurrent threads for better parallel processing
 myCon_strReportPath = "migration_report.csv"  # Path for migration report
 myCon_intMaxRetries = 3  # Maximum number of retries for failed tables
 myCon_intRetryDelay = 5  # Delay between retries in seconds
@@ -93,7 +88,7 @@ def fun_connect_as400():
         my_var_objConn = pyodbc.connect(my_var_strConnStr, autocommit=False)
         return my_var_objConn
     except Exception as my_var_errException:
-        with print_lock:(f"Error connecting to AS400: {str(my_var_errException)}")
+        print(f"Error connecting to AS400: {str(my_var_errException)}")
         return None
 def fun_connect_sql_server():
     """
@@ -117,7 +112,7 @@ def fun_connect_sql_server():
         my_var_objConn = pyodbc.connect(my_var_strConnStr, autocommit=False)
         return my_var_objConn
     except Exception as my_var_errException:
-        with print_lock:(f"Error connecting to SQL Server: {str(my_var_errException)}")
+        print(f"Error connecting to SQL Server: {str(my_var_errException)}")
         return None
 def fun_sanitize_table_name(my_var_strName):
     """
@@ -144,7 +139,7 @@ def fun_get_table_rowcount(my_var_objCursor, my_var_strSchema, my_var_strTable):
         my_var_objCursor.execute(my_var_strSQL)
         return my_var_objCursor.fetchone()[0]
     except Exception as e:
-        with print_lock:(f"Error getting row count: {str(e)}")
+        print(f"Error getting row count: {str(e)}")
         return -1
 def fun_get_table_description(my_var_objCursor, my_var_strSchema, my_var_strTable):
     """
@@ -167,7 +162,7 @@ def fun_get_table_description(my_var_objCursor, my_var_strSchema, my_var_strTabl
         else:
             return my_var_strTable
     except Exception as e:
-        with print_lock:(f"Error getting table description: {str(e)}")
+        print(f"Error getting table description: {str(e)}")
         return my_var_strTable
 def fun_get_column_metadata(my_var_objCursor, my_var_strSchema, my_var_strTable):
     """
@@ -189,7 +184,7 @@ def fun_get_column_metadata(my_var_objCursor, my_var_strSchema, my_var_strTable)
             for col in my_var_objCursor.fetchall()
         ]
     except Exception as e:
-        with print_lock:(f"Error getting column metadata: {str(e)}")
+        print(f"Error getting column metadata: {str(e)}")
         return []
     
 def fun_get_z_tables_from_sqlserver(my_var_objCursor, my_var_strSchema):
@@ -205,7 +200,7 @@ def fun_get_z_tables_from_sqlserver(my_var_objCursor, my_var_strSchema):
         my_var_objCursor.execute(fr"SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '{my_var_strSchema}' AND TABLE_NAME LIKE 'z\_%' ESCAPE '\'")
         return [fun_sanitize_table_name(row[0]) for row in my_var_objCursor.fetchall()]
     except Exception as e:
-        with print_lock:(f"Error getting tables from SQL Server: {str(e)}")
+        print(f"Error getting tables from SQL Server: {str(e)}")
         return []
 def fun_compare_samples(my_var_tplAS400Sample, my_var_tplSQLSample):
     """
@@ -216,16 +211,16 @@ def fun_compare_samples(my_var_tplAS400Sample, my_var_tplSQLSample):
     Returns:
         bool: True if samples match, False otherwise
     """
-    with print_lock:(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_compare_samples")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_compare_samples")
     # Variable declarations
     if len(my_var_tplAS400Sample) != len(my_var_tplSQLSample):
-        with print_lock:(f"Length mismatch: AS400={len(my_var_tplAS400Sample)}, SQL={len(my_var_tplSQLSample)}")
+        print(f"Length mismatch: AS400={len(my_var_tplAS400Sample)}, SQL={len(my_var_tplSQLSample)}")
         return False
     for my_var_intIdx, (my_var_valAS400, my_var_valSQL) in enumerate(zip(my_var_tplAS400Sample, my_var_tplSQLSample)):
         if my_var_valAS400 != my_var_valSQL:
-            with print_lock:(f"Value mismatch at index {my_var_intIdx}:")
-            with print_lock:(f"  AS400: {my_var_valAS400} ({type(my_var_valAS400)})")
-            with print_lock:(f"  SQL:   {my_var_valSQL} ({type(my_var_valSQL)})")
+            print(f"Value mismatch at index {my_var_intIdx}:")
+            print(f"  AS400: {my_var_valAS400} ({type(my_var_valAS400)})")
+            print(f"  SQL:   {my_var_valSQL} ({type(my_var_valSQL)})")
             return False
             
     return True
@@ -244,7 +239,7 @@ def fun_verify_table_migration(my_var_objAS400Cursor, my_var_objSQLCursor, my_va
         my_var_strSanitizedAS400Table = fun_sanitize_table_name(my_var_strAS400Table)
         my_var_strSanitizedSQLTable = fun_sanitize_table_name(my_var_strSQLTable)
         
-        my_var_strQualifiedSource = f'{myCon_strAS400Library}.{my_var_strSanitizedAS400Table}'
+        my_var_strQualifiedSource = f'{myCon_strAS400Library}."{my_var_strSanitizedAS400Table}"'
         my_var_objAS400Cursor.execute(f"SELECT COUNT(*) FROM {my_var_strQualifiedSource}")
         my_var_intAS400Count = my_var_objAS400Cursor.fetchone()[0]
         
@@ -294,7 +289,7 @@ def fun_verify_all_tables(my_var_lstTablesToCopy):
     Returns:
         tuple: (bool all_success, list failed_tables)
     """
-    with print_lock:(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_verify_all_tables")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_verify_all_tables")
     # Variable declarations
     my_var_objAS400Conn = None  # Will store AS400 connection
     my_var_objSQLConn = None  # Will store SQL Server connection
@@ -310,7 +305,7 @@ def fun_verify_all_tables(my_var_lstTablesToCopy):
         my_var_objSQLConn = fun_connect_sql_server()
         my_var_objAS400Cursor = my_var_objAS400Conn.cursor()
         my_var_objSQLCursor = my_var_objSQLConn.cursor()
-        with print_lock:("\n🔍 Starting final verification of all tables...")
+        print("\n🔍 Starting final verification of all tables...")
         
         # Verify each table
         for my_var_strAS400Table, my_var_strSQLTable in my_var_lstTablesToCopy:
@@ -325,23 +320,23 @@ def fun_verify_all_tables(my_var_lstTablesToCopy):
             if not my_var_boolSuccess:
                 my_var_boolAllSuccess = False
                 my_var_lstFailedTables.append((my_var_strAS400Table, my_var_strMessage))
-                with print_lock:(f"  ❌ {my_var_strAS400Table}: {my_var_strMessage}")
+                print(f"  ❌ {my_var_strAS400Table}: {my_var_strMessage}")
             else:
-                with print_lock:(f"  ✅ {my_var_strAS400Table}: {my_var_strMessage}")
+                print(f"  ✅ {my_var_strAS400Table}: {my_var_strMessage}")
         # Print summary
-        with print_lock:("\n📊 Final Verification Summary:")
-        with print_lock:(f"Total AS400 Rows: {my_var_intTotalAS400Rows}")
-        with print_lock:(f"Total SQL Server Rows: {my_var_intTotalSQLRows}")
-        with print_lock:(f"Total Tables Verified: {len(my_var_lstTablesToCopy)}")
-        with print_lock:(f"Failed Tables: {len(my_var_lstFailedTables)}")
+        print("\n📊 Final Verification Summary:")
+        print(f"Total AS400 Rows: {my_var_intTotalAS400Rows}")
+        print(f"Total SQL Server Rows: {my_var_intTotalSQLRows}")
+        print(f"Total Tables Verified: {len(my_var_lstTablesToCopy)}")
+        print(f"Failed Tables: {len(my_var_lstFailedTables)}")
         
         if my_var_lstFailedTables:
-            with print_lock:("\nFailed Tables Details:")
+            print("\nFailed Tables Details:")
             for my_var_strTable, my_var_strMessage in my_var_lstFailedTables:
-                with print_lock:(f"  - {my_var_strTable}: {my_var_strMessage}")
+                print(f"  - {my_var_strTable}: {my_var_strMessage}")
         return my_var_boolAllSuccess, my_var_lstFailedTables
     except Exception as my_var_errException:
-        with print_lock:(f"Error during final verification: {str(my_var_errException)}")
+        print(f"Error during final verification: {str(my_var_errException)}")
         return False, [("ALL", f"Verification error: {str(my_var_errException)}")]
     finally:
         # Clean up
@@ -355,7 +350,7 @@ def fun_verify_all_tables(my_var_lstTablesToCopy):
             my_var_objSQLConn.close()
 def fun_beep_error():
     """Plays an error beep sound"""
-    with print_lock:(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_beep_error")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_beep_error")
     try:
         winsound.Beep(1000, 1000)  # 1000Hz for 1 second
     except:
@@ -392,7 +387,7 @@ def fun_normalize_decimal_values(my_var_lstRows, my_var_dictDecimalDefs=None):
             my_var_lstNormalizedRows.append(tuple(my_var_lstNormalizedRow))
         return my_var_lstNormalizedRows
     except Exception as e:
-        with print_lock:(f"Error normalizing decimal values: {str(e)}")
+        print(f"Error normalizing decimal values: {str(e)}")
         return my_var_lstRows
 import re
 from datetime import datetime
@@ -406,7 +401,7 @@ def fun_get_column_types(my_var_objAS400Cursor, my_var_strSchema, my_var_strTabl
     Returns:
         dict: Dictionary mapping column names to their data types
     """
-    with print_lock:(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_get_column_types for {my_var_strSchema}.{my_var_strTable}")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_get_column_types for {my_var_strSchema}.{my_var_strTable}")
     try:
         my_var_strSanitizedTable = my_var_strTable.replace(" ", "_")
         my_var_objAS400Cursor.execute(f"""
@@ -420,7 +415,7 @@ def fun_get_column_types(my_var_objAS400Cursor, my_var_strSchema, my_var_strTabl
             for row in my_var_objAS400Cursor.fetchall()
         }
     except Exception as e:
-        with print_lock:(f"Error getting column types: {str(e)}")
+        print(f"Error getting column types: {str(e)}")
         return {}
     
 def fun_convert_value(my_var_val, my_var_strType, my_var_intPrecision=None, my_var_intScale=None):
@@ -434,7 +429,7 @@ def fun_convert_value(my_var_val, my_var_strType, my_var_intPrecision=None, my_v
     Returns:
         Converted value
     """
-    with print_lock:(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_convert_value")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_convert_value")
     if my_var_val is None:
         return None
         
@@ -461,7 +456,7 @@ def fun_convert_value(my_var_val, my_var_strType, my_var_intPrecision=None, my_v
         else:
             return my_var_val
     except Exception as e:
-        with print_lock:(f"Error converting value {my_var_val} to type {my_var_strType}: {str(e)}")
+        print(f"Error converting value {my_var_val} to type {my_var_strType}: {str(e)}")
         return None
 def fun_normalize_row(my_var_row, my_var_lstColumns, my_var_dictColTypes):
     """
@@ -473,7 +468,7 @@ def fun_normalize_row(my_var_row, my_var_lstColumns, my_var_dictColTypes):
     Returns:
         tuple: Normalized row
     """
-    with print_lock:(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_normalize_row")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting fun_normalize_row")
     try:
         my_var_lstNormalized = []
         for my_var_intIdx, (my_var_strName, _) in enumerate(my_var_lstColumns):
@@ -488,7 +483,7 @@ def fun_normalize_row(my_var_row, my_var_lstColumns, my_var_dictColTypes):
                 my_var_lstNormalized.append(None)
         return tuple(my_var_lstNormalized)
     except Exception as e:
-        with print_lock:(f"Error normalizing row: {str(e)}")
+        print(f"Error normalizing row: {str(e)}")
         return my_var_row
 import re
 def fun_sanitize_column_name(my_var_strName):
@@ -532,15 +527,15 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
             my_var_dictDecimalDefs[col_name] = f"{data_type}({precision},{scale})"
         # Add pause for ARCUST table
         if my_var_strSanitizedAS400Table.upper() == "ARCUST":
-            with print_lock:(f"\n[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] ⏸️  Pausing for ARCUST table. Press Enter to continue...")
+            print(f"\n[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] ⏸️  Pausing for ARCUST table. Press Enter to continue...")
             input()
         # Get table metadata
-        with print_lock:(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}]       get table metadata")
+        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}]       get table metadata")
         my_var_strTableDesc = fun_get_table_description(my_var_objAS400Cursor, myCon_strAS400Library, my_var_strAS400Table)
-        with print_lock:(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}]           description: {my_var_strTableDesc}")
+        print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}]           description: {my_var_strTableDesc}")
         # Get columns from AS400 in order with their descriptions
         my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        with print_lock:(f"[{my_var_strTimestamp}] Reading AS400 table columns...")
+        print(f"[{my_var_strTimestamp}] Reading AS400 table columns...")
         my_var_objAS400Cursor.execute(f"""
             SELECT COLUMN_NAME, COLUMN_TEXT, ORDINAL_POSITION
             FROM QSYS2.SYSCOLUMNS
@@ -550,10 +545,10 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
         """)
         my_var_lstAS400Columns = [(fun_sanitize_column_name(row[0]), fun_sanitize_column_name(row[1]), row[2]) for row in my_var_objAS400Cursor.fetchall()]
         my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        with print_lock:(f"[{my_var_strTimestamp}] AS400 columns read completed, found {len(my_var_lstAS400Columns)} columns")
+        print(f"[{my_var_strTimestamp}] AS400 columns read completed, found {len(my_var_lstAS400Columns)} columns")
         
         if not my_var_lstAS400Columns:
-            with print_lock:(f"[{my_var_strTimestamp}]   ❌ No columns found in AS400 table")
+            print(f"[{my_var_strTimestamp}]   ❌ No columns found in AS400 table")
             return False, "No columns found in AS400 table"
         # Get columns from SQL Server in order
         my_var_intRetryCount = 0
@@ -562,7 +557,7 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
         while my_var_intRetryCount < my_var_intMaxRetries:
             try:
   
-                with print_lock:(f"[{my_var_strTimestamp}] Reading SQL Server table columns...")
+                print(f"[{my_var_strTimestamp}] Reading SQL Server table columns...")
                 my_var_objSQLCursor.execute(f"""                            --Get the SQL server columns
                     SELECT COLUMN_NAME, ORDINAL_POSITION
                     FROM INFORMATION_SCHEMA.COLUMNS
@@ -572,20 +567,20 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                 """)
                 my_var_lstSQLColumns = [(row[0], row[1]) for row in my_var_objSQLCursor.fetchall()]
                 my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                with print_lock:(f"[{my_var_strTimestamp}] SQL Server columns read completed, found {len(my_var_lstSQLColumns)} columns")
+                print(f"[{my_var_strTimestamp}] SQL Server columns read completed, found {len(my_var_lstSQLColumns)} columns")
                 break
             except Exception as e:
                 my_var_intRetryCount += 1
                 my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
+                print(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
                 if my_var_intRetryCount < my_var_intMaxRetries:
-                    with print_lock:(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
+                    print(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
                     time.sleep(my_var_intRetryDelay)
                 else:
-                    with print_lock:(f"[{my_var_strTimestamp}]   ❌ Failed to get SQL Server columns after {my_var_intMaxRetries} attempts")
+                    print(f"[{my_var_strTimestamp}]   ❌ Failed to get SQL Server columns after {my_var_intMaxRetries} attempts")
                     return False, f"Failed to get SQL Server columns: {str(e)}"
         if not my_var_lstSQLColumns:
-            with print_lock:(f"[{my_var_strTimestamp}]   ❌ No columns found in SQL Server table")
+            print(f"[{my_var_strTimestamp}]   ❌ No columns found in SQL Server table")
             return False, "No columns found in SQL Server table"
         # Create mapping of AS400 to SQL Server columns
         my_var_lstColumnMapping = []
@@ -600,7 +595,7 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                     'position': my_var_intIdx + 1
                 })
         if not my_var_lstColumnMapping:
-            with print_lock:(f"[{my_var_strTimestamp}]   ❌ No matching columns found between AS400 and SQL Server")
+            print(f"[{my_var_strTimestamp}]   ❌ No matching columns found between AS400 and SQL Server")
             return False, "No matching columns found"
         # Find year column
         my_var_strYearColumn = None
@@ -610,7 +605,7 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                 #print(f"[{my_var_strTimestamp}]   Found year column: {my_var_strYearColumn}")
                 break
         # Prepare destination table
-        with print_lock:(f"[{my_var_strTimestamp}]    prepare destination table")
+        print(f"[{my_var_strTimestamp}]    prepare destination table")
         my_var_strDestTable = f"z_{my_var_strTableDesc}_____{my_var_strAS400Table}"
         my_var_strDestTable = my_var_strDestTable.replace(" ", "_")  # Sanitize table name
         my_var_strDestTableEscaped = my_var_strDestTable.replace(']', ']]')
@@ -624,13 +619,13 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
         my_var_strSQLColList = ", ".join(my_var_lstSQLCols)
         my_var_strPlaceholders = ", ".join(["?"] * len(my_var_lstColumnMapping))
         # Print detailed column information
-        with print_lock:(f"\n[{my_var_strTimestamp}] 🔍 Column Mapping:")
+        print(f"\n[{my_var_strTimestamp}] 🔍 Column Mapping:")
         for col in my_var_lstColumnMapping:
-            with print_lock:(f"[{my_var_strTimestamp}]   AS400: {col['as400_name']} -> SQL: {col['sql_name']} (Position: {col['position']})")
-        with print_lock:(f"[{my_var_strTimestamp}]   Total columns: {len(my_var_lstColumnMapping)}")
+            print(f"[{my_var_strTimestamp}]   AS400: {col['as400_name']} -> SQL: {col['sql_name']} (Position: {col['position']})")
+        print(f"[{my_var_strTimestamp}]   Total columns: {len(my_var_lstColumnMapping)}")
         # Case 1: Source has data, destination is empty
         if my_var_intAS400Count > 0 and my_var_intSQLCount == 0:
-            with print_lock:(f"[{my_var_strTimestamp}]   📥 Case 1: Copying all data from source to empty destination...")
+            print(f"[{my_var_strTimestamp}]   📥 Case 1: Copying all data from source to empty destination...")
             try:
                 # Define year ranges
                 my_var_lstYearRanges = [
@@ -652,13 +647,13 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                 ]
                 # If no year column found, process all data at once
                 if not my_var_strYearColumn:
-                    with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ No year column found, processing all data at once")
+                    print(f"[{my_var_strTimestamp}]   ⚠️ No year column found, processing all data at once")
                     my_var_lstYearRanges = [("ALL", None)]
                 my_var_intTotalInserted = 0
                 
                 for my_var_strYearRange, my_var_strYear in my_var_lstYearRanges:
                     my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    with print_lock:(f"\n[{my_var_strTimestamp}]   🔄 {my_var_strDestTableEscaped} Processing year range: {my_var_strYearRange}")
+                    print(f"\n[{my_var_strTimestamp}]   🔄 {my_var_strDestTableEscaped} Processing year range: {my_var_strYearRange}")
                     
                     # Build WHERE clause for year range
                     my_var_strWhereClause = ""
@@ -676,14 +671,14 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                     my_var_lstAS400Rows = my_var_objAS400Cursor.fetchall()
                     
                     if my_var_lstAS400Rows:
-                        with print_lock:(f"[{my_var_strTimestamp}]       on {my_var_strAS400Table}    found {len(my_var_lstAS400Rows)} rows for {my_var_strYearRange}")
+                        print(f"[{my_var_strTimestamp}]       on {my_var_strAS400Table}    found {len(my_var_lstAS400Rows)} rows for {my_var_strYearRange}")
                         #print(f"[{my_var_strTimestamp}]       Batch size: {myCon_intBatchSize} rows")
                         
                         # Build and validate the insert query
                         my_var_strInsertSQL = f"INSERT INTO [{myCon_strSQLSchema}].[{my_var_strDestTableEscaped}] ({my_var_strSQLColList}) VALUES ({my_var_strPlaceholders})"
                         
                         # Insert into destination table in smaller batches
-                        with print_lock:(f"[{my_var_strTimestamp}]       inserting {len(my_var_lstAS400Rows)} rows into destination table... {my_var_strDestTableEscaped}")
+                        print(f"[{my_var_strTimestamp}]       inserting {len(my_var_lstAS400Rows)} rows into destination table... {my_var_strDestTableEscaped}")
                         
                         # Start transaction
                         my_var_intRetryCount = 0
@@ -694,12 +689,12 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                             except Exception as e:
                                 my_var_intRetryCount += 1
                                 my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                                with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error starting transaction (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
+                                print(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error starting transaction (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
                                 if my_var_intRetryCount < my_var_intMaxRetries:
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
+                                    print(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
                                     time.sleep(my_var_intRetryDelay)
                                 else:
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ❌ Failed to start transaction after {my_var_intMaxRetries} attempts")
+                                    print(f"[{my_var_strTimestamp}]   ❌ Failed to start transaction after {my_var_intMaxRetries} attempts")
                                     return False, f"Failed to start transaction: {str(e)}"
                         
                         for my_var_intStart in range(0, len(my_var_lstAS400Rows), myCon_intBatchSize):
@@ -724,12 +719,12 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                                 except Exception as e:
                                     my_var_intRetryCount += 1
                                     my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error during batch insert (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
+                                    print(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error during batch insert (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
                                     if my_var_intRetryCount < my_var_intMaxRetries:
-                                        with print_lock:(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
+                                        print(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
                                         time.sleep(my_var_intRetryDelay)
                                     else:
-                                        with print_lock:(f"[{my_var_strTimestamp}]   ❌ Failed to insert batch after {my_var_intMaxRetries} attempts")
+                                        print(f"[{my_var_strTimestamp}]   ❌ Failed to insert batch after {my_var_intMaxRetries} attempts")
                                         my_var_objSQLCursor.execute("ROLLBACK TRANSACTION")
                                         return False, f"Failed to insert batch: {str(e)}"
                         
@@ -738,31 +733,31 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                         while my_var_intRetryCount < my_var_intMaxRetries:
                             try:
                                 my_var_objSQLCursor.execute("COMMIT TRANSACTION")
-                                with print_lock:(f"[{my_var_strTimestamp}]   ✅ Copied {len(my_var_lstAS400Rows)} rows for {my_var_strYearRange}")
+                                print(f"[{my_var_strTimestamp}]   ✅ Copied {len(my_var_lstAS400Rows)} rows for {my_var_strYearRange}")
                                 break
                             except Exception as e:
                                 my_var_intRetryCount += 1
                                 my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                                with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error committing transaction (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
+                                print(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error committing transaction (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
                                 if my_var_intRetryCount < my_var_intMaxRetries:
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
+                                    print(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
                                     time.sleep(my_var_intRetryDelay)
                                 else:
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ❌ Failed to commit transaction after {my_var_intMaxRetries} attempts")
+                                    print(f"[{my_var_strTimestamp}]   ❌ Failed to commit transaction after {my_var_intMaxRetries} attempts")
                                     my_var_objSQLCursor.execute("ROLLBACK TRANSACTION")
                                     return False, f"Failed to commit transaction: {str(e)}"
                     else:
-                        with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ No rows found for {my_var_strYearRange}")
+                        print(f"[{my_var_strTimestamp}]   ⚠️ No rows found for {my_var_strYearRange}")
                 
-                with print_lock:(f"[{my_var_strTimestamp}]   ✅ Total rows copied: {my_var_intTotalInserted}")
+                print(f"[{my_var_strTimestamp}]   ✅ Total rows copied: {my_var_intTotalInserted}")
                 return True, "Full copy completed"
             except Exception as e:
                 my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                with print_lock:(f"[{my_var_strTimestamp}]   ❌ Error in full copy: {str(e)}")
+                print(f"[{my_var_strTimestamp}]   ❌ Error in full copy: {str(e)}")
                 return False, f"Error in full copy: {str(e)}"
         # Case 3: Source has more rows than destination
         elif my_var_intAS400Count > my_var_intSQLCount and my_var_intSQLCount > 0:
-            with print_lock:(f"[{my_var_strTimestamp}]   🔍 Case 3: Finding and inserting missing rows...")
+            print(f"[{my_var_strTimestamp}]   🔍 Case 3: Finding and inserting missing rows...")
             try:
                 # Define year ranges
                 my_var_lstYearRanges = [
@@ -784,13 +779,13 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                 ]
                 # If no year column found, process all data at once
                 if not my_var_strYearColumn:
-                    with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ No year column found, processing all data at once")
+                    print(f"[{my_var_strTimestamp}]   ⚠️ No year column found, processing all data at once")
                     my_var_lstYearRanges = [("ALL", None)]
                 my_var_intTotalInserted = 0
                 
                 for my_var_strYearRange, my_var_strYear in my_var_lstYearRanges:
                     my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                    with print_lock:(f"\n[{my_var_strTimestamp}]   🔄 Processing year range: {my_var_strYearRange}")
+                    print(f"\n[{my_var_strTimestamp}]   🔄 Processing year range: {my_var_strYearRange}")
                     
                     # Build WHERE clause for year range
                     my_var_strWhereClause = ""
@@ -808,14 +803,14 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                     my_var_lstAS400Rows = my_var_objAS400Cursor.fetchall()
                     
                     if my_var_lstAS400Rows:
-                        with print_lock:(f"[{my_var_strTimestamp}]       found {len(my_var_lstAS400Rows)} rows for {my_var_strYearRange}")
-                        with print_lock:(f"[{my_var_strTimestamp}]       Batch size: {myCon_intBatchSize} rows")
+                        print(f"[{my_var_strTimestamp}]       found {len(my_var_lstAS400Rows)} rows for {my_var_strYearRange}")
+                        print(f"[{my_var_strTimestamp}]       Batch size: {myCon_intBatchSize} rows")
                         
                         # Build and validate the insert query
                         my_var_strInsertSQL = f"INSERT INTO [{myCon_strSQLSchema}].[{my_var_strDestTableEscaped}] ({my_var_strSQLColList}) VALUES ({my_var_strPlaceholders})"
                         
                         # Insert into destination table in smaller batches
-                        with print_lock:(f"[{my_var_strTimestamp}]       inserting {len(my_var_lstAS400Rows)} rows into destination table...")
+                        print(f"[{my_var_strTimestamp}]       inserting {len(my_var_lstAS400Rows)} rows into destination table...")
                         
                         # Start transaction
                         my_var_intRetryCount = 0
@@ -826,12 +821,12 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                             except Exception as e:
                                 my_var_intRetryCount += 1
                                 my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                                with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error starting transaction (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
+                                print(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error starting transaction (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
                                 if my_var_intRetryCount < my_var_intMaxRetries:
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
+                                    print(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
                                     time.sleep(my_var_intRetryDelay)
                                 else:
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ❌ Failed to start transaction after {my_var_intMaxRetries} attempts")
+                                    print(f"[{my_var_strTimestamp}]   ❌ Failed to start transaction after {my_var_intMaxRetries} attempts")
                                     return False, f"Failed to start transaction: {str(e)}"
                         
                         for my_var_intStart in range(0, len(my_var_lstAS400Rows), myCon_intBatchSize):
@@ -841,7 +836,7 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                             
                             # Print progress every 1000 rows
                             if my_var_intStart % 100 == 0:
-                                with print_lock:(f"[{my_var_strTimestamp}]       on {my_var_strDestTableEscaped}...inserted {my_var_intStart} of {len(my_var_lstAS400Rows)} rows...")
+                                print(f"[{my_var_strTimestamp}]       on {my_var_strDestTableEscaped}...inserted {my_var_intStart} of {len(my_var_lstAS400Rows)} rows...")
                             
                             my_var_intRetryCount = 0
                             while my_var_intRetryCount < my_var_intMaxRetries:
@@ -856,12 +851,12 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                                 except Exception as e:
                                     my_var_intRetryCount += 1
                                     my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error during batch insert (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
+                                    print(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error during batch insert (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
                                     if my_var_intRetryCount < my_var_intMaxRetries:
-                                        with print_lock:(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
+                                        print(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
                                         time.sleep(my_var_intRetryDelay)
                                     else:
-                                        with print_lock:(f"[{my_var_strTimestamp}]   ❌ Failed to insert batch after {my_var_intMaxRetries} attempts")
+                                        print(f"[{my_var_strTimestamp}]   ❌ Failed to insert batch after {my_var_intMaxRetries} attempts")
                                         my_var_objSQLCursor.execute("ROLLBACK TRANSACTION")
                                         return False, f"Failed to insert batch: {str(e)}"
                         
@@ -870,31 +865,31 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                         while my_var_intRetryCount < my_var_intMaxRetries:
                             try:
                                 my_var_objSQLCursor.execute("COMMIT TRANSACTION")
-                                with print_lock:(f"[{my_var_strTimestamp}]   ✅ Copied {len(my_var_lstAS400Rows)} rows for {my_var_strYearRange}")
+                                print(f"[{my_var_strTimestamp}]   ✅ Copied {len(my_var_lstAS400Rows)} rows for {my_var_strYearRange}")
                                 break
                             except Exception as e:
                                 my_var_intRetryCount += 1
                                 my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                                with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error committing transaction (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
+                                print(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error committing transaction (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
                                 if my_var_intRetryCount < my_var_intMaxRetries:
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
+                                    print(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
                                     time.sleep(my_var_intRetryDelay)
                                 else:
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ❌ Failed to commit transaction after {my_var_intMaxRetries} attempts")
+                                    print(f"[{my_var_strTimestamp}]   ❌ Failed to commit transaction after {my_var_intMaxRetries} attempts")
                                     my_var_objSQLCursor.execute("ROLLBACK TRANSACTION")
                                     return False, f"Failed to commit transaction: {str(e)}"
                     else:
-                        with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ No rows found for {my_var_strYearRange}")
+                        print(f"[{my_var_strTimestamp}]   ⚠️ No rows found for {my_var_strYearRange}")
                 
-                with print_lock:(f"[{my_var_strTimestamp}]   ✅ Total rows copied: {my_var_intTotalInserted}")
+                print(f"[{my_var_strTimestamp}]   ✅ Total rows copied: {my_var_intTotalInserted}")
                 return True, "Missing rows inserted"
             except Exception as e:
                 my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                with print_lock:(f"[{my_var_strTimestamp}]   ❌ Error inserting missing rows: {str(e)}")
+                print(f"[{my_var_strTimestamp}]   ❌ Error inserting missing rows: {str(e)}")
                 return False, f"Error inserting missing rows: {str(e)}"
         # Case 2: Destination has more rows than source
         elif my_var_intAS400Count < my_var_intSQLCount:
-            with print_lock:(f"[{my_var_strTimestamp}]   🔍 Case 2: Destination has more rows than source...")
+            print(f"[{my_var_strTimestamp}]   🔍 Case 2: Destination has more rows than source...")
             try:
                 # Try to identify excess rows using a key column
                 my_var_strKeyCol = None
@@ -903,7 +898,7 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                         my_var_strKeyCol = name
                         break
                 if my_var_strKeyCol:
-                    with print_lock:(f"[{my_var_strTimestamp}]   Using key column '{my_var_strKeyCol}' to identify excess rows...")
+                    print(f"[{my_var_strTimestamp}]   Using key column '{my_var_strKeyCol}' to identify excess rows...")
                     # Get list of keys from source
                     my_var_objAS400Cursor.execute(f"SELECT {my_var_strKeyCol} FROM {myCon_strAS400Library}.\"{my_var_strAS400Table}\"")
                     my_var_lstSourceKeys = [row[0] for row in my_var_objAS400Cursor.fetchall()]
@@ -918,20 +913,20 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                                 WHERE {my_var_strSQLKeyCol} NOT IN ({','.join(['?' for _ in my_var_lstSourceKeys])})
                             """, my_var_lstSourceKeys)
                             my_var_objSQLCursor.commit()
-                            with print_lock:(f"[{my_var_strTimestamp}]   ✅ Deleted excess rows using key column")
+                            print(f"[{my_var_strTimestamp}]   ✅ Deleted excess rows using key column")
                             break
                         except Exception as e:
                             my_var_intRetryCount += 1
                             my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                            with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error deleting excess rows (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
+                            print(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error deleting excess rows (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
                             if my_var_intRetryCount < my_var_intMaxRetries:
-                                with print_lock:(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
+                                print(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
                                 time.sleep(my_var_intRetryDelay)
                             else:
-                                with print_lock:(f"[{my_var_strTimestamp}]   ❌ Failed to delete excess rows after {my_var_intMaxRetries} attempts")
+                                print(f"[{my_var_strTimestamp}]   ❌ Failed to delete excess rows after {my_var_intMaxRetries} attempts")
                                 return False, f"Failed to delete excess rows: {str(e)}"
                 else:
-                    with print_lock:(f"[{my_var_strTimestamp}]   No key column found, truncating and reloading...")
+                    print(f"[{my_var_strTimestamp}]   No key column found, truncating and reloading...")
                     # Truncate and reload
                     my_var_intRetryCount = 0
                     while my_var_intRetryCount < my_var_intMaxRetries:
@@ -942,12 +937,12 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                         except Exception as e:
                             my_var_intRetryCount += 1
                             my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                            with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error truncating table (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
+                            print(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error truncating table (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
                             if my_var_intRetryCount < my_var_intMaxRetries:
-                                with print_lock:(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
+                                print(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
                                 time.sleep(my_var_intRetryDelay)
                             else:
-                                with print_lock:(f"[{my_var_strTimestamp}]   ❌ Failed to truncate table after {my_var_intMaxRetries} attempts")
+                                print(f"[{my_var_strTimestamp}]   ❌ Failed to truncate table after {my_var_intMaxRetries} attempts")
                                 return False, f"Failed to truncate table: {str(e)}"
                     
                     # Copy all data from source
@@ -962,33 +957,33 @@ def fun_sync_table_data(my_var_objAS400Cursor, my_var_objSQLCursor, my_var_strAS
                             try:
                                 my_var_objSQLCursor.executemany(my_var_strInsertSQL, my_var_lstAS400Rows)
                                 my_var_objSQLCursor.commit()
-                                with print_lock:(f"[{my_var_strTimestamp}]   ✅ Reloaded {len(my_var_lstAS400Rows)} rows")
+                                print(f"[{my_var_strTimestamp}]   ✅ Reloaded {len(my_var_lstAS400Rows)} rows")
                                 break
                             except Exception as e:
                                 my_var_intRetryCount += 1
                                 my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                                with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error reloading data (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
+                                print(f"[{my_var_strTimestamp}]   ⚠️ SQL Server error reloading data (attempt {my_var_intRetryCount}/{my_var_intMaxRetries}): {str(e)}")
                                 if my_var_intRetryCount < my_var_intMaxRetries:
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
+                                    print(f"[{my_var_strTimestamp}]   ⏳ Retrying in {my_var_intRetryDelay} seconds...")
                                     time.sleep(my_var_intRetryDelay)
                                 else:
-                                    with print_lock:(f"[{my_var_strTimestamp}]   ❌ Failed to reload data after {my_var_intMaxRetries} attempts")
+                                    print(f"[{my_var_strTimestamp}]   ❌ Failed to reload data after {my_var_intMaxRetries} attempts")
                                     return False, f"Failed to reload data: {str(e)}"
                 return True, "Excess rows handled"
             except Exception as e:
                 my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-                with print_lock:(f"[{my_var_strTimestamp}]   ❌ Error handling excess rows: {str(e)}")
+                print(f"[{my_var_strTimestamp}]   ❌ Error handling excess rows: {str(e)}")
                 return False, f"Error handling excess rows: {str(e)}"
         # Case 4: Counts match
         else:
-            with print_lock:(f"[{my_var_strTimestamp}]   ✅ Row counts match, no synchronization needed")
+            print(f"[{my_var_strTimestamp}]   ✅ Row counts match, no synchronization needed")
             return True, "Row counts match"
     except Exception as my_var_errException:
         my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        with print_lock:(f"[{my_var_strTimestamp}]   ❌ Unexpected error in sync_table_data: {str(my_var_errException)}")
-        with print_lock:(f"[{my_var_strTimestamp}]   Error type: {type(my_var_errException)}")
+        print(f"[{my_var_strTimestamp}]   ❌ Unexpected error in sync_table_data: {str(my_var_errException)}")
+        print(f"[{my_var_strTimestamp}]   Error type: {type(my_var_errException)}")
         import traceback
-        with print_lock:(f"[{my_var_strTimestamp}]   Stack trace: {traceback.format_exc()}")
+        print(f"[{my_var_strTimestamp}]   Stack trace: {traceback.format_exc()}")
         return False, f"Synchronization error: {str(my_var_errException)}"
 def myFunStructureVerification(my_var_objAS400Cursor, my_var_objSQLCursor):
     """
@@ -999,9 +994,9 @@ def myFunStructureVerification(my_var_objAS400Cursor, my_var_objSQLCursor):
     Returns:
         tuple: (bool success, str message)
     """
-    with print_lock:(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting myFunStructureVerification")
+    print(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] Starting myFunStructureVerification")
     try:
-        with print_lock:("\n🔍 Starting structure verification...")
+        print("\n🔍 Starting structure verification...")
         
         # Get all tables and their decimal columns from SQL Server schema 'mrs' in a single query
         my_var_objSQLCursor.execute("""
@@ -1021,7 +1016,7 @@ def myFunStructureVerification(my_var_objAS400Cursor, my_var_objSQLCursor):
         """)
         
         # Create a dictionary to store SQL Server decimal columns by table
-        with print_lock:(f" {datetime.now().strftime('%Y-%m-%d %H:%M:%S   ')} - Create a dictionary to store SQL Server decimal columns by table")
+        print(f" {datetime.now().strftime('%Y-%m-%d %H:%M:%S   ')} - Create a dictionary to store SQL Server decimal columns by table")
         my_var_dictSQLTableColumns = {}
         for row in my_var_objSQLCursor.fetchall():
             table_name, col_name, data_type, precision, scale = row
@@ -1030,7 +1025,7 @@ def myFunStructureVerification(my_var_objAS400Cursor, my_var_objSQLCursor):
             if col_name:  # Only add if decimal column exists
                 my_var_dictSQLTableColumns[table_name].append((col_name, data_type, precision, scale))
         
-        with print_lock:(f"      verification....Found {len(my_var_dictSQLTableColumns)} tables in SQL Server schema 'mrs'")
+        print(f"      verification....Found {len(my_var_dictSQLTableColumns)} tables in SQL Server schema 'mrs'")
         
         # Get all AS400 decimal columns in a single query
         my_var_objAS400Cursor.execute(f"""
@@ -1045,7 +1040,7 @@ def myFunStructureVerification(my_var_objAS400Cursor, my_var_objSQLCursor):
             AND DATA_TYPE IN ('DECIMAL', 'NUMERIC')
         """)
         # Create a dictionary to store AS400 decimal columns by table
-        with print_lock:(f"         {datetime.now().strftime('%Y-%m-%d %H:%M:%S   ')} - Create a dictionary to store AS400 decimal columns by table")
+        print(f"         {datetime.now().strftime('%Y-%m-%d %H:%M:%S   ')} - Create a dictionary to store AS400 decimal columns by table")
         my_var_dictAS400TableColumns = {}
         for row in my_var_objAS400Cursor.fetchall():
             table_name = row[0].replace(" ", "_").replace("'", "_")
@@ -1058,7 +1053,7 @@ def myFunStructureVerification(my_var_objAS400Cursor, my_var_objSQLCursor):
         my_var_dtEndTime = datetime.now()
         
         # Compare tables and their decimal columns
-        with print_lock:(f" Compare tables and their decimal columns")
+        print(f" Compare tables and their decimal columns")
         for my_var_strSQLTable in my_var_dictSQLTableColumns:
             if "_____" not in my_var_strSQLTable:
                 continue
@@ -1095,26 +1090,26 @@ def myFunStructureVerification(my_var_objAS400Cursor, my_var_objSQLCursor):
                     my_var_intSQLScale = my_var_tplSQLCol[3]
                     
                     if my_var_intSQLScale < my_var_intAS400Scale:
-                        with print_lock:(f"\n⚠️ Scale mismatch found in {my_var_strSQLTable}.{my_var_strAS400Col}:")
-                        with print_lock:(f"  AS400: precision={my_var_intAS400Precision}, scale={my_var_intAS400Scale}")
-                        with print_lock:(f"  SQL:   precision={my_var_intSQLPrecision}, scale={my_var_intSQLScale}")
+                        print(f"\n⚠️ Scale mismatch found in {my_var_strSQLTable}.{my_var_strAS400Col}:")
+                        print(f"  AS400: precision={my_var_intAS400Precision}, scale={my_var_intAS400Scale}")
+                        print(f"  SQL:   precision={my_var_intSQLPrecision}, scale={my_var_intSQLScale}")
                         
                         my_var_strAlterSQL = f"""
                             ALTER TABLE [mrs].[{my_var_strSQLTable}]
                             ALTER COLUMN [{my_var_tplSQLCol[0]}] decimal({my_var_intAS400Precision}, {my_var_intAS400Scale})
                         """
                         
-                        with print_lock:(f"\nWill execute:\n{my_var_strAlterSQL}")
+                        print(f"\nWill execute:\n{my_var_strAlterSQL}")
                         my_var_objSQLCursor.execute(my_var_strAlterSQL)
                         my_var_objSQLCursor.commit()
-                        with print_lock:("  ✅ Column scale updated successfully")
+                        print("  ✅ Column scale updated successfully")
         
         return True, "Structure verification completed"
         
     except Exception as e:
-        with print_lock:(f"❌ Error in structure verification: {str(e)}")
+        print(f"❌ Error in structure verification: {str(e)}")
         import traceback
-        with print_lock:(f"Stack trace: {traceback.format_exc()}")
+        print(f"Stack trace: {traceback.format_exc()}")
         return False, f"Structure verification error: {str(e)}"
 def fun_process_table(my_var_tplTableInfo, my_var_objLogLock, my_var_objReportLock):
     """
@@ -1129,7 +1124,6 @@ def fun_process_table(my_var_tplTableInfo, my_var_objLogLock, my_var_objReportLo
     my_var_objSQLConn = None
     my_var_objAS400Cursor = None
     my_var_objSQLCursor = None
-    my_var_intTotalInserted = 0  # Initialize total inserted counter
     
     # Get thread ID for logging
     my_var_intThreadId = threading.get_ident()
@@ -1149,7 +1143,7 @@ def fun_process_table(my_var_tplTableInfo, my_var_objLogLock, my_var_objReportLo
         #         my_var_lstLines = my_var_objReportFile.readlines()
         #         for my_var_strLine in my_var_lstLines:
         #             if my_var_strAS400Table in my_var_strLine:
-        #                 with print_lock:(f"[{my_var_strTimestamp}]   ⚠️ Table {my_var_strAS400Table} was previously processed. Skipping...")
+        #                 print(f"[{my_var_strTimestamp}]   ⚠️ Table {my_var_strAS400Table} was previously processed. Skipping...")
         #                 return
         
         # Sanitize table names
@@ -1167,61 +1161,22 @@ def fun_process_table(my_var_tplTableInfo, my_var_objLogLock, my_var_objReportLo
         #with print_lock:print(f"[{my_var_strTimestamp}]     Connections established successfully")
         
         # Get initial row counts
-        with print_lock:print(f"[{my_var_strTimestamp}]   Getting initial row counts...{my_var_strSanitizedAS400Table}")
         
-        #AS400 count
         my_var_strQualifiedSource = f'{myCon_strAS400Library}.{my_var_strSanitizedAS400Table}'
         my_var_objAS400Cursor.execute(f"SELECT COUNT(*) FROM {my_var_strQualifiedSource}")
         my_var_intAS400Count = my_var_objAS400Cursor.fetchone()[0]
+        with print_lock:print(f"[{my_var_strTimestamp}]   Getting initial row counts...{my_var_strSanitizedAS400Table} with  {my_var_intAS400Count}")
 
-        #SQL Server count
         my_var_intSQLCount = fun_get_table_rowcount(my_var_objSQLCursor, myCon_strSQLSchema, my_var_strSanitizedSQLTable)
- 
- 
-         # Check if row counts match
-        if my_var_intAS400Count == my_var_intSQLCount:
-            with print_lock: print(f"[{my_var_strTimestamp}]   ✅✅{myCon_strAS400Library}.{my_var_strAS400Table} {my_var_intSQLCount} ok...skipped")
-            return
-
-        #########################################################
-        #print(f"  AS400 Count: {my_var_intAS400Count}")
-        #print(f"  SQL Count: {my_var_intSQLCount}")
-        '''''''''
-        # Process the table
-        my_var_boolSuccess, my_var_strMessage = fun_sync_table_data(
-            my_var_objAS400Cursor,
-            my_var_objSQLCursor,
-            my_var_strAS400Table,
-            my_var_strSQLTable,
-            my_var_intAS400Count,
-            my_var_intSQLCount
-        )
-        
-        if not my_var_boolSuccess:
-            with print_lock:(f"  ❌ Error processing table: {my_var_strMessage}")
-            return  # Return from the function instead of using continue
-            
-        # Get total count from AS400
-        my_var_objAS400Cursor.execute(f"SELECT COUNT(*) FROM {my_var_strQualifiedSource}")
-        my_var_intAS400Count = my_var_objAS400Cursor.fetchone()[0]
-        
-        # Get total count from SQL Server
-        my_var_objSQLCursor.execute(f"SELECT COUNT(*) FROM [{myCon_strSQLSchema}].[{my_var_strDestTableEscaped}]")
-        my_var_intSQLCount = my_var_objSQLCursor.fetchone()[0]
-  
-        
-        #########################################################
-'''''''''
-        
-        # Check if row counts match
-        if my_var_intAS400Count == my_var_intSQLCount:
-            with print_lock: print(f"[{my_var_strTimestamp}]   ✅✅{myCon_strAS400Library}.{my_var_strAS400Table} {my_var_intSQLCount} ok...skipped")
-            return
+        with print_lock: print(f"[{my_var_strTimestamp}] {'✅' if my_var_intAS400Count == my_var_intSQLCount else '❌'} {my_var_strSanitizedAS400Table}...... Row counts: AS400={my_var_intAS400Count}, SQL={my_var_intSQLCount}")
         
         # Get table metadata
-        my_var_strTableDesc = fun_get_table_description(my_var_objAS400Cursor, myCon_strAS400Library, my_var_strSanitizedAS400Table)        
+        #print(f"[{my_var_strTimestamp}]   Retrieving table metadata...")
+        my_var_strTableDesc = fun_get_table_description(my_var_objAS400Cursor, myCon_strAS400Library, my_var_strSanitizedAS400Table)
+        #print(f"[{my_var_strTimestamp}]     Table description: {my_var_strTableDesc}")
+        
         my_var_lstColumns = fun_get_column_metadata(my_var_objAS400Cursor, myCon_strAS400Library, my_var_strSanitizedAS400Table)
-        #with print_lock: print(f"[{my_var_strTimestamp}]     On my_var_strSanitizedAS400Table      Found {len(my_var_lstColumns)} columns")
+        with print_lock: print(f"[{my_var_strTimestamp}]     On my_var_strSanitizedAS400Table      Found {len(my_var_lstColumns)} columns")
         
         if not my_var_lstColumns:
             with print_lock: print(f"[{my_var_strTimestamp}]   ❌ Table {my_var_strSanitizedAS400Table} skipped: No columns found or not a real table")
@@ -1243,105 +1198,90 @@ def fun_process_table(my_var_tplTableInfo, my_var_objLogLock, my_var_objReportLo
         my_var_strDestTable = f"z_{my_var_strTableDesc}_____{my_var_strSanitizedAS400Table}"
         my_var_strDestTable = my_var_strDestTable.replace(" ", "_")  # Sanitize table name
         my_var_strDestTableEscaped = my_var_strDestTable.replace(']', ']]')
-        #with print_lock: print(f"[{my_var_strTimestamp}]     Destination table: {my_var_strDestTableEscaped}")
+        with print_lock: print(f"[{my_var_strTimestamp}]     Destination table: {my_var_strDestTableEscaped}")
         
         # Create column lists
-        #with print_lock:(f"[{my_var_strTimestamp}]   on {my_var_strDestTableEscaped} Creating column lists...")
+        #with print_lock:  print(f"[{my_var_strTimestamp}]   on {my_var_strDestTableEscaped} Creating column lists...")
         my_var_lstAS400Cols = [col[0] for col in my_var_lstColumns]
         my_var_lstSQLCols = [f"[{col[1]}_____{col[0]}]" for col in my_var_lstColumns]
         my_var_strAS400ColList = ", ".join(my_var_lstAS400Cols)
         my_var_strSQLColList = ", ".join(my_var_lstSQLCols)
         my_var_strPlaceholders = ", ".join(["?"] * len(my_var_lstColumns))
-        
-        # Create column mapping
-        my_var_lstColumnMapping = []
-        for my_var_intIdx, (my_var_strAS400Name, my_var_strAS400Desc) in enumerate(my_var_lstColumns):
-            my_var_lstColumnMapping.append({
-                'as400_name': my_var_strAS400Name,
-                'sql_name': f"{my_var_strAS400Desc}_____{my_var_strAS400Name}",
-                'description': my_var_strAS400Desc,
-                'position': my_var_intIdx + 1
-            })
+        #print(f"[{my_var_strTimestamp}]     AS400 columns: {my_var_strAS400ColList}")
+        #print(f"[{my_var_strTimestamp}]     SQL columns: {my_var_strSQLColList}")
         
         # Truncate destination table
-        with print_lock:  (f"[{my_var_strTimestamp}]    🗑️ on {my_var_strDestTableEscaped} Truncating destination table...")
+        with print_lock:  print(f"[{my_var_strTimestamp}]    🗑️ on {my_var_strDestTableEscaped} Truncating destination table...")
         my_var_strTruncateSQL = f"TRUNCATE TABLE [{myCon_strSQLSchema}].[{my_var_strDestTableEscaped}]"
         #print(f"[{my_var_strTimestamp}]     Executing SQL: {my_var_strTruncateSQL}")
         my_var_objSQLCursor.execute(my_var_strTruncateSQL)
         my_var_objSQLConn.commit()
-        with print_lock:(f"[{my_var_strTimestamp}]     {my_var_strDestTableEscaped}        Table truncated successfully")
+        with print_lock:  print(f"[{my_var_strTimestamp}]     {my_var_strDestTableEscaped}        Table truncated successfully")
         
         # Prepare insert statement
-        with print_lock:(f"[{my_var_strTimestamp}]   ➕ {my_var_strDestTableEscaped}     Preparing insert statement...")
-        my_var_strInsertSQL = f"INSERT INTO [{myCon_strSQLSchema}].[{my_var_strDestTableEscaped}] ({my_var_strSQLColList}) VALUES ({my_var_strPlaceholders})"
-        with print_lock:(f"[{my_var_strTimestamp}]     Insert SQL prepared: {my_var_strInsertSQL}")
+        with print_lock:  print(f"[{my_var_strTimestamp}]   ➕ {my_var_strDestTableEscaped}     Preparing insert statement...")
+        my_var_strInsertSQL = f"INSERT INTO [{myCon_strSQLSchema}].[{my_var_strDestTableEscaped}] ({my_var_strSQLColList})) -- VALUES ({my_var_strPlaceholders})"
+        print(f"[{my_var_strTimestamp}]     Insert SQL prepared: {my_var_strInsertSQL}")
         
         # Process data in batches
         with print_lock: print(f"[{my_var_strTimestamp}]   ⬇️ Loading table {my_var_strSanitizedAS400Table}...")
+        my_var_strSelectSQL = f"SELECT {my_var_strAS400ColList} FROM {my_var_strQualifiedSource}"
+        print(f"[{my_var_strTimestamp}]     Executing SQL: {my_var_strSelectSQL}")
+        my_var_objAS400Cursor.execute(my_var_strSelectSQL)
         
-        # Get total count from AS400
+        # Get total row count for progress bar
         my_var_objAS400Cursor.execute(f"SELECT COUNT(*) FROM {my_var_strQualifiedSource}")
-        my_var_intAS400Count = my_var_objAS400Cursor.fetchone()[0]
-        
-        # Get total count from SQL Server
-        my_var_objSQLCursor.execute(f"SELECT COUNT(*) FROM [{myCon_strSQLSchema}].[{my_var_strDestTableEscaped}]")
-        my_var_intSQLCount = my_var_objSQLCursor.fetchone()[0]
+        my_var_intTotalRows = my_var_objAS400Cursor.fetchone()[0]
         
         # Create progress bar
-        with output_lock:
-            my_var_objProgressBar = tqdm(
-                total=my_var_intAS400Count,
-                desc=f"Thread {my_var_intThreadId} - {my_var_strSanitizedAS400Table}",
-                position=my_var_intThreadId % 10,
-                leave=True,
-                lock_args=(output_lock,)
-            )
+        my_var_objProgressBar = tqdm(
+            total=my_var_intTotalRows,
+            desc=f"Thread {my_var_intThreadId} - {my_var_strSanitizedAS400Table}",
+            position=my_var_intThreadId % 10,  # Limit to 10 positions to avoid screen overflow
+            leave=True
+        )
         
-        # Get all data
-        my_var_strSelectSQL = f"SELECT {my_var_strAS400ColList} FROM {my_var_strQualifiedSource}"
-        print(f"[{my_var_strTimestamp}]     ⚙️⚙️data received.. inserting: {my_var_strQualifiedSource}")
-        my_var_objAS400Cursor.execute(my_var_strSelectSQL)
+        with print_lock: print(f"[{my_var_strTimestamp}]   ⚙️ Start processing {my_var_strSanitizedAS400Table} with {my_var_intTotalRows} rows")
         my_var_lstBatch = my_var_objAS400Cursor.fetchmany(myCon_intBatchSize)
+        my_var_intTotalInserted = 0
+        my_var_intBatchCount = 0
         
         while my_var_lstBatch:
+            my_var_intBatchCount += 1
             try:
                 my_var_lstBatch = fun_normalize_batch(my_var_lstBatch)
-                with print_lock: print(f"   ➕ {my_var_strDestTableEscaped}     Inserting {len(my_var_lstBatch)} rows...", flush=True)
-
-                with print_lock: print(f"[{my_var_strTimestamp}]     ⚙️⚙️ execute many: ", flush=True)
-                my_var_objSQLCursor.timeout = 30  # 30 second timeout
+                with print_lock: print(f"[{my_var_strTimestamp}]       Executing batch insert into {my_var_strDestTableEscaped} (Batch size: {myCon_intBatchSize} rows) (Thread {my_var_intThreadId})")
                 my_var_objSQLCursor.executemany(my_var_strInsertSQL, my_var_lstBatch)
-                my_var_intTotalInserted += len(my_var_lstBatch)  # Update total inserted counter
-
-                with print_lock: print(f"[{my_var_strTimestamp}]     ⚙️⚙️ commit: {my_var_strQualifiedSource}", flush=True)
-                my_var_objSQLConn.commit()  # Commit the transaction after each batch
-                with output_lock:
-                    my_var_objProgressBar.update(len(my_var_lstBatch))
+                my_var_intTotalInserted += len(my_var_lstBatch)
+                my_var_objProgressBar.update(len(my_var_lstBatch))
+                with print_lock: print(f"[{my_var_strTimestamp}]       ➕🟢Successfully inserted {len(my_var_lstBatch)} rows into {my_var_strDestTableEscaped} (Total: {my_var_intTotalInserted}) (Thread {my_var_intThreadId})")
                 my_var_lstBatch = my_var_objAS400Cursor.fetchmany(myCon_intBatchSize)
             except Exception as e:
-                with print_lock:(f"[{my_var_strTimestamp}]     ❌ Error in batch: {str(e)}")
+                with print_lock: print(f"[{my_var_strTimestamp}]     ❌ Error in batch {my_var_intBatchCount} of table {my_var_strSanitizedAS400Table} (Thread {my_var_intThreadId}): {str(e)}")
+                with my_var_objLogLock:
+                    with open(myCon_strLogFilePath, "a") as my_var_objLogFile:
+                        my_var_objLogFile.write(f"[{my_var_strSanitizedAS400Table}] Batch insert failed: {str(e)}\n")
+                my_var_objSQLConn.rollback()
                 raise
         
         # Close progress bar
-        with output_lock:
-            my_var_objProgressBar.close()
+        my_var_objProgressBar.close()
+        
+        my_var_objSQLConn.commit()
+        print(f"[{my_var_strTimestamp}]   All batches processed successfully for table {my_var_strSanitizedAS400Table}")
         
         # Get final row counts
-        #print(f"[{my_var_strTimestamp}]   Getting final row counts...")
-        # Select count from AS400
+        print(f"[{my_var_strTimestamp}]   Getting final row counts...")
         my_var_objAS400Cursor.execute(f"SELECT COUNT(*) FROM {my_var_strQualifiedSource}")
         my_var_intFinalAS400Count = my_var_objAS400Cursor.fetchone()[0]
-        
-        # Select count from SQL Server
         my_var_intFinalSQLCount = fun_get_table_rowcount(my_var_objSQLCursor, myCon_strSQLSchema, my_var_strSanitizedSQLTable)
         
         # Check if row counts match and print appropriate icon
         if my_var_intFinalAS400Count == my_var_intFinalSQLCount:
-            with print_lock:    print(f"[{my_var_strTimestamp}] ✅ {my_var_strSanitizedAS400Table}: Final Row counts match: AS400={my_var_intFinalAS400Count}, SQL={my_var_intFinalSQLCount}", flush=True)
-
+            print(f"[{my_var_strTimestamp}]     ✅ {my_var_strSanitizedAS400Table}: Row counts match: AS400={my_var_intFinalAS400Count}, SQL={my_var_intFinalSQLCount}")
         else:
             with my_var_objLogLock:
-                with print_lock:(f"[{my_var_strTimestamp}]     ❌ {my_var_strSanitizedAS400Table}: Row count mismatch: AS400={my_var_intFinalAS400Count}, SQL={my_var_intFinalSQLCount}")
+                print(f"[{my_var_strTimestamp}]     ❌ {my_var_strSanitizedAS400Table}: Row count mismatch: AS400={my_var_intFinalAS400Count}, SQL={my_var_intFinalSQLCount}")
                 with open(myCon_strLogFilePath, "a") as my_var_objLogFile:
                     my_var_objLogFile.write(f"[{my_var_strSanitizedAS400Table}] Row count mismatch: AS400={my_var_intFinalAS400Count}, SQL={my_var_intFinalSQLCount}\n")
             return
@@ -1353,11 +1293,11 @@ def fun_process_table(my_var_tplTableInfo, my_var_objLogLock, my_var_objReportLo
                 my_var_objReportFile.write(f"{my_var_strSanitizedAS400Table},{my_var_strSanitizedSQLTable},{my_var_intAS400Count},{my_var_intSQLCount},{my_var_intFinalAS400Count},{my_var_intFinalSQLCount},{my_var_intTotalInserted}\n")
         #print(f"[{my_var_strTimestamp}]   Report updated successfully")
         
-        #print(f"[{my_var_strTimestamp}]  ✅ Table {my_var_strSanitizedAS400Table} processing completed successfully")
+        print(f"[{my_var_strTimestamp}] ✅ Table {my_var_strSanitizedAS400Table} processing completed successfully")
         
     except Exception as e:
         my_var_strTimestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        with print_lock:(f"[{my_var_strTimestamp}] ❌ Table processing failed: {str(e)}")
+        print(f"[{my_var_strTimestamp}] ❌ Table processing failed: {str(e)}")
         with my_var_objLogLock:
             with open(myCon_strLogFilePath, "a") as my_var_objLogFile:
                 my_var_objLogFile.write(f"[{my_var_strSanitizedAS400Table}] Table processing failed: {str(e)}\n")
@@ -1374,7 +1314,6 @@ def fun_process_table(my_var_tplTableInfo, my_var_objLogLock, my_var_objReportLo
         if my_var_objSQLConn:
             my_var_objSQLConn.close()
         #print(f"[{my_var_strTimestamp}]   Resources cleaned up")
-
 def fun_normalize_batch(my_var_lstBatch):
     """
     Normalizes a batch of data for SQL Server insertion
@@ -1383,22 +1322,28 @@ def fun_normalize_batch(my_var_lstBatch):
     Returns:
         list: Normalized batch data
     """
-    my_var_lstNormalized = []
-    for my_var_row in my_var_lstBatch:
-        my_var_lstNewRow = []
-        for my_var_val in my_var_row:
-            if isinstance(my_var_val, Decimal):
-                my_var_lstNewRow.append(float(my_var_val))
-            else:
-                my_var_lstNewRow.append(my_var_val)
-        my_var_lstNormalized.append(tuple(my_var_lstNewRow))
-    return my_var_lstNormalized
-
-
+    try:
+        my_var_lstNormalizedBatch = []
+        for my_var_row in my_var_lstBatch:
+            my_var_lstNormalizedRow = []
+            for my_var_val in my_var_row:
+                if isinstance(my_var_val, Decimal):
+                    # Convert Decimal to float to prevent precision loss
+                    my_var_lstNormalizedRow.append(float(my_var_val))
+                elif my_var_val is None:
+                    my_var_lstNormalizedRow.append(None)
+                else:
+                    my_var_lstNormalizedRow.append(my_var_val)
+            my_var_lstNormalizedBatch.append(tuple(my_var_lstNormalizedRow))
+        return my_var_lstNormalizedBatch
+    except Exception as e:
+        print(f"Error normalizing batch: {str(e)}")
+        return my_var_lstBatch
 if __name__ == "__main__":
     try:
-        with print_lock:("\n🚀 Starting AS400 to SQL Server Migration")
-        with print_lock:(f"📅 Start Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print("\n🚀 Starting AS400 to SQL Server Migration")
+        print(f"📅 Start Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        
         
         # Create locks for thread safety
         my_var_objLogLock = threading.Lock()
@@ -1409,7 +1354,7 @@ if __name__ == "__main__":
             my_var_objLogFile.write(f"Migration started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         
         # Create connections
-        with print_lock:("\n🔌 Establishing database connections...")
+        print("\n🔌 Establishing database connections...")
         my_var_objAS400Conn = fun_connect_as400()
         my_var_objSQLConn = fun_connect_sql_server()
         
@@ -1421,7 +1366,7 @@ if __name__ == "__main__":
         my_var_objSQLCursor = my_var_objSQLConn.cursor()
         
         # Run structure verification once before starting threads
-        with print_lock:("\n🔍 Running structure verification...")
+        print("\n🔍 Running structure verification...")
         my_var_boolStructSuccess, my_var_strStructMessage = myFunStructureVerification(
             my_var_objAS400Cursor,
             my_var_objSQLCursor
@@ -1430,47 +1375,54 @@ if __name__ == "__main__":
             raise Exception(f"Structure verification failed: {my_var_strStructMessage}")
         
         # Get list of tables to process
-        with print_lock:("\n📋 Getting list of tables to process...")
+        print("\n📋 Getting list of tables to process...")
         my_var_lstSQLTables = fun_get_z_tables_from_sqlserver(my_var_objSQLCursor, myCon_strSQLSchema)
         my_var_intTotalTables = len(my_var_lstSQLTables)
         
         if not my_var_lstSQLTables:
             raise Exception("No tables found to process")
         
-        with print_lock:(f"Found {my_var_intTotalTables} tables to process")
+        print(f"Found {my_var_intTotalTables} tables to process")
         
-        # Close initial connections as they will be created per thread
+        # Create thread pool
+        my_var_lstThreads = []
+        my_var_intCurrentThread = 0
+        
+        # Process tables in batches
+        for my_var_intBatchStart in range(0, my_var_intTotalTables, myCon_intMaxThreads):
+            my_var_intBatchEnd = min(my_var_intBatchStart + myCon_intMaxThreads, my_var_intTotalTables)
+            my_var_lstCurrentBatch = my_var_lstSQLTables[my_var_intBatchStart:my_var_intBatchEnd]
+            
+            # Create threads for current batch
+            for my_var_strSQLTable in my_var_lstCurrentBatch:
+                # Remove z_ prefix to get AS400 table name and remove leading underscores
+                my_var_strAS400Table = my_var_strSQLTable.split('_____')[-1].lstrip('_')
+                my_var_tplTableInfo = (my_var_strAS400Table, my_var_strSQLTable)
+                
+                my_var_objThread = threading.Thread(
+                    target=fun_process_table,
+                    args=(my_var_tplTableInfo, my_var_objLogLock, my_var_objReportLock)
+                )
+                my_var_lstThreads.append(my_var_objThread)
+                my_var_objThread.start()
+            
+            # Wait for all threads in current batch to complete
+            for my_var_objThread in my_var_lstThreads[my_var_intCurrentThread:]:
+                my_var_objThread.join()
+            
+            my_var_intCurrentThread = len(my_var_lstThreads)
+            
+        # Clean up
         my_var_objAS400Cursor.close()
         my_var_objSQLCursor.close()
         my_var_objAS400Conn.close()
         my_var_objSQLConn.close()
         
-        # Create ThreadPoolExecutor
-        with ThreadPoolExecutor(max_workers=myCon_intMaxThreads) as executor:
-            # Submit all tables for processing
-            futures = []
-            for my_var_strSQLTable in my_var_lstSQLTables:
-                # Remove z_ prefix to get AS400 table name and remove leading underscores
-                my_var_strAS400Table = my_var_strSQLTable.split('_____')[-1].lstrip('_')
-                my_var_tplTableInfo = (my_var_strAS400Table, my_var_strSQLTable)
-                
-                # Submit task to thread pool
-                future = executor.submit(fun_process_table, my_var_tplTableInfo, my_var_objLogLock, my_var_objReportLock)
-                futures.append(future)
-            
-            # Wait for all tasks to complete
-            for future in futures:
-                try:
-                    future.result()  # This will raise any exceptions that occurred in the thread
-                except Exception as e:
-                    with print_lock:(f"\n❌ Error in table processing: {str(e)}")
-                    fun_beep_error()
-        
-        with print_lock:("\n✅ Migration completed successfully!")
-        with print_lock:(f"📅 End Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        print("\n✅ Migration completed successfully!")
+        print(f"📅 End Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         
     except Exception as my_var_errException:
-        with print_lock:(f"\n❌ Error during migration: {str(my_var_errException)}")
+        print(f"\n❌ Error during migration: {str(my_var_errException)}")
         traceback.print_exc()
         fun_beep_error()
 

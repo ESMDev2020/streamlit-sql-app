@@ -31,7 +31,7 @@ except ImportError as myVar_errImport:
 # ────────────────────────────────────────────────────────────────────────────
 # 📜 CONSTANTS (Defined directly in the main script)
 # ────────────────────────────────────────────────────────────────────────────
-myCon_strDbServer = "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com"
+myCon_strDbServer = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com"
 myCon_strDbDatabase = "SigmaTB"
 myCon_strDbUsername = "admin"
 myCon_strDbPassword = "Er1c41234$" # !! Use secrets !!

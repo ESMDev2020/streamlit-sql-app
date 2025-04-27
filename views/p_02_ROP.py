@@ -12,7 +12,7 @@ import traceback # Added for error details
 # =============================
 # CONSTANTS: Database connection Parameters (Used for local testing connection)
 # =============================
-myCon_strServer = "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com"
+myCon_strServer = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com"
 myCon_strDatabase = "SigmaTB"
 myCon_strUser = "admin"
 # !! Warning: Hardcoding passwords is insecure. Use st.secrets for production. !!

@@ -21,7 +21,7 @@ my_con_str_open_bracket_regex = r"\[([^\]]+)\]"
 my_con_str_sp_name = "my_sp_getXPfromObjects"
 
 # --- Database Connection ---
-my_var_str_db_connection_string = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com;DATABASE=SigmaTB;UID=admin;PWD=Er1c41234$"
+my_var_str_db_connection_string = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com;DATABASE=SigmaTB;UID=admin;PWD=Er1c41234$"
 
 # --- Input Constants ---
 my_var_str_sql_input = "SELECT [GLTRNT], [GLTRN#] FROM [GLTRANS] WHERE [GLTRN#] IS NOT NULL AND [GLTRANS].[GLACCT] = '12345';"

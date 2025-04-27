@@ -18,7 +18,7 @@ query_titles = [
 ]
 
 # ---------- Database connection ----------
-server = "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com"
+server = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com"
 database = "SigmaTB"
 username = "admin"
 password = "Er1c41234$"

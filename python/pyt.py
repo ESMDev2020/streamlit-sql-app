@@ -8,7 +8,7 @@ as400_cursor = as400_conn.cursor()
 # Connect to SQL Server
 sqlserver_conn = pyodbc.connect(
     "DRIVER={ODBC Driver 17 for SQL Server};"
-    "SERVER=database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com,1433;"
+    "SERVER=database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com,1433;"
     "DATABASE=SigmaTB;"
     "UID=admin;"
     "PWD=Er1c41234$"

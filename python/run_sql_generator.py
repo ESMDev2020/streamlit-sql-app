@@ -2,7 +2,7 @@
 from my_pyfun_sql_generator import create_sql_query_from_file
 
 # Database connection parameters
-DB_SERVER = "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com"
+DB_SERVER = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com"
 DB_DATABASE = "SigmaTB"
 DB_USERNAME = "admin"
 DB_PASSWORD = "Er1c41234$"

@@ -622,7 +622,7 @@ WHERE
     OEOPNORD.OOTYPE IN ('A', 'B') AND 
     OEOPNORD.OORECD = 'W' AND 
     OEDETAIL.ODDIST = 1 AND 
-    OEDETAIL.ODORDR > ?;
+    OEDETAIL.ODORDR > 95000;
 
 /*****************************************
 *****************************************/

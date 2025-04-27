@@ -460,7 +460,7 @@ def sub_displayMainDashboardView(myPar_objDbEngine):
 if __name__ == "__main__":
     Com_st.sidebar.warning("Running p03_Dashboard in Local Test Mode")
     # --- Create a LOCAL engine instance FOR TESTING ONLY ---
-    myCon_strLclServer = "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com"
+    myCon_strLclServer = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com"
     myCon_strLclDatabase = "SigmaTB"
     myCon_strLclUser = "admin"
     myCon_strLclPassword = "Er1c41234$" # Use secure method if possible

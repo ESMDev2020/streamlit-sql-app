@@ -18,7 +18,7 @@ import sys
 # 📝 CONSTANTS
 # =============================================================================
 # Database connection parameters
-my_con_strDbServer = "database-1.cduyeeawahjc.us-east-2.rds.amazonaws.com"
+my_con_strDbServer = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com"
 my_con_strDbDatabase = "SigmaTB"
 my_con_strDbUsername = "admin"
 my_con_strDbPassword = "Er1c41234$"
