@@ -1,0 +1,128 @@
+﻿EEC_Code_____SHEEC,FK/Code (Potential),0,N/A,"  ,   ,   ,   ,   ",nvarchar,(MAX),150390,0,150390,0.00%,100.00%,0,2
+Order_designation_Code_____SHODES,FK/Code (Potential),3,"0.0 (150351), 1.0 (36), 2.0 (3)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,2
+Record_Code_____SHRECD,FK/Code (Potential),1,A (150390),"A, A, A, A, A",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,2
+Sector_Code_____SHSEC,FK/Code (Potential),0,N/A,"   ,    ,    ,    ,    ",nvarchar,(MAX),150390,0,150390,0.00%,100.00%,0,2
+State_Code_____SHSTAT,FK/Code (Potential),54,Distinct: 54,"TX, TX, TX, LA, LA",nvarchar,(MAX),150390,0,620,0.00%,0.41%,0,2
+Zip_Code_____SHZIP,FK/Code (Potential),723,Distinct: 723,"70507       , 77356       , 637131      , 70507       , T6P 1N5     ",nvarchar,(MAX),150390,0,36,0.00%,0.02%,0,2
+BILLING_QTY_UOM_____SHBUOM,Category/Code (Low Distinct),5,"EA  (77365), IN  (50679), FT  (22335), LB  (7), LT  (4)","EA , FT , FT , IN , EA ",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+BILL-TO_COUNTRY_____SHBCTY,Category/Code (Low Distinct),20,"USA (134371), CAN (10573), SGP (3620), MEX (1324), MAL (171), UK  (107), UAE (78), EC  (51), SA  (37), GB  (21)","USA, USA, USA, USA, USA",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+Cutting/Process_Flag_____SHCUTC,Category/Code (Low Distinct),3,"A (121152), Y (19837), N (786)","A, A, A, Y, A",nvarchar,(MAX),150390,0,8615,0.00%,5.73%,0,3
+Fin_Scrap_Fctr_Stock_____SHFSFS,Category/Code (Low Distinct),3,"0.0 (150388), 0.63 (1), 3.8100000000000001 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+Frght_Sales_Direct_____SHFSLD,Category/Code (Low Distinct),14,"0.0 (150372), 1000.0 (4), 1075.0 (2), 700.0 (2), 1150.0 (1), 1750.0 (1), 241.91999999999999 (1), 282.13999999999999 (1), 298.38 (1), 559.77999999999997 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+Frght-Out_Cost_Direct_____SHFOSD,Category/Code (Low Distinct),5,"0.0 (150386), 1750.0 (1), 778.0 (1), 850.0 (1), 900.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+Line_Number_____SHLINE,Category/Code (Low Distinct),9,"1.0 (149642), 2.0 (512), 3.0 (152), 4.0 (51), 5.0 (22), 6.0 (6), 7.0 (3), 10.0 (1), 8.0 (1)","1.0, 1.0, 1.0, 1.0, 2.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+ORDER_QTY_UOM_____SHOUOM,Category/Code (Low Distinct),5,"EA  (132825), IN  (13687), FT  (3663), LB  (69), M   (1)","IN , EA , EA , EA , IN ",nvarchar,(MAX),150390,0,145,0.00%,0.10%,0,3
+Orig_Slsmn_____SHSLMO,Category/Code (Low Distinct),20,"1.0 (67196), 4.0 (21108), 3.0 (15148), 9.0 (10751), 2.0 (9157), 12.0 (6292), 20.0 (6220), 8.0 (5403), 14.0 (4429), 5.0 (1139)","4.0, 1.0, 1.0, 1.0, 4.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+Other_Cost_Stock_____SHOCSS,Category/Code (Low Distinct),10,"0.0 (150381), 0.01 (1), 1.04 (1), 13139.639999999999 (1), 162.5 (1), -50.0 (1), 5752.4799999999996 (1), -6569.8199999999997 (1), 7195.46 (1), 931.79999999999995 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+Other_Sales_Stock_____SHOSLS,Category/Code (Low Distinct),14,"0.0 (150377), 0.01 (1), 1104.5899999999999 (1), 13139.639999999999 (1), 162.5 (1), 2926.98 (1), -2926.98 (1), 301.60000000000002 (1), 4329.3199999999997 (1), -50.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+Pricing_method_____SHPFLG,Category/Code (Low Distinct),3,"N (144209), B (5453), L (728)","N, N, N, N, N",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+Shape_____SHSHAP,Category/Code (Low Distinct),5,"B (76679), T (73255), P (418), O (35), L (2)","B, T, B, B, T",nvarchar,(MAX),150390,0,1,0.00%,0.00%,0,3
+Shipment_Type_Flag_____SHTYPE,Category/Code (Low Distinct),3,"OE (137765), BO (7183), CM (5442)","OE, BO, OE, OE, OE",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+SHIPPED_QTY_UOM_____SHUOM,Category/Code (Low Distinct),3,"FT  (137583), LB  (7655), EA  (29)","LB , FT , FT , FT , FT ",nvarchar,(MAX),150390,0,5123,0.00%,3.41%,0,3
+SHIP-TO_COUNTRY_____SHSCTY,Category/Code (Low Distinct),20,"USA (135307), CAN (10599), SGP (3230), MEX (785), MAL (171), UK  (106), UAE (62), EC  (51), GB  (22), SA  (22)","USA, USA, USA, USA, USA",nvarchar,(MAX),150390,0,2,0.00%,0.00%,0,3
+Top_Item_Percentage_____SHTOPP,Category/Code (Low Distinct),7,"0.0 (140957), 1.0 (8676), 2.0 (607), 3.0 (124), 4.0 (21), 5.0 (4), 6.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+Unit_Selling_Price_UOM_____SHUUOM,Category/Code (Low Distinct),7,"EA  (64197), IN  (46996), FT  (21917), LOT (11709), NC  (5563), LB  (5), LT  (3)","EA , IN , IN , IN , FT ",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,3
+3_POSITION_CLASS_____SHCLS3,Text,24,Distinct: 24,"ABH, ABH, ATH, ATH, ABH",nvarchar,(MAX),150390,0,1,0.00%,0.00%,0,4
+Actual_Scrap_Dollars_____SHSCDL,Text,30130,Distinct: 30130,"0.0, 5.96, 0.0, 74.950000000000003, 75.879999999999995",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Actual_Scrap_KGS_____SHSCKG,Text,28951,Distinct: 28951,"42.790999999999997, 0.0, 3.472, 2.1360000000000001, 4.2919999999999998",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Actual_Scrap_LBS_____SHSCLB,Text,31075,Distinct: 31075,"0.0, 5.6369999999999996, 0.0, 10.013, 0.77900000000000003",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+ADDRESS_ONE_____SHADR1,Text,1851,Distinct: 1851,"5820 - 97 STREET                   , 700 WEST PONT DES MOUTON ROAD      , 19255 ALDINE WESTFIELD             , 8330 WEST LITTLE YORK RD           , 1953 GRAND CAILOU RD               ",nvarchar,(MAX),150390,0,19,0.00%,0.01%,0,4
+ADDRESS_THREE_____SHADR3,Text,26,Distinct: 26,"                                   ,                                    ,                                    ,                                    ,                                    ",nvarchar,(MAX),150390,0,148025,0.00%,98.43%,0,4
+ADDRESS_TWO_____SHADR2,Text,160,Distinct: 160,"                                   ,                                    ,                                    ,                                    ,                                    ",nvarchar,(MAX),150390,0,139512,0.00%,92.77%,0,4
+Adjusted_GP%_____SHADPC,Text,11986,Distinct: 11986,"86.650000000000006, 39.939999999999998, -100.0, 16.34, 16.93",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Billing_Qty_____SHBQTY,Text,12622,Distinct: 12622,"0.64600000000000002, 1.0, 1.0, 1.0, 6.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+CITY_25_POS_____SHCITY,Text,428,Distinct: 428,"CARENCRO                 , HOUSTON                  , PATTISON                 , LAFAYETTE                , OGDEN                    ",nvarchar,(MAX),150390,0,2,0.00%,0.00%,0,4
+Cust_P/O#_____SHCORD,Text,98827,Distinct: 98827,"912163                , 4517649289-CONSIGNME  , 11279                 , 1114354:5             , 21131                 ",nvarchar,(MAX),150390,0,1,0.00%,0.00%,0,4
+CUSTOMER_NUMBER_____SHCUST,Text,1127,Distinct: 1127,"189.0, 981.0, 259.0, 236.0, 118.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+CUSTOMER_SHIP-TO_____SHSHTO,Text,123,Distinct: 123,"0.0, 4.0, 34.0, 3.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Discnt_Sales_Direct_____SHDSLD,Text,503,Distinct: 503,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Discount_Sales_Stock_____SHDSLS,Text,4302,Distinct: 4302,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Freight_local+road_____SHFRGH,Text,42,Distinct: 42,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Frght_Sales_Stock_____SHFSLS,Text,154,Distinct: 154,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Frght-Out_Cost_Stock_____SHFOSS,Text,42,Distinct: 42,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+In_Sales_Dept_____SHDPTI,Text,22,Distinct: 22,"WAYNE          , MURRAY         , BEN            , BEN            , BEN            ",nvarchar,(MAX),150390,0,7392,0.00%,4.92%,0,4
+Inside_Salesman_____SHINSM,Text,23,Distinct: 23,"1.0, 1.0, 1.0, 4.0, 9.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+ITEM_NUMBER_____SHITEM,Text,2147,Distinct: 2147,"50749, 50607, 50298, 51590, 50417",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Material_Cost_Direct_____SHMCSD,Text,4773,Distinct: 4773,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Material_Cost_Stock_____SHMCSS,Text,90072,Distinct: 90072,"554.79999999999995, 9.5700000000000003, 2084.1599999999999, 2629.5599999999999, 14513.66",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Material_Sales_Stock_____SHMSLS,Text,69687,Distinct: 69687,"170.0, 1658.0, 215.46000000000001, 105.0, 355.97000000000003",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Matl_Sales_Direct_____SHMSLD,Text,5316,Distinct: 5316,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Order_Qty_____SHOQTY,Text,4702,Distinct: 4702,"1.0, 10.0, 1.0, 6.0, 6.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Orig_cust#_____SHCSTO,Text,1127,Distinct: 1127,"189.0, 517.0, 179.0, 235.0, 863.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Out_Sales_Dept_____SHDPTO,Text,21,Distinct: 21,"WAYNE          , LACEY          , BEN            , MARTHA         , STEVE          ",nvarchar,(MAX),150390,0,5158,0.00%,3.43%,0,4
+Outside_Salesman_____SHOUTS,Text,21,Distinct: 21,"1.0, 10.0, 4.0, 1.0, 1.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Proc_Sales_Stock_____SHPSLS,Text,14548,Distinct: 14548,"0.0, 0.0, 312.5, 550.0, 187.5",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Process_Sales_Direct_____SHPSLD,Text,1976,Distinct: 1976,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Processing_Cost_Direct_____SHPCSD,Text,1864,Distinct: 1864,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Processing_Cost_Stock_____SHPCSS,Text,13280,Distinct: 13280,"0.0, 0.0, 398.0, 932.38999999999999, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Sales_Qty_Direct_____SHSLSD,Text,3479,Distinct: 3479,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Sales_Qty_Stock_____SHSLSS,Text,13450,Distinct: 13450,"8.0, 1.458, 88.332999999999998, 20.75, 9.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Sales_Weight_Direct_____SHSWGD,Text,4683,Distinct: 4683,"0.0, 0.0, 0.0, 0.0, 429.00099999999998",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Sales_Weight_Stock_____SHSWGS,Text,54153,Distinct: 54153,"8113.6350000000002, 523.32799999999997, 484.61200000000002, 468.42899999999997, 374.42500000000001",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Shipped_Qty_____SHSQTY,Text,17208,Distinct: 17208,"1.333, 3.75, 1.208, 110.104, 5.1669999999999998",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Shipped_Total_FTS_____SHTFTS,Text,16431,Distinct: 16431,"20.312999999999999, 1.3959999999999999, 5.5830000000000002, 0.0, 1.667",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Shipped_Total_LBS_____SHTLBS,Text,66497,Distinct: 66497,"0.0, 5023.5330000000004, 752.06100000000004, 2392.3180000000002, 2699.7860000000001",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Shipped_Total_PCS_____SHTPCS,Text,477,Distinct: 477,"1.0, 3.0, 1.0, 9.0, 38.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Shipped_Total_Sq.Ft_____SHTSFT,Text,393,Distinct: 393,"0.0, 0.001, 0.001, 0.001, 0.001",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Theo._Meters_____SHTMTR,Text,12982,Distinct: 12982,"0.32400000000000001, 0.0, 2.5150000000000001, 5.9500000000000002, 0.20300000000000001",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Theo_Kilos_____SHTKG,Text,65709,Distinct: 65709,"704.97400000000005, 0.0, 792.98199999999997, 11102.897999999999, 5576.9620000000004",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Transaction_#_____SHORDN,Text,150387,Distinct: 150387,"862575.0, 827551.0, 871429.0, 852409.0, 865133.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Truck_Route_____SHTRCK,Text,41,Distinct: 41,"27 , 27 , 21 , 21 , 27 ",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+UNIT_PRICE_____SHUNSP,Text,30862,Distinct: 30862,"65.0, 200.0, -6.25, 1825.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,4
+Admin_Burden_Direct_____SHADBD,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Admin_Burden_Stock_____SHADBS,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+BILLING_QTY_INCHES_____SHBINC,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+COMPANY_NUMBER_____SHCOMP,Single Value,1,1.0 (150390),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Cust_Owned_Flag_____SHCOFL,Single Value,1,N (150389),"N, N, N, N, N",nvarchar,(MAX),150390,0,1,0.00%,0.00%,0,7
+Customer_Dist_____SHCDIS,Single Value,1,1.0 (150390),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+DISTRICT_NUMBER_____SHDIST,Single Value,1,1.0 (150390),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Fin_Scrap_Fctr_Direct_____SHFSFD,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Freight-In_Cost_Direct_____SHFISD,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Freight-In_Cost_Stock_____SHFISS,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Handling_Charge_____SHHAND,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Inv_Adj_Direct_____SHIAJD,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Inv_Adj_Stock_____SHIAJS,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Inv_Comp_____SHICMP,Single Value,1,1.0 (150390),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Model_Inventory_Flag_____SHMDIF,Single Value,1,Y (150389),"Y, Y, Y, Y, Y",nvarchar,(MAX),150390,0,1,0.00%,0.00%,0,7
+Oper_Burden_Direct_____SHOPBD,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Oper_Burden_Stock_____SHOPBS,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Order_Release_No._____SHOREL,Single Value,1,Q               (1),"               ,                ,                ,                ,                ",nvarchar,(MAX),150390,0,150389,0.00%,100.00%,0,7
+Orig_cust_dist#_____SHDSTO,Single Value,1,1.0 (150390),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Orig_Slsmn_Dist_____SHSMDO,Single Value,1,1.0 (150390),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Other_Cost_Direct_____SHOCSD,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Processing_Charge_____SHPRCG,Single Value,1,0.0 (150390),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Related_part_flag_____SHRFLG,Single Value,1,N (150390),"N, N, N, N, N",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+S/A_addition_flag_____SHSAFL,Single Value,1,P (150390),"P, P, P, P, P",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+Salesman_Dist_____SHTERR,Single Value,1,1.0 (150390),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,7
+ORDER_QTY_INCHES_____SHOINC,Flag (2 Values),2,"0.0 (150389), 6.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,Flag,10
+Other__Sales_Direct_____SHOSLD,Flag (2 Values),2,"0.0 (150389), 1100.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,Flag,10
+Salesman_Dist_____SHLDIS,Flag (2 Values),2,"1.0 (150388), 0.0 (2)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,Flag,10
+Scrap_Flag_____SHSCRP,Flag (2 Values),2,"N (150354), Y (35)","N, N, N, N, N",nvarchar,(MAX),150390,0,1,0.00%,0.00%,Flag,10
+TEMP_SHIP-TOq_____SHTMPS,Flag (2 Values),2,"N (150338), Y (52)","N, N, N, N, N",nvarchar,(MAX),150390,0,0,0.00%,0.00%,Flag,10
+Bus._Potential_Class_____SHBPCC,Date (Suffix),0,N/A,"   ,    ,    ,    ,    ",nvarchar,(MAX),150390,0,150390,0.00%,100.00%,0,11
+Century_added_to_S/A_____SHSACC,Date (Suffix),1,20.0 (150390),"20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Date_Inv_Century_____SHIVCC,Date (Suffix),1,20.0 (150390),"20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Date_Inv_Day_____SHIVDD,Date (Suffix),31,Distinct: 31,"13.0, 16.0, 25.0, 5.0, 7.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Date_Inv_Month_____SHIVMM,Date (Suffix),12,"3.0 (15136), 1.0 (13843), 2.0 (13683), 4.0 (13285), 6.0 (12630), 5.0 (12609), 8.0 (12484), 10.0 (12443), 7.0 (11623), 9.0 (11250)","1.0, 8.0, 6.0, 1.0, 7.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Date_Inv_Year_____SHIVYY,Date (Suffix),9,"22.0 (25853), 23.0 (21087), 24.0 (19165), 21.0 (18910), 19.0 (16950), 18.0 (16445), 17.0 (13469), 20.0 (12487), 25.0 (6024)","17.0, 20.0, 17.0, 23.0, 19.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Date_Ordered_Century_____SHORCC,Date (Suffix),2,"20.0 (150255), 0.0 (135)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Date_Ordered_Day_____SHORDD,Date (Suffix),32,Distinct: 32,"17.0, 3.0, 8.0, 4.0, 30.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Date_Ordered_Month_____SHORMM,Date (Suffix),13,"3.0 (14907), 1.0 (14004), 2.0 (13733), 4.0 (12893), 5.0 (12675), 6.0 (12542), 10.0 (12439), 8.0 (12392), 9.0 (11460), 7.0 (11451)","12.0, 0.0, 3.0, 1.0, 8.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Date_Ordered_Year_____SHORYY,Date (Suffix),13,"22.0 (25897), 23.0 (20798), 21.0 (19343), 24.0 (19205), 19.0 (16790), 18.0 (16621), 17.0 (13571), 20.0 (12421), 25.0 (5473), 0.0 (135)","24.0, 19.0, 22.0, 18.0, 24.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Day_added_to_S/A_____SHSADD,Date (Suffix),31,Distinct: 31,"6.0, 27.0, 21.0, 6.0, 9.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Month_added_to_S/A_____SHSAMM,Date (Suffix),12,"3.0 (15120), 1.0 (13880), 2.0 (13703), 4.0 (13259), 6.0 (12686), 5.0 (12537), 8.0 (12484), 10.0 (12456), 7.0 (11627), 9.0 (11255)","1.0, 7.0, 3.0, 6.0, 4.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Prom_Date_Century_____SHPRCC,Date (Suffix),2,"20.0 (150255), 0.0 (135)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Prom_Date_Day_____SHPRDD,Date (Suffix),32,Distinct: 32,"25.0, 5.0, 17.0, 30.0, 7.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Prom_Date_Month_____SHPRMM,Date (Suffix),13,"3.0 (15100), 1.0 (13874), 2.0 (13747), 4.0 (13194), 5.0 (12676), 6.0 (12563), 8.0 (12532), 10.0 (12384), 7.0 (11613), 9.0 (11253)","7.0, 8.0, 3.0, 9.0, 12.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Prom_Date_Year_____SHPRYY,Date (Suffix),13,"22.0 (25742), 23.0 (21018), 24.0 (19187), 21.0 (18905), 19.0 (16948), 18.0 (16460), 17.0 (13462), 20.0 (12504), 25.0 (5997), 0.0 (135)","22.0, 22.0, 21.0, 20.0, 22.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Shipment_Century_____SHIPCC,Date (Suffix),2,"20.0 (149814), 0.0 (576)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Shipment_Day_____SHIPDD,Date (Suffix),31,Distinct: 31,"25.0, 5.0, 21.0, 17.0, 5.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Shipment_Month_____SHIPMM,Date (Suffix),12,"3.0 (15119), 1.0 (13898), 2.0 (13694), 4.0 (13261), 6.0 (12620), 5.0 (12619), 8.0 (12505), 10.0 (12465), 7.0 (11602), 11.0 (11245)","4.0, 3.0, 3.0, 7.0, 5.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Shipment_Year_____SHIPYY,Date (Suffix),15,"22.0 (25853), 23.0 (21087), 24.0 (19165), 21.0 (18909), 19.0 (16926), 18.0 (16448), 17.0 (13479), 20.0 (12487), 25.0 (6024), 16.0 (5)","17.0, 23.0, 24.0, 22.0, 22.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Year_added_to_S/A_____SHSAYY,Date (Suffix),9,"22.0 (25853), 23.0 (21087), 24.0 (19165), 21.0 (18910), 19.0 (16950), 18.0 (16445), 17.0 (13469), 20.0 (12487), 25.0 (6024)","22.0, 21.0, 18.0, 21.0, 20.0",nvarchar,(MAX),150390,0,0,0.00%,0.00%,0,11
+Customer_Trade_____SHTRAD,All Whitespace,0,(All Whitespace),"   ,    ,    ,    ,    ",nvarchar,(MAX),150390,0,150390,0.00%,100.00%,0,12
+Invoice_Type_____SHITYP,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),150390,0,150390,0.00%,100.00%,0,12
+Job_Name_____SHJOB,All Whitespace,0,(All Whitespace),"                                   ,                                    ,                                    ,                                    ,                                    ",nvarchar,(MAX),150390,0,150390,0.00%,100.00%,0,12
+Sale_Territory_____SHSTER,All Whitespace,0,(All Whitespace),"   ,    ,    ,    ,    ",nvarchar,(MAX),150390,0,150390,0.00%,100.00%,0,12
+Shop_OLD_____SHSHOP,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),150390,0,150390,0.00%,100.00%,0,12
+Valid_Values_1_-_PRODUCT_NOT_STOCKED_____SHDBDC,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),150390,0,150390,0.00%,100.00%,0,12

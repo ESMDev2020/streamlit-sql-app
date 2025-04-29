@@ -1,13 +1,16 @@
+USE SigmaTB
+GO
+
 
 --NOooooooooo
 EXEC mysp_format_query_with_descriptions @InputQuery = N'SELECT TOP(100) [SHIPMAST].[SHIPMAST], [SHIPMAST].[SH], [SHIPMAST].[SHORDN], [SHIPMAST].[Shipment], [SHIPMAST].[SHCORD], [SHIPMAST].[SHIPYY], [SHIPMAST].[SHIPMM], [SHIPMAST].[SHIPDD], [SHIPMAST].[SHSHAP], [SHIPMAST].[shape], [SHIPMAST].[SHINSM], [SHIPMAST].[SHSQTY], [SHIPMAST].[Shipped], [SHIPMAST].[SHUOM], [SHIPMAST].[SHBQTY], [SHIPMAST].[SHBUOM], [SHIPMAST].[SHOINC], [SHIPMAST].[SHOQTY], [SHIPMAST].[SHOUOM], [SHIPMAST].[SHTLBS], [SHIPMAST].[SHTPCS], [SHIPMAST].[SHTFTS], [SHIPMAST].[SHTSFT], [SHIPMAST].[SHTMTR], [SHIPMAST].[SHTKG], [SHIPMAST].[SHPRCG], [SHIPMAST].[SHHAND], [SHIPMAST].[SHMSLS], [SHIPMAST].[SHMSLD], [SHIPMAST].[SHFSLS], [SHIPMAST].[SHFSLD], [SHIPMAST].[SHPSLS], [SHIPMAST].[SHPSLD], [SHIPMAST].[SHOSLS], [SHIPMAST].[SHOSLD], [SHIPMAST].[SHDSLS], [SHIPMAST].[SHDSLD], [SHIPMAST].[SHMCSS], [SHIPMAST].[SHMCSD], [SHIPMAST].[SHSLSS], [SHIPMAST].[SHSLSD], [SHIPMAST].[SHSWGS], [SHIPMAST].[SHSWGD], [SHIPMAST].[SHADPC], [SHIPMAST].[SHUNSP], [SHIPMAST].[SHUUOM], [SHIPMAST].[SHSCDL], [SHIPMAST].[SHSCLB], [SHIPMAST].[SHSCKG], [SHIPMAST].[SHTRCK], [SHIPMAST].[SHBCTY], [SHIPMAST].[SHSCTY], [SHIPMAST].[SHIP-TO], [SHIPMAST].[SHDPTI], [SHIPMAST].[SHDPTO], [SHIPMAST].[SHCSTO], [SHIPMAST].[SHADR1], [SHIPMAST].[SHADR2], [SHIPMAST].[SHADR3], [SHIPMAST].[SHCITY], [SHIPMAST].[SHSTAT], [SHIPMAST].[SHZIP]
 FROM [SHIPMAST]'
 
 --Rename
-EXEC sp_rename 'dbo.sp_format_query_with_descriptions', 'mysp_format_query_with_descriptions';
+EXEC sp_rename 'mrs.sp_format_query_with_descriptions', 'mysp_format_query_with_descriptions';
 
 
-EXEC sp_format_query_with_descriptions @InputQuery = N'SELECT TOP(100) ... FROM [SHIPMAST]'
+EXEC mysp_format_query_with_descriptions @InputQuery = N'SELECT TOP(100) ... FROM [SHIPMAST]'
 
 /********************************************************
 CHECK XP PROPERTIES
@@ -20,12 +23,14 @@ SELECT * FROM sys.columns WHERE name like '%GLACCT'
 select * from sys.extended_properties where name like '%GLTRANS'
 
 
-EXEC my_sp_getXPfromObjects @InputSearchTerm = 'YourTableOrColumnCode';
-EXEC my_sp_getXPfromObjects @InputSearchTerm = 'GLTRANS';
+--EXEC my_sp_getXPfromObjects @InputSearchTerm = 'YourTableOrColumnCode';       -- Old version
+--EXEC my_sp_getXPfromObjects @InputSearchTerm = 'GLTRANS';                     -- Old version
 
 --Column
 EXEC my_sp_getXPfromObjects @lookfor = '[GLTRANS].[GLACCT]', @isobject = 'column', @returnvalue = 'name';
 EXEC my_sp_getXPfromObjects @lookfor = '[GLTRANS].[GLACCT]', @isobject = 'column', @returnvalue = 'code';
+--233767890
+
 
 --Table 
 EXEC my_sp_getXPfromObjects @lookfor = '[GLTRANS].[GLACCT]', @isobject = 'table', @returnvalue = 'name';
@@ -41,7 +46,7 @@ WHAT STORED PROCEDURES
 ***************************************************************/
 -- What stored procedures?
 SELECT
-    SCHEMA_NAME(schema_id) AS SchemaName, -- Gets the schema name (e.g., 'dbo')
+    SCHEMA_NAME(schema_id) AS SchemaName, -- Gets the schema name (e.g., 'mrs')
     name AS ProcedureName,                 -- The name of the stored procedure
     create_date,                           -- When it was created
     modify_date                            -- When it was last modified
@@ -69,5 +74,19 @@ EXEC mysp_find_unique_values_table_column_by_code
 EXEC my_sp_getXPfromObjects  'SHIPMAST', 'table', 'code'        -- bad
 EXEC my_sp_getXPfromObjects @lookfor = '[GLTRANS].[GLACCT]', @isobject = 'column', @returnvalue = 'name';
 
-EXEC mysp_find_table_column_by_code    'SHIPMAST', 'SHPFLG'  
-EXEC sp_format_query_with_descriptions 'SELECT TOP(100) [SHIPMAST].[SHIPMAST], [SHIPMAST].[SH], [SHIPMAST].[SHORDN], [SHIPMAST].[Shipment], [SHIPMAST].[SHCORD], [SHIPMAST].[SHIPYY], [SHIPMAST].[SHIPMM], [SHIPMAST].[SHIPDD], [SHIPMAST].[SHSHAP], [SHIPMAST].[shape], [SHIPMAST].[SHINSM], [SHIPMAST].[SHSQTY], [SHIPMAST].[Shipped], [SHIPMAST].[SHUOM], [SHIPMAST].[SHBQTY
+EXEC mysp_find_table_column_by_code    'SHIPMAST', 'SHPFLG'  --fails
+--works
+EXEC mysp_format_query_with_descriptions 'SELECT TOP(100) [SHIPMAST].[SHIPMAST], [SHIPMAST].[SH], [SHIPMAST].[SHORDN], [SHIPMAST].[Shipment], [SHIPMAST].[SHCORD], [SHIPMAST].[SHIPYY], [SHIPMAST].[SHIPMM], [SHIPMAST].[SHIPDD], [SHIPMAST].[SHSHAP], [SHIPMAST].[shape], [SHIPMAST].[SHINSM], [SHIPMAST].[SHSQTY], [SHIPMAST].[Shipped], [SHIPMAST].[SHUOM], [SHIPMAST].[SHBQTY]'
+
+DECLARE @output_query NVARCHAR(MAX); 
+EXEC mrs.my_sp_translate_sql_query @input_query = 'SELECT TOP(100) [SHIPMAST].[SHIPMAST], [SHIPMAST].[SH], [SHIPMAST].[SHORDN], [SHIPMAST].[Shipment], [SHIPMAST].[SHCORD], [SHIPMAST].[SHIPYY], [SHIPMAST].[SHIPMM], [SHIPMAST].[SHIPDD], [SHIPMAST].[SHSHAP], [SHIPMAST].[shape], [SHIPMAST].[SHINSM], [SHIPMAST].[SHSQTY], [SHIPMAST].[Shipped], [SHIPMAST].[SHUOM], [SHIPMAST].[SHBQTY]', @translated_query = @output_query OUTPUT
+SELECT @output_query AS TranslatedQuery;
+
+EXEC dbo.sp_translate_sql_query
+EXEC mrs.sp_translate_sql_query
+EXEC my_sp_getAllColumnXPfromTables
+EXEC mysp_format_query_with_descriptions
+EXEC my_sp_getXPfromObjects                     --old
+
+    @input_query NVARCHAR(MAX),
+    @translated_query NVARCHAR(MAX) OUTPUT

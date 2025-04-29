@@ -1,0 +1,33 @@
+﻿GL_Account_Number_____GACCT,1,258,"A (224), I (34)","4406600000.0, 4303200000.0, 4101300000.0, 4301300000.0, 4301310000.0",Text,nvarchar,(MAX),258,0,0.00%,8
+Balance_Code_____GABALC,0,2,"D (188), C (70)","D, C, C, D, D",FK/Code,nvarchar,(MAX),258,0,0.00%,2
+Contra_Acct_Code_____GACONT,0,2,"  (169), C (89)","C,  , C,  ,  ",FK/Code,nvarchar,(MAX),258,0,0.00%,2
+Alt._Report_Line_1_____GAAR1,0,20,"0.0 (150), 635.0 (17), 725.0 (14), 25.0 (13), 315.0 (10), 415.0 (10), 205.0 (9), 65.0 (6), 115.0 (5), 455.0 (4)","725.0, 0.0, 65.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Report_Line_1_____GARP1,0,20,"0.0 (150), 635.0 (17), 725.0 (14), 25.0 (13), 315.0 (10), 415.0 (10), 205.0 (9), 65.0 (6), 115.0 (5), 455.0 (4)","0.0, 0.0, 315.0, 725.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Last_Maintained_Year_____GALMYY,0,15,"94.0 (85), 13.0 (80), 14.0 (29), 15.0 (11), 23.0 (11), 99.0 (10), 21.0 (8), 24.0 (7), 20.0 (5), 17.0 (4)","94.0, 14.0, 14.0, 94.0, 94.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+01-12_____GALMMM,0,12,"6.0 (80), 10.0 (52), 9.0 (36), 12.0 (26), 2.0 (12), 4.0 (12), 11.0 (11), 1.0 (11), 5.0 (8), 8.0 (5)","10.0, 11.0, 10.0, 6.0, 5.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Alt._Report_Line_2_____GAAR2,0,9,"0.0 (120), 1125.0 (39), 535.0 (36), 765.0 (23), 205.0 (20), 95.0 (12), 1195.0 (4), 1155.0 (3), 1175.0 (1)","205.0, 535.0, 765.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Report_Line_2_____GARP2,0,9,"0.0 (119), 1125.0 (39), 535.0 (37), 765.0 (23), 205.0 (20), 95.0 (12), 1195.0 (4), 1155.0 (3), 1175.0 (1)","0.0, 1125.0, 0.0, 1125.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+GL_Bal._Sheet_Type_____GATYPC,0,7,"   (141), LU (41), AC (40), AF (20), NW (11), LL (4), AO (1)","  ,   , LL, AF,   ",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Last_Maintained_User_____GALMUS,0,7,"CFRIEND    (125), MWBASE     (85), CSTEWART   (35), SUSANNE    (8), TRNGRP1    (2), NTOVAR     (2), SHAWNE     (1)","MWBASE    , CFRIEND   , MWBASE    , CFRIEND   , CFRIEND   ",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+GL_P&L_Type_____GATYPE,0,4,"B  (117), PG (108), PP (21), PI (12)","B , B , PP, B , PG",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+A=ACTIVE__D=DELETED_I=INACTIVE_____GARECD,0,2,"A (224), I (34)","A, A, A, A, I",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Last_Maintained_Century_____GALMCC,0,2,"20.0 (163), 19.0 (95)","19.0, 19.0, 20.0, 20.0, 19.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Alt._Report_Line_10_____GAAR10,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Alt._Report_Line_4_____GAAR4,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Alt._Report_Line_5_____GAAR5,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Alt._Report_Line_6_____GAAR6,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Alt._Report_Line_7_____GAAR7,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Alt._Report_Line_8_____GAAR8,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Alt._Report_Line_9_____GAAR9,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Corporate_Acct?_____GACORP,0,1,"  (258)"," ,  ,  ,  ,  ",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Report_Line_10_____GARP10,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Report_Line_4_____GARP4,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Report_Line_5_____GARP5,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Report_Line_6_____GARP6,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Report_Line_7_____GARP7,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Report_Line_8_____GARP8,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+Report_Line_9_____GARP9,0,1,0.0 (258),"0.0, 0.0, 0.0, 0.0, 0.0",Category/Code,nvarchar,(MAX),258,0,0.00%,7
+GL_Description_____GACDES,0,248,"A (224), I (34)","COGS - OUTSIDE PROCESSING COST     , OPERATIONAL BURDEN COST            , PREPAID FEDERAL INCOME TAXES       , MISCELLANEOUS WAREHOUSE EXPENSE    , ACCRUED PAYROLL TAXES              ",Text,nvarchar,(MAX),258,0,0.00%,8
+Alt._Report_Line_3_____GAAR3,0,59,"0.0 (120), 1125.0 (39), 535.0 (36), 765.0 (23), 205.0 (20), 95.0 (12), 1195.0 (4), 1155.0 (3), 1175.0 (1)","0.0, 0.0, 230.0, 0.0, 1300.0",Text,nvarchar,(MAX),258,0,0.00%,8
+Report_Line_3_____GARP3,0,59,"0.0 (119), 1125.0 (39), 535.0 (37), 765.0 (23), 205.0 (20), 95.0 (12), 1195.0 (4), 1155.0 (3), 1175.0 (1)","0.0, 0.0, 10.0, 0.0, 75.0",Text,nvarchar,(MAX),258,0,0.00%,8
+Last_Maintained_Day_____GALMDD,0,29,"6.0 (80), 10.0 (52), 9.0 (36), 12.0 (26), 2.0 (12), 4.0 (12), 11.0 (11), 1.0 (11), 5.0 (8), 8.0 (5)","19.0, 14.0, 26.0, 19.0, 11.0",Text,nvarchar,(MAX),258,0,0.00%,8

@@ -1,0 +1,27 @@
+﻿Salesman_Number_____SMSMAN,PK (Potential - Name),36,Distinct: 36,"58.0, 20.0, 54.0, 12.0, 19.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,1,1
+Record_Code_____SMRECD,FK/Code (Potential),1,A (36),"A, A, A, A, A",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,2
+L/M_USER_____SMLMUS,Category/Code (Low Distinct),4,"CFRIEND    (21), NTOVAR     (12), MWUSER     (2), SSHERROD   (1)","CFRIEND   , CFRIEND   , CFRIEND   , CFRIEND   , NTOVAR    ",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,3
+E-MAIL_ADDRESS_____SMEMAL,Text,33,Distinct: 33,"dpopham@sigmatb.com                               , mbroussard@sigmatb.com                            , sbrown@sigmatb.com                                , smedina@sigmatb.com                               , srandazzo@sigmatb.com                             ",nvarchar,(MAX),36,0,2,0.00%,5.56%,0,4
+Employee#_____SMEMPL,Text,34,Distinct: 34,"SRANDAZZ  , AVELASQU  , CSITKA    , JASPONSE  ,           ",nvarchar,(MAX),36,0,2,0.00%,5.56%,0,4
+Sales_Dept_____SMDEPT,Text,35,Distinct: 35,"MONTY          , DAVID          , CHRIS          , CODY           , DARIO          ",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,4
+Salesman_Name_____SMNAME,Text,36,Distinct: 36,"BEN EDWARDS    , SHAWN REYES    , JACOB SPONSEL  , JASON SPONSELLE, MURRAY KAMMERER",nvarchar,(MAX),36,0,0,0.00%,0.00%,1,4
+Commission_-_Lot_Amount_____SMLOTA,Single Value,1,0.0 (36),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,7
+Commission_-_Percent_Of_Gross_Material_Margin_____SMGMPC,Single Value,1,0.0 (36),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,7
+Commission_-_Percent_Of_Gross_Profit_____SMGPPC,Single Value,1,0.0 (36),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,7
+Commission_-_Percent_Of_Sales_____SMSLPC,Single Value,1,0.0 (36),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,7
+Commission_-_Rate_Per_Ton_____SMCRAT,Single Value,1,0.0 (36),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,7
+Price_Hold_Dollar_Value_____SMPHDV,Single Value,1,9999999.0 (36),"9999999.0, 9999999.0, 9999999.0, 9999999.0, 9999999.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,7
+Price_Hold_Variance_____SMPVAR,Single Value,1,9999999.0 (36),"9999999.0, 9999999.0, 9999999.0, 9999999.0, 9999999.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,7
+PRIMARY_ROUTE#_____SMROUT,Single Value,1,0.0 (36),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,7
+Salesman_District_Number_____SMDIST,Single Value,1,1.0 (36),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,7
+Salesman_Profit_____SMPROF,Single Value,1,0.0 (36),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,7
+Vendor_Number_____SMVNDR,Single Value,1,0.0 (36),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,7
+I=INSIDE_O=OUTSIDE_R=REP_M=MGR_____SMTYPE,Flag (2 Values),2,"I (32), O (4)","O, I, I, I, I",nvarchar,(MAX),36,0,0,0.00%,0.00%,Flag,10
+Issue_Warning_If_Gross_Profit_%_Over_____SMIWGO,Flag (2 Values),2,"60.0 (35), 40.0 (1)","60.0, 60.0, 60.0, 60.0, 60.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,Flag,10
+Issue_Warning_If_Gross_Profit_%_Under_____SMIWGU,Flag (2 Values),2,"15.0 (20), 10.0 (16)","15.0, 15.0, 15.0, 15.0, 15.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,Flag,10
+RESTRICTED_ACCESS_____SMRAYN,Flag (2 Values),2,"N (31), Y (5)","N, Y, N, N, N",nvarchar,(MAX),36,0,0,0.00%,0.00%,Flag,10
+L/M_CENTURY_____SMLMCC,Date (Suffix),1,20.0 (36),"20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,11
+L/M_DAY_____SMLMDD,Date (Suffix),14,"9.0 (15), 13.0 (3), 15.0 (3), 18.0 (3), 17.0 (2), 25.0 (2), 19.0 (1), 24.0 (1), 27.0 (1), 28.0 (1)","9.0, 9.0, 9.0, 15.0, 9.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,11
+L/M_MONTH_____SMLMMM,Date (Suffix),9,"5.0 (15), 8.0 (5), 9.0 (5), 10.0 (4), 11.0 (3), 2.0 (1), 3.0 (1), 4.0 (1), 6.0 (1)","5.0, 10.0, 5.0, 10.0, 5.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,11
+L/M_YEAR_____SMLMYY,Date (Suffix),7,"17.0 (16), 24.0 (6), 19.0 (4), 22.0 (4), 23.0 (3), 21.0 (2), 18.0 (1)","17.0, 22.0, 24.0, 19.0, 17.0",nvarchar,(MAX),36,0,0,0.00%,0.00%,0,11
+PRIMARY_STOP_SEQ_____SMSTOP,All Whitespace,0,(All Whitespace),"  ,   ,   ,   ,   ",nvarchar,(MAX),36,0,36,0.00%,100.00%,0,12

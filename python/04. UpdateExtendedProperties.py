@@ -1,3 +1,8 @@
+#**********************************************************************************************
+# THIS GOS INTO ALL THE PROPERTIES OT THE DATABASE, DELETES THEM, AND RECREATES THEM
+#
+#
+#**********************************************************************************************
 import pyodbc
 import datetime
 import time

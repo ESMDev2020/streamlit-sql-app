@@ -1,0 +1,245 @@
+﻿ORDER_NUMBER_____OOORDR,PK (Potential - Name),153764,Distinct: 153764,"178614.0, 860935.0, 822511.0, 895760.0, 842012.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,1,1
+CC_Approval_Code_____OOCAPC,FK/Code (Potential),0,N/A,"      ,       ,       ,       ,       ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,2
+CITY_TAX_CODE_____OOCICD,FK/Code (Potential),0,N/A,"   ,    ,    ,    ,    ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,2
+CITY_TAX_CODE_____OOCTTX,FK/Code (Potential),1,00001 (13),"     ,      ,      ,      ,      ",nvarchar,(MAX),153764,0,153751,0.00%,99.99%,0,2
+COUNTY_TAX_CODE_____OOCNTX,FK/Code (Potential),1,001 (13),"   ,    ,    ,    ,    ",nvarchar,(MAX),153764,0,153751,0.00%,99.99%,0,2
+COUNTY_TAX_CODE_____OOCNTY,FK/Code (Potential),0,N/A,"  ,   ,   ,   ,   ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,2
+CREDIT_MEMO_REASON_CODE_____OOCMRS,FK/Code (Potential),0,N/A,"  ,   ,   ,   ,   ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,2
+CUSTOMER_PARENT_CODE_____OOPARN,FK/Code (Potential),6,"WEAT (612), AIT  (456), TXST (278), WECA (256), DRIL (159), W74  (60)","    ,     ,     ,     ,     ",nvarchar,(MAX),153764,0,151943,0.00%,98.82%,0,2
+CUSTOMER_PRICE_CODE_____OOPRCO,FK/Code (Potential),0,N/A,"  ,   ,   ,   ,   ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,2
+Delivery_Date_Code_____OODDCD,FK/Code (Potential),3,"A (153729), E (3), C (1)","A, A, A, A, A",nvarchar,(MAX),153764,0,31,0.00%,0.02%,0,2
+EDI_SUPPLIER_ID_CODE_____OOISSU,FK/Code (Potential),0,N/A,"                 ,                  ,                  ,                  ,                  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,2
+FED_TAX_CODE_____OOFTCD,FK/Code (Potential),1,GST (10059),"   ,    ,    ,    ,    ",nvarchar,(MAX),153764,0,143705,0.00%,93.46%,0,2
+GENERIC_CPA_CODE_____OOGCPA,FK/Code (Potential),0,N/A,"  ,   ,   ,   ,   ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,2
+O/E_In_Use_Code_____OOINUS,FK/Code (Potential),0,N/A," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,2
+Order_designation_Code_____OODSGN,FK/Code (Potential),3,"0.0 (153703), 1.0 (57), 2.0 (4)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,2
+ORDER_REASON_CODE_____OOOERS,FK/Code (Potential),1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,2
+OTHER_TAX_CODE_____OOOTCD,FK/Code (Potential),1,01 (13),"  ,   ,   ,   ,   ",nvarchar,(MAX),153764,0,153751,0.00%,99.99%,0,2
+QUOTE_REASON_CODE_____OOQTRS,FK/Code (Potential),1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,2
+Record_Code_____OORECD,FK/Code (Potential),5,"W (150385), A (3355), I (19), H (4), L (1)","W, W, W, W, W",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,2
+State_Code_____OOCSTA,FK/Code (Potential),0,N/A,"  ,   ,   ,   ,   ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,2
+STATE_Code_____OOSTCD,FK/Code (Potential),1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,2
+STATE_TAX_CODE_____OOSTTX,FK/Code (Potential),0,N/A,"  ,   ,   ,   ,   ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,2
+ZIP_CODE_12_POS_____OOCZIP,FK/Code (Potential),0,N/A,"            ,             ,             ,             ,             ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,2
+ADDITIONAL_CHARGE_COST_OUTSIDE_____OOACSO,Category/Code (Low Distinct),4,"0.0 (153761), -162.5 (1), 174.44 (1), 65.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+ADDITIONAL_CHARGE_SALES_OUTSIDE_____OOASLO,Category/Code (Low Distinct),4,"0.0 (153761), 1100.0 (1), -162.5 (1), 206.47999999999999 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+Bid_or_Quote_B/Q_____OOBIDQ,Category/Code (Low Distinct),3,"Q (150906), I (2539), B (2)","Q, Q, I, Q, Q",nvarchar,(MAX),153764,0,317,0.00%,0.21%,0,3
+C/C_APPROVAL_AMT_____OOCCAA,Category/Code (Low Distinct),18,"0.0 (153747), 122.33 (1), 127.73999999999999 (1), 140.0 (1), 201.34999999999999 (1), 219.97 (1), 226.25 (1), 2492.6999999999998 (1), 320.0 (1), 328.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+CONT_COMP_NAME_____OOCCMP,Category/Code (Low Distinct),10,"BAKER                               (1), BOB                                 (1), CARLOS                              (1), HARD TO FIND INTERNATIONAL, INC.    (1), ITS ENERGY SERVICES                 (1), LANCE                               (1), PATTY                               (1), SEOAM MACHINERY INDUSTRY CO         (1), TEST UNASSIGNED QUOTE               (1), WILLIAM                             (1)","                                   ,                                    ,                                    ,                                    ,                                    ",nvarchar,(MAX),153764,0,153754,0.00%,99.99%,0,3
+CONT_PHONE_____OOCPHN,Category/Code (Low Distinct),6,"062-960-5055    (1), 2812565620      (1), 2813695525      (1), 455353          (1), 760.712.3819    (1), EMAIL           (1)","               ,                ,                ,                ,                ",nvarchar,(MAX),153764,0,153758,0.00%,100.00%,0,3
+Discount_Days_Allowed_-_A/R_____OODSCD,Category/Code (Low Distinct),10,"30.0 (110316), 60.0 (9502), 90.0 (8622), 0.0 (7980), 10.0 (7863), 75.0 (6510), 120.0 (1485), 45.0 (903), 15.0 (581), 5.0 (2)","30.0, 0.0, 30.0, 30.0, 30.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+DISCOUNT_TERMS_____OODTRM,Category/Code (Low Distinct),17,"1.0 (112758), 3.0 (9542), 4.0 (8632), 15.0 (6578), 40.0 (5301), 22.0 (3578), 34.0 (2778), 5.0 (1492), 20.0 (1339), 2.0 (905)","1.0, 34.0, 1.0, 1.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+FINANCIAL_SCRAP__FACTOR_COST_____OOFSFA,Category/Code (Low Distinct),3,"0.0 (153762), 0.63 (1), 3.8100000000000001 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+FISCAL_PERIOD_____OOGLPP,Category/Code (Low Distinct),13,"0.0 (47631), 3.0 (10939), 1.0 (9987), 2.0 (9850), 4.0 (9394), 11.0 (8848), 6.0 (8615), 10.0 (8578), 5.0 (8401), 8.0 (8298)","4.0, 2.0, 0.0, 3.0, 5.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+Order_Type_____OOTYPE,Category/Code (Low Distinct),4,"A (138207), B (7213), C (5450), Q (2894)","A, A, A, A, C",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+SPECIAL_INVOICE_HANDLING_____OOSPIY,Category/Code (Low Distinct),3,"E (116967), N (18444), Y (18353)","E, E, Y, E, E",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+STATE_SALES_TAX_RATE_____OOSTRT,Category/Code (Low Distinct),4,"0.0 (142345), 5.0000000000000003E-2 (10060), 8.2500000000000004E-2 (1325), 0.13 (34)","0.0, 0.0, 0.0, 0.0, 5.0000000000000003E-2",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+Tax_Country_____OOCTRY,Category/Code (Low Distinct),20,"USA (138526), CAN (10653), SGP (3315), MEX (789), MAL (176), UK  (107), UAE (63), EC  (52), GB  (23), SA  (23)","USA, USA, USA, CAN, USA",nvarchar,(MAX),153764,0,2,0.00%,0.00%,0,3
+TERMS_OF_SALE_____OOSTRM,Category/Code (Low Distinct),10,"1.0 (137438), 2.0 (10819), 90.0 (1949), 40.0 (1409), 93.0 (1183), 94.0 (838), 95.0 (75), 0.0 (31), 89.0 (16), 91.0 (6)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+USER_____OOIUSR,Category/Code (Low Distinct),14,"AMILLS     (33747), JSWONKE    (31759), CSTEWART   (28188), LMCCOY     (24779), AVELASQU   (11187), MROBERSO   (9182), CRUPERT    (6659), SMEDINA    (2301), ABYRD      (1362), LMESSICK   (642)","MROBERSO  , LMCCOY    , AMILLS    , CSTEWART  , AMILLS    ",nvarchar,(MAX),153764,0,3374,0.00%,2.19%,0,3
+WHOLE_ORDER_CHARGE_COST_TOTAL_____OOWCCS,Category/Code (Low Distinct),7,"0.0 (153758), 0.01 (1), 1.04 (1), -13139.639999999999 (1), -50.0 (1), 6569.8199999999997 (1), -7195.46 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+WHOLE_ORDER_CHARGE_SALES_TOTAL_____OOWCSL,Category/Code (Low Distinct),6,"0.0 (153757), 2926.98 (2), 6569.8199999999997 (2), -13139.639999999999 (1), -50.0 (1), -7195.46 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,3
+ADJ_GROSS_PROFIT_%_____OOGPPC,Text,11924,Distinct: 11924,"25.48, 26.870000000000001, 37.009999999999998, 25.300000000000001, 65.810000000000002",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+Audited_Time_____OOAUTM,Text,29748,Distinct: 29748,"114457.0, 0.0, 103004.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+Audited_User_____OOAUUS,Text,44,Distinct: 44,"BWILLEFO  ,           , SCHARTRAND, ACRUZ     ,           ",nvarchar,(MAX),153764,0,90244,0.00%,58.69%,0,4
+CONT_CUST_NAME_____OOCCUS,Text,281,Distinct: 281,"                                   ,                                    ,                                    ,                                    ,                                    ",nvarchar,(MAX),153764,0,151688,0.00%,98.65%,0,4
+CUSTOMER_NUMBER_____OOCUST,Text,1135,Distinct: 1135,"592.0, 138.0, 907.0, 1403.0, 189.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+CUSTOMER_PO_NUMBER_____OOCPO,Text,99146,Distinct: 99146,"5566                  , 14039283              , 85472                 , 135587-01             , 28186                 ",nvarchar,(MAX),153764,0,2838,0.00%,1.85%,0,4
+CUSTOMER_SHIP-TO_____OOSHTO,Text,124,Distinct: 124,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+CUTTING_CHARGE_COST_OUTSIDE_____OOCCSO,Text,15028,Distinct: 15028,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+CUTTING_CHARGE_SALES_OUTSIDE_____OOCSLO,Text,15802,Distinct: 15802,"0.0, 0.0, 772.25, 312.5, 562.51999999999998",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+EX_CUTTING_CHARGE_SALES_OUTSIDE_____OOXCSO,Text,924,Distinct: 924,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+EX_MATERIAL_SALES_____OOXMSL,Text,9197,Distinct: 9197,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+EX_NET_AR_____OOXAMT,Text,9149,Distinct: 9149,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+EX_NET_SALES_____OOXNSL,Text,9123,Distinct: 9123,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+EXCH_STATE_TAX_AMT_____OOXSTA,Text,7747,Distinct: 7747,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+Exchange_Rate_____OOXRAT,Text,891,Distinct: 891,"1.24118295, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+FREIGHT____OUT__COST_____OOFRTO,Text,44,Distinct: 44,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+FREIGHT_SALES_____OOFRTS,Text,162,Distinct: 162,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+GROSS_MARGIN_$_AMT_____OOGM$,Text,94353,Distinct: 94353,"335.63999999999999, 389.12, 255.75999999999999, 20.280000000000001, 165.84999999999999",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+GROSS_MARGIN_%_____OOGMPC,Text,11924,Distinct: 11924,"29.02, 62.509999999999998, 63.689999999999998, 37.130000000000003, -216.63999999999999",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+GROSS_PROFIT_$_AMT_____OOGP$,Text,94353,Distinct: 94353,"331.63999999999999, 606.70000000000005, 4939.0299999999997, 193.25999999999999, 128.34",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+INSIDE_SALESMAN_NUMBER_____OOISMN,Text,31,Distinct: 31,"9.0, 4.0, 8.0, 3.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+MATERIAL_COST_____OOMCST,Text,94001,Distinct: 94001,"1523.3099999999999, 38.719999999999999, 0.0, 8604.8099999999995, 3380.5100000000002",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+MATERIAL_SALES_____OOMSLS,Text,73387,Distinct: 73387,"78.120000000000005, 1790.3399999999999, 2293.75, 16750.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+NET_A/R_____OONAR,Text,63957,Distinct: 63957,"615.0, 614.22000000000003, 1933.0, 3639.6500000000001, 205.02000000000001",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+NET_COST_____OONCST,Text,99756,Distinct: 99756,"69.829999999999998, 5992.3400000000001, 85.150000000000006, 61.770000000000003, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+NET_SALES_____OONSAL,Text,63449,Distinct: 63449,"412.93000000000001, 75.0, 760.5, 3600.0, 905.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+OUTSIDE_SALESMAN_2_NUMBER_____OOSMN2,Text,21,Distinct: 21,"0.0, 0.0, 0.0, 0.0, 14.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+OUTSIDE_SALESMAN_NUMBER_____OOOSMN,Text,21,Distinct: 21,"3.0, 6.0, 57.0, 1.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+SALES__DISCOUNT_____OODISC,Text,4643,Distinct: 4643,"0.0, 0.0, 0.0, 43.0, 402.61000000000001",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+STATE_ABBREV_____OOSTAT,Text,55,Distinct: 55,"TX, TX, LA, TX, TX",nvarchar,(MAX),153764,0,635,0.00%,0.41%,0,4
+STATE_SALES_TAX_AMOUNT_____OOSTXA,Text,8592,Distinct: 8592,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+TAXABLE_AMOUNT_____OOTXAB,Text,10386,Distinct: 10386,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+Time_____OOITIM,Text,34800,Distinct: 34800,"161527.0, 90924.0, 154145.0, 84429.0, 151552.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+TOTAL_ORDER_WEIGHT_____OOTWGT,Text,67643,Distinct: 67643,"70.924000000000007, 588.74400000000003, 437.553, 8265.4599999999991, 1042.9839999999999",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,4
+ADDITIONAL_CHARGE_COST_INSIDE_____OOACSI,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+ADMINISTRATIVE__BURDEN__COST_____OOADMB,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Back_Order_Held_____OOBKOH,Single Value,1,N (153762),"N, N, N, N, N",nvarchar,(MAX),153764,0,2,0.00%,0.00%,0,7
+BRANCH_SHIPPED_FROM_____OOBRSH,Single Value,1,1.0 (153764),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+CITY_SALES_TAX_AMOUNT_____OOCTXA,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+CITY_SALES_TAX_RATE_____OOCTRT,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+COMPANY_NUMBER_____OOCOMP,Single Value,1,1.0 (153764),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+CONSULT_ON_PRICE_____OOCLSY,Single Value,1,N (153764),"N, N, N, N, N",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Contract_Held_(Y/N)_____OOHCNT,Single Value,1,N (153762),"N, N, N, N, N",nvarchar,(MAX),153764,0,2,0.00%,0.00%,0,7
+COUNTY_SALES_TAX_AMOUNT_____OOCNXA,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+COUNTY_SALES_TAX_RATE_____OOCNRT,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Credit_Held_Reason_____OOCHRS,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+CUSTOMER_DISTRICT_____OOCDIS,Single Value,1,1.0 (153764),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+CUSTOMER_PRICE_CLASS_____OOPRCL,Single Value,1,01 (153764),"01, 01, 01, 01, 01",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+CUTTING_CHARGE_COST_INSIDE_____OOCCSI,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+CUTTING_CHARGE_SALES_INSIDE_____OOCSLI,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Debit_Card_Used_____OODEBIT,Single Value,1,N (617)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153147,0.00%,99.60%,0,7
+DELIVERY_HOLD_FOR_RELEASE_____OODHFR,Single Value,1,N (153764),"N, N, N, N, N",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Delivery_Rcpt_Printed_____OODLVP,Single Value,1,Y (17)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153747,0.00%,99.99%,0,7
+Driver#_____OODRVR,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Driver_Dist#_____OODRDS,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+DUTY_COST_EXT_____OODCST,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+EX_ADDTL_CHARGE_SALES_INSIDE_____OOXASI,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+EX_ADDTL_CHARGE_SALES_OUTSIDE_____OOXASO,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+EX_CUTTING_CHARGE_SALES_INSIDE_____OOXCSI,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+EX_FREIGHT_SALES_____OOXFSL,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+EX_WHOLE_ORDER_CHARGE_SALES_____OOXWCS,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+EXCH_CITY_TAX_AMT_____OOXCTA,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+EXCH_COUNTY_TAX_AMT_____OOXCNA,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Exch_Currency_____OOXCTY,Single Value,1,CAD (10251),"   ,    ,    ,    ,    ",nvarchar,(MAX),153764,0,143513,0.00%,93.33%,0,7
+EXCH_FED_TAX_AMT_____OOXFTA,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+EXCH_OTHER_TAX_AMT_____OOXOTA,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Exch_Rate_Lock_____OOXRLK,Single Value,1,N (153578),"N, N, N, N, N",nvarchar,(MAX),153764,0,186,0.00%,0.12%,0,7
+Export_Hold_(Y/N)_____OOEXPH,Single Value,1,N (153762),"N, N, N, N, N",nvarchar,(MAX),153764,0,2,0.00%,0.00%,0,7
+FEDERAL_SALES_TAX_AMOUNT_____OOFTXA,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+FREIGHT___IN__COST_____OOFRTI,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+HANDLING_CHARGE_____OOHNDL,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Held_From_Material_Processing_(Y/N)_____OOHMP,Single Value,1,N (153762),"N, N, N, N, N",nvarchar,(MAX),153764,0,2,0.00%,0.00%,0,7
+HORIZON_START_DATE_____OOHSTR,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+HORIZON_STOP_DATE_____OOHSTP,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Inv_Comp_____OOICMP,Single Value,1,1.0 (153764),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Misc._Billing_____OOSCRT,Single Value,1,Y (166)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153598,0.00%,99.89%,0,7
+O/E_Dist#_____OODIST,Single Value,1,1.0 (153764),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+OPERATIONAL___BURDEN__COST_____OOOPRB,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+ORIGINAL_ORDER_DISTRICT_____OOBODI,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+ORIGINAL_ORDER_DISTRICT_____OOOOD#,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+ORIGINAL_ORDER_NUMBER_____OOOON#,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+ORIGINAL_ORDER_ORDER_#_____OOBOOD,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+OTHER_SALES_TAX_AMOUNT_____OOOTXA,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+OTHER_SALES_TAX_RATE_____OOOTRT,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+OUTSIDE_SALESMAN_2_COMMISSIONED_Y/N_____OOSMC2,Single Value,1,N (153764),"N, N, N, N, N",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+OUTSIDE_SALESMAN_DISTRICT_____OOOSMD,Single Value,1,1.0 (153764),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Price_Held_(Y/N)_____OOPRIC,Single Value,1,N (153762),"N, N, N, N, N",nvarchar,(MAX),153764,0,2,0.00%,0.00%,0,7
+PROCESSING_CHARGE_____OOPSSG,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Proforma_Invoice_Produced_____OOPRFI,Single Value,1,Y (1)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153763,0.00%,100.00%,0,7
+Referenced_On_A_C/M_____OORFCM,Single Value,1,Y (5135)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,148629,0.00%,96.66%,0,7
+RELEASE_CREATION_DATE_____OORCDT,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+RELEASE_CREATION_TIME_____OORCTM,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+RELEASE_NUMBER_____OORELS,Single Value,1,Q               (1),"               ,                ,                ,                ,                ",nvarchar,(MAX),153764,0,153763,0.00%,100.00%,0,7
+Scheduling_Hold_Flag_____OOSCHH,Single Value,1,N (8495)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,145269,0.00%,94.48%,0,7
+Ship_Held_(Y/N)_____OOSHPH,Single Value,1,N (153763),"N, N, N, N, N",nvarchar,(MAX),153764,0,1,0.00%,0.00%,0,7
+Special_Chg_Order_____OOSPCO,Single Value,1,N (153731),"N, N, N, N, N",nvarchar,(MAX),153764,0,33,0.00%,0.02%,0,7
+Stock_Out_Hold_(Y/N)_____OOSTCK,Single Value,1,N (153764),"N, N, N, N, N",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Theo/Actual_Flag_____OOSTAF,Single Value,1,Y (105941)," , Y, Y,  ,  ",nvarchar,(MAX),153764,0,47823,0.00%,31.10%,0,7
+Time_Order_Entered_____OOENTT,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Time_Order_to_Ship_____OOSHPT,Single Value,1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,7
+Use_Tax_Limit_(Y/N/C/B_____OOCLMT,Single Value,1,N (148525),"N, N, N, N, N",nvarchar,(MAX),153764,0,5239,0.00%,3.41%,0,7
+Was_A_Future_Order_Flag_(Y/N)_____OOWAFO,Single Value,1,N (10)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153754,0.00%,99.99%,0,7
+"""UPSABLE""_(Y/N)_____OOUPS",Flag (2 Values),2,"N (56818), Y (6708)"," , N,  , N,  ",nvarchar,(MAX),153764,0,90238,0.00%,58.69%,Flag,10
+ADDITIONAL_CHARGE_SALES_INSIDE_____OOASLI,Flag (2 Values),2,"0.0 (153763), 0.01 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+CONSOLIDATE_INV_Y/N_____OOCONY,Flag (2 Values),2,"N (153760), Y (4)","N, N, N, N, N",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+Copied_Quote_____OOCOPQ,Flag (2 Values),2,"Y (5857), A (10)"," ,  , Y,  ,  ",nvarchar,(MAX),153764,0,147897,0.00%,96.18%,Flag,10
+Credit_Held_(Y/N)_____OOCRED,Flag (2 Values),2,"N (153759), Y (4)","N, N, N, N, N",nvarchar,(MAX),153764,0,1,0.00%,0.00%,Flag,10
+CURRENCY_EXCHq_____OOPFMX,Flag (2 Values),2,"N (143513), Y (10251)","N, N, N, N, N",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+CUSTOMER_BILL-TO_____OOBLTO,Flag (2 Values),2,"0.0 (153763), 259.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+FED_TAXABLEq_____OOFTTX,Flag (2 Values),2,"N (143771), Y (9993)","N, N, N, N, N",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+FREIGHT_TAXABLE_Y/N_____OOFRTY,Flag (2 Values),2,"N (140141), Y (11029)","N, N, N, N, N",nvarchar,(MAX),153764,0,2594,0.00%,1.69%,Flag,10
+Hot_Order_____OOHOT,Flag (2 Values),2,"N (146652), Y (7112)","N, N, N, N, N",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+INSIDE_SALESMAN_DISTRICT_____OOISMD,Flag (2 Values),2,"1.0 (153762), 0.0 (2)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+MAIL_INVOICE_(Y/N)_____OOMAIL,Flag (2 Values),2,"Y (146731), N (3684)","Y, Y, Y, Y, Y",nvarchar,(MAX),153764,0,3349,0.00%,2.18%,Flag,10
+METRIC_Y/N_____OOMTRC,Flag (2 Values),2,"N (153708), Y (56)","N, N, N, N, N",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+NUMBER_OF_INVOICES_____OOINVC,Flag (2 Values),2,"1.0 (148519), 0.0 (5245)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+OUTSIDE_SALESMAN__2_DISTRICT_____OOSMD2,Flag (2 Values),2,"0.0 (112057), 1.0 (41707)","0.0, 0.0, 1.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+OUTSIDE_SALESMAN__3_DISTRICT_____OOSMD3,Flag (2 Values),2,"0.0 (153617), 1.0 (147)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+OUTSIDE_SALESMAN_1_COMMISSIONED_Y/N_____OOSMC1,Flag (2 Values),2,"N (153534), Y (230)","N, N, N, N, N",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+OUTSIDE_SALESMAN_3_NUMBER_____OOSMN3,Flag (2 Values),2,"0.0 (153617), 8.0 (147)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+PROCESSED_ORDER_(Y/_)_____OOPRCD,Flag (2 Values),2,"Y (14351), N (1132)"," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,138281,0.00%,89.93%,Flag,10
+Ready_for_Invoicing_Flag_(Y/N)_____OOINFL,Flag (2 Values),2,"Y (145820), N (4621)","Y, Y, Y, Y, Y",nvarchar,(MAX),153764,0,3323,0.00%,2.16%,Flag,10
+Sales_Approval_____OOSAPR,Flag (2 Values),2,"N (150706), Y (3027)","N, N, N, N, N",nvarchar,(MAX),153764,0,31,0.00%,0.02%,Flag,10
+Scheduling_Priority_____OOSCHP,Flag (2 Values),2,"0 (105758), 1 (2)"," , 0,  , 0, 0",nvarchar,(MAX),153764,0,48004,0.00%,31.22%,Flag,10
+TAXABLE_Y/N_____OOTAXY,Flag (2 Values),2,"N (142279), Y (11485)","N, N, N, N, N",nvarchar,(MAX),153764,0,0,0.00%,0.00%,Flag,10
+Work_Order_Printed_Y/N_____OOSMC3,Flag (2 Values),2,"Y (146255), N (4432)","Y, Y, Y, N, Y",nvarchar,(MAX),153764,0,3077,0.00%,2.00%,Flag,10
+ACTUAL_SHIP_CENTURY_____OOACCC,Date (Suffix),2,"20.0 (149838), 0.0 (3926)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+ACTUAL_SHIP_DAY_____OOACDD,Date (Suffix),32,Distinct: 32,"27.0, 1.0, 13.0, 6.0, 19.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+ACTUAL_SHIP_MONTH_____OOACMM,Date (Suffix),13,"3.0 (15119), 1.0 (13901), 2.0 (13694), 4.0 (13279), 6.0 (12623), 5.0 (12619), 8.0 (12505), 10.0 (12468), 7.0 (11602), 11.0 (11245)","1.0, 1.0, 3.0, 1.0, 6.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+ACTUAL_SHIP_YEAR_____OOACYY,Date (Suffix),16,"22.0 (25853), 23.0 (21087), 24.0 (19165), 21.0 (18906), 19.0 (16926), 18.0 (16452), 17.0 (13480), 20.0 (12489), 25.0 (6042), 0.0 (3350)","24.0, 23.0, 18.0, 21.0, 23.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Audited_Century_____OOAUCC,Date (Suffix),2,"20.0 (151376), 0.0 (2388)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Audited_Day_____OOAUDD,Date (Suffix),32,Distinct: 32,"20.0, 17.0, 21.0, 4.0, 19.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Audited_Month_____OOAUMM,Date (Suffix),13,"3.0 (14988), 1.0 (14031), 2.0 (13851), 4.0 (13404), 5.0 (12692), 10.0 (12579), 8.0 (12489), 6.0 (12471), 7.0 (11552), 9.0 (11526)","10.0, 1.0, 1.0, 8.0, 11.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Audited_Year_____OOAUYY,Date (Suffix),14,"22.0 (26006), 23.0 (21510), 24.0 (19820), 21.0 (18934), 19.0 (16804), 18.0 (16398), 17.0 (13389), 20.0 (12325), 25.0 (6084), 0.0 (2388)","18.0, 19.0, 23.0, 18.0, 24.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Century_____OOEXCC,Date (Suffix),1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Effective_Century_____OOEFCC,Date (Suffix),2,"0.0 (143513), 20.0 (10251)","0.0, 0.0, 0.0, 20.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Effective_Day_____OOEFDD,Date (Suffix),32,Distinct: 32,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Effective_Month_____OOEFMM,Date (Suffix),13,"0.0 (143513), 3.0 (1056), 1.0 (1003), 2.0 (990), 6.0 (905), 8.0 (876), 5.0 (829), 9.0 (800), 4.0 (789), 10.0 (763)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Effective_Year_____OOEFYY,Date (Suffix),11,"0.0 (143513), 22.0 (2197), 21.0 (1583), 23.0 (1463), 17.0 (1158), 24.0 (1131), 19.0 (967), 18.0 (888), 20.0 (537), 25.0 (325)","21.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Estimated_Ready_Cent_____OOESCC,Date (Suffix),2,"20.0 (150662), 0.0 (3102)","0.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Estimated_Ready_Day_____OOESDD,Date (Suffix),32,Distinct: 32,"22.0, 22.0, 9.0, 25.0, 16.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Estimated_Ready_Mnth_____OOESMM,Date (Suffix),13,"3.0 (14984), 1.0 (13994), 2.0 (13897), 4.0 (13415), 5.0 (13006), 8.0 (12577), 6.0 (12500), 10.0 (12328), 7.0 (11577), 9.0 (11288)","4.0, 6.0, 7.0, 12.0, 5.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Estimated_Ready_Year_____OOESYY,Date (Suffix),13,"22.0 (25832), 23.0 (20953), 24.0 (18923), 21.0 (18831), 19.0 (17165), 18.0 (16453), 17.0 (13468), 20.0 (12589), 25.0 (6401), 0.0 (3102)","17.0, 25.0, 23.0, 25.0, 20.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+FISCAL_YEAR_____OOGLYY,Date (Suffix),8,"0.0 (47631), 22.0 (25853), 23.0 (21087), 24.0 (19165), 21.0 (18907), 20.0 (12489), 25.0 (6023), 19.0 (2609)","22.0, 0.0, 22.0, 0.0, 24.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+INVOICE_CENTURY_____OOICC,Date (Suffix),2,"20.0 (150405), 0.0 (3359)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+INVOICE_DAY_____OOIDD,Date (Suffix),32,Distinct: 32,"16.0, 24.0, 2.0, 11.0, 14.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+INVOICE_MONTH_____OOIMM,Date (Suffix),13,"3.0 (15136), 1.0 (13843), 2.0 (13683), 4.0 (13303), 6.0 (12630), 5.0 (12609), 8.0 (12484), 10.0 (12443), 7.0 (11623), 9.0 (11250)","8.0, 8.0, 2.0, 9.0, 7.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+INVOICE_YEAR_____OOIYY,Date (Suffix),10,"22.0 (25853), 23.0 (21087), 24.0 (19165), 21.0 (18907), 19.0 (16950), 18.0 (16445), 17.0 (13469), 20.0 (12487), 25.0 (6042), 0.0 (3359)","17.0, 17.0, 22.0, 22.0, 23.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+MONTH_____OOEXMM,Date (Suffix),1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+ORDER_DATE_CENTURY_____OOOCC,Date (Suffix),1,20.0 (153764),"20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+ORDER_DATE_DAY_____OOODD,Date (Suffix),31,Distinct: 31,"26.0, 21.0, 31.0, 12.0, 17.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+ORDER_DATE_MONTH_____OOOMM,Date (Suffix),12,"3.0 (15210), 1.0 (14346), 2.0 (14128), 4.0 (13398), 5.0 (12834), 10.0 (12796), 6.0 (12709), 8.0 (12657), 9.0 (11778), 7.0 (11585)","12.0, 5.0, 10.0, 6.0, 4.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+ORDER_DATE_YEAR_____OOOYY,Date (Suffix),13,"22.0 (26626), 23.0 (21784), 24.0 (20179), 21.0 (19428), 19.0 (16811), 18.0 (16638), 17.0 (13587), 20.0 (12446), 25.0 (6081), 16.0 (144)","22.0, 21.0, 22.0, 21.0, 22.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+ORG_REQ_SHIP_CENTURY_____OORRCC,Date (Suffix),2,"20.0 (150729), 0.0 (3035)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+ORG_REQ_SHIP_DAY_____OORRDD,Date (Suffix),32,Distinct: 32,"24.0, 8.0, 27.0, 7.0, 4.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+ORG_REQ_SHIP_MONTH_____OORRMM,Date (Suffix),13,"3.0 (15033), 2.0 (13772), 1.0 (13679), 4.0 (13433), 5.0 (12965), 6.0 (12579), 8.0 (12457), 10.0 (12405), 7.0 (11647), 9.0 (11294)","1.0, 5.0, 11.0, 2.0, 4.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+ORG_REQ_SHIP_YEAR_____OORRYY,Date (Suffix),13,"22.0 (25765), 23.0 (20896), 24.0 (19163), 21.0 (19005), 19.0 (16914), 18.0 (16500), 17.0 (13482), 20.0 (12507), 25.0 (6448), 0.0 (3035)","23.0, 23.0, 22.0, 22.0, 24.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+REQUESTED_SHIP_CENTURY_____OORQCC,Date (Suffix),2,"20.0 (150930), 0.0 (2834)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+REQUESTED_SHIP_DAY_____OORQDD,Date (Suffix),32,Distinct: 32,"27.0, 1.0, 13.0, 19.0, 28.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+REQUESTED_SHIP_MONTH_____OORQMM,Date (Suffix),13,"3.0 (15116), 1.0 (13902), 2.0 (13772), 4.0 (13394), 5.0 (12864), 6.0 (12619), 8.0 (12550), 10.0 (12413), 7.0 (11646), 9.0 (11286)","8.0, 11.0, 7.0, 3.0, 1.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+REQUESTED_SHIP_YEAR_____OORQYY,Date (Suffix),13,"22.0 (25803), 23.0 (21065), 24.0 (19238), 21.0 (18945), 19.0 (16956), 18.0 (16472), 17.0 (13473), 20.0 (12518), 25.0 (6419), 0.0 (2834)","24.0, 19.0, 17.0, 19.0, 24.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Scheduled_Ship_CC_____OOSSCC,Date (Suffix),2,"0.0 (149960), 20.0 (3804)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Scheduled_Ship_DD_____OOSSDD,Date (Suffix),32,Distinct: 32,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Scheduled_Ship_MM_____OOSSMM,Date (Suffix),13,"0.0 (149960), 3.0 (396), 2.0 (363), 4.0 (340), 5.0 (335), 1.0 (333), 8.0 (312), 6.0 (309), 10.0 (302), 11.0 (292)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+Scheduled_Ship_YY_____OOSSYY,Date (Suffix),10,"0.0 (149960), 23.0 (522), 24.0 (501), 22.0 (463), 19.0 (454), 21.0 (453), 17.0 (445), 18.0 (420), 20.0 (418), 25.0 (128)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+YEAR_____OOEXYY,Date (Suffix),1,0.0 (153764),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),153764,0,0,0.00%,0.00%,0,11
+35_POSITION_NAME_____OONAME,All Whitespace,0,(All Whitespace),"                                   ,                                    ,                                    ,                                    ,                                    ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+ADDRESS_THREE_____OOCAD3,All Whitespace,0,(All Whitespace),"                                   ,                                    ,                                    ,                                    ,                                    ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+ADDRESS_TWO_____OOCAD2,All Whitespace,0,(All Whitespace),"                                   ,                                    ,                                    ,                                    ,                                    ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Approval_Type_____OOCCAP,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+BACKORDERS_Y/N_____OOBKOY,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+BILL_OF_LADING_FLAG_____OOBOLF,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Billing_Addr1_____OOCAD1,All Whitespace,0,(All Whitespace),"                                   ,                                    ,                                    ,                                    ,                                    ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+CITY_25_POS_____OOCCTY,All Whitespace,0,(All Whitespace),"                         ,                          ,                          ,                          ,                          ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Contact_email_____OOCEMAL,All Whitespace,0,(All Whitespace),"                                                  ,                                                   ,                                                   ,                                                   ,                                                   ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Contact_Fax#_____OOCFAX,All Whitespace,0,(All Whitespace),"                  ,                   ,                   ,                   ,                   ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Contract_Number_____OOCNTR,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Country_____OOCCTR,All Whitespace,0,(All Whitespace),"   ,    ,    ,    ,    ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Credit_Card/Co_name_____OOCCCO,All Whitespace,0,(All Whitespace),"                                   ,                                    ,                                    ,                                    ,                                    ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Credit_Card_Acct_____OOACCT,All Whitespace,0,(All Whitespace),"                    ,                     ,                     ,                     ,                     ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Credit_Card_Type_____OOCCTP,All Whitespace,0,(All Whitespace),"    ,     ,     ,     ,     ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Cust.owned_Matl_Sale_____OOCMAT,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+CUSTOMER_REFERENCE_____OOCREF,All Whitespace,0,(All Whitespace),"                         ,                          ,                          ,                          ,                          ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+EDI_TRANS_NUMBER_____OOEDI#,All Whitespace,0,(All Whitespace),"         ,          ,          ,          ,          ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+FED_TAX_EXEMPTq_____OOFTEX,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+FORCAST_ORDER#_____OOFORD,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+JOB_NAME_____OOJOB,All Whitespace,0,(All Whitespace),"                                   ,                                    ,                                    ,                                    ,                                    ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Language_Country_____OOLANG,All Whitespace,0,(All Whitespace),"   ,    ,    ,    ,    ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Manually_Released_____OOMANR,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+MILL_ORDER_#_____OOMPO#,All Whitespace,0,(All Whitespace),"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Order_EDI_Y/N_____OOEDI,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Pack_Info_Entered_____OOPKIN,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+PHONE/FAX#_____OOCPHO,All Whitespace,0,(All Whitespace),"                  ,                   ,                   ,                   ,                   ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+PREVIOUSLY_HFR_ORDER_(Y/_)_____OOHFRF,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+SHIPMENT_CONTROL_NUMBER_____OOSCTR,All Whitespace,0,(All Whitespace),"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Sigmanest_Ref_____OOSIGR,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Test_Report_Printed_____OOTSTP,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Transaction_Type_____OOETYP,All Whitespace,0,(All Whitespace),"  ,   ,   ,   ,   ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+ULTIMATE_CUST_NAME_____OOUCN,All Whitespace,0,(All Whitespace),"                         ,                          ,                          ,                          ,                          ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+ULTIMATE_CUST_PO#_____OOUCPN,All Whitespace,0,(All Whitespace),"                         ,                          ,                          ,                          ,                          ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+ULTIMATE_CUST_PO#_____OOUCPO,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+ULTIMATE_CUST_REL#_____OOUREL,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+Verification#_____OOCCOD,All Whitespace,0,(All Whitespace),"    ,     ,     ,     ,     ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12
+WEB_Quotes/Orders_____OORELY,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),153764,0,153764,0.00%,100.00%,0,12

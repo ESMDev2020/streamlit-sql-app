@@ -39,7 +39,7 @@ def fun_create_db_connection(my_var_strServer, my_var_strDatabase, my_var_strUse
 
     try:
         # Building the connection URL using the provided parameters
-        my_var_strConnectionUrl = f"mssql+pymssql://{my_var_strUsername}:{my_var_strPassword}@{my_var_strServer}/{my_var_strDatabase}"
+        my_var_strConnectionUrl = f"mssql://{my_var_strUsername}:{my_var_strPassword}@{my_var_strServer}/{my_var_strDatabase}"
         # Creating the SQLAlchemy engine with the connection URL
         my_var_objEngine = create_engine(my_var_strConnectionUrl)
         # Testing the connection by executing a simple query

@@ -1,0 +1,230 @@
+﻿CUSTOMER_NUMBER_____CCUST,1,1278,1 (1278),"772, 1121, 1392, 1176, 850",Money/Numeric,numeric,"(5,0)",1278,0,0.00%,3
+ORIG_CUST#_____CCUSTO,1,1278,1 (1278),"647, 145, 319, 600, 259",Money/Numeric,numeric,"(5,0)",1278,0,0.00%,3
+ZIP_CODE_12_POS_____CZIP,0,656,"    (1158), GST (120)","77032       , 77478       , T9E 7A5     , 70360       , 77060       ",FK/Code,varchar,(12),1278,0,0.00%,2
+Federal_Tax_I.D._____CFEDID,0,625,"    (1278)","260770743                ,                          ,                          ,                          , 473209630                ",FK/Code,varchar,(25),1278,0,0.00%,2
+Customer_Parent_Code_____CCPCOD,0,8,"     (1260), WEAT (5), WECA (3), W74  (3), TXST (2), AIT  (2), DRIL (2), PRIM (1)","    ,     ,     ,     ,     ",FK/Code,varchar,(4),1278,0,0.00%,2
+EDI_AGENCY_CODE_____CEDIAG,0,2,"ST (1275),    (3)","ST, ST, ST, ST, ST",FK/Code,varchar,(2),1278,0,0.00%,2
+FEDERAL_TAX_CODE_____CFDCD,0,2,"    (1158), GST (120)","   , GST,    ,    ,    ",FK/Code,varchar,(3),1278,0,0.00%,2
+City_Code_____CCTCD,0,1,"    (1278)","   ,    ,    ,    ,    ",FK/Code,varchar,(3),1278,0,0.00%,2
+City_Tax_Code_____CCITTX,0,1,"      (1278)","     ,      ,      ,      ,      ",FK/Code,varchar,(5),1278,0,0.00%,2
+County_Code_____CCNTY,0,1,"   (1278)","  ,   ,   ,   ,   ",FK/Code,varchar,(2),1278,0,0.00%,2
+County_Tax_Code_____CCNTTX,0,1,"    (1278)","   ,    ,    ,    ,    ",FK/Code,varchar,(3),1278,0,0.00%,2
+Customer_Addition_Code_____CCADDC,0,1,"  (1278)"," ,  ,  ,  ,  ",FK/Code,varchar,(1),1278,0,0.00%,2
+Customer_Pricing_Code_____CPRCOD,0,1,"   (1278)","  ,   ,   ,   ,   ",FK/Code,varchar,(2),1278,0,0.00%,2
+Delivery_Date_Code_____CDDCD,0,1,A (1278),"A, A, A, A, A",FK/Code,varchar,(1),1278,0,0.00%,2
+Generic_CPA_Code_____CGNCPA,0,1,"   (1278)","  ,   ,   ,   ,   ",FK/Code,varchar,(2),1278,0,0.00%,2
+Industry_End_Use_Code_____CEUCD,0,1,0 (1278),"0, 0, 0, 0, 0",FK/Code,numeric,"(4,0)",1278,0,0.00%,2
+Key_Account_____CKEYYN,0,1,N (1278),"N, N, N, N, N",FK/Code,varchar,(1),1278,0,0.00%,2
+Language_Code_____CLANG,0,1,"    (1278)","   ,    ,    ,    ,    ",FK/Code,varchar,(3),1278,0,0.00%,2
+Order_designation_Code_____CDSGN,0,1,0 (1278),"0, 0, 0, 0, 0",FK/Code,numeric,"(2,0)",1278,0,0.00%,2
+Other_Code_____COTCD,0,1,"   (1278)","  ,   ,   ,   ,   ",FK/Code,varchar,(2),1278,0,0.00%,2
+Parent_Code_Sub_Class_____CCPCSB,0,1,"                (1278)","               ,                ,                ,                ,                ",FK/Code,varchar,(15),1278,0,0.00%,2
+Payment_Code_____CPAYC,0,1,0 (1278),"0, 0, 0, 0, 0",FK/Code,numeric,"(2,0)",1278,0,0.00%,2
+Risk_Status_Code_____CRSCOD,0,1,00 (1278),"00, 00, 00, 00, 00",FK/Code,varchar,(2),1278,0,0.00%,2
+Standard_Industry_Code_____CSICD,0,1,0 (1278),"0, 0, 0, 0, 0",FK/Code,numeric,"(10,0)",1278,0,0.00%,2
+STATE_TAX_CODE_____CSTCD,0,1,0 (1278),"0, 0, 0, 0, 0",FK/Code,numeric,"(2,0)",1278,0,0.00%,2
+Trade_Code_____CTRADE,0,1,"    (1278)","   ,    ,    ,    ,    ",FK/Code,varchar,(3),1278,0,0.00%,2
+Credit_Limit_____CLIMIT,0,31,"N (1166), Y (112)","125000, 75000, 0, 0, 20000",Money/Numeric,decimal,"(7,0)",1278,0,0.00%,3
+Effective_Day_of_Price_Class_____CPRCDD,0,31,"3 (125), 6 (125), 8 (119), 2 (117), 10 (112), 5 (110), 4 (105), 7 (100), 9 (99), 1 (97)","15, 15, 5, 21, 4",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+L/M_Day_____CLMDD,0,29,"1 (946), 2 (147), 3 (72), 4 (72), 11 (9), 6 (8), 8 (6), 12 (5), 5 (5), 10 (4)","2, 2, 2, 2, 2",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Orig_Slsmn_One#_____CSLM1O,0,22,1 (1278),"1, 57, 20, 12, 2",Money/Numeric,decimal,"(2,0)",1278,0,0.00%,3
+Salesman_One_Number_____CSLMN1,0,19,"99 (415), 57 (259), 9 (139), 10 (125), 20 (71), 1 (65), 4 (55), 12 (39), 3 (30), 8 (17)","57, 11, 99, 57, 57",Money/Numeric,decimal,"(2,0)",1278,0,0.00%,3
+Salesman_Two_Number_____CSLMN2,0,18,"0 (1092), 12 (29), 1 (28), 4 (21), 14 (16), 20 (14), 56 (12), 6 (12), 3 (12), 16 (10)","0, 0, 0, 0, 0",Money/Numeric,decimal,"(2,0)",1278,0,0.00%,3
+Inside_Salesman_Number_____CISLM1,0,16,"0 (324), 56 (183), 12 (143), 1 (140), 99 (129), 4 (124), 8 (113), 21 (54), 19 (31), 20 (26)","19, 56, 99, 0, 4",Money/Numeric,decimal,"(2,0)",1278,0,0.00%,3
+Effective_Year_of_Price_Class_____CPRCYY,0,14,"14 (192), 18 (136), 17 (132), 19 (129), 22 (111), 21 (100), 16 (97), 15 (87), 20 (87), 23 (69)","17, 21, 17, 22, 18",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Discount_Terms_____CPAYMT,0,13,"1 (801), 40 (399), 0 (32), 3 (17), 2 (10), 15 (5), 4 (4), 18 (2), 20 (2), 44 (2)","40, 3, 40, 40, 1",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Discount_Terms_Expiration_Day_____CPYXDD,0,12,"31 (1233), 0 (32), 13 (2), 20 (2), 23 (2), 30 (1), 22 (1), 14 (1), 15 (1), 16 (1)","31, 31, 31, 31, 31",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Effective_Month_of_Price_Class_____CPRCMM,0,12,"3 (125), 6 (125), 8 (119), 2 (117), 10 (112), 5 (110), 4 (105), 7 (100), 9 (99), 1 (97)","12, 3, 12, 10, 7",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+L/M_Month_____CLMMM,0,12,"1 (946), 2 (147), 3 (72), 4 (72), 11 (9), 6 (8), 8 (6), 12 (5), 5 (5), 10 (4)","1, 1, 1, 1, 1",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+01-12_____CPYXMM,0,10,"12 (1235), 0 (32), 5 (3), 6 (2), 8 (1), 9 (1), 1 (1), 10 (1), 11 (1), 2 (1)","12, 12, 12, 12, 12",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+L/M_Year_____CLMYY,0,9,"25 (1167), 24 (93), 23 (8), 18 (2), 19 (2), 20 (2), 21 (2), 22 (1), 16 (1)","25, 25, 25, 24, 25",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Terms_of_Sale_____CTRMOS,0,9,"1 (779), 90 (138), 40 (123), 2 (83), 94 (75), 93 (71), 95 (5), 92 (3), 91 (1)","1, 1, 1, 1, 1",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Discount_Terms_Expiration_Year_____CPYXYY,0,7,"99 (1233), 0 (32), 25 (5), 26 (5), 19 (1), 21 (1), 23 (1)","99, 99, 99, 99, 99",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Backup_Salesman_Number_____CISLM2,0,5,"0 (1012), 99 (263), 19 (1), 20 (1), 87 (1)","0, 99, 0, 99, 0",Money/Numeric,decimal,"(2,0)",1278,0,0.00%,3
+Credit_Analyst_Number_____CCRAN#,0,3,"1 (1029), 3 (229), 6 (20)","3, 1, 1, 1, 1",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Due_Days_For_Credit_Checking_____CCRDAY,0,3,"30 (1266), 45 (6), 60 (6)","30, 30, 30, 30, 30",Money/Numeric,decimal,"(3,0)",1278,0,0.00%,3
+Backup_Salesman_District_Number_____CISMD2,0,2,"0 (1012), 1 (266)","0, 1, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Certs_Number_Of_Copies_____CCTCPY,0,2,"0 (1275), 1 (3)","0, 0, 0, 0, 0",Money/Numeric,numeric,"(1,0)",1278,0,0.00%,3
+Discount_Terms_Expiration_Century_____CPYXCC,0,2,"20 (1246), 0 (32)","20, 20, 20, 20, 20",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Dunns_Number_____CDUNN#,0,2,"0 (1277), 808514517 (1)","0, 0, 0, 0, 0",Money/Numeric,numeric,"(9,0)",1278,0,0.00%,3
+Effective_Century_of_Price_Class_____CPRCCC,0,2,"20 (1275), 19 (3)","20, 20, 20, 20, 20",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Inside_Salesman_District_Number_____CISMD1,0,2,"1 (954), 0 (324)","1, 1, 1, 0, 1",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Mill_Test_No._Of_Copies_____CMTCPY,0,2,"0 (1275), 1 (3)","0, 0, 0, 0, 0",Money/Numeric,numeric,"(1,0)",1278,0,0.00%,3
+Number_Of_Invoice_Copies_____CINCPY,0,2,"1 (1277), 0 (1)","1, 1, 1, 1, 1",Money/Numeric,numeric,"(1,0)",1278,0,0.00%,3
+Salesman_Three_District_Number_____CSMDI3,0,2,"0 (1277), 1 (1)","0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Salesman_Three_Number_____CSLMN3,0,2,"0 (1277), 87 (1)","0, 0, 0, 0, 0",Money/Numeric,decimal,"(2,0)",1278,0,0.00%,3
+Salesman_Two_District_Number_____CSMDI2,0,2,"0 (1092), 1 (186)","0, 0, 1, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+CALL_DATE_CENT_____CCDATC,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Century_oF_D_And_B_Rating_____CDBCC,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Century_of_D_And_B_Review_____CDBRCC,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Century_of_Last_Credit_Review_____CCRVCC,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Century_of_Material_Safety_Data_Sheet_____CMSFCC,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+COMPANY_NUMBER_____CCOMP,0,1,1 (1278),"1, 1, 1, 1, 1",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Credit_Analyst_District_Number_____CCADIS,0,1,1 (1278),"1, 1, 1, 1, 1",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Credit_Ins_Amt_____CINSAMT,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,decimal,"(9,0)",1278,0,0.00%,3
+Credit_Req_Amt_____CREQAMT,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,decimal,"(9,0)",1278,0,0.00%,3
+CUSTOMER_DISTRICT_NUMBER_____CDIST,0,1,1 (1278),"1, 1, 1, 1, 1",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+CYCLE_CALL_DAYS_____CCALLD,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,decimal,"(3,0)",1278,0,0.00%,3
+Day_of_D_And_B_Rating_____CDBDD,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Day_of_D_And_B_Review_____CDBRDD,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Day_of_Last_Credit_Review_____CCRVDD,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Day_of_Material_Safety_Data_Sheet_____CMSFDD,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Generic_Expiration_Century_____CGNXCC,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Generic_Expiration_Month_____CGNXMM,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Generic_Expiration_Year_____CGNXYY,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Generic_Expriation_Day_____CGNXDD,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+L/M_Century_____CLMCC,0,1,20 (1278),"20, 20, 20, 20, 20",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Minth_of_D_And_B_Rating_____CDBMM,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Month_of_D_And_B_Review_____CDBRMM,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Month_of_Last_Credit_Review_____CCRVMM,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Month_of_Material_Safety_Data_Sheet_____CMSFMM,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+NEXT_CALL_DATE_YMD_____CCDATE,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(6,0)",1278,0,0.00%,3
+ORIG_CUST_DIST_NUMBER_____CDISTO,0,1,1 (1278),"1, 1, 1, 1, 1",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Orig_Slsmn_One_Dist#_____CSMD1O,0,1,1 (1278),"1, 1, 1, 1, 1",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Profit_for_Frt/Prf_____CFPROFT,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,decimal,"(7,0)",1278,0,0.00%,3
+Reveal_acct_id_____CREVL#,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,decimal,"(19,0)",1278,0,0.00%,3
+Salesman_One_District_Number_____CSMDI1,0,1,1 (1278),"1, 1, 1, 1, 1",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Std_Credit_Hold_Release_Delay_____CCRLSD,0,1,0.00 (1278),"0.00, 0.00, 0.00, 0.00, 0.00",Money/Numeric,decimal,"(5,2)",1278,0,0.00%,3
+Waive_Min_Order_Century_____CWAVCC,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Waive_Min_Order_Day_____CWAVDD,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Waive_Min_Order_Month_____CWAVMM,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Waive_Min_Order_Year_____CWAVYY,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Year_of_D_And_B_Rating_____CDBYY,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Year_of_D_And_B_Review_____CDBRYY,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Year_of_Last_Credit_Review_____CCRVYY,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Year_of_Material_Safety_Data_Sheet_____CMSFYY,0,1,0 (1278),"0, 0, 0, 0, 0",Money/Numeric,numeric,"(2,0)",1278,0,0.00%,3
+Country_____CCTRY,0,20,"USA (1096), CAN (122), MEX (21), SGP (9), UK  (7), UAE (4), SA  (3), N   (2), TR  (2), VRC (2)","USA, USA, CAN, USA, USA",Category/Code,varchar,(3),1278,0,0.00%,7
+L/M_User_____CLMUS,0,12,"EOD        (1026), CSTEWART   (113), CFRIEND    (61), SWARBRIT   (56), NTOVAR     (5), LMCCOY     (4), JSWONKE    (3), CREDIT     (3), ACRUZ      (2), PJANDHYA   (2)","EOD       , SWARBRIT  , EOD       , EOD       , EOD       ",Category/Code,varchar,(10),1278,0,0.00%,7
+Multi_Bill_____CFLAG9,0,6,"N (817),   (449), 0 (6), 1 (3), 4 (2), 2 (1)","N, N,  ,  , N",Category/Code,varchar,(1),1278,0,0.00%,7
+Hold_Credit_Card_Orders_____CHLDCC,0,3,"N (1275), Y (2),   (1)","N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Risk_Flag_Y_N_H_____CRSYNH,0,3,"Y (855), H (399), N (24)","Y, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+Special_Invoice_Handling_Y_or_N_____CSPCYN,0,3,"E (981), Y (290), N (7)","E, Y, E, E, E",Category/Code,varchar,(1),1278,0,0.00%,7
+Subject_to_Purge_____CPURG,0,3,"Y (1256), N (21), M (1)","Y, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+A=ACTIVE__I=INACTIVE_D=DELETED_____CRECD,0,2,"A (1167), I (111)","A, A, A, A, A",Category/Code,varchar,(1),1278,0,0.00%,7
+Auto_Inv_Upd_____CFLAG1,0,2,"N (815), Y (463)","N, N, Y, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+BOL_Dft_Print_Heat_____CFLG14,0,2,"Y (1247), N (31)","Y, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+BOL_Dft_Print_M/C_____CFLG15,0,2,"Y (1247), N (31)","Y, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+CM_Mail_Option_____CFLAG4,0,2,"Y (1225), N (53)","N, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+COM_Production_Tracking_G/P/N_____CMPDTK,0,2,"G (1275), N (3)","G, G, G, G, G",Category/Code,varchar,(1),1278,0,0.00%,7
+COM_Receiving_Tracking_Y/N_____CMRCTK,0,2,"Y (1275), N (3)","Y, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+COM_Shipment_Tracking_Y/N_____CMSMTK,0,2,"Y (1275), N (3)","Y, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+COM_Storage_Tracking_Y/N_____CMSTTK,0,2,"Y (1275), N (3)","Y, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+Consolidate_by_Cust_PO_Yes_or_No_____CCNCPO,0,2,"  (1275), N (3)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+CROSS_BORDER_SALES_DISTRICT_____CCBSD,0,2,"  (1275), N (3)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Dflt_email_____CFLG10,0,2,"N (815),   (463)"," , N, N, N,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Export_Screening_____CFLAG2,0,2,"  (1013), N (265)"," ,  ,  ,  , N",Category/Code,varchar,(1),1278,0,0.00%,7
+Fed_Tax_Taxable_____CFEDTX,0,2,"N (1166), Y (112)","N, N, N, Y, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Letter_Of_Credit_____CCRLTR,0,2,"N (1277), Y (1)","N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Material_Safety_Data_Sheets_Issued_____CMSAFT,0,2,"N (879), Y (399)","N, N, N, Y, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Metric_Y_OR_N_____CMETRC,0,2,"N (1277), Y (1)","N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+OVRIDE_TAXABLE_FIELD_____CTXOVR,0,2,"Y (1255), N (23)","Y, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+Price_Extension_Flag_____CPEXT,0,2,"I (1275), N (3)","I, I, I, I, I",Category/Code,varchar,(1),1278,0,0.00%,7
+Price_UOM_Y_OR_N_____CPRUOM,0,2,"N (1271), Y (7)","N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Print_Net_on_OE615_____CN615,0,2,"  (1262), N (16)"," ,  ,  ,  , N",Category/Code,varchar,(1),1278,0,0.00%,7
+Print_Net_on_OE630_____CN630,0,2,"  (1262), N (16)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Print_Net_on_QE610_____CNQ610,0,2,"  (1262), N (16)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Print_Net_on_QE612_____CNQ612,0,2,"  (1262), N (16)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+PRINT_ORDER_ACKNOWLEDGEMENTS_____CPROAK,0,2,"Y (1275), N (3)","Y, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+PRINT_SHIP_TAG_AT_O/E_ENTRY_____CPSTOE,0,2,"N (1277), Y (1)","N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Prv_Cust_#_X-ref_____CXREF,0,2,"                (1261), NOASIAN         (17)","               ,                ,                ,                ,                ",Category/Code,varchar,(15),1278,0,0.00%,7
+Related_Parties_Y_or_N_____CRLATE,0,2,"N (1277), Y (1)","N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Salesman_One_Commissioned_Y_or_N_____CCOMM1,0,2,"N (1275), Y (3)","N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+SCHEDULING_PRIORITY_FLAG_____CSCHPR,0,2,"0 (1277), 1 (1)","0, 0, 0, 0, 0",Category/Code,varchar,(1),1278,0,0.00%,7
+Show_Cons._Inv_as_1_A/R_Item_Yes_or_No_____CCNI1I,0,2,"  (1275), N (3)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Slsmn_Notify_dft_____CSLNF,0,2,"N (1276), Y (2)","N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Statement_To_Print_Y_OR_N_____CSTMNT,0,2,"Y (1274), N (4)","Y, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+Supplier_Number_____CSUPPL,0,2,"                (1277), 100             (1)","               ,                ,                ,                ,                ",Category/Code,varchar,(15),1278,0,0.00%,7
+Target_Account_Y_OR_N_____CTARGT,0,2,"N (1277), Y (1)","N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Taxable_Y_OR_N_____CTXABL,0,2,"N (1114), Y (164)","N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+A=ACTUAL_T=THEORETICAL_____CSTAF,0,1,A (1278),"A, A, A, A, A",Category/Code,varchar,(1),1278,0,0.00%,7
+Auto_Charge_Frt_____CACF,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Auto_Chg_Packing_____CACP,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Auto_Chg_Surcharge_____CACS,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Auto_Email_Cert_____CBYPAS,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Auto_Invoicing_____CAUTOI,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+BOL_Dft_Print_Sft_____CFLG17,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+BOL_Dft_Print_Tests_____CFLG16,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Bus._Potential_Class_____CBPCC,0,1,"    (1278)","   ,    ,    ,    ,    ",Category/Code,varchar,(3),1278,0,0.00%,7
+Combinable_Pricing_____CCBNCD,0,1,Y (1278),"Y, Y, Y, Y, Y",Category/Code,varchar,(1),1278,0,0.00%,7
+Consignment_____CFLAG8,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Consolidate_Invoices_Y_or_N_____CCNSYN,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Consult_on_Price_Flag_____CCONSU,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+County_Name_____CCONM,0,1,"                          (1278)","                         ,                          ,                          ,                          ,                          ",Category/Code,varchar,(25),1278,0,0.00%,7
+CUST_OWNED_SCRAP_CREDIT_____CSCRAP,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+CUST_PART#_MASK_____CCPMSK,0,1,"   (1278)","  ,   ,   ,   ,   ",Category/Code,varchar,(2),1278,0,0.00%,7
+Customer_Pricing_Class_____CPRCLS,0,1,01 (1278),"01, 01, 01, 01, 01",Category/Code,varchar,(2),1278,0,0.00%,7
+Customer_type_____CFLAG7,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+D_And_B_Rating_____CDBRAT,0,1,"      (1278)","     ,      ,      ,      ,      ",Category/Code,varchar,(5),1278,0,0.00%,7
+Duty_Exempt_____CDUTYE,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+EDI_bill_to_comp_____CEDICD,0,1,"                  (1278)","                 ,                  ,                  ,                  ,                  ",Category/Code,varchar,(17),1278,0,0.00%,7
+EDI_Y_or_N_____CEDIYN,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+European_Aging_Flag_____CDEUR,0,1,D (1278),"D, D, D, D, D",Category/Code,varchar,(1),1278,0,0.00%,7
+Express_Dim._In_____CDEXP,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Finance_Charge?_____CFINYN,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Force_Ship_To_____CMPSC,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Formal_Quote_Print__User_Exit_Pgm_____CFQTPE,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+Ignore_GP%-Inv_Upd_____CGPIUPD,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Ignore_GP%-Invoice_____CGPINVO,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+like_syscnsdp/sdpits_____CFLG18,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+N_OR_B_____CSPCC,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Not_used_____CFLG19,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Not_used_____CFLG20,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Not_used_____CFLG21,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Not_used_____CFLG22,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Not_used_____CFLG23,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Not_used_____CFLG24,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Not_used_____CFLG25,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Not_used_____CFLG26,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Not_used_____CFLG27,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Not_used_____CFLG28,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Potential_Customer_____CPCF,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+PRINT_BACKORDER_INFO_ON_CUST_INVOICE_____CPRTBO,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Print_Delivery_Mani_____CFLAG3,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Print_Net_on_OE610_____CN610,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+PRINT_PACK_LIST_FROM_OE_____CPPLOE,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Prod_Report_A/R_Y/N_____CMPRAR,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Prod_Report_N/P/F/E_____CMPROD,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Purchase_Discount_Flag_____CPDISC,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Quote_Detail_User_Exit_Pgm_____CQTDTE,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+Quote_Summary_User_Exit_Pgm_____CQTSME,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+Quote_to_Order_User_Exit_Pgm_____CQTORE,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+Req_Job_____CFLG11,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Require_Part#_____CFLAG6,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+REQUIRE_SHOP#_IN_SHIPADR_____CRQSHP,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Restrict_Pricing_____CFLG12,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Sale_Territory_____CTERR,0,1,"    (1278)","   ,    ,    ,    ,    ",Category/Code,varchar,(3),1278,0,0.00%,7
+SALES_CALL_TYPE_____CSLSCT,0,1,"    (1278)","   ,    ,    ,    ,    ",Category/Code,varchar,(3),1278,0,0.00%,7
+Salesman_Three_Commissioned_Y_or_N_____CCOMM3,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Salesman_Two_Commissioned_Y_or_N_____CCOMM2,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Separate_Pricing_____CFLG13,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+Shipping_Tag_Type_____CSHPT,0,1,SHIPTAG  (1278),"SHIPTAG , SHIPTAG , SHIPTAG , SHIPTAG , SHIPTAG ",Category/Code,varchar,(8),1278,0,0.00%,7
+Shipping_Tag2_Type_____CSHPT2,0,1,"         (1278)","        ,         ,         ,         ,         ",Category/Code,varchar,(8),1278,0,0.00%,7
+SPECIAL_O/E_ENTRY_____CCSOE,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Special_Pricing_Program_Name_____CPGMNM,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+Use_Special_Bill_of_Lading_Numbers_____CCSBLN,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+USER_DEFINED_PRINT_____CFLAG5,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+USER_EXIT_2ND_ORDER_PRINT_PGM_____CUE2OP,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+USER_EXIT_BOL_PRINT_PGM_____CUEBLP,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+USER_EXIT_INVOICE_PRINT_PGM_____CUEIPP,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+USER_EXIT_INVOICE_PROGRAM_____CUEINP,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+USER_EXIT_ORDER_PRINT_PGM_____CUEOPP,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+USER_EXIT_PACK_LIST_PRINT_PGM_____CUEPLP,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+User_Exit_Pgms?_____CSPRFL,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+USER_EXIT_SHIP_LABEL_PRINT_PGM_____CUESLP,0,1,"           (1278)","          ,           ,           ,           ,           ",Category/Code,varchar,(10),1278,0,0.00%,7
+Waive_Minimum_Order_Value_____CWAVMN,0,1,N (1278),"N, N, N, N, N",Category/Code,varchar,(1),1278,0,0.00%,7
+WEB_FIELD_A_____CWEBA,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+WEB_FIELD_B_____CWEBB,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+WEB_FIELD_C_____CWEBC,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+WEB_FIELD_D_____CWEBD,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+WEB_FIELD_E_____CWEBE,0,1,"  (1278)"," ,  ,  ,  ,  ",Category/Code,varchar,(1),1278,0,0.00%,7
+Customer_Alpha_Name_____CALPHA,0,1266,1 (1278),"T&S MACHINE CO INC                 , HEARTY ENERGY SERVICES             , KEYSTONE ENERGY TOOLS LLC          , AZURE INTERNATIONAL                , RJ ENGINEERING SYSTEMS             ",Text,varchar,(35),1278,0,0.00%,8
+Customer_Name_____CCUSTN,0,1258,1 (1278),"APOLLO MACHINE & WELDING LTD       , U-TEC                              , RUHRPUMPEN INC                     , GULF COAST REPAIR & MACHINE SHOP   , TALLY PRODUCTION SYSTEMS           ",Text,varchar,(35),1278,0,0.00%,8
+Address_1_____CADDR1,0,1234,1 (1278),"14300 NW FRWY STE AJ               , 9140 TAVENOR LANE                  , PO BOX 2368                        , 10421 TANNER RD                    , 1614 ISOM ST                       ",Text,varchar,(35),1278,0,0.00%,8
+Customer_Phone_Number_____CPHON,0,1166,"N (1277), Y (1)","713 466 8853      ,                   , 713 910 9991      , 281 456 7100      , 281 442 5900      ",Text,varchar,(18),1278,0,0.00%,8
+E-MAIL_ADDRESS_____CEMAL,0,981,1 (1278),"kellyjones@hornequipment.com                      , rms@etex.net                                      , DSQUALITY@AOL.COM                                 , paiged@qms.la                                     , ap@leanwerks.com                                  ",Text,varchar,(50),1278,0,0.00%,8
+Fax_Phone_Number_____CFPHON,0,549,"N (1277), Y (1)","                  ,                   , 979 830 0402      ,                   ,                   ",Text,varchar,(18),1278,0,0.00%,8
+City_____CCITY,0,346,"                          (1278)","HOUSTON                  , EDMONTON                 , SAN ANTONIO              , BOSSIER CITY             , DUBAI                    ",Text,varchar,(25),1278,0,0.00%,8
+Address_2_____CADDR2,0,107,1 (1278),"                                   ,                                    ,                                    ,                                    ,                                    ",Text,varchar,(35),1278,0,0.00%,8
+WEB_SITE_ADDRESS_____CWEBS,0,75,1 (1278),"                                                  ,                                                   ,                                                   ,                                                   , MB QUOTED                                         ",Text,varchar,(50),1278,0,0.00%,8
+State_____CSTAT,0,48,"                          (1278)","TX, TX, VA, TX, OK",Text,varchar,(2),1278,0,0.00%,8
+Address_3_____CADDR3,0,21,1 (1278),"                                   ,                                    ,                                    ,                                    ,                                    ",Text,varchar,(35),1278,0,0.00%,8

@@ -1,0 +1,129 @@
+﻿Inventory_Code_____MDINVC,FK/Code (Potential),2,"F (450), W (5)","F, F, F, F, F",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,2
+PROC_STATUS_CODE_____MDMSTS,FK/Code (Potential),1,1 (455),"1, 1, 1, 1, 1",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,2
+Record_Code_____MDRECD,FK/Code (Potential),2,"I (443), A (12)","I, I, I, I, I",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,2
+TAG_CODE_____MDTAGC,FK/Code (Potential),1,T (455),"T, T, T, T, T",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,2
+Y_=_YES__N_=_NO_____MDSKID,FK/Code (Potential),1,0 (1)," ,  ,  ,  ,  ",nvarchar,(MAX),455,0,454,0.00%,99.78%,0,2
+3_POSITION_CLASS_____MDCLAS,Category/Code (Low Distinct),10,"ABH (232), ATH (195), ATC (14), AQM (5), CBH (2), KBH (2), SBH (2), ABM (1), ABO (1), KTH (1)","ATH, ABH, ABH, ATH, ABH",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,3
+CALCULATING_WIDTH_____MDWDTH,Category/Code (Low Distinct),6,"0.0 (450), 10.25 (1), 12.25 (1), 13.25 (1), 14.125 (1), 9.25 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,3
+Display_Width_____MDDSPW,Category/Code (Low Distinct),5,"    9.250 (1),    10.250 (1),    12.250 (1),    13.250 (1),    14.125 (1)","         ,          ,          ,          ,          ",nvarchar,(MAX),455,0,450,0.00%,98.90%,0,3
+Last_Maintained_User_____MDLMUS,Category/Code (Low Distinct),8,"AUTO CLOSE (209), LCARNER    (166), CWOODWARD  (65), DWYRICK    (4), SWARBRIT   (3), APARKER    (2), MVELASQU   (2), YRIOS      (1)","CWOODWARD , AUTO CLOSE, LCARNER   , LCARNER   , AUTO CLOSE",nvarchar,(MAX),455,0,3,0.00%,0.66%,0,3
+REMOTE_INVENTORY_VENDOR_____MDRVND,Category/Code (Low Distinct),12,"121.0 (198), 119.0 (163), 139.0 (25), 120.0 (20), 307.0 (20), 168.0 (11), 265.0 (9), 465.0 (5), 0.0 (1), 158.0 (1)","121.0, 121.0, 465.0, 168.0, 121.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,3
+Shape_____MDSHAP,Category/Code (Low Distinct),3,"B (240), T (210), P (5)","T, T, T, T, B",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,3
+TOTAL_FEET_____MDTFTS,Category/Code (Low Distinct),19,"0.0 (432), 0.5 (6), 0.83199999999999996 (1), 1.0 (1), 13.25 (1), 2.0 (1), 2.1659999999999999 (1), 25.414999999999999 (1), 4.0830000000000002 (1), 4.2510000000000003 (1)","0.0, 0.0, 0.0, 0.0, 1.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,3
+TOTAL_PIECES_____MDTPCS,Category/Code (Low Distinct),12,"0.0 (435), 1.0 (9), 2.0 (2), 3.0 (1), 355.0 (1), 4.0 (1), 455.0 (1), 5.0 (1), 6.0 (1), 614.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,3
+TOTAL_SQUARE_FEET_____MDTSFT,Category/Code (Low Distinct),7,"0.0 (321), 0.001 (129), 487.50799999999998 (1), 523.85299999999995 (1), 544.26199999999994 (1), 592.99599999999998 (1), 639.85000000000002 (1)","0.0, 0.001, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,3
+Vendor_#_____MDVNDR,Category/Code (Low Distinct),11,"121.0 (198), 119.0 (163), 139.0 (25), 120.0 (21), 307.0 (20), 168.0 (11), 265.0 (9), 465.0 (5), 158.0 (1), 218.0 (1)","119.0, 121.0, 121.0, 121.0, 121.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,3
+CALCULATING_LENGTH_____MDLENG,Text,222,Distinct: 222,"237.0, 241.4016, 6.0, 2.0, 250.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+COSTING_METHOD_UNIT_COST_____MDUCST,Text,315,Distinct: 315,"127.5698, 40.190300000000001, 302.27929999999998, 105.0979, 548.97270000000003",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+COSTING_METHOD_UNIT_COST_EXT_____MDCSTX,Text,380,Distinct: 380,"6520.6099999999997, 0.0, 0.0, 57724.839999999997, 25258.34",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+CRT_DESCRIPTION_____MDCRTD,Text,219,Distinct: 219,"19.500 4.750 7.375 HF F22  80 KSI N, 5.500 BAR HF 4340 125 KSI NQT      , 5.500 BAR HF 8630MOD 125 KSI NQT   , 11.500 BAR HF 8620  AR             , 11.000 5.750 2.625 HF  4140 LN80 NQ",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+Display_Length_____MDDSPL,Text,222,Distinct: 222,"  252.670,   204.000,   230.000,     3.000,   245.800",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+FILLED_ON_ORDER_QUANTITY_____MDFQTY,Text,308,Distinct: 308,"94.667000000000002, 0.16700000000000001, 166.584, 0.5, 128.167",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+INVENTORY_RESERVE_QUANTITY_____MDINVR,Text,86,Distinct: 86,"0.0, 219131.527, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+ITEM_NUMBER_____MDITEM,Text,203,Distinct: 203,"51318, 51070, 51121, 51738, 52426",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+ON_ORDER_QUANTITY_____MDOQTY,Text,274,Distinct: 274,"28.5, 1.0, 8.6669999999999998, 219.99700000000001, 58.832999999999998",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+ORDER_QUANTITY_____MDIQTY,Text,130,Distinct: 130,"0.0, 0.0, 0.0, 1.083, 0.001",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+ORG_EST_WEIGHT_____MDUEWT,Text,392,Distinct: 392,"13392.919, 8877.8819999999996, 3417.6509999999998, 37198.991999999998, 7113.9870000000001",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+ORIGINAL_ORDER_QUANTITY_____MDORQT,Text,274,Distinct: 274,"193.667, 196.25, 195.75200000000001, 210.0, 1008.35",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+Size_1_____MDSIZ1,Text,64,Distinct: 64,"8.0, 11.0, 9.0, 6.75, 8.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+Size_2_____MDSIZ2,Text,48,Distinct: 48,"3.5, 5.5, 0.0, 7.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+Size_3_____MDSIZ3,Text,39,Distinct: 39,"0.0, 0.0, 2.5, 1.125, 0.57899999999999996",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+Theo._Meters_____MDTMTR,Text,65,Distinct: 65,"-3.048, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+Theo_Kilos_____MDTKG,Text,110,Distinct: 110,"-58.335999999999999, 0.0, 0.0, 0.0, -434.81200000000001",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+TOTAL_POUNDS_____MDTLBS,Text,65,Distinct: 65,"0.0, 0.0, 0.0, 0.024, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+Transaction_#_____MDORDR,Text,455,Distinct: 455,"402158.0, 402072.0, 401726.0, 401983.0, 401861.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,1,4
+Weight_Factor_____MDWGTF,Text,113,Distinct: 113,"19.56638392, 10.01264849, 22.250329969999999, 19.56638392, 12.515810610000001",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,4
+ADMIN_BURDEN_COST_____MDADMB,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+CALCULATED_RESTOCK_PRICE_____MDCRSP,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+CALCULATED_RESTOCK_PRICE_EXT_____MDCRSX,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+COMPANY_NUMBER_____MDCOMP,Single Value,1,1.0 (455),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+COST_METHOD_____MDCSTM,Single Value,1,1 (455),"1, 1, 1, 1, 1",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Created_Fr_Template_____MDTMPL,Single Value,1,N (435),"N, N, N, N, N",nvarchar,(MAX),455,0,20,0.00%,4.40%,0,7
+CUSTOMER_NUMBER_____MDCUST,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+DECIMAL_INCHES_____MDINDL,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Dimen._Expressed_Imperial/Metric_____MDDEXP,Single Value,1,I (455),"I, I, I, I, I",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+DISTRICT_NUMBER_____MDCDST,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+DISTRICT_NUMBER_____MDDIST,Single Value,1,1.0 (455),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+E/O/R/P_____MDEORP,Single Value,1,R (455),"R, R, R, R, R",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Fastpath/Item_____MDFICD,Single Value,1,I (455),"I, I, I, I, I",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+FINAL_PRODUCED_WEIGHT_____MDUFWT,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+FINANCIAL_SCRAP_FACTOR_____MDFSFA,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+FREIGHT_IN_COST_____MDFRTI,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+FREIGHT_OUT_COST_____MDFRTO,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+IMAGE_TRACER_____MDIMTR,Single Value,1,N (455),"N, N, N, N, N",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+INBOUND_ORDER_LINE_NO._____MDIBLN,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+INBOUND_ORDER_USED_LINE_NO._____MDIBUL,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+INVENTORY_RESERVE_DISTRICT_____MDINVD,Single Value,1,1.0 (455),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Line_Type_____MDLTYP,Single Value,1,M (455),"M, M, M, M, M",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+LINKED_MATERIAL_PROCESSING_DISTRICT_____MDLMPD,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+LINKED_MATERIAL_PROCESSING_MAIN_LINE_____MDLMPM,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+LINKED_MATERIAL_PROCESSING_ORDER_NUMBER_____MDLMPO,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+LINKED_ORIGINAL_ORDER_DISTRICT_____MDLOOD,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+LINKED_ORIGINAL_ORDER_NUMBER_____MDLOON,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+MACHINE_HOURS_____MDMHRS,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Machine_Hrs_____MDMHR,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Machine_Mins_____MDMIN,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Main_Line#_____MDMLIN,Single Value,1,1.0 (455),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+MULTIPLE_LINKED_ORDER_QUANTITY_____MDMLOQ,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+MULTI-STEP_SETUP_FLAG_____MDRSTK,Single Value,1,N (455),"N, N, N, N, N",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+No_of_cuts_____MDULBK,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+OPERATIONAL_BURDEN_COST_____MDOPRB,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+OPERATIONAL_BURDEN_COST_PER_LINE_____MDOPRL,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Order_Type_____MDTYPE,Single Value,1,O (455),"O, O, O, O, O",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+ORDER_WHOLE_INCHES_____MDINCH,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+ORG_ORD_WEIGHT_____MDUOWT,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+ORIGINAL_ORDERED_WHOLE_INCHES_____MDORIN,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+PRODUCTION_MACHINE_____MDMCH,Single Value,1,1.0 (455),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+PRORATED_WHOLE_ORDER_COST_AMOUNT_____MDWCCS,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+SHOP_FLOOR_AREA#_____MDSFA#,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Size_4_____MDSIZ4,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+SLIT_COIL_SHEET_ANALYSIS_FLAG_____MDSLIT,Single Value,1,S (9)," ,  ,  ,  ,  ",nvarchar,(MAX),455,0,446,0.00%,98.02%,0,7
+TOTAL_FTS_____MDPFTS,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+TOTAL_INCL_1_PRICE_FOR_ADDTL_CHARGES_____MDMLAC,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+TOTAL_INCL_1_PRICE_FOR_PROCESS_CHRGS_____MDMLPC,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+TOTAL_INCL_1_PRICE_FOR_WHOLE_ORDER_CHRGS_____MDMLWC,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+TOTAL_SQUARE_FT_____MDPSFT,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Unit_Weight_____MDUNTW,Single Value,1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Y_=_YES__N_=_NO_____MDCUTY,Single Value,1,Y (455),"Y, Y, Y, Y, Y",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,7
+Y_=_YES__N_=_NO_____MDRLF,Single Value,1,0 (1)," ,  ,  ,  ,  ",nvarchar,(MAX),455,0,454,0.00%,99.78%,0,7
+=_OPEN__C_=_CLOSED_____MDCLOS,Flag (2 Values),2,"P (432), C (12)","P, P, P, P, P",nvarchar,(MAX),455,0,11,0.00%,2.42%,Flag,10
+COSTING_METHOD_UNIT_COST_UOM_____MDCUOM,Flag (2 Values),2,"FT  (450), LB  (5)","FT , FT , FT , FT , FT ",nvarchar,(MAX),455,0,0,0.00%,0.00%,Flag,10
+INBOUND_ORDER_DISTRICT_____MDIBOD,Flag (2 Values),2,"0.0 (454), 1.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,Flag,10
+INBOUND_ORDER_NUMBER_____MDIBOR,Flag (2 Values),2,"0.0 (454), 400208.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,Flag,10
+ORDER_UNIT_MEASURE_____MDIUOM,Flag (2 Values),2,"FT  (448), LB  (7)","FT , FT , FT , FT , FT ",nvarchar,(MAX),455,0,0,0.00%,0.00%,Flag,10
+ORIGINAL_ORDERED_UOM_____MDOUOM,Flag (2 Values),2,"LB  (450), FT  (5)","LB , LB , LB , LB , LB ",nvarchar,(MAX),455,0,0,0.00%,0.00%,Flag,10
+Y_=_YES__N_=_NO_____MDFLAG,Flag (2 Values),2,"N (448), * (1)","N, N, N, N, N",nvarchar,(MAX),455,0,6,0.00%,1.32%,Flag,10
+COMPLETION_CENTURY_____MDCCC,Date (Suffix),1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+COMPLETION_DAY_____MDCDD,Date (Suffix),1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+COMPLETION_MONTH_____MDCMM,Date (Suffix),1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+COMPLETION_YEAR_____MDCYY,Date (Suffix),1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+Last_Maintained_Century_____MDLMCC,Date (Suffix),1,20.0 (455),"20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+Last_Maintained_Day_____MDLMDD,Date (Suffix),31,Distinct: 31,"6.0, 17.0, 18.0, 11.0, 28.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+Last_Maintained_Month_____MDLMMM,Date (Suffix),12,"5.0 (54), 10.0 (44), 3.0 (44), 11.0 (40), 8.0 (40), 1.0 (39), 7.0 (39), 6.0 (37), 4.0 (33), 9.0 (33)","5.0, 9.0, 4.0, 4.0, 1.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+Last_Maintained_Year_____MDLMYY,Date (Suffix),9,"24.0 (162), 23.0 (151), 22.0 (83), 25.0 (45), 15.0 (8), 14.0 (2), 16.0 (2), 18.0 (1), 21.0 (1)","23.0, 24.0, 23.0, 24.0, 23.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+PRODUCTION_CENTURY_____MDPCC,Date (Suffix),2,"20.0 (444), 0.0 (11)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+PRODUCTION_DAY_____MDPDD,Date (Suffix),32,Distinct: 32,"22.0, 5.0, 24.0, 8.0, 26.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+PRODUCTION_MONTH_____MDPMM,Date (Suffix),13,"5.0 (53), 10.0 (44), 3.0 (43), 11.0 (40), 1.0 (39), 6.0 (37), 7.0 (37), 8.0 (36), 9.0 (33), 12.0 (32)","0.0, 2.0, 11.0, 10.0, 6.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+PRODUCTION_YEAR_____MDPYY,Date (Suffix),10,"24.0 (160), 23.0 (148), 22.0 (82), 25.0 (41), 0.0 (11), 15.0 (8), 21.0 (2), 14.0 (1), 18.0 (1), 20.0 (1)","0.0, 24.0, 22.0, 24.0, 22.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+REQUESTED_SHIP_CENTURY_____MDRQCC,Date (Suffix),1,20.0 (455),"20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+REQUESTED_SHIP_DAY_____MDRQDD,Date (Suffix),31,Distinct: 31,"21.0, 7.0, 8.0, 20.0, 17.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+REQUESTED_SHIP_MONTH_____MDRQMM,Date (Suffix),12,"5.0 (56), 10.0 (50), 3.0 (43), 11.0 (39), 6.0 (39), 1.0 (38), 7.0 (38), 8.0 (37), 9.0 (35), 12.0 (31)","2.0, 5.0, 10.0, 10.0, 9.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+REQUESTED_SHIP_YEAR_____MDRQYY,Date (Suffix),9,"24.0 (160), 23.0 (146), 22.0 (87), 25.0 (45), 15.0 (8), 21.0 (3), 14.0 (2), 16.0 (2), 17.0 (2)","22.0, 23.0, 23.0, 25.0, 24.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+TOTAL_ADDTL_CHRGS_COST_____MDADCC,Date (Suffix),1,0.0 (455),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+TOTAL_PROCESS_COST_____MDPRCC,Date (Suffix),304,Distinct: 304,"7167.3000000000002, 433.0, 17475.470000000001, 1168.0, 455.0",nvarchar,(MAX),455,0,0,0.00%,0.00%,0,11
+ALLOY_____MDALOY,All Whitespace,0,(All Whitespace),"        ,         ,         ,         ,         ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+CALCULATED_RESTOCK_PRICE_UOM_____MDCRSU,All Whitespace,0,(All Whitespace),"   ,    ,    ,    ,    ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+CUSTOMER_PART_NUMBER_____MDCPRT,All Whitespace,0,(All Whitespace),"                         ,                          ,                          ,                          ,                          ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+Extra_Flag_____MDFLAG1,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+Extra_Flag_____MDFLAG2,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+Extra_Flag_____MDFLAG3,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+INBOUND_ORDER_TYPE_____MDIBOT,All Whitespace,0,(All Whitespace),"  ,   ,   ,   ,   ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+ITEM_SUB-CLASS_____MDSCLS,All Whitespace,0,(All Whitespace),"        ,         ,         ,         ,         ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+Part#_Revision_____MDPRTR,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+SCRAP_ITEM_____MDSCRP,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+Setup_type_____MDSTPT,All Whitespace,0,(All Whitespace),"  ,   ,   ,   ,   ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+TEMPER_____MDTEMP,All Whitespace,0,(All Whitespace),"      ,       ,       ,       ,       ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+TOLERANCE_CHECK_PROBLEM_____MDTOLP,All Whitespace,0,(All Whitespace),"  ,   ,   ,   ,   ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+Y_=_YES__N_=_NO__1_=_#_CHRGS_____MDPCF,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+Y_=_YES__N_=_NO__1_=_#_CHRGS_____MDPCF1,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12
+Y_=_YES__N_=_NO__1_=_#_CHRGS_____MDPCF2,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),455,0,455,0.00%,100.00%,0,12

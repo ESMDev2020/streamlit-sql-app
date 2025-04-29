@@ -1,0 +1,92 @@
+﻿Cage_Code_____VCAGE,FK/Code (Potential),nvarchar,(MAX),730,1,0,0.00%,0,"      (730)","     ,      ,      ,      ,      ",1
+County_Code_____VCNTY,FK/Code (Potential),nvarchar,(MAX),730,1,0,0.00%,0,"   (730)","  ,   ,   ,   ,   ",1
+Federal_ID_Number_____VFEDID,FK/Code (Potential),nvarchar,(MAX),730,482,0,0.00%,0,N/A,"208216282.0, 161620809.0, 760396056.0, 852876498.0, 760163468.0",1
+Language_Code_____VLANG,FK/Code (Potential),nvarchar,(MAX),730,1,0,0.00%,0,"    (730)","   ,    ,    ,    ,    ",1
+PAYMENT_CODE_____VVPAYM,FK/Code (Potential),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",1
+Record_Code_____VRECD,FK/Code (Potential),nvarchar,(MAX),730,2,0,0.00%,0,"A (507), I (223)","A, A, A, A, A",1
+SCAC_code_____VSCAC,FK/Code (Potential),nvarchar,(MAX),730,23,0,0.00%,0,"                  (708), AAC               (1), ACT               (1), CTS               (1), CUS               (1), DGM               (1), DMM               (1), DOW               (1), FJW               (1), G&S               (1)","                 ,                  ,                  ,                  ,                  ",1
+State_Code_____VSTATE,FK/Code (Potential),nvarchar,(MAX),730,41,0,0.00%,0,"TX (428), .  (61), IL (49), LA (31), PA (15), CA (14), AB (11), OH (11), GA (8),    (7)","TX, TX, TX, IL, TX",1
+Taxation_ID_Number_____VTAXID,FK/Code (Potential),nvarchar,(MAX),730,1,0,0.00%,0,"                          (730)","                         ,                          ,                          ,                          ,                          ",1
+VENDOR_DESIGNATION_CODE_____VDECO,FK/Code (Potential),nvarchar,(MAX),730,1,0,0.00%,0,"   (730)","  ,   ,   ,   ,   ",1
+Vendor_Parent_Code_____VPCODE,FK/Code (Potential),nvarchar,(MAX),730,1,0,0.00%,0,"     (730)","    ,     ,     ,     ,     ",1
+ZIP_CODE_12_POS_____VZIP,FK/Code (Potential),nvarchar,(MAX),730,429,0,0.00%,0,N/A,"77040       , 77032       , .           , 77530       , 77386       ",1
+_____VFLAG3,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,"  (730)"," ,  ,  ,  ,  ",7
+_____VFLAG5,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,"  (730)"," ,  ,  ,  ,  ",7
+_____VFLAG6,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,"  (730)"," ,  ,  ,  ,  ",7
+1099_Required_____VR1099,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"N (623), Y (107)","N, N, N, N, N",7
+A/R_Customer_Number_____VCCUST,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+ALLOW_NON-INV_RCPT_ENTRY_____VNIRCE,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,N (730),"N, N, N, N, N",7
+Century_Vendor_Added_____VADDCC,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"20.0 (729), 19.0 (1)","20.0, 20.0, 20.0, 20.0, 20.0",7
+COMPANY_NUMBER_____VCOMP,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,1.0 (730),"1.0, 1.0, 1.0, 1.0, 1.0",7
+Country_____VCNTRY,Quantity (Name Suggests),nvarchar,(MAX),730,9,0,0.00%,0,"USA (693), CAN (27), I   (2), SGP (2), VRC (2), BR  (1), D   (1), E   (1), N   (1)","USA, USA, USA, N  , USA",7
+County_Name_____VCONM,Quantity (Name Suggests),nvarchar,(MAX),730,2,0,0.00%,0,"                          (727), USA                       (3)","                         ,                          ,                          ,                          ,                          ",7
+Ctry_of_Origin_____VCORIG,Category/Code (Low Distinct),nvarchar,(MAX),730,6,0,0.00%,0,"USA (702), CAN (23), RO  (2),     (1), D   (1), I   (1)","USA, USA, USA, USA, USA",7
+Currency_Exchange_____VCEXH,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"N (709), Y (21)","N, N, N, N, N",7
+Customer_District_Number_____VCDIST,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+Customer_District_Number_____VCDST,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"0.0 (668), 1.0 (62)","1.0, 0.0, 0.0, 0.0, 0.0",7
+Days_Due_____VDAYDU,Category/Code (Low Distinct),nvarchar,(MAX),730,6,0,0.00%,0,"30.0 (709), 1.0 (16), 15.0 (2), 10.0 (1), 20.0 (1), 25.0 (1)","30.0, 30.0, 30.0, 30.0, 30.0",7
+Direct_Purchases_Prior_Year_____VDPPY,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+Due_GST_Taxq_____VDGST,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,"  (730)"," ,  ,  ,  ,  ",7
+Duty_Payable_on_Material_____VDUTY,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"N (716), Y (14)","N, Y, N, N, N",7
+EDI_Supplier_____VEDISU,Category/Code (Low Distinct),nvarchar,(MAX),730,5,0,0.00%,0,"                  (530), EDI123            (197), ECI123            (1), ED123             (1), EDI125            (1)","                 , EDI123           ,                  ,                  ,                  ",7
+EDI_Vendor_(Y/N)_____VEDI,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"N (530), Y (200)","N, N, Y, N, N",7
+Employee_Number_____VEMPLN,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"           (729), DWYRICK    (1)","          ,           ,           ,           ,           ",7
+Exch_Currency_____VEXCTY,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"    (709), CAD (21)","   ,    ,    ,    ,    ",7
+Expense_Purchases_Paid_____VEPURC,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+Expense_Purchases_Prior_Year_____VEPPY,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+Expense_Purchases_Vouchered_____VEVCHR,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+F.O.B._Type_____VFOBCD,Category/Code (Low Distinct),nvarchar,(MAX),730,3,0,0.00%,0,"1.0 (716), 6.0 (12), 5.0 (2)","1.0, 1.0, 1.0, 1.0, 1.0",7
+Freight_Terms_____VFRTRM,Category/Code (Low Distinct),nvarchar,(MAX),730,3,0,0.00%,0,"1.0 (726), 3.0 (3), 5.0 (1)","1.0, 1.0, 1.0, 1.0, 1.0",7
+Generic_Scrap_flg_____VGENSC,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,N (730),"N, N, N, N, N",7
+Hold_Receipts_____VFLAG4,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,"  (730)"," ,  ,  ,  ,  ",7
+Inv.__Purchases_Vouchered_____VSVCHR,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+Inv._Purchases_Paid_____VSPURC,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+L/M_Century_____VLMCC,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,20.0 (730),"20.0, 20.0, 20.0, 20.0, 20.0",7
+L/M_Month_____VLMMM,Category/Code (Low Distinct),nvarchar,(MAX),730,12,0,0.00%,0,"7.0 (150), 8.0 (80), 10.0 (75), 5.0 (71), 2.0 (62), 1.0 (51), 11.0 (49), 6.0 (48), 4.0 (42), 3.0 (37)","2.0, 6.0, 10.0, 1.0, 8.0",7
+L/M_User_____VLMUS,Category/Code (Low Distinct),nvarchar,(MAX),730,11,0,0.00%,0,"CSTEWART   (473), LCARNER    (98), NTOVAR     (43), LMCCOY     (40), CFRIEND    (30), LSOLOAI    (20), CWOODWARD  (14), EOD        (7), AVELASQU   (3), APARKER    (1)","CSTEWART  , CSTEWART  , CSTEWART  , LMCCOY    , CSTEWART  ",7
+L/M_Year_____VLMYY,Category/Code (Low Distinct),nvarchar,(MAX),730,13,0,0.00%,0,"24.0 (209), 18.0 (80), 23.0 (80), 21.0 (69), 19.0 (62), 22.0 (60), 25.0 (47), 17.0 (43), 20.0 (29), 14.0 (20)","16.0, 18.0, 19.0, 19.0, 18.0",7
+Material_Lead_Time_____VMTLTM,Date/Time (Name Suggests),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+Material_Type_D/I/C_____VMATL,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"D (716), I (14)","D, D, D, D, D",7
+Metric_(Y/N)_____VMTRIC,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,N (730),"N, N, N, N, N",7
+Month_Vendor_Added_____VADDMM,Category/Code (Low Distinct),nvarchar,(MAX),730,12,0,0.00%,0,"8.0 (92), 10.0 (73), 7.0 (70), 1.0 (69), 9.0 (69), 6.0 (59), 12.0 (55), 5.0 (54), 2.0 (52), 11.0 (48)","7.0, 7.0, 2.0, 1.0, 8.0",7
+PAYMENT_TERMS_____VPYMT,Category/Code (Low Distinct),nvarchar,(MAX),730,12,0,0.00%,0,"1.0 (417), 6.0 (214), 40.0 (46), 9.0 (25), 8.0 (16), 3.0 (4), 18.0 (2), 30.0 (2), 2.0 (1), 22.0 (1)","7.0, 1.0, 1.0, 40.0, 1.0",7
+Prv_Vend_#_X-ref_____VXREF,Category/Code (Low Distinct),nvarchar,(MAX),730,6,0,0.00%,0,"                (707), M               (8), O               (6), T               (4), H               (3), S               (2)","               ,                ,                ,                ,                ",7
+Purchase_Discount_Flag_____VPDISC,Quantity (Name Suggests),nvarchar,(MAX),730,1,0,0.00%,0,N (730),"N, N, N, N, N",7
+Reconcile_by_BOL_____VFLAG2,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,N (730),"N, N, N, N, N",7
+Related_Parties_____VRPRTY,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"N (729), Y (1)","N, N, N, N, N",7
+REQ_EXPENSE_PO_____VEXPPO,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,N (730),"N, N, N, N, N",7
+REQ_RCPT_BEFORE_VOUCHER_____VRECVE,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,N (730),"N, N, N, N, N",7
+RESEND_ASN_TO_PROCESSOR_____VRSASN,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"N (729),   (1)","N, N, N, N, N",7
+SCHEDULING_PRIORITY_FLAG_____VCHPR,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,"  (730)"," ,  ,  ,  ,  ",7
+Separate_Checks_(Y/N)_____VSEPCK,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"N (727), Y (3)","N, N, N, N, N",7
+Ship_Via_____VSHPVA,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"3.0 (729), 11.0 (1)","3.0, 3.0, 3.0, 3.0, 3.0",7
+Source_____VSOURC,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,"  (730)"," ,  ,  ,  ,  ",7
+Stock_Purchases_Prior_Year_____VSPPY,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+Theo/Actual_Flag_____VTHEAC,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"A (729),   (1)","A, A, A, A, A",7
+Time_Zone_Qualifer_____VTMZON,Date/Time (Name Suggests),nvarchar,(MAX),730,1,0,0.00%,0,"   (730)","  ,   ,   ,   ,   ",7
+User_Definable_____VUSER1,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,"  (730)"," ,  ,  ,  ,  ",7
+Vendor_Address_3_____VADDR3,Category/Code (Low Distinct),nvarchar,(MAX),730,12,0,0.00%,0,"                                    (717), .                                   (3), 10083-FAVRIA (TORINO)               (1), 300 WEST MAIN ST                    (1), 400 Howard Street                   (1), 4513 WESTERN AVE.                   (1), 700 W PONT DES MOUTON               (1), ALEGRE                              (1), CHINA PC 435000                     (1), HUNGSHI,HUBEI, CHINA PC 435000      (1)","                                   ,                                    , CHINA PC 435000                    ,                                    ,                                    ",7
+VENDOR_PICK_UP_MATERIAL_____VPUM,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"N (729), Y (1)","N, N, N, N, N",7
+VENDOR_RATING_____VRATE,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,N (730),"N, N, N, N, N",7
+Vendor_Type_____VVDTYP,Category/Code (Low Distinct),nvarchar,(MAX),730,4,0,0.00%,0,"D (312), B (252), E (160), A (6)","D, B, D, B, D",7
+Vendor_Type_Reporting_____VTYRPT,Category/Code (Low Distinct),nvarchar,(MAX),730,5,0,0.00%,0,"   (569), OR (71), MI (45), DE (23), DI (22)","OR,   ,   ,   , MI",7
+Verify_Country__of_Origin_____VFLAG1,Quantity (Name Suggests),nvarchar,(MAX),730,2,0,0.00%,0,"N (729), Y (1)","N, N, N, N, N",7
+WEB_SITE_ADDRESS_____VWEBS,Category/Code (Low Distinct),nvarchar,(MAX),730,19,0,0.00%,0,"                                                   (712), MYACCUTEK.COM                                      (1), WWW.BDO.CA                                         (1), WWW.BISHOPSAVES.COM                                (1), WWW.BOCTRUCKING.COM                                (1), WWW.BRENINC.COM                                    (1), WWW.CARMELINDUSTRIES.COM                           (1), WWW.CASSCOGRIND.COM                                (1), WWW.CONCENTRA.COM                                  (1), WWW.CROMDANESTEEL.COM                              (1)","WWW.FEDEX.COM                                     , WWW.WHITEBUFFALOSERVICES.COM                      ,                                                   ,                                                   ,                                                   ",7
+Wire_Transfer_Vendor_(Y/N)_____V3PCF,Category/Code (Low Distinct),nvarchar,(MAX),730,3,0,0.00%,0,"N (529), A (198), Y (3)","N, N, A, A, N",7
+Y_=_Yes__N_=_No_____VPVNDR,Boolean (Likely),nvarchar,(MAX),730,2,0,0.00%,0,"N (548), Y (182)","N, Y, N, Y, N",7
+Year__Vendor_Added_____VADDYY,Category/Code (Low Distinct),nvarchar,(MAX),730,14,0,0.00%,0,"13.0 (134), 14.0 (89), 18.0 (81), 17.0 (78), 15.0 (62), 16.0 (59), 19.0 (51), 22.0 (44), 21.0 (35), 23.0 (35)","19.0, 15.0, 13.0, 23.0, 23.0",7
+YTD_Purchases_Paid_____VYTDP,Category/Code (Low Distinct),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+YTD_Vouchered_Amount_____VYTDV,Money (Name Suggests),nvarchar,(MAX),730,1,0,0.00%,0,0.0 (730),"0.0, 0.0, 0.0, 0.0, 0.0",7
+A/R_Customer_Number_____VCUST,Short Text,nvarchar,(MAX),730,63,0,0.00%,0,"0.0 (668), 1005.0 (1), 1008.0 (1), 102.0 (1), 1027.0 (1), 106.0 (1), 1083.0 (1), 111.0 (1), 115.0 (1), 116.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",8
+CITY_25_POS_____VCITY,Short Text,nvarchar,(MAX),730,206,0,0.00%,0,"HOUSTON                   (261), .                         (63), DALLAS                    (39), CAROL STREAM              (16), CHICAGO                   (9), LAFAYETTE                 (9), SPRING                    (9), THE WOODLANDS             (9), ATLANTA                   (8), CYPRESS                   (8)","MOBILE                   , .                        , PALATINE                 , HOUSTON                  , HOUSTON                  ",8
+Day_Vendor_Added_____VADDDD,Short Text,nvarchar,(MAX),730,31,0,0.00%,0,"22.0 (37), 28.0 (36), 18.0 (31), 14.0 (30), 15.0 (29), 6.0 (27), 12.0 (26), 1.0 (25), 17.0 (25), 20.0 (25)","30.0, 9.0, 17.0, 14.0, 27.0",8
+Default_G/L#_____VGLACT,Short Text,nvarchar,(MAX),730,68,0,0.00%,0,"4101120000.0 (97), 4209900000.0 (74), 4103200000.0 (58), 0.0 (53), 4203300000.0 (49), 4203900000.0 (41), 4103100000.0 (31), 4406600000.0 (25), 4103300000.0 (20), 4304800000.0 (20)","4304800000.0, 4203300000.0, 4404300000.0, 4201600000.0, 4101120000.0",8
+E-MAIL_ADDRESS_____VEMAL,Short Text,nvarchar,(MAX),730,82,0,0.00%,0,"                                                   (649), ACCOUNTS@FMGPUBLISHING.COM                         (1), ACCOUNTSRECEIVABLE@CERDIAN.COM                     (1), ACCOUNTSRECEIVABLE@HAMILTONMETALS.COM              (1), ADAM@AHPRODUCTS.COM                                (1), addicksfire@sbcglobal.net                          (1), AGRAZIANO@JWFGRP.COM                               (1), ALA@PRO-GRIND.COM                                  (1), ALLPROAIR@YAHOO.COM                                (1), AR@DGM-USA.COM                                     (1)","                                                  ,                                                   ,                                                   , linda@breninc.com                                 ,                                                   ",8
+L/M_Day_____VLMDD,Short Text,nvarchar,(MAX),730,31,0,0.00%,0,"1.0 (89), 10.0 (49), 16.0 (48), 17.0 (47), 3.0 (41), 14.0 (40), 30.0 (32), 15.0 (27), 2.0 (25), 29.0 (24)","3.0, 7.0, 19.0, 29.0, 13.0",8
+Vendor_#_____VVNDR,Short Text,nvarchar,(MAX),730,730,0,0.00%,1,N/A,"624.0, 752.0, 771.0, 587.0, 439.0",8
+Vendor_Address_1_____VADDR1,Short Text,nvarchar,(MAX),730,665,0,0.00%,0,N/A,"2800 Post Oak Boulevard            , 11525 BRITTMOORE PARK DR           , 363 N SAM HOUSTON PARKWAY EAST     , 2 PARK AVE, STE 1600               , 240 S BRIDGE ST, STE 300           ",8
+Vendor_Address_2_____VADDR2,Short Text,nvarchar,(MAX),730,95,0,0.00%,0,"                                    (615), PO BOX 5019                         (7), PO BOX 4524                         (4), STE 200                             (4), .                                   (3), 230119 SLATINA, ROMANIA             (2), P.O. BOX 105414                     (2), PO BOX 5014                         (2), PO BOX 731137                       (2), SUITE 2100                          (2)","                                   ,                                    ,                                    ,                                    , 20872 CORNATE D'ADDA (MB)          ",8
+Vendor_Alpha_Search_____VALPHA,Short Text,nvarchar,(MAX),730,706,0,0.00%,0,N/A,"GROVES INDUSTRIAL        , GLOBAL INDUSTRIAL        , PAVECON LTD              , W M DEWEY & SON INC      , TOPWATER GRAPHICS        ",8
+Vendor_FAX_Number_____VFPHON,Short Text,nvarchar,(MAX),730,134,0,0.00%,0,"                   (594), 713 697 1035       (2), 832 399 1024       (2), 86 714 6297222     (2), .                  (1), 1 800 295 5571     (1), 212 216 9456       (1), 248 398 1434       (1), 281 320 9647       (1), 281 363 1902       (1)","                  ,                   ,                   , 508.533.5691      , 847 283 7260      ",8
+Vendor_Name_____VNAME,Short Text,nvarchar,(MAX),730,705,0,0.00%,0,N/A,"JOHN SINITIERE                     , HAMILTON METALS                    , PGC LOGISTICS LLC                  , ATLAS COPCO COMPRESSORS LLC        , BUDERUS EDELSTAHL GMBH             ",8
+Vendor_Phone_Number_____VPHONE,Short Text,nvarchar,(MAX),730,338,0,0.00%,0,"                   (379), 281 449 8500       (2), 281 820 8070       (2), 713 239 0397       (2), 713 365 3800       (2), 713 670 9199       (2), 713 697 3033       (2), 713 856 2000       (2), 713 964 0022       (2), 800 358 1111       (2)","800 358 1111      , 832 597 9329      , 713 697 3033      , 800 964 1917      , 800 465 3717      ",8

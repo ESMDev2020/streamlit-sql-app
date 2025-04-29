@@ -96,7 +96,7 @@
     "editorIndentGuide.activeBackground1": "#555555",
 
     /**-----------------TAB---------------*/
-    "tab.activeBackground": "#2d2d30",
+    "tab.activeBackground": "#6d8fde",
     "tab.activeForeground": "#ffffff",
     "tab.inactiveBackground": "#1e1e1e",
     "tab.inactiveForeground": "#888888",

@@ -1,0 +1,34 @@
+USE SigmaTB;
+GO
+
+SELECT
+    [CUSTOMER_NUMBER_____CCUST],
+    [Customer_Alpha_Name_____CALPHA],
+    [ORIG_CUST#_____CCUSTO],
+    [Federal_Tax_I.D._____CFEDID],
+    [Customer_Name_____CCUSTN],
+    [Country_____CCTRY],
+    [ZIP_CODE_12_POS_____CZIP],
+    [City_____CCITY],
+    [State_____CSTAT],
+    [Address_1_____CADDR1],
+    [Address_2_____CADDR2],
+    [Address_3_____CADDR3],
+    [Customer_Phone_Number_____CPHON],
+    [E-MAIL_ADDRESS_____CEMAL],
+    [Fax_Phone_Number_____CFPHON],
+    [WEB_SITE_ADDRESS_____CWEBS],
+    [Orig_Slsmn_One#_____CSLM1O],
+    [Salesman_One_Number_____CSLMN1],
+    [Multi_Bill_____CFLAG9],
+    [Risk_Flag_Y_N_H_____CRSYNH],
+    [Special_Invoice_Handling_Y_or_N_____CSPCYN],
+    [Subject_to_Purge_____CPURG],
+    [A=ACTIVE__I=INACTIVE_D=DELETED_____CRECD],
+    [Auto_Inv_Upd_____CFLAG1],
+    [BOL_Dft_Print_Heat_____CFLG14],
+    [BOL_Dft_Print_M/C_____CFLG15],
+    [Dflt_email_____CFLG10],
+    [Prv_Cust_#_X-ref_____CXREF]
+FROM
+    [mrs].[z_Customer_Master_File_____ARCUST];

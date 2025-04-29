@@ -1,0 +1,164 @@
+﻿Line_In_Use_Code_____BDINUS,FK/Code (Potential),1,Y (21)," ,  ,  ,  ,  ",nvarchar,(MAX),5000,0,4979,0.00%,99.58%,0,2
+Processed_Code_____BDPRCD,FK/Code (Potential),1,F (1)," ,  ,  ,  ,  ",nvarchar,(MAX),5000,0,4999,0.00%,99.98%,0,2
+Record_Code_____BDRECD,FK/Code (Potential),3,"C (4858), A (141), P (1)","C, C, C, C, C",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,2
+Tariff_Code_____BDTRF,FK/Code (Potential),0,N/A,"               ,                ,                ,                ,                ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,2
+3_POSITION_CLASS_____BDCLS3,Category/Code (Low Distinct),11,"ABH (2401), ATH (2363), KBH (98), ATC (51), ABM (45), CBH (16), SBH (12), MMF (8), KTH (3), ABF (2)","ABH, ABH, ATH, ATH, ATH",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+B=Buyout_D=Mill_Direct_____BDLTYP,Category/Code (Low Distinct),3,"B (2453), A (1), Q (1)","B, B, B, B, B",nvarchar,(MAX),5000,0,2545,0.00%,50.90%,0,3
+Country_____BDCTRY,Category/Code (Low Distinct),16,"USA (3333), VRC (489), MEX (279), I   (256), RO  (164), TR  (135), ROK (134), E   (94), CAN (48), D   (22)","USA, USA, VRC, TR , USA",nvarchar,(MAX),5000,0,1,0.00%,0.02%,0,3
+Current_Quantity_UOM_Ordered_/_Received_____BDQUOM,Category/Code (Low Distinct),5,"LB  (4662), EA  (266), FT  (40), IN  (31), MT  (1)","LB , LB , LB , LB , LB ",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+Extended_Additional_Charge_Cost_____BDEACS,Category/Code (Low Distinct),3,"0.0 (4995), 4660.0 (4), 180.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+Freight_Cost_UOM_Inbound_/_Full_____BDFUOM,Category/Code (Low Distinct),4,"LB  (1888), LOT (1569), CWT (1541), NC  (1)","LOT, LOT, LOT, LOT, LB ",nvarchar,(MAX),5000,0,1,0.00%,0.02%,0,3
+Freight_Terms_(MOP)_____BDFRTR,Category/Code (Low Distinct),4,"3.0 (3792), 1.0 (1206), 0.0 (1), 2.0 (1)","3.0, 3.0, 3.0, 3.0, 3.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+Inventory_UOM_____BDIUOM,Category/Code (Low Distinct),3,"FT  (2548), LB  (2444), EA  (8)","FT , LB , FT , LB , FT ",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+Material_Cost_UOM_____BDCUOM,Category/Code (Low Distinct),10,"LB  (1627), CWT (1031), LOT (918), EA  (903), NC  (293), FT  (178), CFT (27), IN  (21), MT  (1), NT  (1)","EA , LOT, LOT, EA , CWT",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+Ordered_UOM_____BDOUOM,Category/Code (Low Distinct),5,"LB  (4661), EA  (266), FT  (41), IN  (31), MT  (1)","LB , LB , LB , LB , LB ",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+P/O_Receiving_Batch/Register_Seq_Number_____BDBTCH,Category/Code (Low Distinct),6,"0.0 (4995), 19745.0 (1), 20206.0 (1), 20224.0 (1), 20339.0 (1), 20354.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+PO_Line#_____BDLINE,Category/Code (Low Distinct),3,"1.0 (4992), 2.0 (7), 0.0 (1)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+Port_of_Entry_____BDPORT,Category/Code (Low Distinct),3,"0.0 (4994), 1.0 (5), 4.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+Received_By_____BDRCBY,Category/Code (Low Distinct),3,"JC              (2), JS              (2), TCRUZ           (1)","               ,                ,                ,                ,                ",nvarchar,(MAX),5000,0,4995,0.00%,99.90%,0,3
+Release#_____BDREL#,Category/Code (Low Distinct),4,"0.0 (4994), 1.0 (4), 2.0 (1), 6.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+Release_Date_____BDRDAT,Category/Code (Low Distinct),6,"0.0 (4994), 20131024.0 (2), 20131008.0 (1), 20131021.0 (1), 20131022.0 (1), 20131023.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+Salesman_____BDSMAN,Category/Code (Low Distinct),14,"0.0 (2547), 1.0 (1413), 12.0 (208), 19.0 (196), 21.0 (196), 9.0 (149), 4.0 (113), 56.0 (61), 3.0 (49), 8.0 (40)","0.0, 1.0, 1.0, 1.0, 21.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+Theo._Square_Feet_Ordered_/_Received_____BDTSFT,Category/Code (Low Distinct),3,"0.001 (2567), 0.0 (2432), 3.7999999999999999E-2 (1)","0.0, 0.001, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+Vendor_Quantity_Received_____BDVQTY,Category/Code (Low Distinct),6,"0.0 (4995), 3311.0 (1), 336.0 (1), 7.4169999999999998 (1), 7322.0 (1), 8.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+W_=_WEIGHTED_P_=_PIECE_F_=_FOOT_M_=_METER_K_=_KILO_____BDICOD,Category/Code (Low Distinct),3,"F (2548), W (2444), P (8)","F, W, F, W, F",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,3
+35_POSITION_DESCRIPTION_____BDMSCD,Text,450,Distinct: 450,"                                   , 1026                               ,                                    ,                                    , 7075 T6                            ",nvarchar,(MAX),5000,0,2831,0.00%,56.62%,0,4
+Calculating_Length_____BDLNTH,Text,723,Distinct: 723,"12.375, 240.0, 15.0, 17.5, 421.25",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Company_SMO_____BDCSMO,Text,29,Distinct: 29,"DEFAULT                            , STB13                              , DEFAULT                            , STB14                              , STB20                              ",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+CRT_Description_____BDCRTD,Text,1867,Distinct: 1867,"4.7500 ROUND BAR                   , 17.5000 OD 13.5000 ID 2.0000 WALL  , 2.250 BAR HF 4140 80 KSI QT        , 8.500 BAR HF 25 CR 80 KSI QT       , 13.500 BAR HF 4130 80 KSI NQT++    ",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Current_Inv._Quantity_Ordered_/_Received_____BDCQOO,Text,124,Distinct: 124,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Current_Quantity_Ordered_/_Received_____BDCQTY,Text,1844,Distinct: 1844,"0.0, 2.6699999999999999, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+CUSTOMER_NUMBER_____BDCUST,Text,240,Distinct: 240,"0.0, 0.0, 807.0, 179.0, 189.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Display_Length_____BDDSPL,Text,977,Distinct: 977,"C/L      , 72       , 20'RLS   , R/L      , 6.125    ",nvarchar,(MAX),5000,0,1,0.00%,0.02%,0,4
+Extended_Freight_Cost_Inbound_/_Full_____BDEFCS,Text,63,Distinct: 63,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Extended_Material_Cost_____BDEMCS,Text,1570,Distinct: 1570,"0.0, 0.01, 0.0, 14698.719999999999, 1280.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Extended_Whole_Ord_Charge_Cost_____BDEWCS,Text,434,Distinct: 434,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Freight_Cost_Inbound_/_Full_____BDFCST,Text,26,Distinct: 26,"0.0, 0.01, 0.01, 0.0, 0.01",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+ITEM_NUMBER_____BDITEM,Text,906,Distinct: 906,"50159, BTUBE, BTUBE, 50934, BOBAR",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Linked_Order_Number_____BDLOR#,Text,2451,Distinct: 2451,"0.0, 0.0, 950317.0, 957151.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Material_Cost_____BDMCST,Text,1692,Distinct: 1692,"4725.0, 1.3600000000000001, 2840.0, 0.01, 5440.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Mill_____BDMILL,Text,47,Distinct: 47,"   , TIM, SEA,    ,    ",nvarchar,(MAX),5000,0,2549,0.00%,50.98%,0,4
+Original_Inventory_Quantity_____BDOQOO,Text,2671,Distinct: 2671,"97473.361000000004, 172.91200000000001, 240.0, 320.0, 0.27800000000000002",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Original_Ordered__Quantity_____BDOOQ,Text,2599,Distinct: 2599,"131.47200000000001, 20000.0, 20000.0, 672.95000000000005, 40000.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Reserved_Quantity_____BDRESV,Text,2004,Distinct: 2004,"598.75800000000004, 1345.056, 1251.5840000000001, 542.35299999999995, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Theo._Feet_Ordered_/_Received_____BDTFT,Text,860,Distinct: 860,"17.5, 0.0, 0.0, 10.708, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Theo._Meters_Ordered_/_Received_____BDTMTR,Text,860,Distinct: 860,"0.0, 0.0, 0.0, 0.72999999999999998, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Theo._Pieces_Ordered_/_Received_____BDTPC,Text,64,Distinct: 64,"1.0, 1.0, 0.0, 0.0, 1.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Theo._Pounds_Ordered_/_Received_____BDTLB,Text,2038,Distinct: 2038,"21.379000000000001, 0.0, 0.0, 191.86799999999999, 311.17500000000001",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Theo_Kilos_Ordered_/_Received_____BDTKG,Text,1999,Distinct: 1999,"0.0, 0.0, 0.0, 99.087999999999994, 10.218999999999999",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Total_Inventory_Quantity_Received_____BDTIQR,Text,3306,Distinct: 3306,"43.084000000000003, 426.0, 995.75, 1649.0, 1354.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Transaction_#_____BDPONO,Text,4987,Distinct: 4987,"516400.0, 518616.0, 518914.0, 517791.0, 518189.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Vendor_#_____BDVNDR,Text,82,Distinct: 82,"200.0, 115.0, 115.0, 115.0, 825.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+Weight_Factor_____BDWGTF,Text,1010,Distinct: 1010,"19.017822859999999, 5.5625824899999996, 10.568906739999999, 8.0101300000000002, 16.058869999999999",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,4
+A/P_Status_____BDASTS,Single Value,1,V (2594)," , V, V, V,  ",nvarchar,(MAX),5000,0,2406,0.00%,48.12%,0,7
+Acknowledgement_Flag_____BDACKN,Single Value,1,N (2545)," ,  ,  ,  , N",nvarchar,(MAX),5000,0,2455,0.00%,49.10%,0,7
+Bill_of_Lading_____BDBOL,Single Value,1,1               (4),"               ,                ,                ,                ,                ",nvarchar,(MAX),5000,0,4996,0.00%,99.92%,0,7
+Blanket_PO_____BDBLNK,Single Value,1,N (2546),"N, N,  , N, N",nvarchar,(MAX),5000,0,2454,0.00%,49.08%,0,7
+Bundle_Quantity_____BDQQTY,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+"C_=_COIL_ITEM_T_=_NON-COIL_TAGGED_ITEM_""_""=_NON-TA_____BDTCOD",Single Value,1,T (4992),"T, T, T, T, T",nvarchar,(MAX),5000,0,8,0.00%,0.16%,0,7
+Calculating_Width_____BDWDTH,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Carrier_Weight_____BDCWGT,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+COMPANY_NUMBER_____BDCOMP,Single Value,1,1.0 (5000),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+CURRENCY_EXCH_FRTq_____BDPFXF,Single Value,1,N (5)," ,  ,  ,  ,  ",nvarchar,(MAX),5000,0,4995,0.00%,99.90%,0,7
+Customs_Rcpt_Error_____BDCRE,Single Value,1,N (4)," ,  ,  ,  ,  ",nvarchar,(MAX),5000,0,4996,0.00%,99.92%,0,7
+Delivery_Date_Changed_Y/N_____BDDDTC,Single Value,1,Y (1723),"Y,  ,  ,  ,  ",nvarchar,(MAX),5000,0,3277,0.00%,65.54%,0,7
+Dimen._Expressed_Imperial/Metric_____BDDEXP,Single Value,1,I (5000),"I, I, I, I, I",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Display_Width_____BDDSPW,Single Value,1,"     .000 (12)","         ,          ,          ,          ,          ",nvarchar,(MAX),5000,0,4988,0.00%,99.76%,0,7
+Equalized_(Y/N)_____BDEQYN,Single Value,1,N (4999),"N, N, N, N, N",nvarchar,(MAX),5000,0,1,0.00%,0.02%,0,7
+Equalized_Freight_Cost_____BDECST,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Equalized_Freight_Cost_UOM_____BDEUOM,Single Value,1,CWT (2),"   ,    ,    ,    ,    ",nvarchar,(MAX),5000,0,4998,0.00%,99.96%,0,7
+EXCH_COST_EQUAL_____BDXCEQ,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+EXCH_COST_FRT_____BDXCFR,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Exch_Ext_Addl_Charge_Cost_____BDXEAC,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Exch_Ext_Whole_Ord_Charge_Cost_____BDXEWC,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+EXCHANGE_$_AMT_____BDXAMT,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+EXCHANGE_PRICE_____BDXSEL,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Extended_Equalized_Freight_Cost_____BDEECS,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Extended_Equalized_Freight_Cost_____BDXEEC,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Extended_Freight_Cost_Inbound_/_Full_____BDXEFC,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Linked_Used_Line_Number_____BDULIN,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Load_#_____BDLOAD,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Load_Dist_____BDLDST,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Material_Status_____BDFLG1,Single Value,1,1 (2545),"1,  , 1, 1,  ",nvarchar,(MAX),5000,0,2455,0.00%,49.10%,0,7
+Ordered_Gauge_Max_____BDOMAX,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Ordered_Gauge_Min_____BDOMIN,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Ordered_Gauge_Nom_____BDONOM,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Receipt_Tolerance_(minus)_____BDTOLM,Single Value,1,3.0 (5000),"3.0, 3.0, 3.0, 3.0, 3.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Receipt_Tolerance_(plus)_____BDTOLP,Single Value,1,10.0 (5000),"10.0, 10.0, 10.0, 10.0, 10.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+RECEIVER_#_____BDRCV,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Remote_Inventory_Vendor_Number_____BDRIV,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Split_Quantity_____BDSQTY,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+TEST_RPT_DATA_____BDTRDT,Single Value,1,N (2545),"N,  ,  ,  , N",nvarchar,(MAX),5000,0,2455,0.00%,49.10%,0,7
+Theo/Actual_Flag_____BDTACD,Single Value,1,A (4999),"A, A, A, A, A",nvarchar,(MAX),5000,0,1,0.00%,0.02%,0,7
+Vessel_____BDVESL,Single Value,1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,7
+Additional_Charge_Flag_____BDADCH,Flag (2 Values),2,"N (2527), Y (18)","N,  ,  , N, N",nvarchar,(MAX),5000,0,2455,0.00%,49.10%,Flag,10
+B=Buyout_D=Mill_Direct_M=Mill_Purchase_____BDTYPE,Flag (2 Values),2,"M (2546), B (2453)","B, B, M, B, M",nvarchar,(MAX),5000,0,1,0.00%,0.02%,Flag,10
+Blanket_Line#_____BDBLIN,Flag (2 Values),2,"0.0 (4994), 1.0 (6)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+Customer_District_Number_____BDCDIS,Flag (2 Values),2,"0.0 (2547), 1.0 (2453)","1.0, 0.0, 0.0, 0.0, 1.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+DISTRICT_NUMBER_____BDDIST,Flag (2 Values),2,"1.0 (4999), 0.0 (1)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+Freight_Vendor_Number_____BDFRV,Flag (2 Values),2,"0.0 (4996), 9999999.0 (4)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+In_Transit_Material_Flag_____BDINTR,Flag (2 Values),2,"N (4654), Y (47)","Y, N, N, N, N",nvarchar,(MAX),5000,0,299,0.00%,5.98%,Flag,10
+Inspected_By_____BDINBY,Flag (2 Values),2,"JC              (3), JS              (1)","               ,                ,                ,                ,                ",nvarchar,(MAX),5000,0,4996,0.00%,99.92%,Flag,10
+Inventory_Dist_____BDIDST,Flag (2 Values),2,"0.0 (4995), 1.0 (5)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+Linked_Main_Line_Number_____BDMLIN,Flag (2 Values),2,"0.0 (2545), 1.0 (2455)","1.0, 1.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+Linked_Order_District_Number_____BDLOD,Flag (2 Values),2,"0.0 (2545), 1.0 (2455)","0.0, 1.0, 0.0, 1.0, 1.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+PO_Receipt_Line#_____BDRLIN,Flag (2 Values),2,"0.0 (4995), 1.0 (5)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+Price_Firm_Flag_____BDFIRM,Flag (2 Values),2,"Y (4989), N (10)","Y, Y, Y, Y, Y",nvarchar,(MAX),5000,0,1,0.00%,0.02%,Flag,10
+Purchase_Order_Batch_District_____BDBDIS,Flag (2 Values),2,"0.0 (4995), 1.0 (5)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+Salesman_District_Number_____BDSMD,Flag (2 Values),2,"0.0 (2547), 1.0 (2453)","0.0, 0.0, 1.0, 1.0, 1.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+TEST_RPT_CHECKING_____BDTRCK,Flag (2 Values),2,"N (1385), Y (1162)","N,  ,  , Y,  ",nvarchar,(MAX),5000,0,2453,0.00%,49.06%,Flag,10
+Unit_Weight_____BDUNTW,Flag (2 Values),2,"0.0 (4993), 1.0 (7)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+Vendor_Quantity_UOM_____BDVUOM,Flag (2 Values),2,"LB  (3), EA  (2)","   ,    ,    ,    ,    ",nvarchar,(MAX),5000,0,4995,0.00%,99.90%,Flag,10
+Whole_Ord_Charge__Flag_____BDWOCH,Flag (2 Values),2,"N (4234), Y (766)","N, N, Y, N, N",nvarchar,(MAX),5000,0,0,0.00%,0.00%,Flag,10
+Cancel_Date_Century_____BDCNCC,Date (Suffix),1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Cancel_Date_Day_____BDCNDD,Date (Suffix),1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Cancel_Date_Month_____BDCNMM,Date (Suffix),1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Cancel_Date_Year_____BDCNYY,Date (Suffix),1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Estimated_Arrival_Century_____BDEACC,Date (Suffix),2,"0.0 (4993), 20.0 (7)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Estimated_Arrival_Day_____BDEADD,Date (Suffix),2,"0.0 (4999), 30.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Estimated_Arrival_Month_____BDEAMM,Date (Suffix),2,"0.0 (4999), 9.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Estimated_Arrival_Year_____BDEAYY,Date (Suffix),2,"0.0 (4999), 22.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Ex_Rate_Effective_CC_____BDXECC,Date (Suffix),1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Ex_Rate_Effective_DD_____BDXEDD,Date (Suffix),1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Ex_Rate_Effective_MM_____BDXEMM,Date (Suffix),1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Ex_Rate_Effective_YY_____BDXEYY,Date (Suffix),1,0.0 (5000),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Promise_Century_____BDPRCC,Date (Suffix),2,"20.0 (4999), 0.0 (1)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Promise_Day_____BDPRDD,Date (Suffix),32,Distinct: 32,"30.0, 5.0, 5.0, 4.0, 28.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Promise_Month_____BDPRMM,Date (Suffix),13,"9.0 (480), 10.0 (476), 8.0 (455), 3.0 (434), 1.0 (433), 2.0 (423), 6.0 (408), 11.0 (397), 12.0 (391), 7.0 (388)","1.0, 9.0, 10.0, 3.0, 2.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Promise_Year_____BDPRYY,Date (Suffix),16,"22.0 (1552), 23.0 (1454), 24.0 (1364), 25.0 (587), 21.0 (13), 13.0 (12), 14.0 (3), 18.0 (3), 19.0 (3), 16.0 (2)","25.0, 22.0, 23.0, 22.0, 22.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Purchase_Order_Century_____BDPOCC,Date (Suffix),2,"20.0 (4999), 0.0 (1)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Purchase_Order_Day_____BDPODD,Date (Suffix),32,Distinct: 32,"19.0, 12.0, 12.0, 30.0, 20.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Purchase_Order_Month_____BDPOMM,Date (Suffix),13,"3.0 (562), 4.0 (538), 1.0 (489), 2.0 (457), 8.0 (407), 10.0 (400), 12.0 (383), 11.0 (381), 6.0 (370), 5.0 (365)","2.0, 2.0, 1.0, 3.0, 3.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Purchase_Order_Year_____BDPOYY,Date (Suffix),13,"22.0 (1570), 24.0 (1427), 23.0 (1220), 25.0 (481), 21.0 (274), 13.0 (12), 14.0 (4), 18.0 (3), 19.0 (3), 16.0 (2)","24.0, 23.0, 24.0, 24.0, 21.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Received_Century_____BDRCCC,Date (Suffix),2,"20.0 (4680), 0.0 (320)","0.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Received_Day_____BDRCDD,Date (Suffix),32,Distinct: 32,"20.0, 31.0, 15.0, 9.0, 29.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Received_Month_____BDRCMM,Date (Suffix),13,"3.0 (491), 2.0 (473), 8.0 (468), 1.0 (441), 10.0 (422), 4.0 (387), 9.0 (385), 11.0 (383), 12.0 (381), 0.0 (328)","1.0, 8.0, 9.0, 1.0, 5.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Received_Year_____BDRCYY,Date (Suffix),6,"23.0 (1743), 24.0 (1377), 22.0 (1057), 25.0 (489), 0.0 (328), 13.0 (6)","24.0, 22.0, 24.0, 24.0, 23.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Revised_Promise_Century_____BDRPCC,Date (Suffix),2,"20.0 (4999), 0.0 (1)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Revised_Promise_Day_____BDRPDD,Date (Suffix),32,Distinct: 32,"15.0, 14.0, 15.0, 14.0, 4.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Revised_Promise_Month_____BDRPMM,Date (Suffix),13,"1.0 (509), 10.0 (500), 3.0 (475), 9.0 (451), 2.0 (450), 8.0 (435), 7.0 (424), 12.0 (422), 4.0 (358), 11.0 (352)","9.0, 3.0, 1.0, 9.0, 12.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Revised_Promise_Year_____BDRPYY,Date (Suffix),13,"23.0 (1699), 24.0 (1375), 22.0 (1277), 25.0 (612), 13.0 (12), 21.0 (10), 14.0 (3), 18.0 (3), 19.0 (3), 16.0 (2)","23.0, 25.0, 23.0, 22.0, 24.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Rolling_Date_Century_____BDRLCC,Date (Suffix),2,"0.0 (4963), 20.0 (37)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Rolling_Date_Day_____BDRLDD,Date (Suffix),2,"0.0 (4966), 1.0 (34)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Rolling_Date_Month_____BDRLMM,Date (Suffix),5,"0.0 (4966), 3.0 (18), 1.0 (8), 2.0 (7), 12.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Rolling_Date_Year_____BDRLYY,Date (Suffix),3,"0.0 (4966), 22.0 (33), 21.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Ship_Date_Century_____BDSHCC,Date (Suffix),2,"20.0 (2833), 0.0 (2167)","0.0, 20.0, 0.0, 20.0, 20.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Ship_Date_Day_____BDSHDD,Date (Suffix),32,Distinct: 32,"20.0, 11.0, 0.0, 6.0, 18.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Ship_Date_Month_____BDSHMM,Date (Suffix),13,"0.0 (2170), 9.0 (317), 2.0 (298), 12.0 (265), 10.0 (256), 1.0 (253), 7.0 (248), 11.0 (223), 8.0 (215), 3.0 (214)","5.0, 8.0, 12.0, 0.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+Ship_Date_Year_____BDSHYY,Date (Suffix),10,"0.0 (2170), 23.0 (1029), 22.0 (899), 24.0 (674), 25.0 (208), 13.0 (12), 18.0 (3), 21.0 (3), 17.0 (1), 20.0 (1)","23.0, 0.0, 0.0, 23.0, 0.0",nvarchar,(MAX),5000,0,0,0.00%,0.00%,0,11
+12_POSITION_ALPHA_____BDMORD,All Whitespace,0,(All Whitespace),"            ,             ,             ,             ,             ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+ALLOY_____BDALOY,All Whitespace,0,(All Whitespace),"        ,         ,         ,         ,         ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+Customs_Entry#_____BDCEN,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+Equalization_Point_Description_____BDEQPD,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+Flag_____BDFLG3,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+Flag_____BDFLG4,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+FREIGHT_TABLES_OVERRIDE_____BDFRTF,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+ITEM_SUB-CLASS_____BDSBCL,All Whitespace,0,(All Whitespace),"        ,         ,         ,         ,         ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+Matl_Spec_____BDSPEC,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+Ocean_BOL_Number_____BDOBOL,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+Price_Percentage_____BDPPCT,All Whitespace,0,(All Whitespace),"    ,     ,     ,     ,     ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+Rebate_Program_Name_____BDRPGM,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+RECEIPT_CONDITION_____BDRPC,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+Scanned_Rcpt_Ln_____BDFLG2,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+TEMPER_____BDTEMP,All Whitespace,0,(All Whitespace),"      ,       ,       ,       ,       ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12
+Voyage_____BDVOYG,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),5000,0,5000,0.00%,100.00%,0,12

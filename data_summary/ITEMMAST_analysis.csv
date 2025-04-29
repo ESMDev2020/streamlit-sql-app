@@ -1,0 +1,153 @@
+﻿ITEM_NUMBER_____IMITEM,PK (Potential - Name),2613,Distinct: 2613,"51109, 52625, 50599, 52411, 50122",nvarchar,(MAX),2613,0,0,0.00%,0.00%,1,1
+Color_Code_One_____IMCLR1,FK/Code (Potential),21,Distinct: 21,"            ,             , RED/ORANGE  ,             ,             ",nvarchar,(MAX),2613,0,2283,0.00%,87.37%,0,2
+Reference_Code_____IMRFC2,FK/Code (Potential),4,".                         (3), SB                        (3), 0                         (1), S                         (1)","                         ,                          ,                          ,                          ,                          ",nvarchar,(MAX),2613,0,2605,0.00%,99.69%,0,2
+Rem_Item_Code_____IMREM,FK/Code (Potential),2611,Distinct: 2611,"52255, 50755, 51855, 50159, 52469",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,2
+Scrap_Item_Code_____IMSCRP,FK/Code (Potential),4,"99999 (2610), 50678 (1), A9999 (1), MISC  (1)","99999, 99999, 99999, 99999, 99999",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,2
+1_-_AVERAGE_COSTING__2_-_TAG_COSTING_3_-_TRANSACTI_____IMCSMD,Category/Code (Low Distinct),3,"1 (2610), 3 (2), 2 (1)","1, 1, 1, 1, 1",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,3
+C_=_COIL__S_=_SHEET__P_=_PLATE__O_=_OTHER_T_=_TUBE_____IMSHAP,Category/Code (Low Distinct),5,"T (1501), B (1077), P (30), O (3), L (1)","T, T, T, T, B",nvarchar,(MAX),2613,0,1,0.00%,0.04%,0,3
+Calculating_Width_____IMWDTH,Category/Code (Low Distinct),19,"0.0 (2581), 20.625 (5), 12.25 (3), 10.25 (2), 11.25 (2), 13.25 (2), 14.125 (2), 15.5 (2), 16.0 (2), 16.25 (2)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,3
+CHEMICAL_SCREEN_TYPE_____IMCHDT,Category/Code (Low Distinct),3,"1.0 (2605), 3.0 (7), 2.0 (1)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,3
+Display_Width_____IMDSPW,Category/Code (Low Distinct),19,"20.625""   (5), 10.250""   (2), 11.250""   (2), 12.250""   (2), 13.250""   (2), 14.125""   (2), 15.500""   (2), 16.000""   (2), 16.250""   (2), 9.250""    (2)","         ,          ,          ,          ,          ",nvarchar,(MAX),2613,0,2581,0.00%,98.78%,0,3
+L/M_User_____IMLMUS,Category/Code (Low Distinct),14,"SWARBRIT   (916), CFRIEND    (671), MVELASQU   (412), APARKER    (330), PBRYAN     (123), KHENRY     (88), KHARR      (50), EOD        (10), NTOVAR     (6), MWUSER     (2)","PBRYAN    , CFRIEND   , MVELASQU  , APARKER   , CFRIEND   ",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,3
+Numeric_Thickness_____IMTHIK,Category/Code (Low Distinct),19,"0.0 (2581), 10.5 (6), 12.25 (3), 10.25 (2), 11.25 (2), 12.0 (2), 13.25 (2), 14.125 (2), 16.0 (2), 9.25 (2)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,3
+PHYSICAL_SCREEN_TYPE_____IMPHDT,Category/Code (Low Distinct),3,"1.0 (2606), 3.0 (6), 2.0 (1)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,3
+Theoretical_Or_Actual_Selling_Flag_____IMSTAF,Category/Code (Low Distinct),3,"T (2600), A (12), N (1)","T, T, T, T, T",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,3
+"VALUES_=_LB_,_CWT,_EA_,_MPC_FT_,_CFT,_SFT,_CSF_____IMCUOM",Category/Code (Low Distinct),3,"FT  (2573), LB  (38), EA  (2)","FT , FT , FT , FT , FT ",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,3
+W_=_LBS__P_=_PCS__S_=_SFT__F_=_FT_____IMMCOD,Category/Code (Low Distinct),3,"F (2541), W (70), P (2)","F, F, F, F, F",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,3
+W_=_WEIGHTED_P_=_PIECE_F_=_FOOT_S_=_SQUARE_FOOTM_=_____IMICOD,Category/Code (Low Distinct),3,"F (2572), W (39), P (2)","F, F, F, F, F",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,3
+WEB_THICKNESS_____IMWTHK,Category/Code (Low Distinct),18,"   10.5000 (6),    12.2500 (3),     9.2500 (2),    10.2500 (2),    11.2500 (2),    12.0000 (2),    13.2500 (2),    14.1250 (2),    16.0000 (2),     1.2500 (1)","          ,           ,           ,           ,           ",nvarchar,(MAX),2613,0,2581,0.00%,98.78%,0,3
+25_POSITION_ALPHA_____IMXRF2,Text,1117,Distinct: 1117,"                         , 52229                    , 52481                    ,                          , 51818                    ",nvarchar,(MAX),2613,0,1496,0.00%,57.25%,0,4
+3_POSITION_CLASS_____IMCLS3,Text,30,Distinct: 30,"ATH, CBH, ATH, CTH, KTH",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Average_Material_Receipt_Cost_____IMAVRC,Text,1498,Distinct: 1498,"0.0, 1602.5279, 80.484300000000005, 161.56460000000001, 62.036700000000003",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Calculating_Length_____IMLNTH,Text,30,Distinct: 30,"240.0, 240.0, 240.0, 240.0, 240.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Company_SMO_____IMCSMO,Text,34,Distinct: 34,"STB01                              , DEFAULT                            , DEFAULT                            , STB01                              , STB17                              ",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+CRT_Description_____IMCRTD,Text,2598,Distinct: 2598,"7.000 BAR HF 4140 110KSI QT++      , 8.50 4.00 2.25 HF4130M7 NQT 285/352, 12.000 8.000 2.000 HF 4130M 125KSI , 2.750 BAR HF 4140 AR               , 14.000 BAR HF 4330V  AR            ",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Display_Length_____IMDSPL,Text,70,Distinct: 70,"R/L      , R/L      , 17'/27'RL, R/L      , R/L      ",nvarchar,(MAX),2613,0,3,0.00%,0.11%,0,4
+Fast_Path_Item_Description_____IMFSP2,Text,2586,Distinct: 2586,"AB17.000-00.000 HF 4140 110 KSI QT                                    , AB16.000-00.000 HF 4130M7 NORM                                        , AT08.750-04.000 HF 4130M7  ANN                                        , AB30.500-00.000 HF 4130 80 KSI NQT                                    , AB06.250-00.000 HF 4340 110KSI QT                                     ",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Inner_Diameter_____IMIND,Text,286,Distinct: 286,"4.5, 0.0, 2.0, 3.5, 3.5",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Item_Print_Descr_One_____IMDSC1,Text,897,Distinct: 897,"2.000 ROUND BAR               , 6.750 OD 3.250 ID 1.750 WALL  , 1.500 ROUND BAR               , 3.000 ROUND BAR               , 5.250 ROUND BAR               ",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Item_Print_Descr_Two_____IMDSC2,Text,992,Distinct: 992,"HF 4340  ANN                  , HF 4140  ANN                  , HF A106B/C AR                 , HF 4130M Q125..               , HF 8630 AR                    ",nvarchar,(MAX),2613,0,3,0.00%,0.11%,0,4
+Last_Receipt_Cost_____IMRCST,Text,1472,Distinct: 1472,"0.0, 0.0, 0.0, 0.0, 0.0218",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Last_Receipt_Purchase_Order_____IMPORD,Text,1484,Distinct: 1484,"513987.0, 514072.0, 514292.0, 514156.0, 515445.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Outside_Diameter_____IMOUTD,Text,220,Distinct: 220,"4.25, 7.875, 22.0, 11.5, 10.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Print_P.O._Description_____IMFDSC,Text,2598,Distinct: 2598,"4.750 3.500 .625 HF 4140 LN80 QT++ , 2.335 1.710 .313 CD 4130 LN80 QT   , 11.0 4.25 3.375 4340 125KSI 300/341, 3.000 BAR HF 4130 80KSI QT++       , 00.000 00.000 TUBE BUYOUT          ",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Size_1_____IMSIZ1,Text,223,Distinct: 223,"4.0, 9.0, 3.2400000000000002, 7.25, 7.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Size_2_____IMSIZ2,Text,293,Distinct: 293,"3.75, 0.0, 5.0, 0.81499999999999995, 10.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Size_3_____IMSIZ3,Text,288,Distinct: 288,"0.0, 1.5, 0.0, 2.25, 0.625",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Wall_____IMWALL,Text,287,Distinct: 287,"0.0, 0.33700000000000002, 0.875, 0.0, 1.1875",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+WEB_O.D._____IMWOD,Text,219,Distinct: 219,"   11.500,    11.810,     6.625,     2.125,     2.625",nvarchar,(MAX),2613,0,36,0.00%,1.38%,0,4
+WEB_WALL_____IMWWAL,Text,279,Distinct: 279,"    0.875,     1.000,          ,          ,     1.500",nvarchar,(MAX),2613,0,1118,0.00%,42.79%,0,4
+Weight_Factor_____IMWGTF,Text,772,Distinct: 772,"4.50569182, 98.123955159999994, 64.303453610000005, 10.55500028, 13.79520458",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+Weight_Per_Foot_____IMWPFT,Text,754,Distinct: 754,"140.22499999999999, 73.593000000000004, 61.578000000000003, 290.92099999999999, 16.350999999999999",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+X-Reference_Item_Number_____IMXITM,Text,2609,Distinct: 2609,"50801, 51924, 50388, 50833, 52347",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,4
+ALLOY_____IMALOY,Single Value,1,6063     (1),"        ,         ,         ,         ,         ",nvarchar,(MAX),2613,0,2612,0.00%,99.96%,0,7
+"C_=_COIL_ITEM_T_=_NON-COIL_TAGGED_ITEM_""_""=_NON-TA_____IMTCOD",Single Value,1,T (2610),"T, T, T, T, T",nvarchar,(MAX),2613,0,3,0.00%,0.11%,0,7
+COATING_TYPE_____IMCTTY,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Color_Code_Two_____IMCLR2,Single Value,1,N            (1),"            ,             ,             ,             ,             ",nvarchar,(MAX),2613,0,2612,0.00%,99.96%,0,7
+Contract_Item_____IMCNTC,Single Value,1,N (2613),"N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Damaged_Item_Flag_____IMDAMF,Single Value,1,N (2578),"N, N, N, N, N",nvarchar,(MAX),2613,0,35,0.00%,1.34%,0,7
+Dimen._Expressed_Imperial/Metric_____IMDEXP,Single Value,1,I (2613),"I, I, I, I, I",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+EDGE_DESIGNCATION_CD_____IMEDCD,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Exclude_Rejected__Material_Yes_or_No_____IMXREJ,Single Value,1,N (2613),"N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Fast_Path_Item_Description_____IMFSTP,Single Value,1,ATR002.000X000.375X288.000X0006063T5     (1),"                                        ,                                         ,                                         ,                                         ,                                         ",nvarchar,(MAX),2613,0,2612,0.00%,99.96%,0,7
+Include_Material_Processing_In_Usage_____IMMUSG,Single Value,1,Y (2613),"Y, Y, Y, Y, Y",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Item_Print_Desc_Three_____IMDSC3,Single Value,1,MAC 17-4 110 KSI QT            (1),"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),2613,0,2612,0.00%,99.96%,0,7
+Item_Print_Descr_Five_____IMDSC5,Single Value,1,012345678901234567890123456789 (1),"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),2613,0,2612,0.00%,99.96%,0,7
+ITEM_SUB-CLASS_____IMSBCL,Single Value,1,6063T5   (1),"        ,         ,         ,         ,         ",nvarchar,(MAX),2613,0,2612,0.00%,99.96%,0,7
+L/M_Century_____IMLMCC,Single Value,1,20.0 (2613),"20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Lifo_Base_Year_Cost_One_____IMLFB1,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Lifo_Base_Year_Cost_Two_____IMLFB2,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Lifo_Current_Year_Cost_-_Book_____IMLIFB,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Lifo_Current_Year_Cost_-_Tax_____IMLIFT,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Lifo_Pool_Number_____IMLIFP,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Material_Origin__D/C_____IMORIG,Single Value,1,D (2613),"D, D, D, D, D",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Max_Random_Length_____IMMAXL,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Max_Random_Width_____IMMAXW,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Min_Random_Length_____IMMINL,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Min_Random_Width_____IMMINW,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Packaging_Item_____IMFLG9,Single Value,1,N (2613),"N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Price_Matrix_Flag_____IMPMTX,Single Value,1,Y (2613),"Y, Y, Y, Y, Y",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Pricing_Movement_Code_____IMABCP,Single Value,1,: (1)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2612,0.00%,99.96%,0,7
+Primary_Vendor_Number_____IMVNDR,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Random_Length_Itemq_____IMRANL,Single Value,1,N (2613),"N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Random_Width_Itemq_____IMRANW,Single Value,1,N (2613),"N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+RANGE_=_0_3_____IMDSTC,Single Value,1,1 (2)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2611,0.00%,99.92%,0,7
+Scrap_Factor_____IMSFCT,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+SOCIETY/GOVN_SPEC_CD_____IMSGSC,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Standard_Cost_Lock_Flag_____IMSTCL,Single Value,1,N (2613),"N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Stock_Out_Exempt_____IMFLG2,Single Value,1,N (2613),"N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Stock_Transfer_Item_Flag_____IMSITM,Single Value,1,N (2613),"N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+TEMPER_____IMTEMP,Single Value,1,T5     (1),"      ,       ,       ,       ,       ",nvarchar,(MAX),2613,0,2612,0.00%,99.96%,0,7
+U_=_USAGE__S_=_SALES_____IMUSGF,Single Value,1,U (2613),"U, U, U, U, U",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+WEB_FIELD_1_____IMWEB1,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+WEB_FIELD_2_____IMWEB2,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+WEB_FIELD_3_____IMWEB3,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+WEB_FIELD_4_____IMWEB4,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+WEB_FIELD_5_____IMWEB5,Single Value,1,0.0 (2613),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,7
+Record_Code_____IMRECD,Flag (%RECD),2,"A (2571), I (42)","A, A, A, A, A",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,8
+A/R_Customer_Number_____IMCUST,Flag (2 Values),2,"0.0 (2612), 157.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Allow_Item_Descr_Override_____IMDOVR,Flag (2 Values),2,"Y (2612), N (1)","Y, Y, Y, Y, Y",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Auto_Purge/y/n/m_____IMFLG1,Flag (2 Values),2,"N (1683), Y (930)","N, Y, Y, Y, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Buyout_Item_Flag_____IMBUYO,Flag (2 Values),2,"N (2612), Y (1)","N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Customer_District_Number_____IMCDIS,Flag (2 Values),2,"0.0 (2612), 1.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Customer_Material_Yes_Or_No_____IMCMAT,Flag (2 Values),2,"N (2612), Y (1)","N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Display_in_Item_Search_____IMDSPS,Flag (2 Values),2,"Y (2612), N (1)","Y, Y, Y, Y, Y",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Finish_Goods_Flag_____IMFGF,Flag (2 Values),2,"N (2609), Y (4)","N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+"G_=_GROSS__N_=_NET_""_""_=_OPT_____IMGRNT",Flag (2 Values),2,"N (2575), G (35)","N, N, N, N, N",nvarchar,(MAX),2613,0,3,0.00%,0.11%,Flag,10
+Include_in_Prod._Movement_Calc._____IMIPMC,Flag (2 Values),2,"N (2574), Y (39)","N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Last_Receipt_Century_____IMRCCC,Flag (2 Values),2,"20.0 (1483), 0.0 (1130)","0.0, 0.0, 0.0, 20.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Last_Receipt_P/O_District_____IMPDIS,Flag (2 Values),2,"1.0 (1483), 0.0 (1130)","0.0, 1.0, 0.0, 1.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Non-Material_Item_Flag_____IMNONM,Flag (2 Values),2,"N (2611), Y (2)","N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Payment_Terms_____IMPYMT,Flag (2 Values),2,"1.0 (2612), 11.0 (1)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+"PSI_=_PER_SQUARE_INCH_PLI_=_PER_LINEAR_INCH_""___""=_____IMWUOM",Flag (2 Values),2,"PLI (2579), PSI (32)","PLI, PLI, PLI, PLI, PLI",nvarchar,(MAX),2613,0,2,0.00%,0.08%,Flag,10
+REM/DROP_____IMREMD,Flag (2 Values),2,"N (2610), Y (3)","N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Scrap_Item_Flag_____IMSCRF,Flag (2 Values),2,"N (2610), Y (3)","N, N, N, N, N",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Size_4_____IMSIZ4,Flag (2 Values),2,"0.0 (2611), 1.0 (2)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Theoretical_Or_Actual_Receiving_Flag_____IMRTAF,Flag (2 Values),2,"T (2601), A (12)","T, T, T, T, T",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+Unit_Weight_____IMUNTW,Flag (2 Values),2,"0.0 (2611), 1.0 (2)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,Flag,10
+L/M_Day_____IMLMDD,Date (Suffix),31,Distinct: 31,"29.0, 8.0, 6.0, 29.0, 31.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,11
+L/M_Month_____IMLMMM,Date (Suffix),12,"2.0 (391), 6.0 (325), 4.0 (310), 8.0 (234), 10.0 (221), 11.0 (216), 3.0 (197), 12.0 (164), 7.0 (164), 5.0 (156)","12.0, 6.0, 10.0, 2.0, 5.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,11
+L/M_Year_____IMLMYY,Date (Suffix),14,"23.0 (463), 24.0 (430), 22.0 (306), 25.0 (264), 18.0 (236), 19.0 (217), 16.0 (176), 21.0 (165), 14.0 (113), 17.0 (107)","25.0, 22.0, 24.0, 25.0, 25.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,11
+Last_Receipt_Day_____IMRCDD,Date (Suffix),32,Distinct: 32,"0.0, 0.0, 2.0, 0.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,11
+Last_Receipt_Month_____IMRCMM,Date (Suffix),13,"0.0 (1130), 3.0 (152), 11.0 (151), 12.0 (145), 10.0 (140), 5.0 (123), 2.0 (120), 6.0 (118), 4.0 (111), 1.0 (107)","0.0, 0.0, 1.0, 9.0, 5.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,11
+Last_Receipt_Year_____IMRCYY,Date (Suffix),14,"0.0 (1130), 23.0 (394), 24.0 (291), 22.0 (253), 18.0 (108), 17.0 (83), 14.0 (81), 19.0 (79), 21.0 (64), 16.0 (36)","22.0, 22.0, 23.0, 14.0, 0.0",nvarchar,(MAX),2613,0,0,0.00%,0.00%,0,11
+Alt_Ref_Code_____IMAREF,All Whitespace,0,(All Whitespace),"         ,          ,          ,          ,          ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Alternate_Item_Code_____IMALT,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Cross_Reference_OLD_____IMXREF,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Customer_Material_Flag_____IMCMF,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Customer_Part#_____IMPART,All Whitespace,0,(All Whitespace),"                         ,                          ,                          ,                          ,                          ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+"DEFAULT_MATL_STATUS,_RECV_____IMFLG3",All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+EDI_PROD_GRADE_CODE_____IMPGCD,All Whitespace,0,(All Whitespace),"  ,   ,   ,   ,   ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+eSHAPE_FIELD_____IMESHP,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_____IMFLG10,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_____IMFLG11,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_____IMFLG12,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_____IMFLG13,All Whitespace,0,(All Whitespace),"  ,   ,   ,   ,   ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_____IMFLG14,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_____IMFLG15,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_____IMFLG16,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_____IMFLG5,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_____IMFLG6,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_____IMFLG7,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_____IMFLG8,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Extra_4_____IMFLG4,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Item_Grade_____IMGRAD,All Whitespace,0,(All Whitespace),"      ,       ,       ,       ,       ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Item_Print_Descr_Four_____IMDSC4,All Whitespace,0,(All Whitespace),"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Item_Print_Descr_Six_____IMDSC6,All Whitespace,0,(All Whitespace),"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Lifo_Pool_____IMLIFOP,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+MATERIAL_CLASS_CODE_____IMMCCD,All Whitespace,0,(All Whitespace),"  ,   ,   ,   ,   ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Qry_Code_____IMQRYC,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Reference_Code_____IMREFC,All Whitespace,0,(All Whitespace),"         ,          ,          ,          ,          ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+Spec_Flg_Usr_defined_____IMSPCF,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+STORAGE_MATL_____IMSTMT,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+SURCHARGE_CODE_____IMSURC,All Whitespace,0,(All Whitespace),"      ,       ,       ,       ,       ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+SURFACE_CODE_____IMSURF,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+User_Definable_1_____IMUSR1,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+User_Definable_2_____IMUSR2,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+User_Definable_3_____IMUSR3,All Whitespace,0,(All Whitespace),"  ,   ,   ,   ,   ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+User_Defined_____IMSIGR,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+WEB_FIELD_A_____IMWEBA,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+WEB_FIELD_B_____IMWEBB,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+WEB_FIELD_C_____IMWEBC,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+WEB_FIELD_D_____IMWEBD,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12
+WEB_FIELD_E_____IMWEBE,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2613,0,2613,0.00%,100.00%,0,12

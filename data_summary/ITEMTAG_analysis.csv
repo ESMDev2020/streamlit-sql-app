@@ -1,0 +1,183 @@
+﻿AGENCY_CODE_____ITAGN,FK/Code (Potential),1,ST (289140),"ST, ST, ST, ST, ST",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,2
+COMMRCL_STATUS_CODE_____ITCMC,FK/Code (Potential),0,N/A," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,2
+EDGE_DESIGNATIO_CODE_____ITEDC,FK/Code (Potential),1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,2
+FORMATTED_ID_____ITFMID,FK/Code (Potential),1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,2
+PROC_STATUS_CODE_____ITMSTS,FK/Code (Potential),3,"1 (282189), 0 (10), 2 (8)","1, 1, 1, 1, 1",nvarchar,(MAX),289140,0,6933,0.00%,2.40%,0,2
+PROCESS_CODE_____ITPCD,FK/Code (Potential),0,N/A,"  ,   ,   ,   ,   ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,2
+Q/A_STATUS_CODES_____ITQAC,FK/Code (Potential),0,N/A," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,2
+Record_Code_____ITRECD,FK/Code (Potential),6,"H (276319), A (12339), J (271), C (108), I (99), P (4)","H, H, H, H, H",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,2
+Tariff_Code_____ITTRF,FK/Code (Potential),0,N/A,"               ,                ,                ,                ,                ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,2
+Transport_ID_____ITTID,FK/Code (Potential),0,N/A,"               ,                ,                ,                ,                ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,2
+ULT_CUST_STEEL_PROD_EDI_CODE_____ITUCE,FK/Code (Potential),0,N/A,"                 ,                  ,                  ,                  ,                  ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,2
+COMMENT_LINE3_____ITV304,Category/Code (Low Distinct),3,"INDICATION.                    (1), JT# 16                         (1), Q&T 311-353 10""X3.5""           (1)","                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),289140,0,289137,0.00%,100.00%,0,3
+Country_____ITCTRY,Category/Code (Low Distinct),18,"USA (211234), VRC (18521), RO  (17666), MEX (15895), I   (8988), TR  (5224), E   (4208), ROK (3586), CAN (898), CS  (720)","USA, USA, MEX, USA, USA",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,3
+EDI_COMMENT_____ITECM,Category/Code (Low Distinct),13,"2                              (2), 6                              (2), '                              (1), \                              (1), ]                              (1), 11                             (1), 185                            (1), 19                             (1), 24                             (1), 3                              (1)","                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),289140,0,289125,0.00%,99.99%,0,3
+MATERIAL_SHAPE_____ITTSHP,Category/Code (Low Distinct),4,"T (157377), B (131021), P (696), L (2)","B, T, T, B, B",nvarchar,(MAX),289140,0,44,0.00%,0.02%,0,3
+MATERIAL_TESTED_FLAG_____ITMTRT,Category/Code (Low Distinct),3,"N (289136), B (3), M (1)","N, N, N, N, N",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,3
+PO_Line_#_____ITPOLN,Category/Code (Low Distinct),4,"1.0 (150213), 0.0 (138863), 2.0 (35), 3.0 (29)","1.0, 0.0, 1.0, 1.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,3
+Remote_Inventory_Vendor_Number_____ITRVND,Category/Code (Low Distinct),8,"0.0 (289087), 355.0 (36), 531.0 (11), 121.0 (2), 114.0 (1), 119.0 (1), 168.0 (1), 203.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,3
+Salesman_____ITSLMN,Category/Code (Low Distinct),20,"0.0 (281920), 1.0 (3915), 9.0 (693), 4.0 (619), 3.0 (490), 12.0 (450), 8.0 (264), 19.0 (226), 21.0 (203), 56.0 (98)","0.0, 0.0, 1.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,3
+Shape_____ITSHAP,Category/Code (Low Distinct),4,"T (157409), B (131030), P (696), L (2)","B, T, B, B, B",nvarchar,(MAX),289140,0,3,0.00%,0.00%,0,3
+Transaction_Type_____ITTRNT,Category/Code (Low Distinct),5,"IA (217472), PO (61974), MP (5509), OE (3548), CM (611)","IA, IA, IA, IA, PO",nvarchar,(MAX),289140,0,26,0.00%,0.01%,0,3
+Vendor_QTY_UOM_____ITVQUM,Category/Code (Low Distinct),6,"FT  (212994), LB  (4184), EA  (2666), IN  (97), NT  (3), LT  (1)","   ,    ,    ,    , FT ",nvarchar,(MAX),289140,0,69195,0.00%,23.93%,0,3
+3_POSITION_CLASS_____ITCLS3,Text,26,Distinct: 26,"ABH, ABH, ATH, ATH, ATH",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+A/R_Cust#_____ITCUST,Text,475,Distinct: 475,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+A/R_Cust_TAG#_____ITCTAG,Text,4246,Distinct: 4246,"               ,                ,                ,                ,                ",nvarchar,(MAX),289140,0,277594,0.00%,96.01%,0,4
+ACTUAL_FOOTAGE_____ITATFT,Text,1527,Distinct: 1527,"92.0, 0.0, 0.0, 0.0, 3.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+CALCULATED_FOOTAGE_____ITCLFT,Text,55,Distinct: 55,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+COMMENT_LINE1_____ITV302,Text,20842,Distinct: 20842,"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),289140,0,211193,0.00%,73.04%,0,4
+COMMENT_LINE2_____ITV303,Text,34,Distinct: 34,"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),289140,0,289076,0.00%,99.98%,0,4
+HEAD_OR_1ST_MIC_READING_____ITMIC1,Text,214,Distinct: 214,"9.5, 1.0, 6.25, 8.0, 11.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Heat_#_____ITHEAT,Text,16558,Distinct: 16558,"4000005870     , 4000008963     , X3161          , 92701/4B       , 985677%T       ",nvarchar,(MAX),289140,0,22,0.00%,0.01%,0,4
+Image_Tracer_Seq_____ITITRS,Text,10424,Distinct: 10424,"0.0, 3405.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+ITEM_NUMBER_____ITITEM,Text,2467,Distinct: 2467,"51200, 50172, 50433, 50525, 51099",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+L/M_USER_____ITLMUS,Text,23,Distinct: 23,"          ,           ,           ,           ,           ",nvarchar,(MAX),289140,0,265020,0.00%,91.66%,0,4
+List#_____ITLIST,Text,61433,Distinct: 61433,"       , 0133720,        ,        ,        ",nvarchar,(MAX),289140,0,120562,0.00%,41.70%,0,4
+Main_Line#_____ITMLIN,Text,49,Distinct: 49,"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Mill_Coil#_____ITV301,Text,15939,Distinct: 15939,"389911                        , 712030                        , B118228292                    , 2042783                       , 496722-D                      ",nvarchar,(MAX),289140,0,68,0.00%,0.02%,0,4
+Numeric_Length_____ITLNTH,Text,2131,Distinct: 2131,"3.0, 60.0, 144.0, 23.0, 217.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Numeric_Width_____ITWDTH,Text,26,Distinct: 26,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+ORG_REC_INV_QTY_____ITORRQ,Text,7223,Distinct: 7223,"17.082999999999998, 0.58399999999999996, 3.6669999999999998, 0.5, 2.6669999999999998",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+ORG_REC_PIECE_COUNT_____ITORRP,Text,195,Distinct: 195,"1.0, 1.0, 1.0, 1.0, 3.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Original_ITEM#_1_____ITOIC1,Text,920,Distinct: 920,"     ,      ,      ,      ,      ",nvarchar,(MAX),289140,0,279643,0.00%,96.72%,0,4
+Original_TAG#_1_____ITOIG1,Text,7548,Distinct: 7548,"       ,    1324,        ,        ,        ",nvarchar,(MAX),289140,0,279643,0.00%,96.72%,0,4
+PO#_____ITPOOR,Text,14728,Distinct: 14728,"514363.0, 507974.0, 507724.0, 517038.0, 514862.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Primary_Sort_Field_____ITPSRT,Text,214,Distinct: 214,"18.0, 5.25, 4.5, 8.5, 6.75",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+PROC_STATUS_DATE_____ITPSD,Text,2857,Distinct: 2857,"111717.0, 31819.0, 32222.0, 40623.0, 82422.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Reserved_Quantity_____ITRQTY,Text,260,Distinct: 260,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+SECONDARY_TAG__QTY_____ITSQTY,Text,2141,Distinct: 2141,"0.0, 0.0, 0.0, 0.0, 23.25",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Size_1_____ITSIZ1,Text,216,Distinct: 216,"5.25, 11.0, 5.25, 6.5, 4.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Size_2_____ITSIZ2,Text,281,Distinct: 281,"0.0, 4.0, 4.5, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Size_3_____ITSIZ3,Text,278,Distinct: 278,"0.0, 0.0, 0.0, 0.0, 1.125",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Tag_Cost_____ITTCST,Text,41259,Distinct: 41259,"55.677399999999999, 120.7392, 26.627800000000001, 152.65280000000001, 211.5222",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Tag_Master_Description_____ITTDES,Text,5860,Distinct: 5860,"1.875 BAR HF 4140 110 KSI QT..     , 5.563 3.063 1.250  HF 4130 LN80 QT , 4.500 BAR HF 4130 75 KSI NQT       , 5.250 3.750 .750 HF 4140 LN80 QT   , 19.000 BAR HF 4140 ANN++           ",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+TAG_NUMBER_ALPHA_____ITTAG,Text,289074,Distinct: 289074," 103221,  177181,  312922,  104099,  124749",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Tag_Pieces_____ITTPCS,Text,82,Distinct: 82,"0.0, 0.0, 1.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Tag_Quantity_____ITTQTY,Text,2731,Distinct: 2731,"0.0, 0.0, 0.0, 0.5, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Time_Stamp_____ITTIMES,Text,133623,Distinct: 133623,"2022-01-19 18:55:20.000, 2022-01-19 18:55:20.000, 2022-01-19 18:55:20.000, 2022-01-19 18:55:20.000, 2022-01-19 18:55:20.000",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Transaction_#_____ITTRN#,Text,105878,Distinct: 105878,"508420.0, 19057.0, 515442.0, 13908.0, 21366.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Transaction_Receipt/_Restock_Line_Number_____ITRLIN,Text,31,Distinct: 31,"1.0, 0.0, 2.0, 2.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Transaction_Tag_Receipt_Sequence_Number_____ITSEQ#,Text,115,Distinct: 115,"1.0, 1.0, 2.0, 1.0, 1.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Transaction_Used_Line_Number_____ITULIN,Text,32,Distinct: 32,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Vendor#_____ITVNDR,Text,163,Distinct: 163,"130.0, 167.0, 0.0, 0.0, 130.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Vendor_Quantity_____ITVQTY,Text,6404,Distinct: 6404,"12.917, 15.583, 2.3330000000000002, 47.167000000000002, 4.8330000000000002",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Warehouse_Loc_____ITLOCT,Text,100009,Distinct: 100009,"1910351, 1SB33  , 1955905, 1935709, 1904088",nvarchar,(MAX),289140,0,36,0.00%,0.01%,0,4
+Weight_Factor_____ITWGTF,Text,6859,Distinct: 6859,"5.55371901, 1.5992424700000001, 0.34766141, 5.93805681, 17.80026398",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,4
+Birnell_Scale_High_Value_____ITBRNL,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+BUILD-UP_FLAG_____ITBLDF,Single Value,1,N (6468)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,282672,0.00%,97.76%,0,7
+BUILD-UP_SEQ#_____ITBLD#,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+COATING_VALUE_____ITCTV,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Coil_Piece_PIW_____ITCPIW,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+COMMRCL_STATUS_DATE_____ITCMD,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Deleted_by_Tag_Maintenance_____ITDELF,Single Value,1,Y (2832)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,286308,0.00%,99.02%,0,7
+DISTRICT_NUMBER_____ITDIST,Single Value,1,1.0 (289140),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+FERGUSON_MISC_FIELD_____ITMISC,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Flag_____ITPRNT,Single Value,1,N (6679)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,282461,0.00%,97.69%,0,7
+FORMATTED_OD_____ITFMOD,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+IN_LINE_GAUGE_READING_AVE_____ITIGRA,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+IN_LINE_GAUGE_READING_HIGH_____ITIGRH,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+IN_LINE_GAUGE_READING_LOW_____ITIGRL,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+IN_TRANSIT_VESSEL_____ITTRNV,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+MATERIAL_CLASS_DATE_____ITMCD,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Material_Origin__D/C_____ITORIG,Single Value,1,D (289140),"D, D, D, D, D",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Material_Rejection_NUMBER_____ITRJT#,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Max_Random_Length_____ITMAXL,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Max_Random_Width_____ITMAXW,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+MILL_FOOTAGE_____ITMLFT,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+MILL_PO_DATE_____ITMPD,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Min_Random_Length_____ITMINL,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Min_Random_Width_____ITMINW,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Olsen_Cup_____ITOLSN,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Ordered_Gauge_MAX_____ITOGMX,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Ordered_Gauge_MIN_____ITOGMN,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Ordered_Gauge_NOM_____ITOGNM,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Override_Company_SMO_____ITOCSM,Single Value,1,Y (140570),"Y,  ,  , Y,  ",nvarchar,(MAX),289140,0,148570,0.00%,51.38%,0,7
+Q/A_STATUS_DATE_____ITQCD,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+RESERVE_BOL.QTY_____ITRBOL,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Rockwell_Scale_____ITRKWS,Single Value,1,0 (10)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289130,0.00%,100.00%,0,7
+Rockwell_Value_____ITRKWV,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+SCRAP_WEIGHT_____ITSCRP,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Size_4_____ITSIZ4,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Tag_Printed_____ITPRIN,Single Value,1,Y (81)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289059,0.00%,99.97%,0,7
+Tag_Selected_____ITFLG1,Single Value,1,N (255)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,288885,0.00%,99.91%,0,7
+TAIL_OR_2ND_MIC_READING_____ITMIC2,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+TARE_WEIGHT_____ITTARE,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Test_Report_Data_Y/N/E_____ITTRDT,Single Value,1,N (2)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289138,0.00%,100.00%,0,7
+Vessel_____ITVSSL,Single Value,1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,7
+Cust_Dist_____ITCDIS,Flag (2 Values),2,"0.0 (281932), 1.0 (7208)","0.0, 0.0, 0.0, 0.0, 1.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,Flag,10
+MATERIAL_RECIEVED_____ITRTAF,Flag (2 Values),2,"T (288831), A (283)","T, T, T, T, T",nvarchar,(MAX),289140,0,26,0.00%,0.01%,Flag,10
+MP_Processed_____ITFLG2,Flag (2 Values),2,"N (78866), O (6803)"," ,  ,  ,  , N",nvarchar,(MAX),289140,0,203471,0.00%,70.37%,Flag,10
+PO_Dist_____ITPODI,Flag (2 Values),2,"1.0 (150914), 0.0 (138226)","0.0, 0.0, 0.0, 0.0, 1.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,Flag,10
+PO_Type_____ITPOTY,Flag (2 Values),2,"M (281894), B (7220)","M, M, M, M, M",nvarchar,(MAX),289140,0,26,0.00%,0.01%,Flag,10
+Salesman_District_____ITSMDI,Flag (2 Values),2,"0.0 (281920), 1.0 (7220)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,Flag,10
+Tag_UOM_____ITTUOM,Flag (2 Values),2,"FT  (185558), LB  (7535)","FT , FT , FT ,    , FT ",nvarchar,(MAX),289140,0,96047,0.00%,33.22%,Flag,10
+Tracable_Material_YES_OR_NO_____ITTRAC,Flag (2 Values),2,"N (163467), Y (125673)","Y, Y, N, N, N",nvarchar,(MAX),289140,0,0,0.00%,0.00%,Flag,10
+Transaction_District_____ITTRD,Flag (2 Values),2,"1.0 (289114), 0.0 (26)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,Flag,10
+CC_Tag_to_History_____ITHSCC,Date (Suffix),2,"20.0 (276355), 0.0 (12785)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Certification_CC_____ITCTCC,Date (Suffix),1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Certification_Day_____ITCTDD,Date (Suffix),1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Certification_MM_____ITCTMM,Date (Suffix),1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Certification_YY_____ITCTYY,Date (Suffix),1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+DD_Tag_to_History_____ITHSDD,Date (Suffix),32,Distinct: 32,"27.0, 18.0, 23.0, 10.0, 26.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+L/M_CENTURY_____ITLMCC,Date (Suffix),2,"0.0 (265020), 20.0 (24120)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+L/M_DAY_____ITLMDD,Date (Suffix),32,Distinct: 32,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+L/M_MONTH_____ITLMMM,Date (Suffix),13,"0.0 (265020), 3.0 (2854), 2.0 (2550), 6.0 (2503), 9.0 (2416), 8.0 (2192), 4.0 (2169), 5.0 (1880), 7.0 (1721), 10.0 (1551)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+L/M_YEAR_____ITLMYY,Date (Suffix),14,"0.0 (265020), 19.0 (5226), 24.0 (5147), 23.0 (3977), 18.0 (2052), 22.0 (1905), 20.0 (1734), 17.0 (1497), 21.0 (1182), 25.0 (715)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+MATERIAL_CLASS_CODE_____ITMCC,Date (Suffix),8,"OC (18), TE (2),  B (1), 1  (1), E  (1), N  (1), NE (1), WH (1)","  ,   ,   ,   ,   ",nvarchar,(MAX),289140,0,289114,0.00%,99.99%,0,11
+Material_Restock_Century_____ITRSCC,Date (Suffix),2,"20.0 (227140), 0.0 (62000)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Material_Restock_Day_____ITRSDD,Date (Suffix),32,Distinct: 32,"17.0, 27.0, 0.0, 0.0, 23.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Material_Restock_Month_____ITRSMM,Date (Suffix),13,"0.0 (62000), 3.0 (22666), 2.0 (20783), 1.0 (20480), 4.0 (20443), 6.0 (19062), 10.0 (18887), 8.0 (18658), 5.0 (18478), 7.0 (17393)","0.0, 0.0, 0.0, 3.0, 10.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Material_Restock_Year_____ITRSYY,Date (Suffix),14,"0.0 (62000), 22.0 (39380), 23.0 (30698), 24.0 (29061), 21.0 (27636), 19.0 (26571), 18.0 (26296), 20.0 (17955), 17.0 (17567), 25.0 (9387)","20.0, 19.0, 23.0, 23.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Matl_Rcvd_CC_____ITMRCC,Date (Suffix),1,20.0 (289140),"20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Matl_Rcvd_Day_____ITMRDD,Date (Suffix),31,Distinct: 31,"3.0, 21.0, 3.0, 25.0, 8.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Matl_Rcvd_MM_____ITMRMM,Date (Suffix),12,"2.0 (28103), 3.0 (27022), 1.0 (26365), 5.0 (25878), 8.0 (24723), 6.0 (24444), 4.0 (23728), 10.0 (23231), 9.0 (21952), 7.0 (21302)","8.0, 7.0, 8.0, 10.0, 1.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Matl_Rcvd_YY_____ITMRYY,Date (Suffix),13,"22.0 (62918), 23.0 (47338), 18.0 (45785), 19.0 (33176), 21.0 (28620), 17.0 (25765), 20.0 (19675), 24.0 (15454), 25.0 (3982), 16.0 (2196)","24.0, 19.0, 22.0, 21.0, 21.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+MM_Tag_to_History_____ITHSMM,Date (Suffix),13,"3.0 (27839), 2.0 (25475), 4.0 (24801), 1.0 (24202), 8.0 (23198), 6.0 (23091), 5.0 (23043), 10.0 (22997), 7.0 (21215), 9.0 (20967)","4.0, 7.0, 10.0, 10.0, 12.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+Number_of_Days_in_Inventory_____ITNODD,Date (Suffix),1000,Distinct: 1000,"2.0, 7.0, 10.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+P.I._CENTURY_____ITPICC,Date (Suffix),1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+P.I._DAY_____ITPIDD,Date (Suffix),1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+P.I._MONTH_____ITPIMM,Date (Suffix),1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+P.I._YEAR_____ITPIYY,Date (Suffix),1,0.0 (289140),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+YY_Tag_to_History_____ITHSYY,Date (Suffix),11,"22.0 (48934), 23.0 (36421), 21.0 (35178), 24.0 (34796), 18.0 (32832), 19.0 (32018), 17.0 (23060), 20.0 (21601), 0.0 (12785), 25.0 (11510)","22.0, 24.0, 22.0, 23.0, 23.0",nvarchar,(MAX),289140,0,0,0.00%,0.00%,0,11
+_____ITFLG4,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+_____ITFLG5,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Age_Bracket_____ITFLG3,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+ALLOY_____ITALOY,All Whitespace,0,(All Whitespace),"        ,         ,         ,         ,         ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+ASN#_____ITASN,All Whitespace,0,(All Whitespace),"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+COATING_VALUE_UOM_____ITCUM,All Whitespace,0,(All Whitespace),"   ,    ,    ,    ,    ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Cust_part#_____ITCPRT,All Whitespace,0,(All Whitespace),"                         ,                          ,                          ,                          ,                          ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Customs_Entry#_____ITCEN,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+ID_INCHES_____ITVR72,All Whitespace,0,(All Whitespace),"       ,        ,        ,        ,        ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+ITEM_SUB-CLASS_____ITSBCL,All Whitespace,0,(All Whitespace),"        ,         ,         ,         ,         ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Material_Rejection_MAJOR_Cause_____ITMRMJ,All Whitespace,0,(All Whitespace),"  ,   ,   ,   ,   ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Material_Rejection_MINOR_Cause_____ITMRMN,All Whitespace,0,(All Whitespace),"  ,   ,   ,   ,   ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Matl_Spec_____ITSPEC,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Mill_Coil#_____ITMIL2,All Whitespace,0,(All Whitespace),"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+MILL_CST_ORD_REL#_____ITMOR,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+MILL_ITEM_____ITMPL,All Whitespace,0,(All Whitespace),"    ,     ,     ,     ,     ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+MILL_ORDER#_-CURRENT_____ITMCO,All Whitespace,0,(All Whitespace),"                      ,                       ,                       ,                       ,                       ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Mill_Order_Number_Original_____ITMORD,All Whitespace,0,(All Whitespace),"                      ,                       ,                       ,                       ,                       ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+MILL_Order-Orig_____ITMPO#,All Whitespace,0,(All Whitespace),"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+MILL_PO#_-_Current_____ITCPO#,All Whitespace,0,(All Whitespace),"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+MILL_PO_RELEASE#_____ITMPR,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Mill_release_____ITMREL,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+OD_INCHES_____ITVR74,All Whitespace,0,(All Whitespace),"       ,        ,        ,        ,        ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Original_ITEM#_2_____ITOIC2,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Original_TAG#_2_____ITOIG2,All Whitespace,0,(All Whitespace),"       ,        ,        ,        ,        ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Override_District_SMO_____ITODSM,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Override_Item_SMO_____ITOISM,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Part#_Revision_____ITPRTR,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Ship_Material_Flag_____ITSHPM,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+Tag_on_Finalized_BOL_____ITFBOL,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+TEMPER_____ITTEMP,All Whitespace,0,(All Whitespace),"      ,       ,       ,       ,       ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+ULT_CUST_ITEM_____ITUIT,All Whitespace,0,(All Whitespace),"    ,     ,     ,     ,     ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+ULTIMATE_CUST_NAME_____ITUCS,All Whitespace,0,(All Whitespace),"                         ,                          ,                          ,                          ,                          ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+ULTIMATE_CUST_PART#_____ITUCP,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+ULTIMATE_CUST_PART#_____ITUCPN,All Whitespace,0,(All Whitespace),"                         ,                          ,                          ,                          ,                          ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+ULTIMATE_CUST_PO#_____ITUPO,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+ULTIMATE_CUST_PO#_____ITUPON,All Whitespace,0,(All Whitespace),"                         ,                          ,                          ,                          ,                          ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+ULTIMATE_CUST_REL#_____ITURL,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+USER_DEF__FIELD_1_____ITUDT1,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+USER_DEF__FIELD_2_____ITUDT2,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+USER_DEF__FIELD_3_____ITUDT3,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12
+USER_DEF__FIELD_4_____ITUDT4,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),289140,0,289140,0.00%,100.00%,0,12

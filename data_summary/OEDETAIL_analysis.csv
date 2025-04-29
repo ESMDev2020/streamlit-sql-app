@@ -1,0 +1,197 @@
+﻿COLUMN,TYPE,DISTINCT VALUES,SAMPLE DATA,VALUES INFO (TOP N / RANGE / SINGLE),DB DATA TYPE,DB TYPE DETAILS,TOTAL ROWS,NULL COUNT,WHITESPACE-ONLY COUNT,NUL PCT,WHITESPACE PCT,IS UNIQUE / FLAG,SORTORDER
+Transaction_#_____ODORDR,Text,151231,Distinct: 151231,"924220.0, 866500.0, 913186.0, 932453.0, 948055.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+INBOUND_ORDER_NUMBER_____ODIBOR,Text,7229,Distinct: 7229,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+Order_Type_____ODTYPE,Category/Code (Low Distinct),5,"A (138185), B (7211), C (5452), Q (393), I (1)","A, A, A, A, A",nvarchar,(MAX),151243,0,1,0.00%,0.00%,0,3
+ITEM_NUMBER_____ODITEM,Text,2154,Distinct: 2154,"51183, 50178, 51428, 50013, 51102",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+CRT_DESCRIPTION_____ODCRTD,Text,5644,Distinct: 5644,"5.000 ROUND BAR                    , 11.000 OD 2.750 ID 4.125 WALL      , 5.000 OD 2.250 ID 1.375 WALL       , 14.375 OD 12.375 ID 1.000 WALL     , 3.250 ROUND BAR                    ",nvarchar,(MAX),151243,0,1,0.00%,0.00%,0,4
+CUSTOMER_NUMBER_____ODCUST,Text,1134,Distinct: 1134,"513.0, 227.0, 189.0, 378.0, 754.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+CUSTOMER_PART_NUMBER_____ODCPRT,Text,35918,Distinct: 35918,"R-4340D-05.250           , 120030302                , 955249                   ,                          , RS 6.750 BW              ",nvarchar,(MAX),151243,0,70079,0.00%,46.34%,0,4
+CUSTOMER_REFERENCE_____ODCREF,Text,95949,Distinct: 95949,"VERBAL ARIANA            , 838848                   , 2945                     , PO13236 ITEM 4           , 0088277-00               ",nvarchar,(MAX),151243,0,5594,0.00%,3.70%,0,4
+3_POSITION_CLASS_____ODCLAS,Text,24,Distinct: 24,"ATH, ABH, ATH, ABH, ATH",nvarchar,(MAX),151243,0,1,0.00%,0.00%,0,4
+ADJUSTED_BOOK_PRICE_____ODJPRC,Text,5256,Distinct: 5256,"1.7, 1.6899999999999999, 1.8, 2.1000000000000001, 2.1000000000000001",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+ADJUSTED_BOOK_PRICE_EXT_____ODJEXT,Text,63456,Distinct: 63456,"0.0, 347.20999999999998, 0.0, 489.38999999999999, 570.72000000000003",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+AVG_COST_EXT_____ODACSX,Text,94300,Distinct: 94300,"139.00999999999999, 73.489999999999995, 282.75999999999999, 24251.139999999999, 8174.6599999999999",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+BASE/BOOK_PRICE_____ODBPRC,Text,5256,Distinct: 5256,"0.0, 2.25, 1.3, 175.75, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+BASE/BOOK_PRICE_EXT_____ODBEXT,Text,63456,Distinct: 63456,"317.94999999999999, 648.71000000000004, 222.75, 702.88999999999999, 74.640000000000001",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+CALCULATING_LENGTH_____ODLENG,Text,7089,Distinct: 7089,"328.0, 15.0, 31.0, 9.0, 31.25",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+COSTING_METHOD_COST_EXT_____ODCSTX,Text,94035,Distinct: 94035,"243.99000000000001, 999.72000000000003, 777.15999999999997, 200.56999999999999, 128.69999999999999",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+COSTING_METHOD_UNIT_COST_____ODUCST,Text,87951,Distinct: 87951,"39.533900000000003, 129.33619999999999, 0.0, 189.64580000000001, 13.4244",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+Display_Length_____ODDSPL,Text,10740,Distinct: 10740,"40.25    , 12.25    , 13       ,    32.000, 240      ",nvarchar,(MAX),151243,0,29,0.00%,0.02%,0,4
+Display_Width_____ODDSPW,Text,31,Distinct: 31,"         ,          ,          ,          ,          ",nvarchar,(MAX),151243,0,108021,0.00%,71.42%,0,4
+EXCHANGE_$_AMT_____ODXAMT,Text,9126,Distinct: 9126,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+EXCHANGE_PRICE_____ODXSEL,Text,6206,Distinct: 6206,"0.0, 0.0, 0.0, 5.6399999999999997, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+FREIGHT____OUT__COST_____ODFRTO,Text,44,Distinct: 44,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+Inner_Diameter_____ODIND,Text,1350,Distinct: 1350,"0.0, 3.75, 5.5, 0.0, 1.75",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+INVENTORY_RESERVE_QUANTITY_____ODINVR,Text,17361,Distinct: 17361,"1.292, 2.0630000000000002, 2.7080000000000002, 2.2080000000000002, 10.167",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+MATERIAL_WEIGHT_____ODMLBS,Text,11567,Distinct: 11567,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+NEGOTIATED_SELL_$_EXT_____ODSLSX,Text,63396,Distinct: 63396,"8371.9099999999999, 2931.3200000000002, 1770.1300000000001, 2205.0, 2925.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+NEGOTITED_SELL_PRICE_____ODUSEL,Text,30968,Distinct: 30968,"2780.0, 6.5122999999999998, 44.0, 1217.0, 40.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+ORDER_QUANTITY_____ODIQTY,Text,11480,Distinct: 11480,"105.0, 30.5, 46.25, 1.0, 10.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+Orig_Cost_Factor_____ODOCST,Text,6909,Distinct: 6909,"0.0, 0.0, 1.5, 0.0, 28.5",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+ORIGINAL_QUANTITY_ORDERED_____ODORQT,Text,4357,Distinct: 4357,"3.0, 1.0, 15.0, 10.0, 100.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+Outside_Diameter_____ODOUTD,Text,854,Distinct: 854,"7.25, 4.0, 6.75, 5.0, 3.75",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+PRORATED_FREIGHT_SALES_____ODFRTS,Text,162,Distinct: 162,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+SALES_DISCOUNT_____ODDISC,Text,4646,Distinct: 4646,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+SCRAP_DEVALUATION_____ODSDEV,Text,678,Distinct: 678,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+SIZE_1_____ODSIZ1,Text,189,Distinct: 189,"3.5, 1.0, 5.25, 6.25, 11.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+SIZE_2_____ODSIZ2,Text,239,Distinct: 239,"3.5, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+SIZE_3_____ODSIZ3,Text,224,Distinct: 224,"0.0, 0.0, 0.0, 0.0, 0.75",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+STOCK_INV.QTY_FOR_PRICING_____ODINVP,Text,17641,Distinct: 17641,"4.8959999999999999, 13.0, 89.75, 1.208, 274.66300000000001",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+Theo._Meters_____ODTMTR,Text,12859,Distinct: 12859,"0.88900000000000001, 22.003, 2.5910000000000002, 0.22900000000000001, 0.876",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+Theo_Kilos_____ODTKG,Text,66803,Distinct: 66803,"178.83000000000001, 253.858, 55.609000000000002, 13.647, 19.378",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+TOTAL_FTS_____ODTFTS,Text,16350,Distinct: 16350,"1.0629999999999999, 0.66700000000000004, 25.082999999999998, 1.0209999999999999, 0.505",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+TOTAL_INCL_1_PRICE_FOR_PROCESS_CHRG_____ODMLPC,Text,15799,Distinct: 15799,"0.0, 372.22000000000003, 417.88999999999999, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+TOTAL_LBS_____ODTLBS,Text,67655,Distinct: 67655,"96.120999999999995, 497.49599999999998, 60.841000000000001, 3645.5230000000001, 555.36800000000005",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+TOTAL_PCS_____ODTPCS,Text,457,Distinct: 457,"2.0, 1.0, 6.0, 28.0, 4.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+TOTAL_PROCESS_SALES_____ODPRCS,Text,15804,Distinct: 15804,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+TOTAL_SQUARE_FT_____ODTSFT,Text,393,Distinct: 393,"0.001, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+Wall_____ODWALL,Text,1585,Distinct: 1585,"1.875, 0.0, 0.0, 0.375, 2.6299999999999999",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+Weight_Factor_____ODWGTF,Text,5363,Distinct: 5363,"11.50237935, 1.50189727, 6.7307248199999998, 12.68268808, 4.50569182",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+WIDTHDRAWN_QUANTITY_____ODWDRW,Text,16951,Distinct: 16951,"26.125, 1.417, 3.2919999999999998, 1.0629999999999999, 1.833",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+WITHDRAWN_COST_EXT_____ODWCST,Text,87937,Distinct: 87937,"83.540000000000006, 19.350000000000001, 171.43000000000001, 141.56999999999999, 143.40000000000001",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+CUT_ITEM_Y/N_____ODCUTY,Category/Code (Low Distinct),3,"A (121854), Y (19939), N (793)","A, A,  , A, A",nvarchar,(MAX),151243,0,8657,0.00%,5.72%,0,3
+PO_FREIGHT__CHARGE_CST_EXT_____ODPOFR,Category/Code (Low Distinct),5,"0.0 (151219), 0.01 (21), 0.16 (1), 0.23000000000000001 (1), 2.9999999999999999E-2 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+PRORATED_WHOLE_ORDER_COST_AMT_____ODWCCS,Category/Code (Low Distinct),7,"0.0 (151237), 0.01 (1), 1.04 (1), -13139.639999999999 (1), -50.0 (1), 6569.8199999999997 (1), -7195.46 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+PRORATED_WHOLE_ORDER_SALES_AMT_____ODWCSL,Category/Code (Low Distinct),10,"0.0 (151232), 2926.98 (2), 6569.8199999999997 (2), -1104.5899999999999 (1), -13139.639999999999 (1), -301.60000000000002 (1), -4329.3199999999997 (1), -50.0 (1), -553.34000000000003 (1), -7195.46 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+QUOTE_PRT.SEQ#_____ODQPS#,Category/Code (Low Distinct),18,"10.0 (145005), 0.0 (5477), 20.0 (509), 30.0 (154), 40.0 (52), 50.0 (24), 60.0 (7), 70.0 (4), 80.0 (2), 100.0 (1)","10.0, 10.0, 10.0, 10.0, 10.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+Shape_____ODSHAP,Category/Code (Low Distinct),5,"B (77112), T (73673), P (418), O (36), L (3)","T, B, B, T, B",nvarchar,(MAX),151243,0,1,0.00%,0.00%,0,3
+ORDER_DATE_CENTURY_____ODOCC,Date (Suffix),2,"20.0 (150714), 0.0 (529)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+ORDER_DATE_DAY_____ODODD,Date (Suffix),32,Distinct: 32,"9.0, 14.0, 27.0, 14.0, 11.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+ORDER_DATE_MONTH_____ODOMM,Date (Suffix),13,"3.0 (14957), 1.0 (14012), 2.0 (13754), 4.0 (13215), 5.0 (12677), 6.0 (12550), 10.0 (12444), 8.0 (12410), 9.0 (11464), 7.0 (11455)","2.0, 6.0, 10.0, 3.0, 10.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+ORDER_DATE_YEAR_____ODOYY,Date (Suffix),13,"22.0 (25915), 23.0 (20804), 21.0 (19347), 24.0 (19234), 19.0 (16790), 18.0 (16625), 17.0 (13573), 20.0 (12423), 25.0 (5862), 0.0 (529)","22.0, 25.0, 25.0, 23.0, 17.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+COMPLETION_CENTURY_____ODCCC,Date (Suffix),2,"20.0 (148969), 0.0 (2274)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+COMPLETION_DAY_____ODCDD,Date (Suffix),32,Distinct: 32,"16.0, 23.0, 13.0, 29.0, 6.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+COMPLETION_MONTH_____ODCMM,Date (Suffix),13,"3.0 (14931), 1.0 (13882), 2.0 (13570), 4.0 (13225), 5.0 (12649), 6.0 (12416), 8.0 (12387), 10.0 (12239), 7.0 (11456), 9.0 (11157)","7.0, 4.0, 8.0, 3.0, 11.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+COMPLETION_YEAR_____ODCYY,Date (Suffix),16,"22.0 (25689), 23.0 (20861), 24.0 (18851), 21.0 (18724), 19.0 (16821), 18.0 (16245), 17.0 (13291), 20.0 (12464), 25.0 (6006), 0.0 (2274)","22.0, 22.0, 20.0, 23.0, 25.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+REQ_DELIVERY_CENTURY_____ODRQCC,Date (Suffix),2,"20.0 (151097), 0.0 (146)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+REQ_DELIVERY_DAY_____ODRQDD,Date (Suffix),32,Distinct: 32,"6.0, 15.0, 24.0, 15.0, 27.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+REQ_DELIVERY_MONTH_____ODRQMM,Date (Suffix),13,"3.0 (15128), 1.0 (13919), 2.0 (13776), 4.0 (13408), 5.0 (12868), 6.0 (12612), 8.0 (12567), 10.0 (12499), 7.0 (11642), 9.0 (11290)","5.0, 7.0, 7.0, 2.0, 9.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+REQ_DELIVERY_YEAR_____ODRQYY,Date (Suffix),14,"22.0 (25806), 23.0 (21100), 24.0 (19271), 21.0 (18921), 19.0 (16948), 18.0 (16464), 17.0 (13464), 20.0 (12588), 25.0 (6473), 0.0 (146)","21.0, 22.0, 22.0, 25.0, 23.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+L/M_Time_____ODTIMS,Text,145627,Distinct: 145627,"110356051120.0, 164318031925.0, 83501060724.0, 102554031523.0, 143538082724.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,4
+L/M_User_____ODLMUS,Text,32,Distinct: 32,"CWILLEFO  ,           , SCHARTRAND, ACRUZ     , SCHARTRAND",nvarchar,(MAX),151243,0,5456,0.00%,3.61%,0,4
+FASTPATH/ITEM__F/I__CODE_____ODFICD,FK/Code (Potential),4,"F (96884), I (44219), B (257), O (1)","F, F, I, I, F",nvarchar,(MAX),151243,0,9882,0.00%,6.53%,0,2
+Inventory_Code_____ODINVC,FK/Code (Potential),3,"F (143277), W (7935), P (30)","F, F, F, F, F",nvarchar,(MAX),151243,0,1,0.00%,0.00%,0,2
+ITEM_SKID_CHARGE_Y/N_____ODSKID,FK/Code (Potential),1,N (6513)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,144730,0.00%,95.69%,0,2
+KERF_WIDTH_____ODKWID,FK/Code (Potential),1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,2
+NEG_PRICE_KEYED_Y/N_____ODNEGY,FK/Code (Potential),3,"Y (143355), U (1728), N (563)","Y, Y, Y, Y, Y",nvarchar,(MAX),151243,0,5597,0.00%,3.70%,0,2
+Record_Code_____ODRECD,FK/Code (Potential),2,"I (150418), A (825)","I, I, I, I, I",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,2
+TAG_CODE_____ODTAGC,FK/Code (Potential),1,T (151206),"T, T, T, T, T",nvarchar,(MAX),151243,0,37,0.00%,0.02%,0,2
+ADJUSTED_BOOK_UOM_____ODJUOM,Category/Code (Low Distinct),8,"LB  (85848), NC  (30514), FT  (25269), EA  (1992), LOT (1894), IN  (65), CWT (7), NT  (2)","LB , NC ,    , NC , NC ",nvarchar,(MAX),151243,0,5652,0.00%,3.74%,0,3
+BASE/BOOK_UOM_____ODBUOM,Category/Code (Low Distinct),8,"LB  (85848), NC  (30514), FT  (25269), EA  (1992), LOT (1894), IN  (65), CWT (7), NT  (2)","LB , FT , LB , LB , NC ",nvarchar,(MAX),151243,0,5652,0.00%,3.74%,0,3
+CALCULATING_WIDTH_____ODWDTH,Category/Code (Low Distinct),15,"0.0 (150825), 20.625 (177), 13.25 (52), 9.25 (37), 14.125 (34), 16.0 (33), 12.25 (27), 10.25 (24), 11.25 (22), 9.5 (4)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+COSTING_METHOD_COST_UOM_____ODCUOM,Category/Code (Low Distinct),6,"FT  (138287), LB  (7692), EA  (164), LOT (15), NC  (4), IN  (1)","FT , LB , FT , FT , FT ",nvarchar,(MAX),151243,0,5080,0.00%,3.36%,0,3
+FINANCIAL_SCRAP__FACTOR_COST_____ODFSFA,Category/Code (Low Distinct),3,"0.0 (151241), 0.63 (1), 3.8100000000000001 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+Item_Level_Payment_Terms_____ODPYMT,Category/Code (Low Distinct),3,"1.0 (151209), 11.0 (33), 0.0 (1)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+KERF_LENGTH_____ODKLEN,Category/Code (Low Distinct),4,"0.0 (151240), -103.0 (1), -12.0 (1), -36.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+Line_Type_____ODLTYP,Category/Code (Low Distinct),3,"N (142683), M (8497), B (24)","N, N, N, N, N",nvarchar,(MAX),151243,0,39,0.00%,0.03%,0,3
+MAIN_LINE_____ODMLIN,Category/Code (Low Distinct),13,"1.0 (150474), 2.0 (519), 3.0 (155), 4.0 (53), 5.0 (24), 6.0 (7), 7.0 (4), 8.0 (2), 10.0 (1), 11.0 (1)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+MAX_MIC_READING_____ODMAXM,Category/Code (Low Distinct),9,"0.0 (151233), 16.5 (2), 5.0 (2), 1.0 (1), 10801.0 (1), 16.0 (1), 264.0 (1), 4.25 (1), 47.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+MIN_MIC_READING_____ODMINM,Category/Code (Low Distinct),14,"0.0 (151229), 5.0 (2), 110.0 (1), 12.130000000000001 (1), 12.75 (1), 144.0 (1), 16.0 (1), 18.0 (1), 2.75 (1), 264.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+NEGOTIATED_SELL_UOM_____ODSUOM,Category/Code (Low Distinct),7,"EA  (64500), IN  (47296), FT  (22009), LOT (11789), NC  (5573), LB  (73), LT  (3)","IN , IN , EA , LOT, IN ",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+ORDER_UOM_____ODIUOM,Category/Code (Low Distinct),5,"EA  (78120), IN  (50732), FT  (22380), LB  (7), LT  (4)","IN , EA , EA , EA , EA ",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+ORIGINAL_UOM_____ODOUOM,Category/Code (Low Distinct),5,"EA  (133231), IN  (13709), FT  (3694), LB  (69), M   (1)","EA , EA , EA , EA , EA ",nvarchar,(MAX),151243,0,539,0.00%,0.36%,0,3
+TOTAL_ADDTL_CHG_SALES_____ODADCS,Category/Code (Low Distinct),5,"0.0 (151239), 0.01 (1), 1100.0 (1), -162.5 (1), 206.47999999999999 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+TOTAL_INCL_1_PRICE_FOR_ADDTL__CHRG_____ODMLAC,Category/Code (Low Distinct),5,"0.0 (151239), 0.01 (1), 1150.0 (1), 206.47999999999999 (1), 208.53 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,3
+Y/N/1=_1_OR_MORE_1_CHRGS_____ODACF,Category/Code (Low Distinct),3,"N (474), 1 (4), Y (3)"," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,150762,0.00%,99.68%,0,3
+Y/N/1=_1_OR_MORE_1_CHRGS_____ODPCF,Category/Code (Low Distinct),3,"1 (33547), N (1550), Y (323)","1,  ,  ,  ,  ",nvarchar,(MAX),151243,0,115823,0.00%,76.58%,0,3
+ADMINISTRATIVE__BURDEN__COST_____ODADMB,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+BACK_ORDER_QUANTITY_____ODBKQT,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+BACK_ORDER_WHOLE_INCHES_____ODBKIN,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+BILL_OF_LADING_FLAG_____ODBOLF,Single Value,1,N (141634),"N, N, N, N, N",nvarchar,(MAX),151243,0,9609,0.00%,6.35%,0,7
+BILL_OF_MAT_ITEMq_____ODBOMI,Single Value,1,N (145792),"N, N, N, N, N",nvarchar,(MAX),151243,0,5451,0.00%,3.60%,0,7
+Blanket_Ref_Line_____ODBLINE,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+Buyout_Unit_Wgt_____ODBUNW,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+COMPANY_NUMBER_____ODCOMP,Single Value,1,1.0 (151243),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+CONTRACT_NUMBER_____ODCONT,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+CUST.QTY_REFERENCE_____ODQREF,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+CUSTOMER_DISTRICT_____ODCDIS,Single Value,1,1.0 (151243),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+CUSTOMER_LINE#_____ODCLIN,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+CUT_SIZES_ONLY____Y/N_____ODC,Single Value,1,N (3183)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,148060,0.00%,97.90%,0,7
+DECIMAL_INCHES_____ODINDL,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+DELIVERY_HOLD_FOR_RELEASE_____ODDHFR,Single Value,1,N (145791),"N, N, N, N, N",nvarchar,(MAX),151243,0,5452,0.00%,3.60%,0,7
+Dimen._Expressed_Imperial/Metric_____ODDEXP,Single Value,1,I (151242),"I, I, I, I, I",nvarchar,(MAX),151243,0,1,0.00%,0.00%,0,7
+FRACTIONAL_DENOMINATOR_LENGTH_____ODLFRD,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+FRACTIONAL_DENOMINATOR_WIDTH_____ODWFRD,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+FRACTIONAL_NUMERATOR_LENGTH_____ODLFRN,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+FRACTIONAL_NUMERATOR_WIDTH_____ODWFRN,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+FRACTIONAL_WHOLE_INCHES_LENGTH_____ODLFRC,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+FRACTIONAL_WHOLE_INCHES_WIDTH_____ODWFRC,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+FREIGHT___IN__COST_____ODFRTI,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+Hr_Avail/Day_____ODMHR,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+INBOUND_ORDER_TYPE_____ODIBOT,Single Value,1,PO (7229),"  ,   ,   ,   ,   ",nvarchar,(MAX),151243,0,144014,0.00%,95.22%,0,7
+INV.RESERVE_QUOTE_Y/N_____ODRESF,Single Value,1,N (102960),"N,  , N,  , N",nvarchar,(MAX),151243,0,48283,0.00%,31.92%,0,7
+Inv_Comp_____ODICMP,Single Value,1,1.0 (151243),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+INVENTORY_RSRV_DIST_____ODINVD,Single Value,1,1.0 (151243),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+MACHINE_HOURS_____ODMHRS,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+Min_Avail/Day_____ODMMIN,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+O/E_District_#_____ODDIST,Single Value,1,1.0 (151243),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+OPER_BRDN__COST_LN/FLAT_____ODOPRL,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+OPER_BRDN_COST_LN/CALC_____ODOPRB,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+ORDERED_WHOLE_INCHES_____ODINCH,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+Percent_of_Price_____ODABCP,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+PO_LINE#_SEQ#_____ODPOLS,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+PO_WHOLE_ORDER_CHARGE_CST_EXT_____ODPOWC,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+Print_Seq#_____ODPSQ#,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+RELEASE_CREATION_DATE_____ODRCDT,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+REMOTE_INVENTORY_VENDOR_____ODVNDR,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+REQ_SHIP_DATE_____ODRSDT,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+REQ_SHIP_TIME_____ODRSTM,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+Reservation_Balance_____ODRBAL,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+RESTOCK_LINES_Y/N_____ODRLF,Single Value,1,N (137876),"N, N, N, N, N",nvarchar,(MAX),151243,0,13367,0.00%,8.84%,0,7
+SLIT_COIL_/_SHEET_ANALYSIS_FLAG_____ODSLIT,Single Value,1,S (20507)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,130736,0.00%,86.44%,0,7
+Taxable_____ODTAX,Single Value,1,Y (151227),"Y, Y, Y, Y, Y",nvarchar,(MAX),151243,0,16,0.00%,0.01%,0,7
+TOTAL_FTS_____ODPFTS,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+TOTAL_INCL_1_PRICE_WHOLE_ORDER_CHARGES_____ODMLWC,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+TOTAL_SQUARE_FT_____ODPSFT,Single Value,1,0.0 (151243),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,7
+ZERO_STOCK_FOUND___Y/N_____ODZ,Single Value,1,N (3183)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,148060,0.00%,97.90%,0,7
+COST_METHOD_____ODCSTM,Flag (2 Values),2,"1 (151212), 3 (30)","1, 1, 1, 1, 1",nvarchar,(MAX),151243,0,1,0.00%,0.00%,Flag,10
+COMBINABLE_CODE_____ODCBNC,FK/Code (Potential),0,N/A,"  ,   ,   ,   ,   ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,2
+CUSTOMER_LINE#_SEQ#_____ODCLSQ,Flag (2 Values),2,"0.0 (151242), 2.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,Flag,10
+DESCRIPTION_CHANGED_FLAG_(Y/N)_____ODFLAG,Flag (2 Values),2,"* (37230), Y (14)"," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,113999,0.00%,75.37%,Flag,10
+INBOUND_LINE_NUMBER_____ODIBLN,Flag (2 Values),2,"0.0 (144014), 1.0 (7229)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,Flag,10
+INBOUND_ORDER_DISTRICT_____ODIBOD,Flag (2 Values),2,"0.0 (144014), 1.0 (7229)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,Flag,10
+NUMBER_OF_CERTS_____ODCERT,Flag (2 Values),2,"0.0 (151235), 1.0 (8)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,Flag,10
+NUMBER_OF_MILL_TESTS_____ODMILT,Flag (2 Values),2,"0.0 (151236), 1.0 (7)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,Flag,10
+ORIGINAL_PRICE_METHOD_____ODOPMT,Flag (2 Values),2,"N (77039), L (68605)","L, L, L, N, L",nvarchar,(MAX),151243,0,5599,0.00%,3.70%,Flag,10
+ORIGINAL_WHOLE_INCHES_____ODORIN,Flag (2 Values),2,"0.0 (151242), 6.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,Flag,10
+PRICE_FIRM_q_____ODFIRM,Flag (2 Values),2,"Y (7210), N (22)"," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,144011,0.00%,95.22%,Flag,10
+PRICING_METHOD_FROM_QUOTES_____ODPMTH,Flag (2 Values),2,"N (144985), L (795)","N, N, N, N, N",nvarchar,(MAX),151243,0,5463,0.00%,3.61%,Flag,10
+Sales_Approval_____ODSAPR,Flag (2 Values),2,"N (145294), Y (497)","N, N, N, N, N",nvarchar,(MAX),151243,0,5452,0.00%,3.60%,Flag,10
+SIZE_4_____ODSIZ4,Flag (2 Values),2,"0.0 (151213), 1.0 (30)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,Flag,10
+Unit_Weight_____ODUNTW,Flag (2 Values),2,"0.0 (151213), 1.0 (30)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,Flag,10
+DAMAGED_MATERIAL___Y/N_____ODD,Date (Suffix),1,N (3183)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,148060,0.00%,97.90%,0,11
+MOV_Pricing_Code_____ODABCC,Date (Suffix),0,N/A," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,11
+REMOVE_RESERVE_DATE_CC_____ODRSCC,Date (Suffix),2,"20.0 (100492), 0.0 (50751)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+REMOVE_RESERVE_DATE_DD_____ODRSDD,Date (Suffix),32,Distinct: 32,"7.0, 0.0, 0.0, 11.0, 10.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+REMOVE_RESERVE_DATE_MM_____ODRSMM,Date (Suffix),13,"0.0 (50751), 3.0 (10188), 1.0 (9601), 2.0 (9378), 4.0 (9006), 10.0 (8220), 11.0 (8091), 5.0 (8007), 12.0 (7970), 6.0 (7789)","6.0, 9.0, 5.0, 2.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+REMOVE_RESERVE_DATE_YY_____ODRSYY,Date (Suffix),8,"0.0 (50751), 23.0 (24589), 24.0 (19463), 22.0 (18399), 25.0 (18219), 21.0 (11637), 26.0 (5748), 20.0 (2437)","23.0, 0.0, 0.0, 23.0, 26.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+TOTAL_ADDTL_CHG_COST_____ODADCC,Date (Suffix),4,"0.0 (151240), -162.5 (1), 174.44 (1), 65.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+TOTAL_PROCESS_COST_____ODPRCC,Date (Suffix),15029,Distinct: 15029,"0.0, 0.0, 0.0, 100.0, 0.0",nvarchar,(MAX),151243,0,0,0.00%,0.00%,0,11
+ALLOY_____ODALOY,All Whitespace,0,(All Whitespace),"        ,         ,         ,         ,         ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+BACK_ORDER_UOM_____ODBKUM,All Whitespace,0,(All Whitespace),"   ,    ,    ,    ,    ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+Blanket_Ref_Item_____ODBITEM,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+BOL_Inventory_Removal_____ODBOLR,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+BOL_Tags_Ship_Complete_____ODBOLS,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+BOOKINGS_FLAG_Y/N_____ODBKFL,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+CUST_MATL_SPEC_CD_____ODCMSP,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+EDI_TRANS_NUMBER_____ODEDI#,All Whitespace,0,(All Whitespace),"         ,          ,          ,          ,          ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+Extra_Flag_____ODFLAG1,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+Extra_Flag_____ODFLAG2,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+Extra_Flag_____ODFLAG3,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+Heat_#_____ODHEAT,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+ITEM_SUB-CLASS_____ODSCLS,All Whitespace,0,(All Whitespace),"        ,         ,         ,         ,         ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+LIST_NUMBER_____ODLIST,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+Matl_Spec_____ODSPEC,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+Matl_Spec_Issue_____ODSPIS,All Whitespace,0,(All Whitespace),"   ,    ,    ,    ,    ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+MILL_ITEM_____ODMPL,All Whitespace,0,(All Whitespace),"    ,     ,     ,     ,     ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+Part#_Revision_____ODPRTR,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+PULL_SIGNAL_____ODPULL,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+QA_Check_order_____ODQACK,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+Rebate_Program_Name_____ODRPGM,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+SLAB_NUMBER_____ODSLAB,All Whitespace,0,(All Whitespace),"          ,           ,           ,           ,           ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+TEMPER_____ODTEMP,All Whitespace,0,(All Whitespace),"      ,       ,       ,       ,       ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+TEST_RPT_CHECKING_____ODTRCK,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+TRIM_CUT_ITEMq_____ODTRMC,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+UNITEDS_USE_____ODFLD1,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+Y/N/______ODTLR,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12
+Y/N/1=_1_OR_MORE_1_CHRGS_____ODWCF,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),151243,0,151243,0.00%,100.00%,0,12

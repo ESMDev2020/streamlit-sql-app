@@ -1,0 +1,198 @@
+﻿ITEM_NUMBER_____IOITEM,PK (Potential - Name),2612,Distinct: 2612,"50511, 50666, 52538, 51412, 50848",nvarchar,(MAX),2612,0,0,0.00%,0.00%,1,1
+Coil_Piece_Count_____IOQCOL,Category/Code (Low Distinct),3,"0.0 (2609), 1.0 (2), 2.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,3
+Costing_Unit_Of_Measure_____IOCUOM,Category/Code (Low Distinct),3,"FT  (2572), LB  (38), EA  (2)","FT , FT , FT , FT , FT ",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,3
+Last_Maintained_Purchasing_User_____IOLPUS,Category/Code (Low Distinct),5,"BHILTON    (1055), CFRIEND    (6), NTOVAR     (3), LCARNER    (1), SR         (1)","BHILTON   , BHILTON   ,           ,           ,           ",nvarchar,(MAX),2612,0,1546,0.00%,59.19%,0,3
+Last_Maintained_Sales_User_____IOLSUS,Category/Code (Low Distinct),3,"BHILTON    (1055), CFRIEND    (6), NTOVAR     (3)","          ,           , BHILTON   , BHILTON   , BHILTON   ",nvarchar,(MAX),2612,0,1548,0.00%,59.26%,0,3
+Matl._Prcs_Reserve_____IOMPRS,Category/Code (Low Distinct),9,"0.0 (2604), 0.001 (1), 0.5 (1), 1.0 (1), 13.25 (1), 4.0830000000000002 (1), 49.0 (1), 63.835000000000001 (1), 81.332999999999998 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,3
+Qty_On_Order_Rsrvd_____IOQOOR,Category/Code (Low Distinct),3,"0.0 (2610), 21062.483 (1), 27341.208999999999 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,3
+R/I_On_Hand_Qty_____IOROH,Category/Code (Low Distinct),5,"0.0 (2608), 0.5 (1), 15.975 (1), 166.251 (1), 9.0830000000000002 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,3
+R/I_On_Order_Qty_____IOROO,Category/Code (Low Distinct),9,"0.0 (2603), 0.5 (2), 1.0 (1), 13.25 (1), 2.1659999999999999 (1), 4.0830000000000002 (1), 63.75 (1), 81.332999999999998 (1), 81.667000000000002 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,3
+Top_Item_Percentage_____IOTOPP,Category/Code (Low Distinct),3,"0.0 (2567), 1.0 (42), 2.0 (3)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,3
+"VALUES_=_LB_,_CWT,_EA_,_MPC_FT_,_CFT,_SFT,_CSF_____IOPUOM",Category/Code (Low Distinct),3,"LB  (2568), FT  (42), EA  (2)","LB , LB , LB , LB , LB ",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,3
+3_POSITION_CLASS_____IOCLS3,Text,29,Distinct: 29,"ATH, ATH, ATH, ABH, ATH",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Average_Cost_____IOACST,Text,1725,Distinct: 1725,"0.0, 232.26310000000001, 598.92319999999995, 122.8203, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Average_Month_Sales_Qty_____IOAVMQ,Text,668,Distinct: 668,"0.0, 0.0, 0.0, 0.0, 10.833",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Avg._12_mos._Usage_____IOAV12,Text,947,Distinct: 947,"0.79900000000000004, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Avg._3_mos._Usage_____IOAVG3,Text,668,Distinct: 668,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Avg._OnHand_Dollars_____IOAVOS,Text,1111,Distinct: 1111,"0.0, 0.0, 298.01999999999998, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Avg._OnHand_Qty_____IOAVOH,Text,1184,Distinct: 1184,"3.8330000000000002, 10.75, 0.0, 21.0, 9.75",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Base_Price_____IOBPRC,Text,195,Distinct: 195,"8.1699999999999999, 1.5, 2.6499999999999999, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+BOM_Extended_Cost_____IOBOMC,Text,1094,Distinct: 1094,"151087.88, 0.0, 0.0, 195546.89000000001, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+BOM_Inventory_____IOBOMI,Text,1081,Distinct: 1081,"0.0, 4.0, 617.33299999999997, 2.0, 473.33499999999998",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+BOM_Weight_____IOBOMW,Text,1548,Distinct: 1548,"0.0, 9371.5499999999993, 0.0, 0.0, 16172.333000000001",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Curr._YTD_Activity_Dol._____IOUSDL,Text,1001,Distinct: 1001,"0.0, 0.0, 17414.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Curr._YTD_Activity_Qty_____IOUSQT,Text,296,Distinct: 296,"0.0, 0.0, 0.0, 0.0, 11.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Current_Year_Accumulated_Inv._Balance_(Dollars)_____IOCYIB,Text,1104,Distinct: 1104,"0.0, 0.0, 1356.48, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Current_Year_Accumulated_Inv._Balance_(units)_____IOCYIU,Text,1196,Distinct: 1196,"16.748999999999999, 0.0, 1.7490000000000001, 949.74599999999998, 45.667000000000002",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Customer_Order_Reserve_____IOCORS,Text,222,Distinct: 222,"8.4589999999999996, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+First_Acquisition_Cost_____IO1ACQ,Text,190,Distinct: 190,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Inventory_Turns_$_____IOITDL,Text,434,Distinct: 434,"2.8199999999999998, 0.38, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Inventory_Turns_Units_____IOITUN,Text,469,Distinct: 469,"0.66000000000000003, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Last_Receipt_Cost_____IOLRCS,Text,1485,Distinct: 1485,"0.0, 0.0, 208.05189999999999, 135.60249999999999, 187.18199999999999",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Months_Positive_Inv_____IOPMON,Text,100,Distinct: 100,"79.0, 28.0, 39.0, 13.0, 36.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+MTD_Cost_Dollars_GP_____IOMCST,Text,477,Distinct: 477,"0.0, 0.0, 0.0, 476.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+MTD_Sales_Dollars_GP_____IOMSLS,Text,479,Distinct: 479,"0.0, 0.0, 3249.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+MTD_Units_Sold_____IOMUNT,Text,442,Distinct: 442,"0.0, 0.0, 0.0, 12.271000000000001, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+MTD_Weight_Sold_____IOMWGT,Text,512,Distinct: 512,"1216.8150000000001, 1045.3209999999999, 1459.5940000000001, 155.648, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Number_of_Days_Item_Has_Been_Set_Up_____IOITST,Text,489,Distinct: 489,"999.0, 999.0, 656.0, 788.0, 363.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Number_of_Days_Out_of_Stock_Current_Year_____IODOSC,Text,61,Distinct: 61,"0.0, 80.0, 80.0, 80.0, 80.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Number_of_Days_Out_of_Stock_Last_Year_____IODOSL,Text,177,Distinct: 177,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Number_of_Months_Setup_____IOMOST,Text,100,Distinct: 100,"25.0, 57.0, 43.0, 8.0, 2.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Operating_Level_____IOPLVL,Text,712,Distinct: 712,"0.0, 0.0, 0.0, 128.999, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Prior_EOY_Inventory_Balance_____IOPYIB,Text,1601,Distinct: 1601,"89703.119999999995, 0.0, 0.0, 42905.400000000001, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Prior_Yr._Costs_____IOPCST,Text,1020,Distinct: 1020,"84084.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Prior_Yr._LBs_____IOPLBS,Text,1189,Distinct: 1189,"0.0, 4370.2359999999999, 261.57999999999998, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Prior_Yr._Sales_____IOPSLS,Text,1161,Distinct: 1161,"0.0, 135381.0, 32696.0, 0.0, 3532.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Prior_Yr._Units_____IOPUNT,Text,1099,Distinct: 1099,"1.0, 0.0, 22.75, 37.020000000000003, 3.8740000000000001",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Prior_Yr_Usage_Quantity_____IOPUSQ,Text,999,Distinct: 999,"20.417000000000002, 6.5830000000000002, 93.418000000000006, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Qty_On_Hand_____IOQOH,Text,1068,Distinct: 1068,"0.0, 3.1659999999999999, 0.0, 0.0, 0.75",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Qty_On_Order_____IOQOO,Text,94,Distinct: 94,"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Qty_On_Reserved_____IOQOR,Text,228,Distinct: 228,"0.0, 0.0, 0.0, 283.75, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+YTD_Cost_Dollars_GP_____IOYCST,Text,819,Distinct: 819,"0.0, 19010.0, 6746.0, 11810.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+YTD_Sales_Dollars_GP_____IOYSLS,Text,884,Distinct: 884,"0.0, 0.0, 0.0, 0.0, 1612.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+YTD_Units_Sold_____IOYUNT,Text,838,Distinct: 838,"0.0, 0.0, 0.0, 0.0, 5.625",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+YTD_Weight_Sold_____IOYWGT,Text,915,Distinct: 915,"0.0, 0.0, 0.0, 0.0, 8507.9740000000002",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,4
+Activity_Adjustment_Percent_____IOATAJ,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+All_Stock_Out_Reserve_____IOASOR,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Anticipated_R/S_____IOANRS,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Avg._Months_LBs_____IOAVLB,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Avg._Months_Sales_____IOAVMS,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Base_Price_Lock_____IOBPRL,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Budgeted_Inv_____IOBGIN,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Budgeted_Inv_Turns_____IOBGIT,Single Value,1,1.0 (2612),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Buyer_____IOBUY,Single Value,1,1.0 (2612),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+COMPANY_NUMBER_____IOCOMP,Single Value,1,1.0 (2612),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Company_Product_Movement_Lock_____IOCPML,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Contract_Item_____IOCNTC,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Counter_Price_Lock_____IOCNTL,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Cut_Pieces_Occurance_Counter_____IOC,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Display_in_Item_Search_____IODSPS,Single Value,1,Y (2612),"Y, Y, Y, Y, Y",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Distressed_Item_Counter_____IOD,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+DISTRICT_NUMBER_____IODIST,Single Value,1,1.0 (2612),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+HFR_Reserve_____IOHFRR,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+INCHES_OF_TRIM_CUT_____IOITRM,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Last_Maintained_Machine_Century_____IOLMCC,Single Value,1,20.0 (2612),"20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Last_Maintained_Machine_Month_____IOLMMM,Single Value,1,4.0 (2612),"4.0, 4.0, 4.0, 4.0, 4.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Last_Maintained_Machine_Year_____IOLMYY,Single Value,1,25.0 (2612),"25.0, 25.0, 25.0, 25.0, 25.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Lead_time_____IOLDTM,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Lead_Time_Lock_____IOLDTL,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+LIFO_Base_Year_1_Cost_____IOLFB1,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+LIFO_Base_Year_2_Cost_____IOLFB2,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Local_Product_Movement_Lock_____IOLPML,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Machine_Number_____IOMACN,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Manual_Requisition_Quantity_____IOMNRQ,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Min._Balance_____IOMNBL,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Model_Inventory_Flag_____IOMDIF,Single Value,1,Y (2612),"Y, Y, Y, Y, Y",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Non-Std_Dist_Control_____IONSDC,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+NOT_USED__l_Qty_____IOTUNA,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Number_Of_Months_For_Calc_Avg_Activity_____IOMAGA,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Number_Of_Orders_Hurdle_____IOHURD,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Operational_Cost_Factor_____IOPCTF,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Ordering_District_____IOORDI,Single Value,1,1.0 (2612),"1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+P.I._CENTURY_____IOPICC,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+P.I._DAY_____IOPIDD,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+P.I._MONTH_____IOPIMM,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+P.I._YEAR_____IOPIYY,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Previous_MAP_Century_____IOPMCC,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Previous_MAP_Code_____IOPMCD,Single Value,1,0 (2612),"0, 0, 0, 0, 0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Previous_MAP_Day_____IOPMDD,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Previous_MAP_Month_____IOPMMM,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Previous_MAP_Year_____IOPMYY,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Pricing_Movement_Code_____IOABCP,Single Value,1,: (1)," ,  ,  ,  ,  ",nvarchar,(MAX),2612,0,2611,0.00%,99.96%,0,7
+Prior_Yr._Usage_Dollars_____IOPUSD,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Prior_Yr_Actual_Turns_____IOPATN,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Proc_charge_code_____IOPRCD,Single Value,1,HEAT (1),"    ,     ,     ,     ,     ",nvarchar,(MAX),2612,0,2611,0.00%,99.96%,0,7
+Purchase_Discount_Flag_____IOPDSC,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Qty_In_Transit_____IOQIT,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Quality_Hold_Qty_____IOQQTY,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+R/I_Coil_Piece_Count_____IORIQC,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+R/I_In_Transit_Qty_____IORIT,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+R/I_On_Order_Rsrvd_____IOROOR,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+R/S_Code_Default_MP_____IORSMP,Single Value,1,R (2612),"R, R, R, R, R",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+RANGE_=_0_3_DIST._CTL_____IODISC,Single Value,1,1 (1)," ,  ,  ,  ,  ",nvarchar,(MAX),2612,0,2611,0.00%,99.96%,0,7
+Rebate_Cost_____IORBCS,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Reorder_Factor_____IOROFC,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Reorder_Point_____IOROPT,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Reorder_Point_Lock_____IOROPL,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Reorder_Quantity_____IOROQT,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Replacement_Cost_Lock_____IORLCK,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Restock_Code_Lock_MP_____IOMPLK,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Restock_Code_Lock_OE_____IOOELK,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Restocking_Code_Default_____IORSTK,Single Value,1,O (2612),"O, O, O, O, O",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Run_Time_Rate_____IORUNR,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Safety_Stock_Qty_____IOSSTK,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Set_Up_Date_Century_____IOSUCC,Single Value,1,20.0 (2612),"20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Special_Sale_Item_____IOSALE,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Standard_Cost_____IOSCST,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Standard_Cost_Century_____IOSCCC,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Standard_Cost_Day_____IOSCDD,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Standard_Cost_Lock_Flag_____IOSTCL,Single Value,1,N (2612),"N, N, N, N, N",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Standard_Cost_Month_____IOSCMM,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Standard_Cost_Year_____IOSCYY,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Std_Frt-In_Cost_____IOFCST,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Stock_Out_Reserve_OEs_____IOSTOR,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Taxable_____IOTAX,Single Value,1,Y (2612),"Y, Y, Y, Y, Y",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Total_Open_P.O_DOLLARS_____IOOPPD,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Total_Open_P.Os_____IOOPPO,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Total_Requisition_Quantity_____IOTORQ,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Transfer_Reserve_____IOTRRS,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Unreserved_Held_____IOQHLD,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+VALUES_C_/_D_____IOOWNF,Single Value,1,D (2612),"D, D, D, D, D",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+VALUES_M_/_S_____IOMTST,Single Value,1,M (2612),"M, M, M, M, M",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+YTD_Line_Trans._Ctr_____IOYTDL,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+Zero_Report_Counter_____IOZ,Single Value,1,0.0 (2612),"0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,7
+A=ACTIVE__I=INACTIVE_D=DELETED_____IORECD,Flag (%RECD),2,"A (2564), I (48)","A, A, A, A, A",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,8
+A/R_Customer_Number_____IOCUST,Flag (2 Values),2,"0.0 (2611), 157.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Base_Price_Century_____IOBPCC,Flag (2 Values),2,"0.0 (1552), 20.0 (1060)","0.0, 0.0, 0.0, 20.0, 20.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Company_Product_Movement_Code_____IOCPMC,Flag (2 Values),2,"A (2611), B (1)","A, A, A, A, A",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Counter_Price_____IOCNTP,Flag (2 Values),2,"0.0 (2611), 1.8500000000000001 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Customer_District_Number_____IOCDIS,Flag (2 Values),2,"0.0 (2611), 1.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+First_Receipt_Flag_____IO1RCT,Flag (2 Values),2,"N (2380), Y (190)","N, N, N, N, N",nvarchar,(MAX),2612,0,42,0.00%,1.61%,Flag,10
+Last_Closing_Month_End_Century_____IOLCCC,Flag (2 Values),2,"20.0 (2602), 0.0 (10)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Last_Closing_Month_End_Day_____IOLCDD,Flag (2 Values),2,"1.0 (2602), 0.0 (10)","1.0, 1.0, 1.0, 1.0, 1.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Last_Closing_Month_End_Month_____IOLCMM,Flag (2 Values),2,"3.0 (2602), 0.0 (10)","3.0, 3.0, 3.0, 3.0, 3.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Last_Closing_Month_End_Year_____IOLCYY,Flag (2 Values),2,"25.0 (2602), 0.0 (10)","25.0, 25.0, 25.0, 25.0, 25.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Last_MAantained_Sales_Century_____IOLSCC,Flag (2 Values),2,"0.0 (1548), 20.0 (1064)","0.0, 0.0, 20.0, 0.0, 20.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Last_Maintained_Machine_Day_____IOLMDD,Flag (2 Values),2,"24.0 (2611), 25.0 (1)","24.0, 24.0, 24.0, 24.0, 24.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Last_Maintained_Machine_User_____IOLMUS,Flag (2 Values),2,"EOD        (2611), SWARBRIT   (1)","EOD       , EOD       , EOD       , EOD       , EOD       ",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Last_Maintained_Purchasing_Century_____IOLPCC,Flag (2 Values),2,"0.0 (1546), 20.0 (1066)","0.0, 0.0, 0.0, 20.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Last_Order_Received_Century_____IOLOCC,Flag (2 Values),2,"20.0 (1494), 0.0 (1118)","0.0, 20.0, 0.0, 0.0, 20.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Last_Sale_Century_____IODLCC,Flag (2 Values),2,"20.0 (2231), 0.0 (381)","20.0, 20.0, 20.0, 20.0, 20.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Local_Product_Movement_Code_____IOLPMC,Flag (2 Values),2,"A (2611), B (1)","A, A, A, A, A",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+R/I_Reserved_Qty_____IOROR,Flag (2 Values),2,"0.0 (2611), 4.0830000000000002 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Replacement_Cost_____IORCST,Flag (2 Values),2,"0.0 (2611), 2.0 (1)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Test_Reports_____IOTSTR,Flag (2 Values),2,"N (1690), Y (922)","N, N, N, N, Y",nvarchar,(MAX),2612,0,0,0.00%,0.00%,Flag,10
+Base_Price_Day_____IOBPDD,Date (Suffix),32,Distinct: 32,"20.0, 0.0, 4.0, 0.0, 9.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Base_Price_Month_____IOBPMM,Date (Suffix),13,"0.0 (1552), 6.0 (182), 4.0 (176), 2.0 (128), 9.0 (100), 5.0 (87), 7.0 (77), 12.0 (62), 11.0 (61), 3.0 (58)","0.0, 0.0, 9.0, 0.0, 5.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Base_Price_Year_____IOBPYY,Date (Suffix),6,"0.0 (1552), 22.0 (445), 23.0 (265), 25.0 (152), 24.0 (105), 21.0 (93)","22.0, 22.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Maintained_Purchasing_Day_____IOLPDD,Date (Suffix),32,Distinct: 32,"0.0, 26.0, 0.0, 5.0, 5.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Maintained_Purchasing_Month_____IOLPMM,Date (Suffix),13,"0.0 (1546), 6.0 (221), 4.0 (214), 5.0 (105), 9.0 (103), 7.0 (80), 8.0 (67), 11.0 (62), 12.0 (62), 3.0 (60)","0.0, 0.0, 0.0, 3.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Maintained_Purchasing_Year_____IOLPYY,Date (Suffix),8,"0.0 (1546), 22.0 (492), 23.0 (343), 24.0 (104), 21.0 (98), 25.0 (27), 14.0 (1), 16.0 (1)","0.0, 23.0, 0.0, 24.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Maintained_Sales_Day_____IOLSDD,Date (Suffix),32,Distinct: 32,"19.0, 0.0, 10.0, 9.0, 12.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Maintained_Sales_Month_____IOLSMM,Date (Suffix),13,"0.0 (1548), 6.0 (221), 4.0 (214), 5.0 (105), 9.0 (103), 7.0 (79), 8.0 (66), 11.0 (62), 12.0 (62), 3.0 (60)","0.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Maintained_Sales_Year_____IOLSYY,Date (Suffix),6,"0.0 (1548), 22.0 (492), 23.0 (343), 24.0 (104), 21.0 (98), 25.0 (27)","0.0, 0.0, 21.0, 25.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Order_Received_Day_____IOLODD,Date (Suffix),32,Distinct: 32,"27.0, 0.0, 0.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Order_Received_Month_____IOLOMM,Date (Suffix),13,"0.0 (1118), 3.0 (201), 2.0 (155), 4.0 (151), 1.0 (140), 11.0 (133), 10.0 (120), 12.0 (114), 5.0 (114), 6.0 (107)","0.0, 2.0, 5.0, 2.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Order_Received_Year_____IOLOYY,Date (Suffix),14,"0.0 (1118), 23.0 (363), 22.0 (234), 25.0 (190), 24.0 (174), 18.0 (106), 17.0 (82), 14.0 (81), 19.0 (78), 21.0 (60)","18.0, 0.0, 24.0, 0.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Sale_Day_____IODLDD,Date (Suffix),32,Distinct: 32,"31.0, 12.0, 25.0, 25.0, 0.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Sale_Month_____IODLMM,Date (Suffix),13,"4.0 (610), 0.0 (381), 3.0 (315), 2.0 (199), 1.0 (164), 10.0 (143), 11.0 (139), 9.0 (133), 5.0 (109), 12.0 (108)","5.0, 2.0, 9.0, 4.0, 1.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Last_Sale_Year_____IODLYY,Date (Suffix),14,"25.0 (920), 0.0 (381), 24.0 (367), 23.0 (217), 22.0 (211), 21.0 (132), 19.0 (87), 20.0 (84), 18.0 (69), 17.0 (59)","0.0, 0.0, 24.0, 0.0, 25.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Set_Up_Date_Day_____IOSUDD,Date (Suffix),31,Distinct: 31,"4.0, 14.0, 2.0, 15.0, 28.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Set_Up_Date_Month_____IOSUMM,Date (Suffix),12,"8.0 (467), 10.0 (252), 3.0 (231), 11.0 (225), 4.0 (220), 9.0 (212), 5.0 (185), 1.0 (184), 2.0 (176), 12.0 (161)","8.0, 10.0, 8.0, 7.0, 4.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Set_Up_Date_Year_____IOSUYY,Date (Suffix),13,"13.0 (425), 22.0 (377), 17.0 (267), 18.0 (198), 21.0 (198), 24.0 (190), 14.0 (176), 19.0 (168), 16.0 (167), 23.0 (159)","15.0, 13.0, 25.0, 19.0, 23.0",nvarchar,(MAX),2612,0,0,0.00%,0.00%,0,11
+Comments_____IOCMNT,All Whitespace,0,(All Whitespace),"                              ,                               ,                               ,                               ,                               ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+Default_process_code_to_override_IOPRCD_____IOPRC2,All Whitespace,0,(All Whitespace),"    ,     ,     ,     ,     ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+Extra_____IMFLAG1,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+Extra_____IMFLAG2,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+Extra_____IMFLAG3,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+Extra_____IMFLAG4,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+Extra_____IMFLAG5,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+ITEM_SUB-CLASS_____IOSBCL,All Whitespace,0,(All Whitespace),"        ,         ,         ,         ,         ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+LIFO_Source_____IOLIFO,All Whitespace,0,(All Whitespace),"     ,      ,      ,      ,      ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+Month_End_Inventory_Flag_____IOMEIF,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+Q/A_STATUS_CODES_____IOQAC,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+R=Reconstructed_C=Copied_from_Source_____IOSRCE,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+Review_Code_____IOINVC,All Whitespace,0,(All Whitespace)," ,  ,  ,  ,  ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+SCRAP_POINT_CD_____IOSPCD,All Whitespace,0,(All Whitespace),"               ,                ,                ,                ,                ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+"VALUES_=_LB_,_EA_,_HR_____IOOUOM",All Whitespace,0,(All Whitespace),"   ,    ,    ,    ,    ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
+VALUES_HR_/_LB_____IORUOM,All Whitespace,0,(All Whitespace),"   ,    ,    ,    ,    ",nvarchar,(MAX),2612,0,2612,0.00%,100.00%,0,12
