@@ -1,0 +1,4 @@
+-------------------------------------------
+Translated query:
+Error: Error creating database connection: dlopen(/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/pymssql/_mssql.cpython-313-darwin.so, 0x0002): symbol not found in flat namespace '_bcp_batch'
+---------------------------------------------

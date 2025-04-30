@@ -19,8 +19,50 @@ CHECK XP PROPERTIES
 Check extended properties for 1 table or column
 *****************************************/
 
-SELECT * FROM sys.columns WHERE name like '%GLACCT'
-select * from sys.extended_properties where name like '%GLTRANS'
+SELECT * FROM sys.tables WHERE name like '%APWK856%'
+
+SELECT * FROM sys.columns WHERE name like '%BSORDR%'
+SELECT * FROM sys.tables WHERE name like 'z_A/P_Check_Register_Work_File_____APWK856'
+select * from sys.extended_properties where name like '%BSORDR%'
+z_A/P_Check_Register_Work_File_____APWK856
+z_A/P_Check_Register_Work_File_____APWK856
+z_A/P_Check_Register_Work_File_____APWK856
+
+USE SigmaTB;
+GO
+
+SELECT
+    t.name AS table_name,         -- Table Name
+    tp.name AS table_prop_name,   -- Table Extended Property Name
+    tp.value AS table_prop_value,  -- Table Extended Property Value
+    c.name AS column_name,        -- Column Name
+    cp.name AS column_prop_name,  -- Column Extended Property Name
+    cp.value AS column_prop_value -- Column Extended Property Value
+FROM
+    sys.schemas AS s
+INNER JOIN
+    sys.tables AS t ON s.schema_id = t.schema_id
+LEFT JOIN -- Join for table extended properties
+    sys.extended_properties AS tp ON t.object_id = tp.major_id
+                                 AND tp.minor_id = 0 -- Indicates property is on the table itself
+                                 AND tp.class = 1    -- Class 1 = Object or Column
+LEFT JOIN -- Join for columns within the table
+    sys.columns AS c ON t.object_id = c.object_id
+LEFT JOIN -- Join for column extended properties
+    sys.extended_properties AS cp ON c.object_id = cp.major_id
+                                 AND c.column_id = cp.minor_id -- Link property to the specific column
+                                 AND cp.class = 1    -- Class 1 = Object or Column
+WHERE
+    s.name = 'mrs'  -- Filter for the 'mrs' schema
+ORDER BY
+    t.name,         -- Group results primarily by table name
+    c.column_id;    -- Within each table, order by column position
+
+    
+SELECT ep.*
+FROM sys.extended_properties ep
+JOIN sys.objects o ON ep.major_id = o.object_id
+WHERE o.name = 'z_A/P_Check_Register_Work_File_____APWK856'
 
 
 --EXEC my_sp_getXPfromObjects @InputSearchTerm = 'YourTableOrColumnCode';       -- Old version
@@ -90,3 +132,8 @@ EXEC my_sp_getXPfromObjects                     --old
 
     @input_query NVARCHAR(MAX),
     @translated_query NVARCHAR(MAX) OUTPUT
+
+USE Sigmatb;
+EXEC mrs.usp_TranslateName @InputName = 'SPHEADER'
+
+select top(10) * from [mrs].[01_AS400_MSSQL_Equivalents]

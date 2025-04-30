@@ -32,13 +32,18 @@ def generate_sql_query(myVar_strInputDir, myVar_strInputFilename, myVar_strColum
             for myVar_strLine in myVar_filInputFile:
                 myVar_strLine = myVar_strLine.strip()
                 if not myVar_strLine: continue
+                
+                # Find table name
                 if myVar_strTableCode is None:
                     myVar_objTableMatch = re.search(r"TABLE:\s*(\S+)", myVar_strLine, re.IGNORECASE)
                     if myVar_objTableMatch:
                         myVar_strTableCode = myVar_objTableMatch.group(1)
-                myVar_lstColumnMatches = re.findall(rf"\b{re.escape(myVar_strColumnPrefix)}\S*", myVar_strLine, re.IGNORECASE)
+                
+                # Find column names - modified regex to exclude trailing ]
+                myVar_lstColumnMatches = re.findall(rf"\b{re.escape(myVar_strColumnPrefix)}\w+(?=\]|,|\s|$)", myVar_strLine, re.IGNORECASE)
                 for myVar_strCode in myVar_lstColumnMatches:
                     myVar_dictOrderedColumnCodes[myVar_strCode] = True
+                    
     except FileNotFoundError:
         return None, f"Error: File not found at '{myVar_strFullInputPath}'"
     except Exception as myVar_errException:
@@ -53,6 +58,10 @@ def generate_sql_query(myVar_strInputDir, myVar_strInputFilename, myVar_strColum
     myVar_strSelectColumnsPart = ", ".join([f"[{myVar_strTableCode}].[{myVar_strCol}]" for myVar_strCol in myVar_lstOrderedColumns])
     myVar_strSQLQuery = f"SELECT TOP(100) {myVar_strSelectColumnsPart}{myVar_strNewline}"
     myVar_strSQLQuery += f"FROM [{myVar_strTableCode}]"
+    
+    print("Final columns to be used in query:")
+    for col in myVar_lstOrderedColumns:
+        print(f"  - {col}")
 
     return myVar_strSQLQuery, None
 
@@ -203,7 +212,8 @@ def create_sql_query_from_file(
                 myVar_strCurrentPrefix = myVar_strFilePrefix if myVar_strFilePrefix else myVar_strColumnPrefix
                 if myVar_strCurrentPrefix:
                     # Find all words that start with the current prefix
-                    myVar_lstColumnMatches = re.findall(rf"\b{re.escape(myVar_strCurrentPrefix)}\S*", myVar_strLine, re.IGNORECASE)
+                    #myVar_lstColumnMatches = re.findall(rf"\b{re.escape(myVar_strCurrentPrefix)}\S*", myVar_strLine, re.IGNORECASE)
+                    myVar_lstColumnMatches = re.findall(rf"\b{re.escape(myVar_strCurrentPrefix)}\w+(?=\W|$)", myVar_strLine, re.IGNORECASE)
                     # Store each column code found
                     for myVar_strCode in myVar_lstColumnMatches:
                         myVar_dictOrderedColumnCodes[myVar_strCode] = True

@@ -8,7 +8,8 @@ USE SigmaTB;
 GO
 
 -- Basic execution with defaults
-EXEC dbo.UpdateExtendedPropertiesForZTables;
+EXEC mrs.UpdateExtendedPropertiesForZTables @DebugMode = 0;
+
 
 -- With custom parameters
 EXEC dbo.UpdateExtendedPropertiesForZTables 

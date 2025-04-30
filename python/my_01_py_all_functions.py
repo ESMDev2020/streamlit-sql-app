@@ -20,7 +20,8 @@ import traceback # For error details (Optional but good for debugging)
 # 📜 CONSTANTS & CONFIGURATION
 # ────────────────────────────────────────────────────────────────────────────
 # --- File Processing Constants ---
-myCon_strDataDirectory = 'C:\Users\esaavedra\Documents\GitHub\SigmaTB_LocalRepo\data'
+#myCon_strDataDirectory = 'C:\Users\esaavedra\Documents\GitHub\SigmaTB_LocalRepo\data'
+myCon_strDataDirectory = '/Users/bmate/Documents/GitHub/SigmaTB_LocalRepo/data/'
 myCon_strFilename = 'ColumnsToQuery.txt'
 myCon_strPrefix = 'SH'
 myCon_booShouldSave = True # Set to True to enable saving and SP call

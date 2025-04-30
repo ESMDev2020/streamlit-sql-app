@@ -18,6 +18,7 @@ import sys
 # 📝 CONSTANTS
 # =============================================================================
 # Database connection parameters
+
 my_con_strDbServer = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com"
 my_con_strDbDatabase = "SigmaTB"
 my_con_strDbUsername = "admin"
@@ -28,24 +29,35 @@ my_con_strDbPassword = "Er1c41234$"
 # =============================================================================
 def fun_create_db_connection(my_var_strServer, my_var_strDatabase, my_var_strUsername, my_var_strPassword):
     """
-    Creates a database connection using SQLAlchemy
+    Creates a database connection using SQLAlchemy with pymssql
     Returns tuple of (engine, error message if any)
     """
-    # Variable declarations
-    my_var_strConnectionUrl = ""  # Will store the complete connection URL
-    my_var_objEngine = None       # Will store the SQLAlchemy engine object
-    my_var_objConn = None         # Will store the database connection
-    my_var_errException = None    # Will store any exception that occurs
-
     try:
-        # Building the connection URL using the provided parameters
-        my_var_strConnectionUrl = f"mssql://{my_var_strUsername}:{my_var_strPassword}@{my_var_strServer}/{my_var_strDatabase}"
-        # Creating the SQLAlchemy engine with the connection URL
-        my_var_objEngine = create_engine(my_var_strConnectionUrl)
-        # Testing the connection by executing a simple query
+        from urllib.parse import quote_plus
+        encoded_password = quote_plus(my_var_strPassword)
+        
+        # Using pymssql with SQLAlchemy
+        my_var_strConnectionUrl = (
+            f"mssql+pymssql://{my_var_strUsername}:{encoded_password}"
+            f"@{my_var_strServer}/{my_var_strDatabase}"
+        )
+        
+        print(f"Connection URL: {my_var_strConnectionUrl}")
+        
+        # Create engine with optimized settings for Streamlit
+        my_var_objEngine = create_engine(
+            my_var_strConnectionUrl,
+            pool_size=5,
+            max_overflow=10,
+            pool_timeout=30,
+            pool_pre_ping=True
+        )
+        
+        # Test connection
         with my_var_objEngine.connect() as my_var_objConn:
             my_var_objConn.execute(text("SELECT 1"))
         return my_var_objEngine, None
+        
     except Exception as my_var_errException:
         return None, f"Error creating database connection: {str(my_var_errException)}"
 

@@ -1,10 +1,34 @@
+USE SigmaTB;
+GO
+
+DECLARE @myVarInputSQL NVARCHAR(MAX);
+DECLARE @myVarOutputSQL NVARCHAR(MAX);
+
+PRINT N'--- Running Test Cases ---';
+
+-- Test Case 1: Simple query with TABLE.COLUMN format
+PRINT N'Test Case 1: Simple Query (TABLE.COLUMN format)';
+SET @myVarInputSQL = N'SELECT [SPHEADER].[BSORDR] FROM [SPHEADER] WHERE [SPHEADER].[BSORDR] > 100;';
+EXEC [mrs].[usp_TranslateSQLQuery] @p_InputQuery = @myVarInputSQL, @p_TranslatedQuery = @myVarOutputSQL OUTPUT;
+PRINT N'Input: ' + @myVarInputSQL;
+PRINT N'Output: ' + ISNULL(@myVarOutputSQL, 'NULL (Error Occurred)');
+PRINT N'--------------------';
+
+
+
+
+
 /*****************************************
 *****************************************/
 --ROP_query_
 -- Price	
 --Comment about the type of data it will retrieve
-        SELECT 'price', [ITEMONHD].[IOITEM], [ITEMONHD].[IOBPRC]  
-        FROM [ITEMONHD] [ITEMONHD];
+
+DECLARE @myVarInputSQL NVARCHAR(MAX);   
+DECLARE @myVarOutputSQL NVARCHAR(MAX)     
+SET @myVarInputSQL = N' SELECT ''price'', [ITEMONHD].[IOITEM], [ITEMONHD].[IOBPRC] FROM [ITEMONHD] [ITEMONHD];'
+EXEC [mrs].[usp_TranslateSQLQuery] @p_InputQuery = @myVarInputSQL, @p_TranslatedQuery = @myVarOutputSQL OUTPUT;
+PRINT N'Output: ' + ISNULL(@myVarOutputSQL, 'NULL (Error Occurred)');
 
 
 /*****************************************
