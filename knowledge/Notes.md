@@ -240,7 +240,7 @@ STREAMLIT
 4.- Error handling
 	Add error control and description
 -----------------------
-REARRANGING IN FUNCTIONS AND SUBPROCEDURES
+REARRANGING IN FUNCTIONS AND SUBPROCEDURES WNEN USING PYTON
 - IMPORTS
 - CONSTANTS
 - FUNCTIONS
@@ -250,6 +250,22 @@ REARRANGING IN FUNCTIONS AND SUBPROCEDURES
 - if has a GUI like STREAMLIT UI, leave the code (for local testing) 
 - 
 ------------------------
+-----------------------
+WHEN USING SQL 
+- Add documentation at the beginning about the stored procedure
+- At the end add commented examples about how to use it
+- Add an input parameter @DebugMode. 1 means debug, 0 means "no debug". 
+-      Debug means print progress of the SP. no debug means silent execution
+- No destructive functions should be included without advise (like drop tables)
+- When possible, use transactions, to roll back if errors occur
+- all table names, schema names, column names should be enclosed in []
+- have attention with the use of ";"
+- Do not use "rowcount" to name columns because causes an error
+- SQL Server version: 
+ServerName	FullServerName	InstanceName	CurrentLogin	CurrentDatabase	SystemUser	SessionUser	OriginalLogin	ClientIPAddress	ServerIPAddress	Protocol	AuthScheme	SQLVersion
+EC2AMAZ-7QANEJ3	EC2AMAZ-7QANEJ3	NULL	admin	SigmaTB	admin	admin	admin	150.252.244.140	172.31.90.187	TSQL	SQL	Microsoft SQL Server 2019 (RTM-CU31) (KB5049296) - 15.0.4420.2 (X64)   Jan 25 2025 12:20:14   Copyright (C) 2019 Microsoft Corporation  Standard Edition (64-bit) on Windows Server 2016 Datacenter 10.0 <X64> (Build 14393: ) (Hypervisor) 
+
+
 
 email when finish
 add progress bar, messages and error control and description

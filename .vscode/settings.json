@@ -1,23 +1,4 @@
 {
-  "sqltools.connections": [
-    {
-      "connectionTimeout": 15,
-      "mssqlOptions": {
-        "appName": "SQLTools",
-        "useUTC": true,
-        "encrypt": true,
-        "trustServerCertificate": true
-      },
-      "previewLimit": 50,
-      "server": "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com",
-      "port": 1433,
-      "driver": "MSSQL",
-      "name": "SigmaTB_AWS",
-      "database": "SigmaTB",
-      "username": "admin"
-    }
-  ],
-
   "editor.tabCompletion": "off",
   "editor.acceptSuggestionOnEnter": "off",
   "editor.inlineSuggest.enabled": false,
@@ -28,31 +9,28 @@
   "editor.fontFamily": "Consolas, 'Courier New', monospace",
 
   "editor.tokenColorCustomizations": {
-      //--------------FUNCTIONS---------------------------------
     "textMateRules": [
       {
         "scope": "entity.name.function.python",
         "settings": {
-          "foreground": "#f97e7a",  // Soft yellow
+          "foreground": "#f97e7a",
           "fontStyle": "bold"
         }
       },
       {
-        //--------------FUNCTIONS---------------------------------
         "scope": "keyword.control.python",
         "settings": {
-          "foreground": "#66D9EF",  // Soft cyan
+          "foreground": "#66D9EF",
           "fontStyle": "bold"
         }
       },
       {
-        //--------------FUNCTIONS---------------------------------
         "scope": [
           "string.quoted.single.python",
           "string.quoted.double.python"
         ],
         "settings": {
-          "foreground": "#ab455e",  // Soft red/pink
+          "foreground": "#ab455e",
           "fontStyle": "italic"
         }
       },
@@ -62,14 +40,14 @@
           "string.quoted.docstring.multi.python"
         ],
         "settings": {
-          "foreground": "#4b6b0c",  // Greenish comment
+          "foreground": "#4b6b0c",
           "fontStyle": "italic"
         }
       },
       {
         "scope": "variable.other.readwrite.python",
         "settings": {
-          "foreground": "#0f0f0f"  // Classic light gray for variables
+          "foreground": "#0f0f0f"
         }
       },
       {
@@ -80,29 +58,32 @@
           "punctuation.section.brackets.end.python"
         ],
         "settings": {
-          "foreground": "#7a5833"  // Warm orange for punctuation
+          "foreground": "#7a5833"
         }
       }
     ]
   },
 
-    /**-----------------WORKBENCH---------------*/
   "workbench.colorCustomizations": {
-    "editor.background": "#0f0f0f",                // Dark gray background
-    "editor.foreground": "#7e7777",                // Soft text color
+    "editor.background": "#0f0f0f",
+    "editor.foreground": "#7e7777",
     "editorLineNumber.foreground": "#858585",
-    "editorCursor.foreground": "#FFCC00",          // Yellowish cursor
+    "editorCursor.foreground": "#FFCC00",
     "editorIndentGuide.background1": "#2d2d2d",
     "editorIndentGuide.activeBackground1": "#555555",
 
-    /**-----------------TAB---------------*/
-    "tab.activeBackground": "#6d8fde",
+    "tab.unfocusedActiveForeground": "#ffffff",
+    "tab.unfocusedInactiveForeground": "#ffffff",
+    "tab.hoverForeground": "#ffffff",
+    "tab.unfocusedHoverForeground": "#ffffff",
+    "workbench.iconTheme": null,
+
+    "tab.activeBackground": "#0c3142",
     "tab.activeForeground": "#ffffff",
     "tab.inactiveBackground": "#1e1e1e",
     "tab.inactiveForeground": "#888888",
     "tab.border": "#3c3c3c",
 
-  /**-----------------DEBUG---------------*/
     "debugToolBar.background": "#2d2d30",
     "debugIcon.startForeground": "#A6E22E",
     "debugIcon.stopForeground": "#FF6188",
@@ -112,28 +93,19 @@
     "debugIcon.stepIntoForeground": "#66D9EF",
     "debugIcon.stepOutForeground": "#66D9EF",
 
-    /**-----------------LINE OF PATH---------------*/
     "breadcrumb.background": "#1c687f",
     "breadcrumb.foreground": "#bbbbbb",
     "breadcrumb.activeSelectionForeground": "#ffffff",
-    "breadcrumb.focusForeground": "#66D9EF",
-
-    /*------------------DEBUG---------------------*/
-    "debug.stopOnEntry": false,
-    "debug.internalConsoleOptions": "neverOpen",
-    "python.terminal.launchArgs": [],
-    "debug.toolBarLocation": "docked",
-    "python.breakOnSystemExitZero": false
-
+    "breadcrumb.focusForeground": "#66D9EF"
   },
+
   "debug.exceptionOptions": {
     "breakOnSystemExitZero": false,
     "uncaughtExceptions": false,
     "raisedExceptions": false
   },
+
   "python.terminal.launchArgs": [],
   "debug.internalConsoleOptions": "neverOpen",
-
   "window.zoomLevel": 1.25
-
 }
