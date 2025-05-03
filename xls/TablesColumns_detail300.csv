@@ -1,0 +1,357 @@
+﻿SchemaName,ObjectDBName,ObjectType,TableCodeUnique,TableCode,ColumnCode,TableDescription,ColumnDescription,ColumnCount,RowCount,Queried,ColumnName,PropertyName,PropertyValue,class_desc,minor_id
+mrs,z______POHSTDET,Column,,_POHSTDET,BDBOL,,Bill_of_Lading,,,,Bill_of_Lading_____BDBOL,BDBOL,Bill_of_Lading_____BDBOL,OBJECT_OR_COLUMN,109
+mrs,z______POHSTDET,Column,,_POHSTDET,BDCSMO,,Company_SMO,,,,Company_SMO_____BDCSMO,BDCSMO,Company_SMO_____BDCSMO,OBJECT_OR_COLUMN,22
+mrs,z______POHSTDET,Column,,_POHSTDET,BDFRV,,Freight_Vendor_Number,,,,Freight_Vendor_Number_____BDFRV,BDFRV,Freight_Vendor_Number_____BDFRV,OBJECT_OR_COLUMN,108
+mrs,z_A/P_Check_Register_Work_File_____APWK856,Column,,APWK856,WHBTCH,,A/P_Batch,,,,A/P_Batch_____WHBTCH,WHBTCH,A/P_Batch_____WHBTCH,OBJECT_OR_COLUMN,7
+mrs,z_A/P_Check_Register_Work_File_____APWK856,Column,,APWK856,WHTRAN,,A/P_Trans,,,,A/P_Trans_____WHTRAN,WHTRAN,A/P_Trans_____WHTRAN,OBJECT_OR_COLUMN,8
+mrs,z_A/P_Debit_Detail_File_____APDEBD,Column,,APDEBD,V2BTCH,,A/P_Batch,,,,A/P_Batch_____V2BTCH,V2BTCH,A/P_Batch_____V2BTCH,OBJECT_OR_COLUMN,5
+mrs,z_A/P_Debit_Detail_File_____APDEBD,Column,,APDEBD,V2TRAN,,A/P_Trans,,,,A/P_Trans_____V2TRAN,V2TRAN,A/P_Trans_____V2TRAN,OBJECT_OR_COLUMN,4
+mrs,z_Country_File_____COUNTRY,Table,COUNTRY,COUNTRY,,Country_File,,20, 171 ,2,,COUNTRY,z_Country_File_____COUNTRY,OBJECT_OR_COLUMN,0
+mrs,z_Credit_Comment_File_____CRCOMMNT,Table,CRCOMMNT,CRCOMMNT,,Credit_Comment_File,,19," 22,384 ",3,,CRCOMMNT,z_Credit_Comment_File_____CRCOMMNT,OBJECT_OR_COLUMN,0
+mrs,z_Credit_Comment_File_____CRCOMMNT,Column,,CRCOMMNT,C7CUST,,Customer_Number,,,3,Customer_Number_____C7CUST,C7CUST,Customer_Number_____C7CUST,OBJECT_OR_COLUMN,2
+mrs,z_Credit_Memo_Detail_File_____CRDETAIL,Table,CRDETAIL,CRDETAIL,,Credit_Memo_Detail_File,,29," 5,451 ",3,,CRDETAIL,z_Credit_Memo_Detail_File_____CRDETAIL,OBJECT_OR_COLUMN,0
+mrs,z_Credit_Memo_Detail_File_____CRDETAIL,Column,,CRDETAIL,CRDDST,,DISTRICT_NUMBER,,,3,DISTRICT_NUMBER_____CRDDST,CRDDST,DISTRICT_NUMBER_____CRDDST,OBJECT_OR_COLUMN,3
+mrs,z_Credit_Memo_Detail_File_____CRDETAIL,Column,,CRDETAIL,CRDLIN,,Main_Line#,,,3,Main_Line#_____CRDLIN,CRDLIN,Main_Line#_____CRDLIN,OBJECT_OR_COLUMN,5
+mrs,z_Credit_Memo_Header_File_____CRHEADER,Table,CRHEADER,CRHEADER,,Credit_Memo_Header_File,,35," 5,449 ",3,,CRHEADER,z_Credit_Memo_Header_File_____CRHEADER,OBJECT_OR_COLUMN,0
+mrs,z_Credit_Memo_Header_File_____CRHEADER,Column,,CRHEADER,CRHDST,,DISTRICT_NUMBER,,,3,DISTRICT_NUMBER_____CRHDST,CRHDST,DISTRICT_NUMBER_____CRHDST,OBJECT_OR_COLUMN,3
+mrs,z_Credit_Memo_Major_Reason_Code_File_____CMMAJOR,Table,CMMAJOR,CMMAJOR,,Credit_Memo_Major_Reason_Code_File,,10, 8 ,3,,CMMAJOR,z_Credit_Memo_Major_Reason_Code_File_____CMMAJOR,OBJECT_OR_COLUMN,0
+mrs,z_Credit_Memo_Major_Reason_Code_File_____CMMINOR,Table,CMMINOR,CMMINOR,,Credit_Memo_Major_Reason_Code_File,,10, 17 ,,,CMMINOR,z_Credit_Memo_Major_Reason_Code_File_____CMMINOR,OBJECT_OR_COLUMN,0
+mrs,z_Customer_Class_Summary_file_MTD_____CCLSMT,Column,,CCLSMT,MCFISD,,Freight-In_Cost_Direct,,,,Freight-In_Cost_Direct_____MCFISD,MCFISD,Freight-In_Cost_Direct_____MCFISD,OBJECT_OR_COLUMN,23
+mrs,z_Customer_Class_Summary_file_MTD_____CCLSMT,Column,,CCLSMT,MCFISS,,Freight-In_Cost_Stock,,,,Freight-In_Cost_Stock_____MCFISS,MCFISS,Freight-In_Cost_Stock_____MCFISS,OBJECT_OR_COLUMN,22
+mrs,z_Customer_Class_Summary_file_YTD_____CCLSYT,Column,,CCLSYT,YCFISD,,Freight-In_Cost_Direct,,,,Freight-In_Cost_Direct_____YCFISD,YCFISD,Freight-In_Cost_Direct_____YCFISD,OBJECT_OR_COLUMN,22
+mrs,z_Customer_Class_Summary_file_YTD_____CCLSYT,Column,,CCLSYT,YCFISS,,Freight-In_Cost_Stock,,,,Freight-In_Cost_Stock_____YCFISS,YCFISS,Freight-In_Cost_Stock_____YCFISS,OBJECT_OR_COLUMN,21
+mrs,z_Customer_Master_File_____ARCUST,Table,ARCUST,ARCUST,,Customer_Master_File,,230," 1,278 ",1,,ARCUST,z_Customer_Master_File_____ARCUST,OBJECT_OR_COLUMN,0
+mrs,z_Customer_Master_File_____ARCUST,Column,,ARCUST,CADDR1,,Address_1,,,3,Address_1_____CADDR1,CADDR1,Address_1_____CADDR1,OBJECT_OR_COLUMN,6
+mrs,z_Customer_Master_File_____ARCUST,Column,,ARCUST,CADDR2,,Address_2,,,3,Address_2_____CADDR2,CADDR2,Address_2_____CADDR2,OBJECT_OR_COLUMN,7
+mrs,z_Customer_Master_File_____ARCUST,Column,,ARCUST,CADDR3,,Address_3,,,3,Address_3_____CADDR3,CADDR3,Address_3_____CADDR3,OBJECT_OR_COLUMN,8
+mrs,z_Customer_Master_File_____ARCUST,Column,,ARCUST,CCUST,,CUSTOMER_NUMBER,,,3,CUSTOMER_NUMBER_____CCUST,CCUST,CUSTOMER_NUMBER_____CCUST,OBJECT_OR_COLUMN,3
+mrs,z_Customer_Ship_To_Address_File_____SHIPADR,Table,SHIPADR,SHIPADR,,Customer_Ship_To_Address_File,,107," 3,295 ",1,,SHIPADR,z_Customer_Ship_To_Address_File_____SHIPADR,OBJECT_OR_COLUMN,0
+mrs,z_Customer_Ship_To_Address_File_____SHIPADR,Column,,SHIPADR,SAIDMX,,,,,3,_____SAIDMX,SAIDMX,_____SAIDMX,OBJECT_OR_COLUMN,56
+mrs,z_Customer_Ship_To_Address_File_____SHIPADR,Column,,SHIPADR,SAINM,,,,,3,_____SAINM,SAINM,_____SAINM,OBJECT_OR_COLUMN,35
+mrs,z_Customer_Ship_To_Address_File_____SHIPADR,Column,,SHIPADR,SAODMX,,,,,3,_____SAODMX,SAODMX,_____SAODMX,OBJECT_OR_COLUMN,55
+mrs,z_Customer_Ship_To_Address_File_____SHIPADR,Column,,SHIPADR,SAOUTM,,,,,3,_____SAOUTM,SAOUTM,_____SAOUTM,OBJECT_OR_COLUMN,34
+mrs,z_Customer_Ship_To_Address_File_____SHIPADR,Column,,SHIPADR,SAADR1,,Address_1,,,3,Address_1_____SAADR1,SAADR1,Address_1_____SAADR1,OBJECT_OR_COLUMN,6
+mrs,z_Customer_Ship_To_Address_File_____SHIPADR,Column,,SHIPADR,SAADR2,,Address_2,,,3,Address_2_____SAADR2,SAADR2,Address_2_____SAADR2,OBJECT_OR_COLUMN,7
+mrs,z_Customer_Ship_To_Address_File_____SHIPADR,Column,,SHIPADR,SAADR3,,Address_3,,,3,Address_3_____SAADR3,SAADR3,Address_3_____SAADR3,OBJECT_OR_COLUMN,8
+mrs,z_Customer_Ship_To_Address_File_____SHIPADR,Column,,SHIPADR,SACUST,,CUSTOMER_NUMBER,,,3,CUSTOMER_NUMBER_____SACUST,SACUST,CUSTOMER_NUMBER_____SACUST,OBJECT_OR_COLUMN,3
+mrs,z_Customer_Ship_To_Address_File_____SHIPADR,Column,,SHIPADR,SAFRTO,,Freight_To,,,,Freight_To_____SAFRTO,SAFRTO,Freight_To_____SAFRTO,OBJECT_OR_COLUMN,38
+mrs,z_Customer_Ship_To_Background_Information_____SHIPBCKG,Table,SHIPBCKG,SHIPBCKG,,Customer_Ship_To_Background_Information,,14, 2 ,3,,SHIPBCKG,z_Customer_Ship_To_Background_Information_____SHIPBCKG,OBJECT_OR_COLUMN,0
+mrs,z_Customer_Ship_To_Background_Information_____SHIPBCKG,Column,,SHIPBCKG,SBCUST,,Customer_Number,,,3,Customer_Number_____SBCUST,SBCUST,Customer_Number_____SBCUST,OBJECT_OR_COLUMN,3
+mrs,z_Customer_Ship_To_Instruction_File_____SHPINST,Table,SHPINST,SHPINST,,Customer_Ship_To_Instruction_File,,13, 731 ,3,,SHPINST,z_Customer_Ship_To_Instruction_File_____SHPINST,OBJECT_OR_COLUMN,0
+mrs,z_Customer_Ship_To_Instruction_File_____SHPINST,Column,,SHPINST,CICUST,,Customer_Number,,,3,Customer_Number_____CICUST,CICUST,Customer_Number_____CICUST,OBJECT_OR_COLUMN,3
+mrs,z_Daily_invoicing_analysis_____WFOE895,Column,,WFOE895,DLGMPC,,Gross_Margin_%,,,,Gross_Margin_%_____DLGMPC,DLGMPC,Gross_Margin_%_____DLGMPC,OBJECT_OR_COLUMN,13
+mrs,z_Daily_invoicing_analysis_____WFOE895,Column,,WFOE895,DLGMCS,,Gross_Margin_Cost_of_Sales,,,,Gross_Margin_Cost_of_Sales_____DLGMCS,DLGMCS,Gross_Margin_Cost_of_Sales_____DLGMCS,OBJECT_OR_COLUMN,14
+mrs,z_Delivery_Tracking_Performance_File_____DELTRACK,Table,DELTRACK,DELTRACK,,Delivery_Tracking_Performance_File,,19," 3,898 ",,,DELTRACK,z_Delivery_Tracking_Performance_File_____DELTRACK,OBJECT_OR_COLUMN,0
+mrs,z_Delivery_Tracking_Performance_File_____DELTRACK,Column,,DELTRACK,DPACTM,,,,,,_____DPACTM,DPACTM,_____DPACTM,OBJECT_OR_COLUMN,16
+mrs,z_Delivery_Tracking_Performance_File_____DELTRACK,Column,,DELTRACK,DPECTM,,,,,,_____DPECTM,DPECTM,_____DPECTM,OBJECT_OR_COLUMN,11
+mrs,z_Delivery_Tracking_Performance_File_____DELTRACK,Column,,DELTRACK,DPTRCD,,,,,,_____DPTRCD,DPTRCD,_____DPTRCD,OBJECT_OR_COLUMN,6
+mrs,z_Delivery_Tracking_Performance_File_____DELTRACK,Column,,DELTRACK,DPCUST,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____DPCUST,DPCUST,CUSTOMER_NUMBER_____DPCUST,OBJECT_OR_COLUMN,2
+mrs,z_Delivery_Tracking_Performance_File_____DELTRACK,Column,,DELTRACK,DPCDIS,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____DPCDIS,DPCDIS,DISTRICT_NUMBER_____DPCDIS,OBJECT_OR_COLUMN,1
+mrs,z_Delivery_Tracking_Performance_File_____DELTRACK,Column,,DELTRACK,DPOLIN,,Main_Line#,,,,Main_Line#_____DPOLIN,DPOLIN,Main_Line#_____DPOLIN,OBJECT_OR_COLUMN,5
+mrs,z_Delivery_Tracking_Performance_File_____DELTRACK,Column,,DELTRACK,DPRTYP,,Order_Type,,,,Order_Type_____DPRTYP,DPRTYP,Order_Type_____DPRTYP,OBJECT_OR_COLUMN,19
+mrs,z_Freight_Reconciliation_File_____FRECONCL,Table,FRECONCL,FRECONCL,,Freight_Reconciliation_File,,20, 6 ,2,,FRECONCL,z_Freight_Reconciliation_File_____FRECONCL,OBJECT_OR_COLUMN,0
+mrs,z_Freight_Reconciliation_File_____FRTHST,Table,FRTHST,FRTHST,,Freight_Reconciliation_File,,26, 6 ,2,,FRTHST,z_Freight_Reconciliation_File_____FRTHST,OBJECT_OR_COLUMN,0
+mrs,z_Freight_Reconciliation_File_____FRTHST,Column,,FRTHST,FSBTCH,,A/P_Batch,,,,A/P_Batch_____FSBTCH,FSBTCH,A/P_Batch_____FSBTCH,OBJECT_OR_COLUMN,14
+mrs,z_Freight_Reconciliation_File_____FRTHST,Column,,FRTHST,FSSEQ,,A/P_Seq#,,,,A/P_Seq#_____FSSEQ,FSSEQ,A/P_Seq#_____FSSEQ,OBJECT_OR_COLUMN,16
+mrs,z_Freight_Reconciliation_File_____FRTHST,Column,,FRTHST,FSTRAN,,A/P_Tran,,,,A/P_Tran_____FSTRAN,FSTRAN,A/P_Tran_____FSTRAN,OBJECT_OR_COLUMN,15
+mrs,z_Freight_Reconciliation_File_____FRTHST,Column,,FRTHST,FSBOL,,Bill_of_Lading,,,,Bill_of_Lading_____FSBOL,FSBOL,Bill_of_Lading_____FSBOL,OBJECT_OR_COLUMN,4
+mrs,z_G/L_Journal_Batch_Header_File_____GLJRBA,Column,,GLJRBA,GBBAMT,,Batch_AMOUNT,,,,Batch_AMOUNT_____GBBAMT,GBBAMT,Batch_AMOUNT_____GBBAMT,OBJECT_OR_COLUMN,4
+mrs,z_General_Ledger_Account_file_____GLACCT,Table,GLACCT,GLACCT,,General_Ledger_Account_file,,33, 258 ,1,,GLACCT,z_General_Ledger_Account_file_____GLACCT,OBJECT_OR_COLUMN,0
+mrs,z_General_Ledger_Master_File_____GLMAST,Table,GLMAST,GLMAST,,General_Ledger_Master_File,,100, 258 ,1,,GLMAST,z_General_Ledger_Master_File_____GLMAST,OBJECT_OR_COLUMN,0
+mrs,z_General_Ledger_Master_File_____GLMAST,Column,,GLMAST,GMDIST,,District_Number,,,,District_Number_____GMDIST,GMDIST,District_Number_____GMDIST,OBJECT_OR_COLUMN,4
+mrs,z_General_Ledger_Transaction_File_____GLTRANS,Table,GLTRANS,GLTRANS,,General_Ledger_Transaction_File,,43," 2,943,694 ",1,,GLTRANS,z_General_Ledger_Transaction_File_____GLTRANS,OBJECT_OR_COLUMN,0
+mrs,z_General_Ledger_Transaction_File_____GLTRANS,Column,,GLTRANS,GLAPTR,,A/P_Trans,,,,A/P_Trans_____GLAPTR,GLAPTR,A/P_Trans_____GLAPTR,OBJECT_OR_COLUMN,37
+mrs,z_General_Ledger_Transaction_File_____GLTRANS,Column,,GLTRANS,GLBTCH,,Batch_Number,,,,Batch_Number_____GLBTCH,GLBTCH,Batch_Number_____GLBTCH,OBJECT_OR_COLUMN,20
+mrs,z_General_Ledger_Transaction_File_____GLTRANS,Column,,GLTRANS,GLCDIS,,Cust_Dist,,,,Cust_Dist_____GLCDIS,GLCDIS,Cust_Dist_____GLCDIS,OBJECT_OR_COLUMN,35
+mrs,z_General_Ledger_Transaction_File_____GLTRANS,Column,,GLTRANS,GLCUST,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____GLCUST,GLCUST,CUSTOMER_NUMBER_____GLCUST,OBJECT_OR_COLUMN,36
+mrs,z_General_Ledger_Transaction_File_____GLTRANS,Column,,GLTRANS,GLDIST,,District_Number,,,,District_Number_____GLDIST,GLDIST,District_Number_____GLDIST,OBJECT_OR_COLUMN,3
+mrs,z_General_Ledger_Transaction_File_____GLTRANS,Column,,GLTRANS,GLTYPE,,Order_Type,,,,Order_Type_____GLTYPE,GLTYPE,Order_Type_____GLTYPE,OBJECT_OR_COLUMN,31
+mrs,z_IATRANS_-_History_(Save_Batch)_____IATRANHS,Table,IATRANHS,IATRANHS,,IATRANS_-_History_(Save_Batch),,67," 492,791 ",,,IATRANHS,z_IATRANS_-_History_(Save_Batch)_____IATRANHS,OBJECT_OR_COLUMN,0
+mrs,z_IATRANS_-_History_(Save_Batch)_____IATRANHS,Column,,IATRANHS,IABAT#,,Batch_Number,,,,Batch_Number_____IABAT#,IABAT#,Batch_Number_____IABAT#,OBJECT_OR_COLUMN,4
+mrs,z_IATRANS_-_History_(Save_Batch)_____IATRANHS,Column,,IATRANHS,IABOL,,Bill_of_Lading,,,,Bill_of_Lading_____IABOL,IABOL,Bill_of_Lading_____IABOL,OBJECT_OR_COLUMN,57
+mrs,z_IATRANS_-_History_(Save_Batch)_____IATRANHS,Column,,IATRANHS,IACAR#,,Carrier#,,,,Carrier#_____IACAR#,IACAR#,Carrier#_____IACAR#,OBJECT_OR_COLUMN,30
+mrs,z_IATRANS_-_History_(Save_Batch)_____IATRANHS,Column,,IATRANHS,IADIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____IADIST,IADIST,DISTRICT_NUMBER_____IADIST,OBJECT_OR_COLUMN,3
+mrs,z_IATRANS_-_History_(Save_Batch)_____IATRANHS,Column,,IATRANHS,IAPODI,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____IAPODI,IAPODI,DISTRICT_NUMBER_____IAPODI,OBJECT_OR_COLUMN,11
+mrs,z_IATRANS_-_History_(Save_Batch)_____IATRANHS,Column,,IATRANHS,IAPOLN,,Main_Line#,,,,Main_Line#_____IAPOLN,IAPOLN,Main_Line#_____IAPOLN,OBJECT_OR_COLUMN,13
+mrs,z_IATRANS_-_Inventory_Adj_Transactions_____IATRANS,Table,IATRANS,IATRANS,,IATRANS_-_Inventory_Adj_Transactions,,67, 27 ,2,,IATRANS,z_IATRANS_-_Inventory_Adj_Transactions_____IATRANS,OBJECT_OR_COLUMN,0
+mrs,z_IATRANS_-_Inventory_Adj_Transactions_____IATRANS,Column,,IATRANS,IABAT#,,Batch_Number,,,,Batch_Number_____IABAT#,IABAT#,Batch_Number_____IABAT#,OBJECT_OR_COLUMN,4
+mrs,z_IATRANS_-_Inventory_Adj_Transactions_____IATRANS,Column,,IATRANS,IABOL,,Bill_of_Lading,,,,Bill_of_Lading_____IABOL,IABOL,Bill_of_Lading_____IABOL,OBJECT_OR_COLUMN,57
+mrs,z_IATRANS_-_Inventory_Adj_Transactions_____IATRANS,Column,,IATRANS,IACAR#,,Carrier#,,,,Carrier#_____IACAR#,IACAR#,Carrier#_____IACAR#,OBJECT_OR_COLUMN,30
+mrs,z_IATRANS_-_Inventory_Adj_Transactions_____IATRANS,Column,,IATRANS,IADIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____IADIST,IADIST,DISTRICT_NUMBER_____IADIST,OBJECT_OR_COLUMN,3
+mrs,z_IATRANS_-_Inventory_Adj_Transactions_____IATRANS,Column,,IATRANS,IAPODI,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____IAPODI,IAPODI,DISTRICT_NUMBER_____IAPODI,OBJECT_OR_COLUMN,11
+mrs,z_IATRANS_-_Inventory_Adj_Transactions_____IATRANS,Column,,IATRANS,IAPOLN,,Main_Line#,,,,Main_Line#_____IAPOLN,IAPOLN,Main_Line#_____IAPOLN,OBJECT_OR_COLUMN,13
+mrs,z_Image_PDF_____IMAGEPDF,Table,IMAGEPDF,IMAGEPDF,,Image_PDF,,30," 108,289 ",2,,IMAGEPDF,z_Image_PDF_____IMAGEPDF,OBJECT_OR_COLUMN,0
+mrs,z_Image_PDF_____IMAGEPDF,Column,,IMAGEPDF,DATENT,,,,,,_____DATENT,DATENT,_____DATENT,OBJECT_OR_COLUMN,1
+mrs,z_Image_PDF_____IMAGEPDF,Column,,IMAGEPDF,DATUPD,,,,,,_____DATUPD,DATUPD,_____DATUPD,OBJECT_OR_COLUMN,2
+mrs,z_Image_PDF_____IMAGEPDF,Column,,IMAGEPDF,IMAGE,,,,,,_____IMAGE,IMAGE,_____IMAGE,OBJECT_OR_COLUMN,9
+mrs,z_Image_PDF_____IMAGEPDF,Column,,IMAGEPDF,TYPIMG,,,,,,_____TYPIMG,TYPIMG,_____TYPIMG,OBJECT_OR_COLUMN,11
+mrs,z_Image_PDF_____IMAGEPDF,Column,,IMAGEPDF,VOINV#,,A/P_Invoice#,,,,A/P_Invoice#_____VOINV#,VOINV#,A/P_Invoice#_____VOINV#,OBJECT_OR_COLUMN,12
+mrs,z_Image_PDF_____IMAGEPDF,Column,,IMAGEPDF,SDDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____SDDIST,SDDIST,DISTRICT_NUMBER_____SDDIST,OBJECT_OR_COLUMN,10
+mrs,z_Image_PDF_____IMAGEPDF,Column,,IMAGEPDF,ITHEAT,,Heat_#,,,,Heat_#_____ITHEAT,ITHEAT,Heat_#_____ITHEAT,OBJECT_OR_COLUMN,5
+mrs,z_Image_PDF_____IMAGEPDFB4,Table,IMAGEPDFB4,IMAGEPDFB4,,Image_PDF,,30, 494 ,,,IMAGEPDFB4,z_Image_PDF_____IMAGEPDFB4,OBJECT_OR_COLUMN,0
+mrs,z_Image_PDF_____IMAGEPDFB4,Column,,IMAGEPDFB4,DATENT,,,,,,_____DATENT,DATENT,_____DATENT,OBJECT_OR_COLUMN,1
+mrs,z_Image_PDF_____IMAGEPDFB4,Column,,IMAGEPDFB4,DATUPD,,,,,,_____DATUPD,DATUPD,_____DATUPD,OBJECT_OR_COLUMN,2
+mrs,z_Image_PDF_____IMAGEPDFB4,Column,,IMAGEPDFB4,IMAGE,,,,,,_____IMAGE,IMAGE,_____IMAGE,OBJECT_OR_COLUMN,9
+mrs,z_Image_PDF_____IMAGEPDFB4,Column,,IMAGEPDFB4,TYPIMG,,,,,,_____TYPIMG,TYPIMG,_____TYPIMG,OBJECT_OR_COLUMN,11
+mrs,z_Image_PDF_____IMAGEPDFB4,Column,,IMAGEPDFB4,VOINV#,,A/P_Invoice#,,,,A/P_Invoice#_____VOINV#,VOINV#,A/P_Invoice#_____VOINV#,OBJECT_OR_COLUMN,12
+mrs,z_Image_PDF_____IMAGEPDFB4,Column,,IMAGEPDFB4,SDDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____SDDIST,SDDIST,DISTRICT_NUMBER_____SDDIST,OBJECT_OR_COLUMN,10
+mrs,z_Image_PDF_____IMAGEPDFB4,Column,,IMAGEPDFB4,ITHEAT,,Heat_#,,,,Heat_#_____ITHEAT,ITHEAT,Heat_#_____ITHEAT,OBJECT_OR_COLUMN,5
+mrs,z_Inventory_Mill_File_____INVMILL,Column,,INVMILL,MICTRY,,Country_Of_Origin,,,,Country_Of_Origin_____MICTRY,MICTRY,Country_Of_Origin_____MICTRY,OBJECT_OR_COLUMN,4
+mrs,z_Inventory_Restock_File_____RESTOCK,Column,,RESTOCK,RLULIN,,Used_Line_Number,,,,Used_Line_Number_____RLULIN,RLULIN,Used_Line_Number_____RLULIN,OBJECT_OR_COLUMN,6
+mrs,z_Item_Master_File_____ITEMBG,Column,,ITEMBG,IMCSMO,,Company_SMO,,,,Company_SMO_____IMCSMO,IMCSMO,Company_SMO_____IMCSMO,OBJECT_OR_COLUMN,59
+mrs,z_Item_Master_File_____ITEMMAST,Table,ITEMMAST,ITEMMAST,,Item_Master_File,,153," 2,612 ",1,,ITEMMAST,z_Item_Master_File_____ITEMMAST,OBJECT_OR_COLUMN,0
+mrs,z_Item_Master_File_____ITEMMAST,Column,,ITEMMAST,IMCUST,,A/R_Customer_Number,,,3,A/R_Customer_Number_____IMCUST,IMCUST,A/R_Customer_Number_____IMCUST,OBJECT_OR_COLUMN,67
+mrs,z_Item_Master_File_____ITEMMAST,Column,,ITEMMAST,IMCSMO,,Company_SMO,,,,Company_SMO_____IMCSMO,IMCSMO,Company_SMO_____IMCSMO,OBJECT_OR_COLUMN,63
+mrs,z_Item_Master_File_____ITEMMASTXX,Column,,ITEMMASTXX,IMCSMO,,Company_SMO,,,,Company_SMO_____IMCSMO,IMCSMO,Company_SMO_____IMCSMO,OBJECT_OR_COLUMN,63
+mrs,z_Item_on_hand_comment_file_____ITEMONCM,Table,ITEMONCM,ITEMONCM,,Item_on_hand_comment_file,,28," 1,079 ",2,,ITEMONCM,z_Item_on_hand_comment_file_____ITEMONCM,OBJECT_OR_COLUMN,0
+mrs,z_Item_on_hand_comment_file_____ITEMONCM,Column,,ITEMONCM,I5DIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____I5DIST,I5DIST,DISTRICT_NUMBER_____I5DIST,OBJECT_OR_COLUMN,2
+mrs,z_Item_on_Hand_File_____ITEMONHD,Table,ITEMONHD,ITEMONHD,,Item_on_Hand_File,,198," 2,611 ",1,,ITEMONHD,z_Item_on_Hand_File_____ITEMONHD,OBJECT_OR_COLUMN,0
+mrs,z_Item_on_Hand_File_____ITEMONHD,Column,,ITEMONHD,IOCUST,,A/R_Customer_Number,,,3,A/R_Customer_Number_____IOCUST,IOCUST,A/R_Customer_Number_____IOCUST,OBJECT_OR_COLUMN,93
+mrs,z_Item_on_Hand_File_____ITEMONHD,Column,,ITEMONHD,IODIST,,DISTRICT_NUMBER,,,3,DISTRICT_NUMBER_____IODIST,IODIST,DISTRICT_NUMBER_____IODIST,OBJECT_OR_COLUMN,3
+mrs,z_Item_Transaction_History_____ITEMHIST,Table,ITEMHIST,ITEMHIST,,Item_Transaction_History,,62," 722,016 ",1,,ITEMHIST,z_Item_Transaction_History_____ITEMHIST,OBJECT_OR_COLUMN,0
+mrs,z_Item_Transaction_History_____ITEMHIST,Column,,ITEMHIST,IHCUST,,CUSTOMER_NUMBER,,,3,CUSTOMER_NUMBER_____IHCUST,IHCUST,CUSTOMER_NUMBER_____IHCUST,OBJECT_OR_COLUMN,23
+mrs,z_Item_Transaction_History_____ITEMHIST,Column,,ITEMHIST,IHDIST,,DISTRICT_NUMBER,,,3,DISTRICT_NUMBER_____IHDIST,IHDIST,DISTRICT_NUMBER_____IHDIST,OBJECT_OR_COLUMN,2
+mrs,z_Item_Transaction_History_____ITEMHIST,Column,,ITEMHIST,IHDOC#,,Document_#,,,3,Document_#_____IHDOC#,IHDOC#,Document_#_____IHDOC#,OBJECT_OR_COLUMN,56
+mrs,z_Item_Transaction_History_____ITEMHIST,Column,,ITEMHIST,IHHEAT,,Heat_#,,,3,Heat_#_____IHHEAT,IHHEAT,Heat_#_____IHHEAT,OBJECT_OR_COLUMN,57
+mrs,z_Itemtrif_-_Item_Tariff_File_____ITEMTRIF,Table,ITEMTRIF,ITEMTRIF,,Itemtrif_-_Item_Tariff_File,,10, 263 ,,,ITEMTRIF,z_Itemtrif_-_Item_Tariff_File_____ITEMTRIF,OBJECT_OR_COLUMN,0
+mrs,z_Last_Day_of_Period_File_____EMLSTDAY,Table,EMLSTDAY,EMLSTDAY,,Last_Day_of_Period_File,,14, 130 ,,,EMLSTDAY,z_Last_Day_of_Period_File_____EMLSTDAY,OBJECT_OR_COLUMN,0
+mrs,z_Last_Day_of_Period_File_____EMLSTDAY,Column,,EMLSTDAY,ELDIST,,District,,,,District_____ELDIST,ELDIST,District_____ELDIST,OBJECT_OR_COLUMN,3
+mrs,z_line_comment_changes_____LINECCHG,Table,LINECCHG,LINECCHG,,line_comment_changes,,20," 13,272 ",,,LINECCHG,z_line_comment_changes_____LINECCHG,OBJECT_OR_COLUMN,0
+mrs,z_line_comment_changes_____LINECCHG,Column,,LINECCHG,LCHCMT,,COMMENT,,,,COMMENT_____LCHCMT,LCHCMT,COMMENT_____LCHCMT,OBJECT_OR_COLUMN,9
+mrs,z_line_comment_changes_____LINECCHG,Column,,LINECCHG,LCHDST,,DISTRICT,,,,DISTRICT_____LCHDST,LCHDST,DISTRICT_____LCHDST,OBJECT_OR_COLUMN,5
+mrs,z_line_comment_changes_____LINECCHG,Column,,LINECCHG,LCHOTP,,ORDER_TYPE,,,,ORDER_TYPE_____LCHOTP,LCHOTP,ORDER_TYPE_____LCHOTP,OBJECT_OR_COLUMN,3
+mrs,z_Line_Comment_Code_Constants_____LINECNST,Table,LINECNST,LINECNST,,Line_Comment_Code_Constants,,17, 14 ,,,LINECNST,z_Line_Comment_Code_Constants_____LINECNST,OBJECT_OR_COLUMN,0
+mrs,z_Line_Comment_Code_Constants_____LINECNST,Column,,LINECNST,LSAPPL,,,,,,_____LSAPPL,LSAPPL,_____LSAPPL,OBJECT_OR_COLUMN,5
+mrs,z_Line_Comment_Code_Constants_____LINECNST,Column,,LINECNST,LSCCOD,,,,,,_____LSCCOD,LSCCOD,_____LSCCOD,OBJECT_OR_COLUMN,2
+mrs,z_Line_Comment_Code_Constants_____LINECNST,Column,,LINECNST,LSCMNT,,,,,,_____LSCMNT,LSCMNT,_____LSCMNT,OBJECT_OR_COLUMN,4
+mrs,z_Line_Comment_Code_Constants_____LINECNST,Column,,LINECNST,LSCODE,,,,,,_____LSCODE,LSCODE,_____LSCODE,OBJECT_OR_COLUMN,1
+mrs,z_Line_Comment_Code_Constants_____LINECNST,Column,,LINECNST,LSPRNT,,,,,,_____LSPRNT,LSPRNT,_____LSPRNT,OBJECT_OR_COLUMN,3
+mrs,z_Line_Comment_Code_Constants_____LINECNST,Column,,LINECNST,LSREQR,,,,,,_____LSREQR,LSREQR,_____LSREQR,OBJECT_OR_COLUMN,6
+mrs,z_Line_Related_Comments_____LINECMNT,Table,LINECMNT,LINECMNT,,Line_Related_Comments,,9," 933,286 ",,,LINECMNT,z_Line_Related_Comments_____LINECMNT,OBJECT_OR_COLUMN,0
+mrs,z_Line_Related_Comments_____LINECMNT,Column,,LINECMNT,LCCMNT,,COMMENT,,,,COMMENT_____LCCMNT,LCCMNT,COMMENT_____LCCMNT,OBJECT_OR_COLUMN,7
+mrs,z_Line_Related_Comments_____LINECMNT,Column,,LINECMNT,LCDIST,,DISTRICT,,,,DISTRICT_____LCDIST,LCDIST,DISTRICT_____LCDIST,OBJECT_OR_COLUMN,3
+mrs,z_List_/_Heat_Number_____LISTHEAT,Table,LISTHEAT,LISTHEAT,,List_/_Heat_Number,,19," 19,661 ",,,LISTHEAT,z_List_/_Heat_Number_____LISTHEAT,OBJECT_OR_COLUMN,0
+mrs,z_List_/_Heat_Number_____LISTHEAT,Column,,LISTHEAT,LHDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____LHDIST,LHDIST,DISTRICT_NUMBER_____LHDIST,OBJECT_OR_COLUMN,5
+mrs,z_List_/_Heat_Number_____LISTHEAT,Column,,LISTHEAT,LHHEAT,,Heat_#,,,,Heat_#_____LHHEAT,LHHEAT,Heat_#_____LHHEAT,OBJECT_OR_COLUMN,3
+mrs,z_M/P_Final_Detail_____MPHSTDET,Table,MPHSTDET,MPHSTDET,,M/P_Final_Detail,,115," 1,871 ",,,MPHSTDET,z_M/P_Final_Detail_____MPHSTDET,OBJECT_OR_COLUMN,0
+mrs,z_M/P_Final_Detail_____MPHSTDET,Column,,MPHSTDET,MDCUST,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____MDCUST,MDCUST,CUSTOMER_NUMBER_____MDCUST,OBJECT_OR_COLUMN,70
+mrs,z_M/P_Final_Detail_____MPHSTDET,Column,,MPHSTDET,MDCDST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____MDCDST,MDCDST,DISTRICT_NUMBER_____MDCDST,OBJECT_OR_COLUMN,69
+mrs,z_M/P_Final_Detail_____MPHSTDET,Column,,MPHSTDET,MDDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____MDDIST,MDDIST,DISTRICT_NUMBER_____MDDIST,OBJECT_OR_COLUMN,3
+mrs,z_M/P_Final_Detail_____MPHSTDET,Column,,MPHSTDET,MDMLIN,,Main_Line#,,,,Main_Line#_____MDMLIN,MDMLIN,Main_Line#_____MDMLIN,OBJECT_OR_COLUMN,6
+mrs,z_M/P_Final_Detail_____MPHSTDET,Column,,MPHSTDET,MDTYPE,,Order_Type,,,,Order_Type_____MDTYPE,MDTYPE,Order_Type_____MDTYPE,OBJECT_OR_COLUMN,2
+mrs,z_M/P_Final_Detail_____MPHSTDET,Column,,MPHSTDET,MDSHAP,,Shape,,,,Shape_____MDSHAP,MDSHAP,Shape_____MDSHAP,OBJECT_OR_COLUMN,62
+mrs,z_M/P_Final_Header_____MPHSTHDR,Table,MPHSTHDR,MPHSTHDR,,M/P_Final_Header,,111," 1,868 ",2,,MPHSTHDR,z_M/P_Final_Header_____MPHSTHDR,OBJECT_OR_COLUMN,0
+mrs,z_M/P_Final_Header_____MPHSTHDR,Column,,MPHSTHDR,MHCUS#,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____MHCUS#,MHCUS#,CUSTOMER_NUMBER_____MHCUS#,OBJECT_OR_COLUMN,94
+mrs,z_M/P_Final_Header_____MPHSTHDR,Column,,MPHSTHDR,MHCUST,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____MHCUST,MHCUST,CUSTOMER_NUMBER_____MHCUST,OBJECT_OR_COLUMN,90
+mrs,z_M/P_Final_Header_____MPHSTHDR,Column,,MPHSTHDR,MHCSTD,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____MHCSTD,MHCSTD,DISTRICT_NUMBER_____MHCSTD,OBJECT_OR_COLUMN,89
+mrs,z_M/P_Final_Header_____MPHSTHDR,Column,,MPHSTHDR,MHDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____MHDIST,MHDIST,DISTRICT_NUMBER_____MHDIST,OBJECT_OR_COLUMN,3
+mrs,z_M/P_Final_Header_____MPHSTHDR,Column,,MPHSTHDR,MHGMPC,,GROSS_MARGIN_%,,,,GROSS_MARGIN_%_____MHGMPC,MHGMPC,GROSS_MARGIN_%_____MHGMPC,OBJECT_OR_COLUMN,57
+mrs,z_M/P_Final_Header_____MPHSTHDR,Column,,MPHSTHDR,MHTYPE,,Order_Type,,,,Order_Type_____MHTYPE,MHTYPE,Order_Type_____MHTYPE,OBJECT_OR_COLUMN,2
+mrs,z_M/P_Final_Processing_Charges_____MPHSTPRC,Table,MPHSTPRC,MPHSTPRC,,M/P_Final_Processing_Charges,,39," 6,166 ",,,MPHSTPRC,z_M/P_Final_Processing_Charges_____MPHSTPRC,OBJECT_OR_COLUMN,0
+mrs,z_M/P_Final_Processing_Charges_____MPHSTPRC,Column,,MPHSTPRC,PKIBLN,,Main_Line#,,,,Main_Line#_____PKIBLN,PKIBLN,Main_Line#_____PKIBLN,OBJECT_OR_COLUMN,33
+mrs,z_M/P_Final_Processing_Charges_____MPHSTPRC,Column,,MPHSTPRC,PKOMLN,,Main_Line#,,,,Main_Line#_____PKOMLN,PKOMLN,Main_Line#_____PKOMLN,OBJECT_OR_COLUMN,6
+mrs,z_M/P_Final_Processing_Charges_____MPHSTPRC,Column,,MPHSTPRC,PKODST,,ORDER_DISTRICT,,,,ORDER_DISTRICT_____PKODST,PKODST,ORDER_DISTRICT_____PKODST,OBJECT_OR_COLUMN,3
+mrs,z_M/P_Final_Restock_____MPHSTRSK,Table,MPHSTRSK,MPHSTRSK,,M/P_Final_Restock,,66," 7,655 ",,,MPHSTRSK,z_M/P_Final_Restock_____MPHSTRSK,OBJECT_OR_COLUMN,0
+mrs,z_M/P_Final_Restock_____MPHSTRSK,Column,,MPHSTRSK,RLDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____RLDIST,RLDIST,DISTRICT_NUMBER_____RLDIST,OBJECT_OR_COLUMN,3
+mrs,z_M/P_Final_Restock_____MPHSTRSK,Column,,MPHSTRSK,RLASL#,,Main_Line#,,,,Main_Line#_____RLASL#,RLASL#,Main_Line#_____RLASL#,OBJECT_OR_COLUMN,40
+mrs,z_M/P_Final_Restock_____MPHSTRSK,Column,,MPHSTRSK,RLMLIN,,Main_Line#,,,,Main_Line#_____RLMLIN,RLMLIN,Main_Line#_____RLMLIN,OBJECT_OR_COLUMN,6
+mrs,z_M/P_Final_Restock_____MPHSTRSK,Column,,MPHSTRSK,RLULIN,,Used_Line_Number,,,,Used_Line_Number_____RLULIN,RLULIN,Used_Line_Number_____RLULIN,OBJECT_OR_COLUMN,7
+mrs,z_M/P_Final_Used_____MPHSTUSE,Table,MPHSTUSE,MPHSTUSE,,M/P_Final_Used,,73," 6,553 ",,,MPHSTUSE,z_M/P_Final_Used_____MPHSTUSE,OBJECT_OR_COLUMN,0
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULCUST,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____ULCUST,ULCUST,CUSTOMER_NUMBER_____ULCUST,OBJECT_OR_COLUMN,55
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULCDIS,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____ULCDIS,ULCDIS,DISTRICT_NUMBER_____ULCDIS,OBJECT_OR_COLUMN,54
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____ULDIST,ULDIST,DISTRICT_NUMBER_____ULDIST,OBJECT_OR_COLUMN,3
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULIBLN,,Main_Line#,,,,Main_Line#_____ULIBLN,ULIBLN,Main_Line#_____ULIBLN,OBJECT_OR_COLUMN,30
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULMLIN,,Main_Line#,,,,Main_Line#_____ULMLIN,ULMLIN,Main_Line#_____ULMLIN,OBJECT_OR_COLUMN,6
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULINVR,,Quantity,,,,Quantity_____ULINVR,ULINVR,Quantity_____ULINVR,OBJECT_OR_COLUMN,22
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULLKOO,,Quantity,,,,Quantity_____ULLKOO,ULLKOO,Quantity_____ULLKOO,OBJECT_OR_COLUMN,32
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULLKOR,,Quantity,,,,Quantity_____ULLKOR,ULLKOR,Quantity_____ULLKOR,OBJECT_OR_COLUMN,31
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULPBOL,,Quantity,,,,Quantity_____ULPBOL,ULPBOL,Quantity_____ULPBOL,OBJECT_OR_COLUMN,59
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULSQTY,,Quantity,,,,Quantity_____ULSQTY,ULSQTY,Quantity_____ULSQTY,OBJECT_OR_COLUMN,12
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULTBOL,,Quantity,,,,Quantity_____ULTBOL,ULTBOL,Quantity_____ULTBOL,OBJECT_OR_COLUMN,60
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULTFT,,Quantity,,,,Quantity_____ULTFT,ULTFT,Quantity_____ULTFT,OBJECT_OR_COLUMN,18
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULTKG,,Quantity,,,,Quantity_____ULTKG,ULTKG,Quantity_____ULTKG,OBJECT_OR_COLUMN,21
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULTLBS,,Quantity,,,,Quantity_____ULTLBS,ULTLBS,Quantity_____ULTLBS,OBJECT_OR_COLUMN,16
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULTMTR,,Quantity,,,,Quantity_____ULTMTR,ULTMTR,Quantity_____ULTMTR,OBJECT_OR_COLUMN,20
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULTPCS,,Quantity,,,,Quantity_____ULTPCS,ULTPCS,Quantity_____ULTPCS,OBJECT_OR_COLUMN,17
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULTSFT,,Quantity,,,,Quantity_____ULTSFT,ULTSFT,Quantity_____ULTSFT,OBJECT_OR_COLUMN,19
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULUQTY,,Quantity,,,,Quantity_____ULUQTY,ULUQTY,Quantity_____ULUQTY,OBJECT_OR_COLUMN,10
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULWBOL,,Quantity,,,,Quantity_____ULWBOL,ULWBOL,Quantity_____ULWBOL,OBJECT_OR_COLUMN,61
+mrs,z_M/P_Final_Used_____MPHSTUSE,Column,,MPHSTUSE,ULSHAP,,Shape,,,,Shape_____ULSHAP,ULSHAP,Shape_____ULSHAP,OBJECT_OR_COLUMN,50
+mrs,z_Material_Processing_Order_Detail_____MPDETAIL,Table,MPDETAIL,MPDETAIL,,Material_Processing_Order_Detail,,129, 455 ,1,,MPDETAIL,z_Material_Processing_Order_Detail_____MPDETAIL,OBJECT_OR_COLUMN,0
+mrs,z_Material_Processing_Order_Detail_____MPDETAIL,Column,,MPDETAIL,MDCUST,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____MDCUST,MDCUST,CUSTOMER_NUMBER_____MDCUST,OBJECT_OR_COLUMN,70
+mrs,z_Material_Processing_Order_Detail_____MPDETAIL,Column,,MPDETAIL,MDCDST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____MDCDST,MDCDST,DISTRICT_NUMBER_____MDCDST,OBJECT_OR_COLUMN,69
+mrs,z_Material_Processing_Order_Detail_____MPDETAIL,Column,,MPDETAIL,MDDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____MDDIST,MDDIST,DISTRICT_NUMBER_____MDDIST,OBJECT_OR_COLUMN,3
+mrs,z_Material_Processing_Order_Detail_____MPDETAIL,Column,,MPDETAIL,MDMLIN,,Main_Line#,,,,Main_Line#_____MDMLIN,MDMLIN,Main_Line#_____MDMLIN,OBJECT_OR_COLUMN,5
+mrs,z_Material_Processing_Order_Detail_____MPDETAIL,Column,,MPDETAIL,MDTYPE,,Order_Type,,,,Order_Type_____MDTYPE,MDTYPE,Order_Type_____MDTYPE,OBJECT_OR_COLUMN,2
+mrs,z_Material_Processing_Order_Detail_____MPDETAIL,Column,,MPDETAIL,MDSHAP,,Shape,,,,Shape_____MDSHAP,MDSHAP,Shape_____MDSHAP,OBJECT_OR_COLUMN,62
+mrs,z_Material_Processing_Order_Header_____MPHDRORD,Table,MPHDRORD,MPHDRORD,,Material_Processing_Order_Header,,120, 456 ,2,,MPHDRORD,z_Material_Processing_Order_Header_____MPHDRORD,OBJECT_OR_COLUMN,0
+mrs,z_Material_Processing_Order_Header_____MPHDRORD,Column,,MPHDRORD,MHCUS#,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____MHCUS#,MHCUS#,CUSTOMER_NUMBER_____MHCUS#,OBJECT_OR_COLUMN,96
+mrs,z_Material_Processing_Order_Header_____MPHDRORD,Column,,MPHDRORD,MHCUST,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____MHCUST,MHCUST,CUSTOMER_NUMBER_____MHCUST,OBJECT_OR_COLUMN,92
+mrs,z_Material_Processing_Order_Header_____MPHDRORD,Column,,MPHDRORD,MHECS#,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____MHECS#,MHECS#,CUSTOMER_NUMBER_____MHECS#,OBJECT_OR_COLUMN,108
+mrs,z_Material_Processing_Order_Header_____MPHDRORD,Column,,MPHDRORD,MHCSTD,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____MHCSTD,MHCSTD,DISTRICT_NUMBER_____MHCSTD,OBJECT_OR_COLUMN,91
+mrs,z_Material_Processing_Order_Header_____MPHDRORD,Column,,MPHDRORD,MHDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____MHDIST,MHDIST,DISTRICT_NUMBER_____MHDIST,OBJECT_OR_COLUMN,3
+mrs,z_Material_Processing_Order_Header_____MPHDRORD,Column,,MPHDRORD,MHGMPC,,GROSS_MARGIN_%,,,,GROSS_MARGIN_%_____MHGMPC,MHGMPC,GROSS_MARGIN_%_____MHGMPC,OBJECT_OR_COLUMN,59
+mrs,z_Material_Processing_Order_Header_____MPHDRORD,Column,,MPHDRORD,MHTYPE,,Order_Type,,,,Order_Type_____MHTYPE,MHTYPE,Order_Type_____MHTYPE,OBJECT_OR_COLUMN,2
+mrs,z_Material_Processing_Order_Profile_____MPPROFIL,Table,MPPROFIL,MPPROFIL,,Material_Processing_Order_Profile,,67, 456 ,,,MPPROFIL,z_Material_Processing_Order_Profile_____MPPROFIL,OBJECT_OR_COLUMN,0
+mrs,z_Material_Processing_Order_Profile_____MPPROFIL,Column,,MPPROFIL,MFBOL,,BILL_OF_LADING,,,,BILL_OF_LADING_____MFBOL,MFBOL,BILL_OF_LADING_____MFBOL,OBJECT_OR_COLUMN,65
+mrs,z_Material_Processing_Order_Profile_____MPPROFIL,Column,,MPPROFIL,MFDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____MFDIST,MFDIST,DISTRICT_NUMBER_____MFDIST,OBJECT_OR_COLUMN,3
+mrs,z_Material_Processing_Order_Profile_____MPPROFIL,Column,,MPPROFIL,MFFRTO,,FREIGHT_TO,,,,FREIGHT_TO_____MFFRTO,MFFRTO,FREIGHT_TO_____MFFRTO,OBJECT_OR_COLUMN,24
+mrs,z_MP_Tracking_File_____MPTRCK,Table,MPTRCK,MPTRCK,,MP_Tracking_File,,12," 1,748 ",,,MPTRCK,z_MP_Tracking_File_____MPTRCK,OBJECT_OR_COLUMN,0
+mrs,z_MP_Tracking_File_____MPTRCK,Column,,MPTRCK,MTMLIN,,Line_#,,,,Line_#_____MTMLIN,MTMLIN,Line_#_____MTMLIN,OBJECT_OR_COLUMN,5
+mrs,z_MP_Tracking_History_File_____MPTRKHST,Table,MPTRKHST,MPTRKHST,,MP_Tracking_History_File,,20," 26,655 ",2,,MPTRKHST,z_MP_Tracking_History_File_____MPTRKHST,OBJECT_OR_COLUMN,0
+mrs,z_MP_Tracking_History_File_____MPTRKHST,Column,,MPTRKHST,MTHCOM,,Comment,,,,Comment_____MTHCOM,MTHCOM,Comment_____MTHCOM,OBJECT_OR_COLUMN,18
+mrs,z_MP_Tracking_History_File_____MPTRKHST,Column,,MPTRKHST,MTHDST,,District_#,,,,District_#_____MTHDST,MTHDST,District_#_____MTHDST,OBJECT_OR_COLUMN,2
+mrs,z_MP_Tracking_History_File_____MPTRKHST,Column,,MPTRKHST,MTHLIN,,Line_#,,,,Line_#_____MTHLIN,MTHLIN,Line_#_____MTHLIN,OBJECT_OR_COLUMN,4
+mrs,z_mw100_reset_audit_trail_____MWRESET,Column,,MWRESET,MWBOL#,,Bill_of_Lading,,,,Bill_of_Lading_____MWBOL#,MWBOL#,Bill_of_Lading_____MWBOL#,OBJECT_OR_COLUMN,7
+mrs,z_Open_Order_File_____OEOPNORD,Table,OEOPNORD,OEOPNORD,,Open_Order_File,,245," 153,714 ",1,,OEOPNORD,z_Open_Order_File_____OEOPNORD,OBJECT_OR_COLUMN,0
+mrs,z_Open_Order_File_____OEOPNORD,Column,,OEOPNORD,OOCNTR,,Contract_Number,,,3,Contract_Number_____OOCNTR,OOCNTR,Contract_Number_____OOCNTR,OBJECT_OR_COLUMN,129
+mrs,z_Open_Order_File_____OEOPNORD,Column,,OEOPNORD,OOCUST,,CUSTOMER_NUMBER,,,3,CUSTOMER_NUMBER_____OOCUST,OOCUST,CUSTOMER_NUMBER_____OOCUST,OBJECT_OR_COLUMN,6
+mrs,z_Open_Order_File_____OEOPNORD,Column,,OEOPNORD,OODRVR,,Driver#,,,3,Driver#_____OODRVR,OODRVR,Driver#_____OODRVR,OBJECT_OR_COLUMN,202
+mrs,z_Open_Order_File_____OEOPNORD,Column,,OEOPNORD,OOGMPC,,GROSS_MARGIN_%,,,,GROSS_MARGIN_%_____OOGMPC,OOGMPC,GROSS_MARGIN_%_____OOGMPC,OBJECT_OR_COLUMN,89
+mrs,z_Open_Order_File_____OEOPNORD,Column,,OEOPNORD,OOORDR,,ORDER_NUMBER,,,3,ORDER_NUMBER_____OOORDR,OOORDR,ORDER_NUMBER_____OOORDR,OBJECT_OR_COLUMN,4
+mrs,z_Open_Order_File_____OEOPNORD,Column,,OEOPNORD,OOTYPE,,Order_Type,,,3,Order_Type_____OOTYPE,OOTYPE,Order_Type_____OOTYPE,OBJECT_OR_COLUMN,2
+mrs,z_Order_Detail_File_____OEDETAIL,Table,OEDETAIL,OEDETAIL,,Order_Detail_File,,196," 151,197 ",1,,OEDETAIL,z_Order_Detail_File_____OEDETAIL,OBJECT_OR_COLUMN,0
+mrs,z_Order_Detail_File_____OEDETAIL,Column,,OEDETAIL,ODCONT,,CONTRACT_NUMBER,,,3,CONTRACT_NUMBER_____ODCONT,ODCONT,CONTRACT_NUMBER_____ODCONT,OBJECT_OR_COLUMN,96
+mrs,z_Order_Detail_File_____OEDETAIL,Column,,OEDETAIL,ODCLIN,,CUSTOMER_LINE#,,,3,CUSTOMER_LINE#_____ODCLIN,ODCLIN,CUSTOMER_LINE#_____ODCLIN,OBJECT_OR_COLUMN,156
+mrs,z_Order_Detail_File_____OEDETAIL,Column,,OEDETAIL,ODCUST,,CUSTOMER_NUMBER,,,3,CUSTOMER_NUMBER_____ODCUST,ODCUST,CUSTOMER_NUMBER_____ODCUST,OBJECT_OR_COLUMN,8
+mrs,z_Order_Detail_File_____OEDETAIL,Column,,OEDETAIL,ODHEAT,,Heat_#,,,3,Heat_#_____ODHEAT,ODHEAT,Heat_#_____ODHEAT,OBJECT_OR_COLUMN,101
+mrs,z_Order_Detail_File_____OEDETAIL,Column,,OEDETAIL,ODTYPE,,Order_Type,,,3,Order_Type_____ODTYPE,ODTYPE,Order_Type_____ODTYPE,OBJECT_OR_COLUMN,2
+mrs,z_Order_Detail_File_____OEDETAIL,Column,,OEDETAIL,ODSHAP,,Shape,,,3,Shape_____ODSHAP,ODSHAP,Shape_____ODSHAP,OBJECT_OR_COLUMN,79
+mrs,z_Order_Profile_File_____OEPROFIL,Column,,OEPROFIL,OPBOL,,BILL_OF_LADING,,,,BILL_OF_LADING_____OPBOL,OPBOL,BILL_OF_LADING_____OPBOL,OBJECT_OR_COLUMN,69
+mrs,z_Order_Profile_File_____OEPROFIL,Column,,OEPROFIL,OPFRTO,,FREIGHT_TO,,,,FREIGHT_TO_____OPFRTO,OPFRTO,FREIGHT_TO_____OPFRTO,OBJECT_OR_COLUMN,25
+mrs,z_Order_Tracking_File_____ORDTRCK,Table,ORDTRCK,ORDTRCK,,Order_Tracking_File,,14," 151,122 ",,,ORDTRCK,z_Order_Tracking_File_____ORDTRCK,OBJECT_OR_COLUMN,0
+mrs,z_Order_Tracking_File_____ORDTRCK,Column,,ORDTRCK,OTCDIS,,Cust_District_#,,,,Cust_District_#_____OTCDIS,OTCDIS,Cust_District_#_____OTCDIS,OBJECT_OR_COLUMN,7
+mrs,z_Order_Tracking_File_____ORDTRCK,Column,,ORDTRCK,OTCUST,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____OTCUST,OTCUST,CUSTOMER_NUMBER_____OTCUST,OBJECT_OR_COLUMN,8
+mrs,z_Order_Tracking_File_____ORDTRCK,Column,,ORDTRCK,OTORDR,,ORDER_NUMBER,,,,ORDER_NUMBER_____OTORDR,OTORDR,ORDER_NUMBER_____OTORDR,OBJECT_OR_COLUMN,5
+mrs,z_Order_Tracking_File_____ORDTRHST,Table,ORDTRHST,ORDTRHST,,Order_Tracking_File,,22," 2,839,749 ",,,ORDTRHST,z_Order_Tracking_File_____ORDTRHST,OBJECT_OR_COLUMN,0
+mrs,z_Order_Tracking_File_____ORDTRHST,Column,,ORDTRHST,OTTMSP,,,,,,_____OTTMSP,OTTMSP,_____OTTMSP,OBJECT_OR_COLUMN,22
+mrs,z_Order_Tracking_File_____ORDTRHST,Column,,ORDTRHST,OTHCOM,,Comment,,,,Comment_____OTHCOM,OTHCOM,Comment_____OTHCOM,OBJECT_OR_COLUMN,19
+mrs,z_Order_Tracking_File_____ORDTRHST,Column,,ORDTRHST,OTHORD,,ORDER_NUMBER,,,,ORDER_NUMBER_____OTHORD,OTHORD,ORDER_NUMBER_____OTHORD,OBJECT_OR_COLUMN,4
+mrs,z_PO_Company_SMO_File_____POCMPSMO,Table,POCMPSMO,POCMPSMO,,PO_Company_SMO_File,,14," 45,486 ",2,,POCMPSMO,z_PO_Company_SMO_File_____POCMPSMO,OBJECT_OR_COLUMN,0
+mrs,z_PO_Company_SMO_File_____POCMPSMO,Column,,POCMPSMO,P4COMM,,Comment,,,,Comment_____P4COMM,P4COMM,Comment_____P4COMM,OBJECT_OR_COLUMN,7
+mrs,z_PO_Company_SMO_File_____POCMPSMO,Column,,POCMPSMO,P4DIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____P4DIST,P4DIST,DISTRICT_NUMBER_____P4DIST,OBJECT_OR_COLUMN,2
+mrs,z_PO_Delivery_Date_Change_Log_____POCHGLOG,Table,POCHGLOG,POCHGLOG,,PO_Delivery_Date_Change_Log,,19," 4,558 ",2,,POCHGLOG,z_PO_Delivery_Date_Change_Log_____POCHGLOG,OBJECT_OR_COLUMN,0
+mrs,z_PO_Delivery_Date_Change_Log_____POCHGLOG,Column,,POCHGLOG,LGDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____LGDIST,LGDIST,DISTRICT_NUMBER_____LGDIST,OBJECT_OR_COLUMN,3
+mrs,z_PO_Tracking_File_____POTRCK,Table,POTRCK,POTRCK,,PO_Tracking_File,,14," 17,258 ",2,,POTRCK,z_PO_Tracking_File_____POTRCK,OBJECT_OR_COLUMN,0
+mrs,z_PO_Tracking_File_____POTRCK,Column,,POTRCK,PTCDIS,,Cust_District_#,,,3,Cust_District_#_____PTCDIS,PTCDIS,Cust_District_#_____PTCDIS,OBJECT_OR_COLUMN,7
+mrs,z_PO_Tracking_File_____POTRCK,Column,,POTRCK,PTCUST,,CUSTOMER_NUMBER,,,3,CUSTOMER_NUMBER_____PTCUST,PTCUST,CUSTOMER_NUMBER_____PTCUST,OBJECT_OR_COLUMN,8
+mrs,z_PO_Tracking_File_____POTRCK,Column,,POTRCK,PTLINE,,Line_#,,,3,Line_#_____PTLINE,PTLINE,Line_#_____PTLINE,OBJECT_OR_COLUMN,5
+mrs,z_PO_Tracking_History_File_____POTRKHST,Table,POTRKHST,POTRKHST,,PO_Tracking_History_File,,21," 112,121 ",2,,POTRKHST,z_PO_Tracking_History_File_____POTRKHST,OBJECT_OR_COLUMN,0
+mrs,z_PO_Tracking_History_File_____POTRKHST,Column,,POTRKHST,PTHCOM,,Comment,,,3,Comment_____PTHCOM,PTHCOM,Comment_____PTHCOM,OBJECT_OR_COLUMN,19
+mrs,z_PO_Tracking_History_File_____POTRKHST,Column,,POTRKHST,PTHDST,,District_#,,,3,District_#_____PTHDST,PTHDST,District_#_____PTHDST,OBJECT_OR_COLUMN,2
+mrs,z_PO_Tracking_History_File_____POTRKHST,Column,,POTRKHST,PTHLIN,,Line_#,,,3,Line_#_____PTHLIN,PTHLIN,Line_#_____PTHLIN,OBJECT_OR_COLUMN,4
+mrs,z_Posting_Period_File_____POSTPRD,Table,POSTPRD,POSTPRD,,Posting_Period_File,,14, 9 ,,,POSTPRD,z_Posting_Period_File_____POSTPRD,OBJECT_OR_COLUMN,0
+mrs,z_Posting_Period_File_____POSTPRD,Column,,POSTPRD,PPDIST,,District,,,,District_____PPDIST,PPDIST,District_____PPDIST,OBJECT_OR_COLUMN,3
+mrs,z_Process_Charges__-_Dimensions_____PRCTDIM,Table,PRCTDIM,PRCTDIM,,Process_Charges__-_Dimensions,,18, 32 ,,,PRCTDIM,z_Process_Charges__-_Dimensions_____PRCTDIM,OBJECT_OR_COLUMN,0
+mrs,z_Process_Charges__-_Dimensions_____PRCTDIM,Column,,PRCTDIM,PDITEM,,Item,,,,Item_____PDITEM,PDITEM,Item_____PDITEM,OBJECT_OR_COLUMN,18
+mrs,z_Process_Charges__-_Dimensions_____PRCTDIM,Column,,PRCTDIM,PDODST,,ORDER_DISTRICT,,,,ORDER_DISTRICT_____PDODST,PDODST,ORDER_DISTRICT_____PDODST,OBJECT_OR_COLUMN,2
+mrs,z_Process_Charges__-_Dimensions_____PRCTDIM,Column,,PRCTDIM,PDORDR,,ORDER_NUMBER,,,,ORDER_NUMBER_____PDORDR,PDORDR,ORDER_NUMBER_____PDORDR,OBJECT_OR_COLUMN,3
+mrs,z_Process_Charges__-_Header_____PRCHCHRG,Table,PRCHCHRG,PRCHCHRG,,Process_Charges__-_Header,,32," 38,817 ",,,PRCHCHRG,z_Process_Charges__-_Header_____PRCHCHRG,OBJECT_OR_COLUMN,0
+mrs,z_Process_Charges__-_Header_____PRCHCHRG,Column,,PRCHCHRG,PJODST,,ORDER_DISTRICT,,,,ORDER_DISTRICT_____PJODST,PJODST,ORDER_DISTRICT_____PJODST,OBJECT_OR_COLUMN,3
+mrs,z_Process_Charges__-_Header_____PRCHCHRG,Column,,PRCHCHRG,PJORDR,,ORDER_NUMBER,,,,ORDER_NUMBER_____PJORDR,PJORDR,ORDER_NUMBER_____PJORDR,OBJECT_OR_COLUMN,4
+mrs,z_Process_Charges__-_Transactions_____PRCTCHRG,Table,PRCTCHRG,PRCTCHRG,,Process_Charges__-_Transactions,,106," 68,507 ",2,,PRCTCHRG,z_Process_Charges__-_Transactions_____PRCTCHRG,OBJECT_OR_COLUMN,0
+mrs,z_Process_Charges__-_Transactions_____PRCTCHRG,Column,,PRCTCHRG,PKODST,,ORDER_DISTRICT,,,3,ORDER_DISTRICT_____PKODST,PKODST,ORDER_DISTRICT_____PKODST,OBJECT_OR_COLUMN,3
+mrs,z_Process_Charges__-_Transactions_____PRCTCHRG,Column,,PRCTCHRG,PKORDR,,ORDER_NUMBER,,,3,ORDER_NUMBER_____PKORDR,PKORDR,ORDER_NUMBER_____PKORDR,OBJECT_OR_COLUMN,4
+mrs,z_Purchase_Order_Comment_File_(Whole_Order)_____POCOMMNT,Table,POCOMMNT,POCOMMNT,,Purchase_Order_Comment_File_(Whole_Order),,12, 558 ,,,POCOMMNT,z_Purchase_Order_Comment_File_(Whole_Order)_____POCOMMNT,OBJECT_OR_COLUMN,0
+mrs,z_Purchase_Order_Detail_File_____PODETAIL,Table,PODETAIL,PODETAIL,,Purchase_Order_Detail_File,,164," 4,995 ",1,,PODETAIL,z_Purchase_Order_Detail_File_____PODETAIL,OBJECT_OR_COLUMN,0
+mrs,z_Purchase_Order_Detail_File_____PODETAIL,Column,,PODETAIL,BDBOL,,Bill_of_Lading,,,,Bill_of_Lading_____BDBOL,BDBOL,Bill_of_Lading_____BDBOL,OBJECT_OR_COLUMN,109
+mrs,z_Purchase_Order_Detail_File_____PODETAIL,Column,,PODETAIL,BDCSMO,,Company_SMO,,,,Company_SMO_____BDCSMO,BDCSMO,Company_SMO_____BDCSMO,OBJECT_OR_COLUMN,22
+mrs,z_Purchase_Order_Detail_File_____PODETAIL,Column,,PODETAIL,BDCUST,,CUSTOMER_NUMBER,,,3,CUSTOMER_NUMBER_____BDCUST,BDCUST,CUSTOMER_NUMBER_____BDCUST,OBJECT_OR_COLUMN,59
+mrs,z_Purchase_Order_Detail_File_____PODETAIL,Column,,PODETAIL,BDDIST,,DISTRICT_NUMBER,,,3,DISTRICT_NUMBER_____BDDIST,BDDIST,DISTRICT_NUMBER_____BDDIST,OBJECT_OR_COLUMN,2
+mrs,z_Purchase_Order_Detail_File_____PODETAIL,Column,,PODETAIL,BDFLG3,,Flag,,,3,Flag_____BDFLG3,BDFLG3,Flag_____BDFLG3,OBJECT_OR_COLUMN,163
+mrs,z_Purchase_Order_Detail_File_____PODETAIL,Column,,PODETAIL,BDFLG4,,Flag,,,3,Flag_____BDFLG4,BDFLG4,Flag_____BDFLG4,OBJECT_OR_COLUMN,164
+mrs,z_Purchase_Order_Detail_File_____PODETAIL,Column,,PODETAIL,BDFRV,,Freight_Vendor_Number,,,,Freight_Vendor_Number_____BDFRV,BDFRV,Freight_Vendor_Number_____BDFRV,OBJECT_OR_COLUMN,108
+mrs,z_Purchase_Order_Header_File_____POHEADER,Table,POHEADER,POHEADER,,Purchase_Order_Header_File,,102," 5,022 ",1,,POHEADER,z_Purchase_Order_Header_File_____POHEADER,OBJECT_OR_COLUMN,0
+mrs,z_Purchase_Order_Header_File_____POHEADER,Column,,POHEADER,BHCUS#,,CUSTOMER_NUMBER,,,3,CUSTOMER_NUMBER_____BHCUS#,BHCUS#,CUSTOMER_NUMBER_____BHCUS#,OBJECT_OR_COLUMN,36
+mrs,z_Purchase_Order_Header_File_____POHEADER,Column,,POHEADER,BHCUD#,,DISTRICT_NUMBER,,,3,DISTRICT_NUMBER_____BHCUD#,BHCUD#,DISTRICT_NUMBER_____BHCUD#,OBJECT_OR_COLUMN,35
+mrs,z_Purchase_Order_Header_File_____POHEADER,Column,,POHEADER,BHDIST,,DISTRICT_NUMBER,,,3,DISTRICT_NUMBER_____BHDIST,BHDIST,DISTRICT_NUMBER_____BHDIST,OBJECT_OR_COLUMN,2
+mrs,z_Purchase_Order_Header_File_____POHEADERBH,Table,POHEADERBH,POHEADERBH,,Purchase_Order_Header_File,,101, 743 ,,,POHEADERBH,z_Purchase_Order_Header_File_____POHEADERBH,OBJECT_OR_COLUMN,0
+mrs,z_Purchase_Order_Header_File_____POHEADERBH,Column,,POHEADERBH,BHCUS#,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____BHCUS#,BHCUS#,CUSTOMER_NUMBER_____BHCUS#,OBJECT_OR_COLUMN,36
+mrs,z_Purchase_Order_Header_File_____POHEADERBH,Column,,POHEADERBH,BHCUD#,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____BHCUD#,BHCUD#,DISTRICT_NUMBER_____BHCUD#,OBJECT_OR_COLUMN,35
+mrs,z_Purchase_Order_Header_File_____POHEADERBH,Column,,POHEADERBH,BHDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____BHDIST,BHDIST,DISTRICT_NUMBER_____BHDIST,OBJECT_OR_COLUMN,2
+mrs,z_Purchase_Order_Receipt_History_____RCPTHIST,Column,,RCPTHIST,RCBTCH,,A/P_Batch,,,,A/P_Batch_____RCBTCH,RCBTCH,A/P_Batch_____RCBTCH,OBJECT_OR_COLUMN,57
+mrs,z_Purchase_Order_Receipt_History_____RCPTHIST,Column,,RCPTHIST,RCTRAN,,A/P_Tran,,,,A/P_Tran_____RCTRAN,RCTRAN,A/P_Tran_____RCTRAN,OBJECT_OR_COLUMN,58
+mrs,z_Purchase_Order_Receipt_History_____RCPTHIST,Column,,RCPTHIST,RCCTRY,,Country_Of_Origin,,,,Country_Of_Origin_____RCCTRY,RCCTRY,Country_Of_Origin_____RCCTRY,OBJECT_OR_COLUMN,56
+mrs,z_Query_Builder_Physical_File_____DPPFFD,Table,DPPFFD,DPPFFD,,Query_Builder_Physical_File,,8, 922 ,,,DPPFFD,z_Query_Builder_Physical_File_____DPPFFD,OBJECT_OR_COLUMN,0
+mrs,z_Query_Builder_Physical_File_____DPPFFD,Column,,DPPFFD,QBFDDS,,Description,,,,Description_____QBFDDS,QBFDDS,Description_____QBFDDS,OBJECT_OR_COLUMN,5
+mrs,z_Quote_/_Order_Detail_History_File_____OEHISTRD,Table,OEHISTRD,OEHISTRD,,Quote_/_Order_Detail_History_File,,89," 293,526 ",,,OEHISTRD,z_Quote_/_Order_Detail_History_File_____OEHISTRD,OBJECT_OR_COLUMN,0
+mrs,z_Quote_/_Order_Detail_History_File_____OEHISTRD,Column,,OEHISTRD,DHCUST,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____DHCUST,DHCUST,CUSTOMER_NUMBER_____DHCUST,OBJECT_OR_COLUMN,10
+mrs,z_Quote_/_Order_Detail_History_File_____OEHISTRD,Column,,OEHISTRD,DHDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____DHDIST,DHDIST,DISTRICT_NUMBER_____DHDIST,OBJECT_OR_COLUMN,3
+mrs,z_Quote_/_Order_Detail_History_File_____OEHISTRD,Column,,OEHISTRD,DHTYPE,,ORDER_TYPE,,,,ORDER_TYPE_____DHTYPE,DHTYPE,ORDER_TYPE_____DHTYPE,OBJECT_OR_COLUMN,2
+mrs,z_Quote_/_Order_Detail_History_File_____OEHISTRD,Column,,OEHISTRD,DHSHAP,,Shape,,,,Shape_____DHSHAP,DHSHAP,Shape_____DHSHAP,OBJECT_OR_COLUMN,61
+mrs,z_Quote_/_Order_History_Header_File_____OEHISTRY,Table,OEHISTRY,OEHISTRY,,Quote_/_Order_History_Header_File,,86," 299,266 ",,,OEHISTRY,z_Quote_/_Order_History_Header_File_____OEHISTRY,OBJECT_OR_COLUMN,0
+mrs,z_Quote_/_Order_History_Header_File_____OEHISTRY,Column,,OEHISTRY,OHCUST,,Customer_Number,,,,Customer_Number_____OHCUST,OHCUST,Customer_Number_____OHCUST,OBJECT_OR_COLUMN,8
+mrs,z_Quote_/_Order_History_Header_File_____OEHISTRY,Column,,OEHISTRY,OHBODI,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____OHBODI,OHBODI,DISTRICT_NUMBER_____OHBODI,OBJECT_OR_COLUMN,76
+mrs,z_Quote_/_Order_History_Header_File_____OEHISTRY,Column,,OEHISTRY,OHGMPC,,GROSS_MARGIN_%,,,,GROSS_MARGIN_%_____OHGMPC,OHGMPC,GROSS_MARGIN_%_____OHGMPC,OBJECT_OR_COLUMN,48
+mrs,z_Quote_/_Order_History_Header_File_____OEHISTRY,Column,,OEHISTRY,OHORDR,,Order_Number,,,,Order_Number_____OHORDR,OHORDR,Order_Number_____OHORDR,OBJECT_OR_COLUMN,4
+mrs,z_Rcptcost_-_PO_receipt_cost_history_____RCPTCOST,Column,,RCPTCOST,ATBOL,,Bill_of_Lading,,,,Bill_of_Lading_____ATBOL,ATBOL,Bill_of_Lading_____ATBOL,OBJECT_OR_COLUMN,19
+mrs,z_S/A_Item_Summary_MTD-Inventory_reports_____SLSASMT,Table,SLSASMT,SLSASMT,,S/A_Item_Summary_MTD-Inventory_reports,,47," 58,136 ",,,SLSASMT,z_S/A_Item_Summary_MTD-Inventory_reports_____SLSASMT,OBJECT_OR_COLUMN,0
+mrs,z_S/A_Item_Summary_MTD-Inventory_reports_____SLSASMT,Column,,SLSASMT,MODIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____MODIST,MODIST,DISTRICT_NUMBER_____MODIST,OBJECT_OR_COLUMN,4
+mrs,z_S/A_Item_Summary_YTD-Inventory_reports_____SLSASYT,Table,SLSASYT,SLSASYT,,S/A_Item_Summary_YTD-Inventory_reports,,46," 10,704 ",,,SLSASYT,z_S/A_Item_Summary_YTD-Inventory_reports_____SLSASYT,OBJECT_OR_COLUMN,0
+mrs,z_S/A_Item_Summary_YTD-Inventory_reports_____SLSASYT,Column,,SLSASYT,YODIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____YODIST,YODIST,DISTRICT_NUMBER_____YODIST,OBJECT_OR_COLUMN,4
+mrs,z_Sales_Analysis_Daily_file_____SADAILY,Table,SADAILY,SADAILY,,Sales_Analysis_Daily_file,,25, 5 ,,,SADAILY,z_Sales_Analysis_Daily_file_____SADAILY,OBJECT_OR_COLUMN,0
+mrs,z_Sales_Analysis_Daily_file_____SADAILY,Column,,SADAILY,AYDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____AYDIST,AYDIST,DISTRICT_NUMBER_____AYDIST,OBJECT_OR_COLUMN,3
+mrs,z_Sales_Analysis_Daily_file_____SADAILY,Column,,SADAILY,AYGPC,,Gross_Prof_%_Stk,,,,Gross_Prof_%_Stk_____AYGPC,AYGPC,Gross_Prof_%_Stk_____AYGPC,OBJECT_OR_COLUMN,11
+mrs,z_Sales_Analysis_Daily_file_____SADAILY,Column,,SADAILY,AYOGPC,,Gross_Prof_%_Stk,,,,Gross_Prof_%_Stk_____AYOGPC,AYOGPC,Gross_Prof_%_Stk_____AYOGPC,OBJECT_OR_COLUMN,23
+mrs,z_Sales_Analysis_Monthly_file_____SAMTHLY,Table,SAMTHLY,SAMTHLY,,Sales_Analysis_Monthly_file,,242, 312 ,,,SAMTHLY,z_Sales_Analysis_Monthly_file_____SAMTHLY,OBJECT_OR_COLUMN,0
+mrs,z_Sales_Analysis_Monthly_file_____SAMTHLY,Column,,SAMTHLY,AMDIST,,District,,,,District_____AMDIST,AMDIST,District_____AMDIST,OBJECT_OR_COLUMN,3
+mrs,z_Sales_Analysis_Monthly_file_____SAMTHLY,Column,,SAMTHLY,AMGDP1,,Gross_Profit_%_Dir,,,,Gross_Profit_%_Dir_____AMGDP1,AMGDP1,Gross_Profit_%_Dir_____AMGDP1,OBJECT_OR_COLUMN,16
+mrs,z_Sales_Analysis_Monthly_file_____SAMTHLY,Column,,SAMTHLY,AMGSP1,,Gross_Profit_%_Stk,,,,Gross_Profit_%_Stk_____AMGSP1,AMGSP1,Gross_Profit_%_Stk_____AMGSP1,OBJECT_OR_COLUMN,15
+mrs,z_Sales_Description_Override_____SLSDSCOV,Table,SLSDSCOV,SLSDSCOV,,Sales_Description_Override,,16," 165,282 ",1,,SLSDSCOV,z_Sales_Description_Override_____SLSDSCOV,OBJECT_OR_COLUMN,0
+mrs,z_Sales_Description_Override_____SLSDSCOV,Column,,SLSDSCOV,DXTRNT,,Order_Type,,,3,Order_Type_____DXTRNT,DXTRNT,Order_Type_____DXTRNT,OBJECT_OR_COLUMN,3
+mrs,z_Sales_Description_Override_____SLSDSCOV,Column,,SLSDSCOV,DXTYPE,,Order_Type,,,3,Order_Type_____DXTYPE,DXTYPE,Order_Type_____DXTYPE,OBJECT_OR_COLUMN,2
+mrs,z_Salesman_Master_File_____SALESMAN,Table,SALESMAN,SALESMAN,,Salesman_Master_File,,27, 36 ,1,,SALESMAN,z_Salesman_Master_File_____SALESMAN,OBJECT_OR_COLUMN,0
+mrs,z_Salesman_Recap_-_Calc_d_Sales_Figures_(Workfile)_____SLMNRCAP,Column,,SLMNRCAP,SXGM,,Gross_Margin$,,,,Gross_Margin$_____SXGM,SXGM,Gross_Margin$_____SXGM,OBJECT_OR_COLUMN,7
+mrs,z_Salesman_Recap_-_Calc_d_Sales_Figures_(Workfile)_____SLMNRCAP,Column,,SLMNRCAP,SXGP,,Gross_Profit$,,,,Gross_Profit$_____SXGP,SXGP,Gross_Profit$_____SXGP,OBJECT_OR_COLUMN,11
+mrs,z_Salesman_Recap_-_Calc_d_Sales_Figures_(Workfile)_____SLMNRCAP,Column,,SLMNRCAP,SXGP#,,Gross_Profit%,,,,Gross_Profit%_____SXGP#,SXGP#,Gross_Profit%_____SXGP#,OBJECT_OR_COLUMN,12
+mrs,z_Salesman_Summary_file_MTD_____SLMNSUM,Column,,SLMNSUM,SNFICS,,Frt_In_Cost,,,,Frt_In_Cost_____SNFICS,SNFICS,Frt_In_Cost_____SNFICS,OBJECT_OR_COLUMN,15
+mrs,z_Salesman_Summary_file_MTD_____SLMNSUM,Column,,SLMNSUM,SNFOCS,,Frt_Out_Cost,,,,Frt_Out_Cost_____SNFOCS,SNFOCS,Frt_Out_Cost_____SNFOCS,OBJECT_OR_COLUMN,16
+mrs,z_Service_Purchase_Order_Detail_File_____SPDETAIL,Table,SPDETAIL,SPDETAIL,,Service_Purchase_Order_Detail_File,,10," 346,951 ",2,,SPDETAIL,z_Service_Purchase_Order_Detail_File_____SPDETAIL,OBJECT_OR_COLUMN,0
+mrs,z_Service_Purchase_Order_Detail_File_____SPDETAIL,Column,,SPDETAIL,BTDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____BTDIST,BTDIST,DISTRICT_NUMBER_____BTDIST,OBJECT_OR_COLUMN,4
+mrs,z_Service_Purchase_Order_Header_File_____SPHEADER,Table,SPHEADER,SPHEADER,,Service_Purchase_Order_Header_File,,71," 54,495 ",1,,SPHEADER,z_Service_Purchase_Order_Header_File_____SPHEADER,OBJECT_OR_COLUMN,0
+mrs,z_Service_Purchase_Order_Header_File_____SPHEADER,Column,,SPHEADER,BSCUS#,,CUSTOMER_NUMBER,,,3,CUSTOMER_NUMBER_____BSCUS#,BSCUS#,CUSTOMER_NUMBER_____BSCUS#,OBJECT_OR_COLUMN,32
+mrs,z_Service_Purchase_Order_Header_File_____SPHEADER,Column,,SPHEADER,BSCUD#,,DISTRICT_NUMBER,,,3,DISTRICT_NUMBER_____BSCUD#,BSCUD#,DISTRICT_NUMBER_____BSCUD#,OBJECT_OR_COLUMN,31
+mrs,z_Service_Purchase_Order_Header_File_____SPHEADER,Column,,SPHEADER,BSDIST,,DISTRICT_NUMBER,,,3,DISTRICT_NUMBER_____BSDIST,BSDIST,DISTRICT_NUMBER_____BSDIST,OBJECT_OR_COLUMN,4
+mrs,z_Service_Purchase_Order_Header_File_____SPHEADER,Column,,SPHEADER,BSTRAK,,Tracking_Code,,,3,Tracking_Code_____BSTRAK,BSTRAK,Tracking_Code_____BSTRAK,OBJECT_OR_COLUMN,48
+mrs,z_Shipment_Summary_File_____SHSUMM,Table,SHSUMM,SHSUMM,,Shipment_Summary_File,,43," 35,971 ",,,SHSUMM,z_Shipment_Summary_File_____SHSUMM,OBJECT_OR_COLUMN,0
+mrs,z_Shipment_Summary_File_____SHSUMM,Column,,SHSUMM,SUCUST,,Customer_Number,,,,Customer_Number_____SUCUST,SUCUST,Customer_Number_____SUCUST,OBJECT_OR_COLUMN,4
+mrs,z_Shipment_Summary_File_____SHSUMM,Column,,SHSUMM,SUDIST,,District,,,,District_____SUDIST,SUDIST,District_____SUDIST,OBJECT_OR_COLUMN,3
+mrs,z_Shipment_Summary_File_____SHSUMM,Column,,SHSUMM,SUFISD,,Freight-In_Cost_Direct,,,,Freight-In_Cost_Direct_____SUFISD,SUFISD,Freight-In_Cost_Direct_____SUFISD,OBJECT_OR_COLUMN,25
+mrs,z_Shipment_Summary_File_____SHSUMM,Column,,SHSUMM,SUFISS,,Freight-In_Cost_Stock,,,,Freight-In_Cost_Stock_____SUFISS,SUFISS,Freight-In_Cost_Stock_____SUFISS,OBJECT_OR_COLUMN,24
+mrs,z_Shipments_File_____SHIPMAST,Table,SHIPMAST,SHIPMAST,,Shipments_File,,128," 150,329 ",1,,SHIPMAST,z_Shipments_File_____SHIPMAST,OBJECT_OR_COLUMN,0
+mrs,z_Shipments_File_____SHIPMAST,Column,,SHIPMAST,SHCORD,,Cust_P/O#,,,,Cust_P/O#_____SHCORD,SHCORD,Cust_P/O#_____SHCORD,OBJECT_OR_COLUMN,5
+mrs,z_Shipments_File_____SHIPMAST,Column,,SHIPMAST,SHCUST,,CUSTOMER_NUMBER,,,3,CUSTOMER_NUMBER_____SHCUST,SHCUST,CUSTOMER_NUMBER_____SHCUST,OBJECT_OR_COLUMN,41
+mrs,z_Shipments_File_____SHIPMAST,Column,,SHIPMAST,SHDIST,,DISTRICT_NUMBER,,,3,DISTRICT_NUMBER_____SHDIST,SHDIST,DISTRICT_NUMBER_____SHDIST,OBJECT_OR_COLUMN,3
+mrs,z_Shipments_File_____SHIPMAST,Column,,SHIPMAST,SHFISD,,Freight-In_Cost_Direct,,,,Freight-In_Cost_Direct_____SHFISD,SHFISD,Freight-In_Cost_Direct_____SHFISD,OBJECT_OR_COLUMN,70
+mrs,z_Shipments_File_____SHIPMAST,Column,,SHIPMAST,SHFISS,,Freight-In_Cost_Stock,,,,Freight-In_Cost_Stock_____SHFISS,SHFISS,Freight-In_Cost_Stock_____SHFISS,OBJECT_OR_COLUMN,69
+mrs,z_Shipments_File_____SHIPMAST,Column,,SHIPMAST,SHFSLD,,Frght_Sales_Direct,,,,Frght_Sales_Direct_____SHFSLD,SHFSLD,Frght_Sales_Direct_____SHFSLD,OBJECT_OR_COLUMN,60
+mrs,z_Shipments_File_____SHIPMAST,Column,,SHIPMAST,SHFSLS,,Frght_Sales_Stock,,,,Frght_Sales_Stock_____SHFSLS,SHFSLS,Frght_Sales_Stock_____SHFSLS,OBJECT_OR_COLUMN,59
+mrs,z_Shipments_File_____SHIPMAST,Column,,SHIPMAST,SHSHAP,,Shape,,,3,Shape_____SHSHAP,SHSHAP,Shape_____SHSHAP,OBJECT_OR_COLUMN,20
+mrs,z_ShipTo_Dispatch_info_____SHIPDISP,Table,SHIPDISP,SHIPDISP,,ShipTo_Dispatch_info,,31, 658 ,,,SHIPDISP,z_ShipTo_Dispatch_info_____SHIPDISP,OBJECT_OR_COLUMN,0
+mrs,z_ShipTo_Dispatch_info_____SHIPDISP,Column,,SHIPDISP,SPCUST,,CUSTOMER_NUMBER,,,,CUSTOMER_NUMBER_____SPCUST,SPCUST,CUSTOMER_NUMBER_____SPCUST,OBJECT_OR_COLUMN,2
+mrs,z_ShipTo_Dispatch_info_____SHIPDISP,Column,,SHIPDISP,SPDIST,,DISTRICT_NUMBER,,,,DISTRICT_NUMBER_____SPDIST,SPDIST,DISTRICT_NUMBER_____SPDIST,OBJECT_OR_COLUMN,1
+mrs,z_SPO_Tracking_File_____SPOTRCK,Table,SPOTRCK,SPOTRCK,,SPO_Tracking_File,,19," 385,026 ",3,,SPOTRCK,z_SPO_Tracking_File_____SPOTRCK,OBJECT_OR_COLUMN,0
+mrs,z_SPO_Tracking_File_____SPOTRCK,Column,,SPOTRCK,SPHCOM,,Comment,,,3,Comment_____SPHCOM,SPHCOM,Comment_____SPHCOM,OBJECT_OR_COLUMN,15
+mrs,z_SPO_Tracking_File_____SPOTRCK,Column,,SPOTRCK,SPORDR,,ORDER_NUMBER,,,3,ORDER_NUMBER_____SPORDR,SPORDR,ORDER_NUMBER_____SPORDR,OBJECT_OR_COLUMN,4
+mrs,z_Tag_Master_File_____ITEMTAG,Table,ITEMTAG,ITEMTAG,,Tag_Master_File,,183," 289,020 ",1,,ITEMTAG,z_Tag_Master_File_____ITEMTAG,OBJECT_OR_COLUMN,0
+mrs,z_Tag_Master_File_____ITEMTAG,Column,,ITEMTAG,ITFLG4,,,,,3,_____ITFLG4,ITFLG4,_____ITFLG4,OBJECT_OR_COLUMN,179
+mrs,z_Tag_Master_File_____ITEMTAG,Column,,ITEMTAG,ITFLG5,,,,,3,_____ITFLG5,ITFLG5,_____ITFLG5,OBJECT_OR_COLUMN,180
+mrs,z_Tag_Master_File_____ITEMTAG,Column,,ITEMTAG,ITCUST,,A/R_Cust#,,,3,A/R_Cust#_____ITCUST,ITCUST,A/R_Cust#_____ITCUST,OBJECT_OR_COLUMN,34
+mrs,z_Tag_Master_File_____ITEMTAG,Column,,ITEMTAG,ITCTAG,,A/R_Cust_TAG#,,,3,A/R_Cust_TAG#_____ITCTAG,ITCTAG,A/R_Cust_TAG#_____ITCTAG,OBJECT_OR_COLUMN,35
+mrs,z_Tag_Master_File_____ITEMTAG,Column,,ITEMTAG,ITCDIS,,Cust_Dist,,,3,Cust_Dist_____ITCDIS,ITCDIS,Cust_Dist_____ITCDIS,OBJECT_OR_COLUMN,33
+mrs,z_Tag_Master_File_____ITEMTAG,Column,,ITEMTAG,ITCPRT,,Cust_part#,,,3,Cust_part#_____ITCPRT,ITCPRT,Cust_part#_____ITCPRT,OBJECT_OR_COLUMN,172
+mrs,z_Tag_Master_File_____ITEMTAG,Column,,ITEMTAG,ITDIST,,DISTRICT_NUMBER,,,3,DISTRICT_NUMBER_____ITDIST,ITDIST,DISTRICT_NUMBER_____ITDIST,OBJECT_OR_COLUMN,2
+mrs,z_Tag_Master_File_____ITEMTAG,Column,,ITEMTAG,ITPRNT,,Flag,,,3,Flag_____ITPRNT,ITPRNT,Flag_____ITPRNT,OBJECT_OR_COLUMN,168
+mrs,z_Tag_Master_File_____ITEMTAG,Column,,ITEMTAG,ITHEAT,,Heat_#,,,3,Heat_#_____ITHEAT,ITHEAT,Heat_#_____ITHEAT,OBJECT_OR_COLUMN,51
+mrs,z_Tag_Master_File_____ITEMTAG,Column,,ITEMTAG,ITMLIN,,Main_Line#,,,3,Main_Line#_____ITMLIN,ITMLIN,Main_Line#_____ITMLIN,OBJECT_OR_COLUMN,75
+mrs,z_Tag_Master_File_____ITEMTAG,Column,,ITEMTAG,ITSHAP,,Shape,,,3,Shape_____ITSHAP,ITSHAP,Shape_____ITSHAP,OBJECT_OR_COLUMN,61
+mrs,z_Tag_Process_History_File_____ITEMTPHS,Column,,ITEMTPHS,TPULIN,,Used_Line_Number,,,,Used_Line_Number_____TPULIN,TPULIN,Used_Line_Number_____TPULIN,OBJECT_OR_COLUMN,11
+mrs,z_Three_Position_Item_Class_File_____ITEMCLS3,Column,,ITEMCLS3,I3CSMO,,Company_SMO,,,,Company_SMO_____I3CSMO,I3CSMO,Company_SMO_____I3CSMO,OBJECT_OR_COLUMN,16
+mrs,z_Vendor_Master_File_____APVEND,Table,APVEND,APVEND,,Vendor_Master_File,,92, 730 ,1,,APVEND,z_Vendor_Master_File_____APVEND,OBJECT_OR_COLUMN,0
+mrs,z_Vendor_Master_File_____APVEND,Column,,APVEND,VFLAG3,,,,,3,_____VFLAG3,VFLAG3,_____VFLAG3,OBJECT_OR_COLUMN,82
+mrs,z_Vendor_Master_File_____APVEND,Column,,APVEND,VFLAG5,,,,,3,_____VFLAG5,VFLAG5,_____VFLAG5,OBJECT_OR_COLUMN,91
+mrs,z_Vendor_Master_File_____APVEND,Column,,APVEND,VFLAG6,,,,,3,_____VFLAG6,VFLAG6,_____VFLAG6,OBJECT_OR_COLUMN,92
+mrs,z_Vendor_Master_File_____APVEND,Column,,APVEND,VCCUST,,A/R_Customer_Number,,,3,A/R_Customer_Number_____VCCUST,VCCUST,A/R_Customer_Number_____VCCUST,OBJECT_OR_COLUMN,57
+mrs,z_Vendor_Master_File_____APVEND,Column,,APVEND,VCUST,,A/R_Customer_Number,,,3,A/R_Customer_Number_____VCUST,VCUST,A/R_Customer_Number_____VCUST,OBJECT_OR_COLUMN,84
+mrs,z_Vendor_Request_Header_File_____VNDREQHD,Column,,VNDREQHD,V10SMO,,Company_SMO,,,,Company_SMO_____V10SMO,V10SMO,Company_SMO_____V10SMO,OBJECT_OR_COLUMN,4
+mrs,z_Vendor_Ship_To_Address_File_____VENDSHIP,Column,,VENDSHIP,VSFRTO,,Freight_To,,,,Freight_To_____VSFRTO,VSFRTO,Freight_To_____VSFRTO,OBJECT_OR_COLUMN,29
