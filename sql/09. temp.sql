@@ -29,26 +29,3 @@ DECLARE @myVarOutputSQL NVARCHAR(MAX);
 set @myvarInputSQL = 'SELECT [SPHEADER].[BSREC] FROM [SPHEADER]'
 EXEC [mrs].[usp_TranslateSQLQuery] @p_InputQuery = @myVarInputSQL, @p_TranslatedQuery = @myVarOutputSQL OUTPUT;
 print @myVarOutputSQL
-
-
-
-
-
-
-
--- See which tables have been processed
-SELECT 
-    SchemaName + '.' + TableName AS TableName,
-    COUNT(ColumnName) AS ColumnsAnalyzed,
-    MAX(AnalysisTime) AS LastAnalyzed
-FROM mrs.PK_Analysis_Results
-GROUP BY SchemaName, TableName
-ORDER BY LastAnalyzed DESC;
-
--- See progress count
-SELECT 
-    COUNT(DISTINCT SchemaName + '.' + TableName) AS TablesProcessed,
-    (SELECT COUNT(*) FROM sys.tables WHERE is_ms_shipped = 0) AS TotalTables,
-    CAST(COUNT(DISTINCT SchemaName + '.' + TableName) * 100.0 / 
-         (SELECT COUNT(*) FROM sys.tables WHERE is_ms_shipped = 0) AS DECIMAL(5,2)) AS PercentComplete
-FROM mrs.PK_Analysis_Results;

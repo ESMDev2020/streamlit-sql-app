@@ -134,48 +134,6 @@ EXEC my_sp_getXPfromObjects                     --old
     @translated_query NVARCHAR(MAX) OUTPUT
 
 USE Sigmatb;
-EXEC mrs.usp_TranslateName @InputName = 'ARCUST'
+EXEC mrs.usp_TranslateName @InputName = 'SPHEADER'
 
 select top(10) * from [mrs].[01_AS400_MSSQL_Equivalents]
-
-
-/****************************************************************
-GET EXTENDED PROPERTIES
-*****************************************************************/
-        -- =============================================
-        -- Usage Examples:
-        -- =============================================
-
-        -- Example 1: Get extended properties for ALL tables/views and their columns in the database
-        EXEC mrs.usp_GetExtendedProperties;
-
-        -- Example 2: Get extended properties for a specific table ('YourTableName')
-        --            This includes properties defined on the table itself AND on all of its columns.
-        
-        /*
-
-/*
--- Example 3: Run Delete Mode for schema 'mrs', pattern 'z_%' (Debug OFF)
--- WARNING: This will delete properties! Review the pattern carefully.
-
-GO
-*/
-
-        -- coooool
-        EXEC mrs.UpdateExtendedPropertiesForZTables @OperationMode = 0, @SchemaName = 'mrs', @TableNamePattern = 'z_%', @DebugMode = 0; --DELETE
-        EXEC mrs.UpdateExtendedPropertiesForZTables @DebugMode = 0                                                                      --UPDATE
-        EXEC mrs.usp_GetExtendedProperties;                                                                                          --VERIFIES ALL TABLES
-        EXEC mrs.usp_GetExtendedProperties @TableName = 'z_Item_Master_File_____ITEMMAST';                                              --VERIFIES 1 TABLE
-        EXEC mrs.usp_GetExtendedProperties @TableName = 'z_Item_Master_File_____ITEMMAST', @ColumnName = 'PSI_=_PER_SQUARE_INCH_PLI_=_PER_LINEAR_INCH_"___"=_____IMWUOM';   --VERIFIES 1 COLUMN
-
-        USE Sigmatb;
-        EXEC mrs.usp_TranslateName @InputName = 'ARCUST'    --no
-        DECLARE @TranslatedName NVARCHAR(MAX), @ContextTableName NVARCHAR(MAX), @InputName NVARCHAR(MAX); SET @InputName = 'ITEMHIST'; SET @ContextTableName = NULL; EXEC mrs.usp_TranslateObjectName @InputName = @InputName, @ContextTableName = @ContextTableName, @TranslatedName = @TranslatedName OUTPUT; SELECT @TranslatedName;
-            --no
-
-        -- Example 4: (Invalid Use Case Test) Try to get properties for a column without specifying the table
-        --            This should raise the custom error defined in the procedure.
-        -- EXEC mrs.usp_GetExtendedProperties @ColumnName = 'YourColumnName';
-
-
-
