@@ -1,0 +1,11 @@
+﻿Summary,CustomerID,CustomerName,CreditLimit,InsideSalesmanID,SalesmanOneID,SalesmanName
+customer summary,101297,2K MACHINE WORKS INC               ,0,104,199,DAVID POPHAM   
+customer summary,100423,365 MACHINE INC                    ,0,104,199,DAVID POPHAM   
+customer summary,101399,3D DESIGN & MACHINING LLC          ,0,121,199,CHRIS SITKA    
+customer summary,101268,3D MANUFACTURING INC               ,200000,101,109,BEN HILTON     
+customer summary,100863,401KABLE LLC                       ,0,156,157,DARIO CAMACHO  
+customer summary,100778,A E MACHINE WORKS INC              ,20000,104,157,DAVID POPHAM   
+customer summary,100145,A R MACHINING INC                  ,0,199,199,HOUSE ACCOUNT  
+customer summary,101334,A&A MANUFACTURING                  ,0,112,157,SHAWN REYES    
+customer summary,100258,A&B VALVE AND PIPING SYSTEMS       ,0,199,199,HOUSE ACCOUNT  
+customer summary,101221,A&G WELDING SPECIALTY LLC          ,25000,108,157,LACEY CORTEZ   

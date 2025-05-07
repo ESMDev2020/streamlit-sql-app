@@ -1,4 +1,4 @@
-# Programming Learning Notes Classification
+﻿# Programming Learning Notes Classification
 
 ## 1. Programming Languages
 
@@ -218,8 +218,36 @@ STREAMLIT
     - Rerun         - runs code from the beginning (stupid, it should always do it)
 
 
+    
+SAVE GIT 
+git add .
+git commit -m "Your commit message"
+git push vssafe SigmaGit
 
+
+GITHUB
+My repository is SigmaTB_GitRepo
+    -1 branches
+        - SigmaBranch
+
+    LOCAL machine
+        Mac - SigmaTB_LocalRepo
+        
+
+   
+
+CURSOR APP FOR PROGRAMMING
+
+Print the names and values of an array in the debug console
+[print("\r\n".join(f"{k}: {v}" for k, v in item.items()) + "\r\n") for item in myListRelationships]
+
+terminal - pwd - local directory
+
+
+------------------------------------------------------------------
     NOTES FOR DOCUMENTATION
+------------------------------------------------------------------
+    
     
 1.- Documentation
 	Add comments describing what execution block does 
@@ -253,17 +281,122 @@ REARRANGING IN FUNCTIONS AND SUBPROCEDURES WNEN USING PYTON
 -----------------------
 WHEN USING SQL 
 - Add documentation at the beginning about the stored procedure
-- At the end add commented examples about how to use it
-- Add an input parameter @DebugMode. 1 means debug, 0 means "no debug". 
--      Debug means print progress of the SP. no debug means silent execution
-- No destructive functions should be included without advise (like drop tables)
-- When possible, use transactions, to roll back if errors occur
-- all table names, schema names, column names should be enclosed in []
-- have attention with the use of ";"
-- Do not use "rowcount" to name columns because causes an error
-- SQL Server version: 
-ServerName	FullServerName	InstanceName	CurrentLogin	CurrentDatabase	SystemUser	SessionUser	OriginalLogin	ClientIPAddress	ServerIPAddress	Protocol	AuthScheme	SQLVersion
-EC2AMAZ-7QANEJ3	EC2AMAZ-7QANEJ3	NULL	admin	SigmaTB	admin	admin	admin	150.252.244.140	172.31.90.187	TSQL	SQL	Microsoft SQL Server 2019 (RTM-CU31) (KB5049296) - 15.0.4420.2 (X64)   Jan 25 2025 12:20:14   Copyright (C) 2019 Microsoft Corporation  Standard Edition (64-bit) on Windows Server 2016 Datacenter 10.0 <X64> (Build 14393: ) (Hypervisor) 
+   - Name
+   - Description of functionality
+   - Input: Parameters
+   - Output: If any table or SP is created, list the names
+   - Whatever other detail, such as author, creation date, version, etc. 
+
+- Examples: 
+    - At the end add commented examples about how to use it
+- Examples: 
+    - At the end add commented an example of the resultset (column names, column values)
+- Debug: 
+    - Add an input parameter @DebugMode. 1 means debug, 0 means "no debug".    
+    - Debug means print progress of the SP. no debug means silent execution
+    - All the queries you execute must be stored into a variabe. On debug mode, you should print that variable in terminal
+- Data integrity
+  - No destructive functions should be included without advise (like drop tables)
+- Safety
+  - When possible, use transactions, to roll back if errors occur
+- Name conventions
+  - all table names, schema names, column names should be enclosed in []
+- Error avoidance
+    - have attention with the use of ";"
+    - Do not use "rowcount" to name columns because causes an error. Rowcount is a reserved word in SQL Server
+    - When creating cursors, have precaution to check if they exist before to avoid an error of "existing cursor "16915
+
+
+    --CONNECTION STRING
+        - # ────────────────────────────────────────────────────────────────────────────
+        # 📜 CONSTANTS (Defined directly in the main script)
+        # ────────────────────────────────────────────────────────────────────────────
+        myCon_strDbServer = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com"
+        myCon_strDbDatabase = "SigmaTB"
+        myCon_strDbUsername = "admin"
+        myCon_strDbPassword = "Er1c41234$" # !! Use secrets !!
+
+
+    - SERVER
+        - - Database: SigmaTB
+        - Schema: mrs
+        - SQL Server version: 
+        - ServerName	EC2AMAZ-7QANEJ3
+        - FullServerName	EC2AMAZ-7QANEJ3
+        - InstanceName	    NULL
+        - CurrentLogin	    admin
+        - CurrentDatabase	SigmaTB
+        - SystemUser	    admin
+        - SessionUser	    admin
+        - OriginalLogin	    admin
+        - ServerIPAddress	172.31.90.187
+        - Protocol	        TSQL
+        - AuthScheme	    SQL
+        - SQLVersionMicrosoft SQL Server 2019 (RTM-CU31) (KB5049296) - 15.0.4420.2 (X64)   Jan 25 2025 12:20:14   Copyright (C) 2019 Microsoft Corporation  Standard Edition (64-bit) on Windows Server 2016 Datacenter 10.0 <X64> (Build 14393: ) (Hypervisor) 
+			
+
+
+- LOCAL
+		ServerName:         STB-LT-ES
+		FullServerName:     STB-LT-ES
+		InstanceName:       NULL
+		CurrentUser:        dbo
+		CurrentDatabase:    master
+		SystemUser:         sa
+		SessionUser:        dbo
+		OriginalLogin:      sa
+		ServerIPAddress:    NULL
+		Protocol:           TSQL
+		AuthScheme:         SQL
+		SQLVersion:         Microsoft SQL Server 2019 (RTM) - 15.0.2000.5 (X64)  Sep 24 2019 13:48:23  Copyright (C) 2019 Microsoft Corporation  Developer Edition (64-bit) on Windows 10 Pro 10.0 <X64> (Build 22631: ) (Hypervisor)
+	
+     cd ~/Documents/GitHub/SigmaTB_LocalRepo
+        git init
+        git remote add origin https://github.com/ESMDev2020/SigmaTB_GitRepo.git
+        git remote -v
+        Branches:   https://github.com/ESMDev2020/SigmaTB_GitRepo/branches
+
+        update local clone
+        git branch -m SigmaGit SigmaBranch
+        git fetch origin
+        git branch -u origin/SigmaBranch SigmaBranch
+        git remote set-head origin -a
+
+
+
+
+OUR PROJECT
+-- We differenciate AS400 names and MSSQL names. Both names refer to the same table, but one is in code, the other is human readable
+- in our MSSQL database, the structure is:
+-   Table 
+  -     - has a Table name
+  -  Table name is composed of 
+     - "z_" - Identifies the tables of our project
+     - "?????????" - Identifies the description of the table
+     - "_____" - Separates the description from the code
+     - "?????" - table code
+     - for example: "z_Customer_Master_File_____ARCUST"
+  -     - on extended properties, it has
+  -      property name = table code
+  -       property value = table descrition = table name
+  - 
+
+    columns
+  -     has a Column name
+     - does not start with "z_" because it belong to a table previously identified
+     - "?????????" - Identifies the description of the column
+     - "_____" - Separates the description from the code
+     - "?????" - column code
+     - for example: "CUSTOMER_NUMBER_____CCUST"
+
+  -     on extended properties, it has
+  -      property name = column code
+  -      property value = column descrition = column name
+ 
+ - Tables that contain information
+ - Start with "z_". Every query that executes a "for each table" has to query only tables with "z_" prefix. 
+ - The tables that does not start with "z_" are programming tables, for queries, but does not contain ERP information
+ - 
 
 
 
@@ -279,38 +412,91 @@ rearrange it like it is the file "01_SigmaTBMain2.py", meaning:
 
 ---------------------------------------------------------
 
+Okay, here's an organized version of your AI tool documentation notes, followed by suggestions.
 
-SAVE GIT 
-git add .
-git commit -m "Your commit message"
-git push vssafe SigmaGit
+**Organized Documentation Guidelines**
 
+**I. General Best Practices (Apply to all code)**
 
-GITHUB
-My repository is SigmaTB_GitRepo
-    -1 branches
-        - SigmaBranch
+1.  **Commenting:**
+    * Add comments describing the purpose of each execution block, loop (if, case, etc.), or complex logic section.
+    * Comment variable/constant assignments if the purpose isn't immediately obvious from the name/context.
+2.  **Variable & Constant Handling:**
+    * Explicitly define/declare all variables and constants.
+    * Declare them at the beginning of the file and/or function/subprocedure scope.
+    * Assign initial values where appropriate.
+3.  **Progress Indication:**
+    * Print start and end timestamps for script execution.
+    * Use progress messages or bars for long-running loops or processes.
+4.  **Error Handling:**
+    * Implement error control mechanisms (e.g., try-except blocks).
+    * Provide descriptive error messages.
 
-    LOCAL machine
-        Mac - SigmaTB_LocalRepo
-        
+**II. Python Specific Guidelines**
 
-    cd ~/Documents/GitHub/SigmaTB_LocalRepo
-    git init
-    git remote add origin https://github.com/ESMDev2020/SigmaTB_GitRepo.git
-    git remote -v
-    Branches:   https://github.com/ESMDev2020/SigmaTB_GitRepo/branches
+1.  **File Structure:**
+    * Imports
+    * Constants
+    * Functions (Define all functions before main execution logic)
+    * Main execution block (potentially under `if __name__ == "__main__":`)
+    * Keep GUI code (like Streamlit UI) separate or clearly marked for local testing if applicable.
+2.  **Naming Conventions:**
+    * **Variables:** `my_var_datatype_name`
+    * **Constants:** `my_con_datatype_name`
+    * **Functions:** `fun_function_name`
+    * **Subprocedures (if applicable):** `sub_subprocedure_name` (Note: Python primarily uses functions)
+    * **Commands (if custom command objects):** `Com_command_name`
+3.  **Function/Subprocedure Documentation:**
+    * Include a docstring (using `"""Docstring goes here"""`) inside each function summarizing its purpose, parameters (variables used), and return values.
+    * Declare local variables at the start of the function.
 
-    update local clone
-    git branch -m SigmaGit SigmaBranch
-    git fetch origin
-    git branch -u origin/SigmaBranch SigmaBranch
-    git remote set-head origin -a
+**III. SQL Specific Guidelines (Stored Procedures, Queries)**
 
-CURSOR APP FOR PROGRAMMING
+1.  **Header Documentation (Beginning of Stored Procedure):**
+    * `Name:` Stored Procedure name.
+    * `Description:` Functionality overview.
+    * `Input:` List parameters and their purpose.
+    * `Output:` Describe tables created/modified or result sets returned.
+    * `Metadata:` Author, Creation Date, Version, Target Server/DB details (SQL Server Version, ServerName, Database, Schema).
+    * `Example Usage:` Commented examples of how to execute the procedure.
+    * `Example Resultset:` Commented example showing expected output columns and sample data.
+2.  **Debugging:**
+    * Include an `@DebugMode` input parameter (e.g., `BIT` or `INT`, 1=Debug, 0=Normal).
+    * Store dynamic SQL queries in variables.
+    * In Debug Mode (`@DebugMode = 1`), `PRINT` the query variable before execution and add progress messages.
+3.  **Safety & Integrity:**
+    * Use transactions (`BEGIN TRANSACTION`, `COMMIT`, `ROLLBACK`) for operations that modify data, especially multiple steps.
+    * Avoid destructive commands (like `DROP TABLE`) without clear warnings or conditional checks (e.g., only in specific modes or if objects exist).
+4.  **Naming Conventions:**
+    * Enclose all schema, table, and column names in square brackets `[]` (e.g., `[schema_name].[table_name]`).
+5.  **Error Avoidance:**
+    * Be mindful of semicolon `;` placement, especially with CTEs or multiple statements.
+    * Do not use reserved words like `rowcount` as column aliases.
+    * Check if cursors exist (`IF CURSOR_STATUS('global','cursor_name') >= -1 ...`) before declaring them to avoid errors.
 
-Print the names and values of an array in the debug console
-[print("\r\n".join(f"{k}: {v}" for k, v in item.items()) + "\r\n") for item in myListRelationships]
+**IV. Project Specific SQL Conventions (SigmaTB Database, 'mrs' Schema)**
 
-terminal - pwd - local directory
+1.  **Table Identification:**
+    * Use prefix `z_` for tables containing primary ERP data originating from AS400.
+    * Tables *without* `z_` are considered programming/utility tables. Queries iterating through ERP data should filter for `WHERE name LIKE 'z_%'`.
+2.  **Table Naming Structure:**
+    * Format: `z_Description_____Code` (e.g., `z_Customer_Master_File_____ARCUST`)
+    * `Description`: Human-readable name.
+    * `Code`: Corresponding AS400 table/file name.
+3.  **Column Naming Structure:**
+    * Format: `Description_____Code` (e.g., `CUSTOMER_NUMBER_____CCUST`)
+    * (No `z_` prefix for columns).
+4.  **Extended Properties:**
+    * **Tables:** Store `property_name = table_code`, `property_value = table_description`.
+    * **Columns:** Store `property_name = column_code`, `property_value = column_description`.
 
+---
+
+**Suggestions for Improvement**
+
+1.  **Consistency:** The key is applying these rules *consistently* across all code generated or modified with AI tools.
+2.  **Simplify Naming (Optional):** While your naming convention (`my_var_datatype_name`) is explicit, it can become verbose. Consider if a simpler convention (e.g., `var_name`, `CONST_NAME`, relying on type hints in Python, or standard SQL conventions) might improve readability without losing clarity, especially in languages with strong typing or good IDE support.
+3.  **Readability Focus:** Aim for code that is as self-documenting as possible through clear naming and structure. Comments should explain the *why*, not just the *what*, if the *what* is already clear from the code.
+4.  **Version Control:** Use Git or another version control system. Commit messages should clearly state the changes made, including any AI assistance.
+5.  **Code Review:** Have peers (or yourself, after a break) review AI-generated code against these standards before finalizing.
+6.  **Tooling:** Use linters (like Pylint/Flake8 for Python) and code formatters (like Black for Python, SQL formatters) to automatically enforce some style consistency.

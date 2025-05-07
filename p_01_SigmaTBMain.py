@@ -20,8 +20,8 @@ import traceback # For error details
 # Import view modules containing display logic
 # These modules should NOT define their own connection functions/engines anymore
 try:
-    from views import p_02_ROP
-    from views import p_03_Dashboard
+    from views import p_02_ROP_v2
+    from views import p_03_Dashboard_v2 as p_03_Dashboard
     from views import p_04_DashboardCosts
 except ImportError as myVar_errImport:
      myCom_Streamlit.error(f"🔴 Failed to import view modules (p_02_ROP, p_03_Dashboard, p_04_DashboardCosts): {myVar_errImport}")
@@ -44,7 +44,8 @@ def fun_connectToDb(myPar_strUser, myPar_strPassword, myPar_strServer, myPar_str
     """ Creates and returns a SQLAlchemy database engine object (Cached). """
     myCom_Streamlit.write("Attempting to create DB engine...") # Log attempt
     try:
-        myVar_strConnectionString = f"mssql+pytds://{myPar_strUser}:{myPar_strPassword}@{myPar_strServer}:1433/{myPar_strDatabase}"
+        # Updated to use sqlalchemy with pymssql driver instead of pymssql
+        myVar_strConnectionString = f"mssql+pymssql://{myPar_strUser}:{myPar_strPassword}@{myPar_strServer}:1433/{myPar_strDatabase}"
         myVar_objDbEngine = create_engine(myVar_strConnectionString)
         with myVar_objDbEngine.connect() as myVar_objDbConnectionTest: pass
         myCom_Streamlit.write("DB engine created successfully.") # Log success
@@ -224,6 +225,7 @@ elif myVar_strMainSection == "📊 Dashboard":
 # ────────────────────────────────────────────────────────────────────────────
 # ✅ End Execution Timestamp
 # ────────────────────────────────────────────────────────────────────────────
+
 myCom_Streamlit.write(f"✅ Finished execution check at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
 # ============================================================================

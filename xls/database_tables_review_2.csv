@@ -1,0 +1,295 @@
+﻿TableName,Column3,TableCode,Rowcount,Prefix1,Suffix1,suffix2,suffix3,InferredName
+z_Output_file_for_DSPFD_TYPE(*MBRLIST)_____$DSPFDA, ,$DSPFDA,1496,,,,,
+z_Vendor_ACH_Bank_Info_____ACHINFO, ,ACHINFO,199,ACH,INFO,,,vendor ACH Info
+z_Additional_Charge_Federal_Tax_File_____ADDCFTAX, ,ADDCFTAX,4,ADD,C,F,TAX,ADDitional CHaRGe Federal TAX file
+z_Additional_Charge_Code_File_____ADDCHRG, ,ADDCHRG,32,ADD,CHRG,,,ADDitional CHaRGe
+z_Additional_Charge_Provincial_Tax_File_____ADDCPTAX, ,ADDCPTAX,3,ADD,C,P,TAX,ADDitional Charge Provincial Tax
+z_Additional_Charge_Transaction_File_____ADDCTRAN, ,ADDCTRAN,33,ADD,C,TRAN,,Additional Charge Transaction
+z_AP_Discrepancy_file_-_AP801_report_____AP801WF, ,AP801WF,166,AP,801,WF,,AccountsPayable 801 WorkFile
+z_AP_Discrepancy_file_-_AP803_report_____AP803WF, ,AP803WF,789,AP,803,WF,,AccountsPayable 803 WorkFile
+z_Bank_Disbursement_Master_____APBANKCD, ,APBANKCD,8,AP,BANK,CD,,AccountsPayable BANK CoDe
+z_A/P_Check_History_____APCHKH, ,APCHKH,27057,AP,CHK,H,,AccountsPayable CHecKHistory
+z_A/P_Check_Reconcilement_file_____APCHKR, ,APCHKR,10,AP,CHK,R,,AccountsPayable CHecK Reconcilement
+z_A/P_Debit_Detail_File_____APDEBD, ,APDEBD,81,AP,DEB,D,,AccountsPayable Debit Detail
+z_A/P_Debit_Header_File_____APDEBH, ,APDEBH,79,AP,DEB,H,,AccountsPayable Debit Header
+z_A/P_G/L_Distribution_File_____APDIST, ,APDIST,165535,AP,DIST,,,AccountsPayable Distribution
+z_A/P_EDI_transaction_selection_____APEDITR, ,APEDITR,202,AP,EDI,TR,,AccountsPayable EDI Transaction
+z_A/P_Handling_Code_File_____APHCOD, ,APHCOD,2,AP,H,COD,,AccountsPayable Handling CODe
+z_A/P_History_____APHIST, ,APHIST,152136,AP,HIST,,,AccountsPayable History
+z_A/P_Inventory_Reconciliation_File_____APINV, ,APINV,9876,AP,INV,C,,AccountsPayable Inventory
+z_A/P_Open_Payable_File_____APOPEN, ,APOPEN,151611,AP,OPEN,,,AccountsPayable Open
+z_A/P_Processor_Voucher_Data_File_____APPRC, ,APPRC,159,AP,PRC,,,AccountsPayable Processor
+z_Vendor_Master_File_____APVEND, ,APVEND,730,AP,VEND,,,AccountsPayable Vendor
+z_A/P_Vendor_History_Exchange_File_____APVHEXC, ,APVHEXC,4,AP,V,H,EXC,AccountsPayableHistoryExchange
+z_Vendor_Master_History_File_____APVNDHST, ,APVNDHST,731,AP,VND,HST,,AccountsPayableVendorHistory
+z_A/P_Void_File_-_(Checks_to_be_voided)_____APVOID, ,APVOID,316,AP,VOID,,,AccountsPayable Void
+z_A/P_Check_Register_Work_File_____APWK856, ,APWK856,1,AP,WK,856,,AccountsPayable WorkFile
+z_AR_Profile_BOL_comments_____ARBOLCM, ,ARBOLCM,8,AR,BOL,CM,,AccountsReceivable BillOfLading Comments
+z_A/R_Batch_Header_for_A/R_Detail_File_____ARBTCH, ,ARBTCH,20319,AR,BTCH,,,AccountsReceivable Batch Header
+z_A/R_Cash_Receipts_____ARCASH, ,ARCASH,46261,AR,CASH,,,AccountsReceivable Cash
+z_AR/Customer_History_Exchange_File_____ARCHEXC, ,ARCHEXC,272,AR,C,H,EXC,AccountsReceivable Customer History Exchange
+z_Changed_Customer_Log_____ARCUSCHG, ,ARCUSCHG,4097,AR,CUS,CHG,,AccountsReceivable Customer Change
+z_Customer_Master_History_File_____ARCUSHST, ,ARCUSHST,1279,AR,CUS,HST,,AccountsReceivable Customer History
+z_Customer_Master_File_____ARCUST, ,ARCUST,1278,AR,CUST,,,AccountsReceivable Customer
+z_Customer_Number_for_TS_to_be_01_____ARCUST_01, ,ARCUST_01,383,AR,CUST,1,,AccountsReceivable Customer
+z_Customer_Number_for_TS_to_be_40_____ARCUST_40, ,ARCUST_40,55,AR,CUST,40,,AccountsReceivable Customer 40
+z_Customer_Master_File_____ARCUST_B4, ,ARCUST_B4,438,AR,CUST,B4,,AccountsReceivable Customer B4
+z_Year_End_Summary_of_ARCUSHST_____ARCUSYEH, ,ARCUSYEH,6342,AR,CUS,YE,H,AccountsReceivable Customer YearEnd History
+z_Discrepancy_Code_File_____ARDCRP, ,ARDCRP,12,AR,DCRP,,,AccountsReceivable Discrepancy
+z_A/R_Detail_File_____ARDETAL, ,ARDETAL,147862,AR,DETAL,,,AccountsReceivable Detail
+z_Additional_Charge_Reconciliation_File_____ARECONCL, ,ARECONCL,193,AR,ECONCL,,,AccountsReceivable rEconciliation
+z_A/R_Cash_Receipts_G/L_Entries_____ARGLTR, ,ARGLTR,340700,AR,GL,TR,,AccountsReceivable GeneralLedger Transaction
+z_Customer_A/R_Information_____ARINFO, ,ARINFO,309,AR,INFO,,,AccountsReceivable Info
+z_A/R_Lock_Box_Code_File_____ARLOCK, ,ARLOCK,8,AR,LOCK,,,AccountsReceivable Lock
+z_A/R_Paymnt_Hst--Key_=_dist/cust/yy/mm_____ARPAYHST, ,ARPAYHST,90559,AR,PAY,HST,,AccountsReceivable Paymet History
+z_Descrepancy_Reason_Code_File_____ARREAS, ,ARREAS,9,AR,REAS,,,AccountsReceivable Reason
+z_Barcode_Checks_____BCCHECKS, ,BCCHECKS,99,BC,CHECKS,,,BarCode Checks
+z_BDSEPR_-_Buyout_Override_info_____BDSEPR, ,BDSEPR,9667,BD,SEPR,,,BD SEPR
+z_BDSEPR_-_Buyout_Override_info_____BDSEPRBH, ,BDSEPRBH,148,BD,SEPR,BH,,BD SEPR Buyout History
+z_Billing_Days:_YTD/MTD_Accumulator_____BILLDAYS, ,BILLDAYS,7,BILLDAYS,BILLDAYS,,,Billing Days
+z_Bookings_Information_file_____BOOKINF, ,BOOKINF,9,BOOK,BOOKINF,,,Booking Information
+z_Buyer_File_____BUYER, ,BUYER,14,BUYER,,,,Buyer
+z_System_Calendar_File_____CALENDAR, ,CALENDAR,192,CALENDAR,,,,Calendar
+z_Customer_Class_Summary_file_MTD_____CCLSMT, ,CCLSMT,35540,C,CLS,MT,,Customer Class MonthToDate
+z_Customer_Class_Summary_file_YTD_____CCLSYT, ,CCLSYT,9909,C,CLS,YT,,CustomerClassYearToDate
+z_Chemical_Analysis_____CHEMTAGM, ,CHEMTAGM,8,CHEM,TAG,M,,Chemicalanalysis TAG M
+z_Charge_History_File_____CHGHST, ,CHGHST,68458,CHG,HST,,,Charge History
+z_Credit_Memo_Major_Reason_Code_File_____CMMAJOR, ,CMMAJOR,8,CM,MAJOR,,,CreditMemo Major
+z_Credit_Memo_Major_Reason_Code_File_____CMMINOR, ,CMMINOR,17,CM,MINOR,,,CreditMemo Minor
+z_Customer_Collection_Comments_____COLCMT, ,COLCMT,2,COL,CMT,,,Collection Comment
+z_Company_Standard_Mill_Order_File_(SMO)_____COMPSMO, ,COMPSMO,287,COMP,SMO,,,Company StandardMillOrder
+z_A/R_Customer_Contact_Code_____CONTCODE, ,CONTCODE,12,CONT,CODE,,,Contact Code
+z_Country_File_____COUNTRY, ,COUNTRY,171,COUNTRY,,,,Country
+z_Credit_Analyst_File_____CRANAL, ,CRANAL,5,CR,Anal,,,Credit Analysis
+z_Credit_Application_History_File_____CRAPLHIS, ,CRAPLHIS,33,CR,AP,HIS,,Credit Application History
+z_Credit_Comment_File_____CRCOMMNT, ,CRCOMMNT,22384,CR,COMMNT,,,Credit Comment
+z_Credit_Memo_Detail_File_____CRDETAIL, ,CRDETAIL,5452,CR,DETAIL,,,Credit Detail
+z_Credit_Memo_Header_File_____CRHEADER, ,CRHEADER,5450,CR,HEADER,,,Credit Header
+z_A/R_History_File_____CRHIST, ,CRHIST,148980,CR,HIST,,,Credit History
+z_Currency_Code_____CURRCODE, ,CURRCODE,2,CURR,CODE,,,Currency Code
+z_Customer_Invoice_Address_File_____CUSINVAD, ,CUSINVAD,1278,CUS,INV,AD,,CUStomer INVoice ADdress
+z_Customer_Price_Class_File_____CUSPRCLS, ,CUSPRCLS,3,CUS,PR,CLS,,Customer Price Class
+z_Customer_Master_Add_Code_File_____CUSTADD, ,CUSTADD,7,CUST,ADD,,,Customer Add code
+z_Customer_Parent_File_____CUSTPARN, ,CUSTPARN,8,CUST,PARN,,,Customer Parent
+z_Cutting_Code_Header_File____quote#_1747__12/20/90_____CUTTHEAD, ,CUTTHEAD,383,CUTT,HEAD,,,CuttingCode Header
+z_Cutting_Code_Matrix_File   _quote#_1747__12/20/90_____CUTTMTX, ,CUTTMTX,640,CUTT,MTX,,,CuttingCode Matrix
+z_District_--_Cutting_Code_Tolerances_____CUTTOLD, ,CUTTOLD,377,,,,,
+z_A/P_Debit_Memo_Print_Workfile_-_Detail_____DBDWRK, ,DBDWRK,81,,,,,
+z_A/P_Debit_Memo_Print_Workfile_-_Header_____DBHWRK, ,DBHWRK,79,,,,,
+z_Delivery_Tracking_Performance_File_____DELTRACK, ,DELTRACK,3898,,,,,
+z_District_Application_Printer_File_____DISTRAFF, ,DISTRAFF,329,,,,,
+z_District_Application_Printer_File_____DISTRPRT, ,DISTRPRT,2,,,,,
+z_Query_Builder_Physical_File_____DPPFFD, ,DPPFFD,922,,,,,
+z_Duty_Rate_____DUTYRATE, ,DUTYRATE,10,,,,,
+z_EDICD1__--_EDI_1_position_codes_____EDICD1, ,EDICD1,40,,,,,
+z_EDICD2__--_EDI_2_position_codes_____EDICD2, ,EDICD2,36,,,,,
+z_EDICD2A__--_EDI_2A_position_codes_____EDICD2A, ,EDICD2A,94,,,,,
+z_EDICD2__--_EDI_3_position_codes_____EDICD3, ,EDICD3,395,,,,,
+z_EDICD4__--_EDI_4_position_codes_____EDICD4, ,EDICD4,84,,,,,
+z_EDI_Process_codes_from_TABLE_66_____EDITAB66, ,EDITAB66,189,,,,,
+z_E-Mail_additional_copies_____EMADDTL, ,EMADDTL,177,,,,,
+z_MW_Email_Log_File_____EMAILLOG, ,EMAILLOG,7338,,,,,
+z_MW_Emall_Type_File_____EMAILTYPE, ,EMAILTYPE,21,,,,,
+z_Email_forms_____EMFORM, ,EMFORM,48,,,,,
+z_Email_forms_____EMFORM_B4, ,EMFORM_B4,12,,,,,
+z_Last_Day_of_Period_File_____EMLSTDAY, ,EMLSTDAY,130,,,,,
+z_Employee_File_____EMPLOYE, ,EMPLOYE,99,,,,,
+z_Employee_Parms_file_____EMPPARMS, ,EMPPARMS,99,,,,,
+z_Employee_Quote_File_____EMPQUOTE, ,EMPQUOTE,99,,,,,
+z_Empoyee_validation/password_____EMPVALID, ,EMPVALID,21,,,,,
+z_Industry_End_Use_Code_File_____ENDUSE, ,ENDUSE,139,,,,,
+z_Currency_Exchange_File_____EXCHANGE, ,EXCHANGE,2336,,,,,
+z_Currency_Exchange_Transation_File_____EXHTRANS, ,EXHTRANS,44326,,,,,
+z_Fast_Path_Description_File_____FASTPATH, ,FASTPATH,5443,,,,,
+z_Fast_Path_Key_-_used_to_determine_fields_used_____FASTPKEY, ,FASTPKEY,10,,,,,
+z_Forecast_Rules_partxrf_____FCPARTX, ,FCPARTX,3,,,,,
+z_A/R_-to-_Frt/Claim_Xref_____FCXREF, ,FCXREF,571,,,,,
+z_Daily_Flash_Reconciliation_____FLASHINV, ,FLASHINV,2998,,,,,
+z_Daily_Flash_Report_____FLASHRPT, ,FLASHRPT,40464,,,,,
+z_Fraction/Decimal_Control_File_____FRACDEC, ,FRACDEC,120,,,,,
+z_Freight_Reconciliation_File_____FRECONCL, ,FRECONCL,0,,,,,
+z_Freight_Reconciliation_File_____FRTHST, ,FRTHST,0,,,,,
+z_Generic_CPA_File_____GENCPA, ,GENCPA,42,,,,,
+z_General_Ledger_Account_file_____GLACCT, ,GLACCT,258,,,,,
+z_mp_debits/credits_from_gl_trans_file_____GLDEBCRED, ,GLDEBCRED,1658,,,,,
+z_G/L_Journal_Batch_Header_File_____GLJRBA, ,GLJRBA,1406,,,,,
+z_G/L_Journal_Detail_File_____GLJRDT, ,GLJRDT,17036,,,,,
+z_G/L_Journal_Header_File_____GLJRHD, ,GLJRHD,2474,,,,,
+z_G/L_Major_Heading_file_____GLMAJHD, ,GLMAJHD,28,,,,,
+z_General_Ledger_Master_File_____GLMAST, ,GLMAST,258,,,,,
+z_General_Ledger_Master_File_-_HISTORY_____GLMASTHST, ,GLMASTHST,1508,,,,,
+z_General_Ledger_Report_File_____GLRPTF, ,GLRPTF,109,,,,,
+z_General_Ledger_Transaction_File_____GLTRANS, ,GLTRANS,2944807,,,,,
+z_IATRANS_-_History_(Save_Batch)_____IATRANHS, ,IATRANHS,493031,,,,,
+z_IATRANS_-_Inventory_Adj_Transactions_____IATRANS, ,IATRANS,27,,,,,
+z_IC011_Filing_exceptions_____IC011SLSP, ,IC011SLSP,353,,,,,
+z_Image_PDF_____IMAGEPDF, ,IMAGEPDF,108347,,,,,
+z_Image_PDF_____IMAGEPDFB4, ,IMAGEPDFB4,494,,,,,
+z_Image_Index_Criteria_Control_File_____IMGINDX, ,IMGINDX,13,,,,,
+z_Image_Index_Available_Fields_with_Descriptions_____IMGPFDS, ,IMGPFDS,42,,,,,
+z_Inventory_Mill_File_____INVMILL, ,INVMILL,74,,,,,
+z_Inventory_Reconciliation_File_____IRECONCL, ,IRECONCL,26,,,,,
+z_Item_Master_File_____ITEMBG, ,ITEMBG,1781,,,,,
+z_One_Position_Item_Class_File_____ITEMCLS1, ,ITEMCLS1,16,,,,,
+z_Two_Position_Item_Class_File_____ITEMCLS2, ,ITEMCLS2,69,,,,,
+z_Three_Position_Item_Class_File_____ITEMCLS3, ,ITEMCLS3,172,,,,,
+z_District_Class_File_____ITEMCLSD, ,ITEMCLSD,144,,,,,
+z_Item_Hist_Comments_(From_IA_Only)_____ITEMHCMT, ,ITEMHCMT,106616,,,,,
+z_Item_Transaction_History_____ITEMHIST, ,ITEMHIST,722325,,,,,
+z_Item_Master_File_____ITEMMAST, ,ITEMMAST,2613,,,,,
+z_Item_Master_File_____ITEMMASTXX, ,ITEMMASTXX,30170,,,,,
+z_MAP_Level_Code_File_____ITEMMPLV, ,ITEMMPLV,5,,,,,
+z_Item_on_hand_comment_file_____ITEMONCM, ,ITEMONCM,1079,,,,,
+z_Item_on_Hand_File_____ITEMONHD, ,ITEMONHD,2612,,,,,
+z_Item_on_Hand_File_____ITEMONHDXX, ,ITEMONHDXX,10234,,,,,
+z_Item_on_Hand_Summary_File_____ITEMONSU, ,ITEMONSU,28,,,,,
+z_Item_Summary_-_Begin_Remote_Inventory_Balance_____ITEMRMT, ,ITEMRMT,59062,,,,,
+z_Base_Item_Description_List_____ITEMS, ,ITEMS,134053,,,,,
+z_Item_Summary_MTD-Inventory_reports_____ITEMSMT, ,ITEMSMT,179635,,,,,
+z_Item_Summary_YTD-Inventory_reports_____ITEMSYT, ,ITEMSYT,19369,,,,,
+z_Tag_Master_File_____ITEMTAG, ,ITEMTAG,289140,,,,,
+z_Tag_Master_File_____ITEMTAGB4, ,ITEMTAGB4,238501,,,,,
+z_Tag_Master_File_____ITEMTAGLAH, ,ITEMTAGLAH,238502,,,,,
+z_Tag_Process_History_File_____ITEMTPHS, ,ITEMTPHS,7100,,,,,
+z_Itemtrif_-_Item_Tariff_File_____ITEMTRIF, ,ITEMTRIF,263,,,,,
+z_Item_Tag_User_Defined_fields_____ITEMTUD, ,ITEMTUD,196770,,,,,
+z_line_comment_changes_____LINECCHG, ,LINECCHG,13320,,,,,
+z_Line_Related_Comments_____LINECMNT, ,LINECMNT,933555,,,,,
+z_Line_Comment_Code_Constants_____LINECNST, ,LINECNST,14,,,,,
+z_List_/_Heat_Number_____LISTHEAT, ,LISTHEAT,19662,,,,,
+z_Machine_File_____MACHINE, ,MACHINE,2,,,,,
+z_Maintenance_history_____MAINTHIST, ,MAINTHIST,6363,,,,,
+z_Material_Rejection_Major_Cause_code_____MAJREJ, ,MAJREJ,17,,,,,
+z_MASSBPC_-_Mass_maint/base_price_____MASSBPC, ,MASSBPC,5,,,,,
+z_MASSBPC_-_Mass_maint/base_price_.CSV_converter_____MASSBPCIFS, ,MASSBPCIFS,6,,,,,
+z_Metalweb_FMG_interface_____METALFMG, ,METALFMG,8,,,,,
+z_Material_Rejection_Minor_Cause_codes_____MINREJ, ,MINREJ,26,,,,,
+z_Manifest_____MNFEST, ,MNFEST,374,,,,,
+z_Material_Processing_Order_Detail_____MPDETAIL, ,MPDETAIL,455,,,,,
+z_Material_Processing_Order_Header_____MPHDRORD, ,MPHDRORD,456,,,,,
+z_M/P_Final_Detail_____MPHSTDET, ,MPHSTDET,1872,,,,,
+z_M/P_Final_Header_____MPHSTHDR, ,MPHSTHDR,1869,,,,,
+z_M/P_Final_Processing_Charges_____MPHSTPRC, ,MPHSTPRC,6167,,,,,
+z_M/P_Final_Restock_____MPHSTRSK, ,MPHSTRSK,7656,,,,,
+z_M/P_Final_Used_____MPHSTUSE, ,MPHSTUSE,6554,,,,,
+z_Output_file_for_DSPFD_TYPE(*MBRLIST)_____MPMISS, ,MPMISS,2,,,,,
+z_Material_Processing_Order_Profile_____MPPROFIL, ,MPPROFIL,456,,,,,
+z_MP_Setup_Control_File_____MPSETUP, ,MPSETUP,1924,,,,,
+z_MP_Tracking_File_____MPTRCK, ,MPTRCK,1748,,,,,
+z_MP_Tracking_History_File_____MPTRKHST, ,MPTRKHST,26661,,,,,
+z_Material_Rejection_Transaction_File_____MRTRANS, ,MRTRANS,21,,,,,
+z_Setup_Whole_Order_Line_Related_Comments_____MSWOCMNT, ,MSWOCMNT,7,,,,,
+z_Customer_Master_File_____MWARCUST, ,MWARCUST,980,,,,,
+z_mw100_reset_audit_trail_____MWRESET, ,MWRESET,1824,,,,,
+z_Credit-Held_Order_Release_File_____OECRRELS, ,OECRRELS,48601,,,,,
+z_Order_Detail_File_____OEDETAIL, ,OEDETAIL,151243,,,,,
+z_Quote_/_Order_Detail_History_File_____OEHISTRD, ,OEHISTRD,293623,,,,,
+z_Quote_/_Order_History_Header_File_____OEHISTRY, ,OEHISTRY,299363,,,,,
+z_Open_Order_File_____OEOPNORD, ,OEOPNORD,153764,,,,,
+z_Order_Profile_File_____OEPROFIL, ,OEPROFIL,153770,,,,,
+z_Order_Ship_Instructions_____OESHPINS, ,OESHPINS,186850,,,,,
+z_Operational_Information_____OPERINFO, ,OPERINFO,6705,,,,,
+z_Order_Tracking_File_____ORDTRCK, ,ORDTRCK,151170,,,,,
+z_Order_Tracking_File_____ORDTRHST, ,ORDTRHST,2840862,,,,,
+z_partxml0_____PARTXMNT, ,PARTXMNT,3733,,,,,
+z_Customer_Part_Number_Cross_Reference_____PARTXRF, ,PARTXRF,28,,,,,
+z_PC_Tracking_File_____PCTRCK, ,PCTRCK,41606,,,,,
+z_Physical_Analysis_File_____PHYSTAGM, ,PHYSTAGM,8,,,,,
+z_Picker_Detail_File_____PICKDTL, ,PICKDTL,147991,,,,,
+z_Price_Matrix_File_____PMATRX, ,PMATRX,13,,,,,
+z_Price_Matrix_File_____PMATRX_B4, ,PMATRX_B4,149,,,,,
+z_P/O_Cash_Movement_____POCASHMV, ,POCASHMV,1302,,,,,
+z_Purchase_Order_Change_File_____POCHANGE, ,POCHANGE,1261,,,,,
+z_PO_Delivery_Date_Change_Log_____POCHGLOG, ,POCHGLOG,4558,,,,,
+z_PO_Company_SMO_File_____POCMPSMO, ,POCMPSMO,45504,,,,,
+z_Purchase_Order_Comment_File_(Whole_Order)_____POCOMMNT, ,POCOMMNT,558,,,,,
+z_Purchase_order_delete_file_____PODELET, ,PODELET,103,,,,,
+z_Purchase_Order_Detail_File_____PODETAIL, ,PODETAIL,5000,,,,,
+z_Purchase_Order_Header_File_____POHEADER, ,POHEADER,5026,,,,,
+z_Purchase_Order_Header_File_____POHEADERBH, ,POHEADERBH,743,,,,,
+z_Purchase_Order_Mark/Pack/Load_____POMKPKLD, ,POMKPKLD,2835,,,,,
+z_Port_of_Entry_File_____PORTNTRY, ,PORTNTRY,5,,,,,
+z_Posting_Period_File_____POSTPRD, ,POSTPRD,9,,,,,
+z_PO_Tracking_File_____POTRCK, ,POTRCK,17262,,,,,
+z_PO_Tracking_History_File_____POTRKHST, ,POTRKHST,112129,,,,,
+z_Process_Charges__-_Header_____PRCHCHRG, ,PRCHCHRG,38830,,,,,
+z_Process_Charges__-_Test_Quantity_____PRCHTQTY, ,PRCHTQTY,34992,,,,,
+z_Process_Charges__-_Transactions_____PRCTCHRG, ,PRCTCHRG,68534,,,,,
+z_Process_Charges__-_Dimensions_____PRCTDIM, ,PRCTDIM,32,,,,,
+z_Product_Class/Subclass_File_____PRDSBCLS, ,PRDSBCLS,412,,,,,
+z_Produced_From_____PRODFROM, ,PRODFROM,47861,,,,,
+z_PRODPROC_--Production_Process_Codes_____PRODPROC, ,PRODPROC,105,,,,,
+z_Print_Request_File_____PRTREQST, ,PRTREQST,5,,,,,
+z_Purchase_Comments_____PURCCOMM, ,PURCCOMM,7,,,,,
+z_Rcptcost_-_PO_receipt_cost_history_____RCPTCOST, ,RCPTCOST,36297,,,,,
+z_Purchase_Order_Receipt_History_____RCPTHIST, ,RCPTHIST,15489,,,,,
+z_RECONHST_--Reconciliation_History_____RECONHST, ,RECONHST,92067,,,,,
+z_Remote_Inventory_On_Hand_File_____REMOTEOH, ,REMOTEOH,1141,,,,,
+z_Inventory_Restock_File_____RESTOCK, ,RESTOCK,113922,,,,,
+z_Risk_Status_File_____RISKSTAT, ,RISKSTAT,9,,,,,
+z_Sales_Analysis_Daily_file_____SADAILY, ,SADAILY,5,,,,,
+z_S/A_Gross_Profit_Adjustment_Physical_file_____SAGPADJ, ,SAGPADJ,18854,,,,,
+z_Sales_Budgeting_File_____SALESBUD, ,SALESBUD,1302,,,,,
+z_Salesman_Master_File_____SALESMAN, ,SALESMAN,36,,,,,
+z_Customer_Sales_Objective_File_____SALESOBJ, ,SALESOBJ,10042,,,,,
+z_Salestax_File_____SALESTAX, ,SALESTAX,60,,,,,
+z_Sales_Analysis_Monthly_file_____SAMTHLY, ,SAMTHLY,312,,,,,
+z_SUBFILE_DISPLAY_CONTROL_OPTIONS_FILE_____SFILEDFT, ,SFILEDFT,49,,,,,
+z_Sheet/Split_Coil_Analysis_File_____SHEETANL, ,SHEETANL,20020,,,,,
+z_Customer_Ship_To_Address_File_____SHIPADR, ,SHIPADR,3295,,,,,
+z_Customer_Ship_To_Background_Information_____SHIPBCKG, ,SHIPBCKG,2,,,,,
+z_ShipTo_Dispatch_info_____SHIPDISP, ,SHIPDISP,658,,,,,
+z_Shipments_File_____SHIPMAST, ,SHIPMAST,150390,,,,,
+z_Customer_Ship_To_Instruction_File_____SHPINST, ,SHPINST,731,,,,,
+z_Shipment_Summary_File_____SHSUMM, ,SHSUMM,35983,,,,,
+z_Standard_Industry_Code_File_____SICODE, ,SICODE,427,,,,,
+z_Salesman_Recap_-_Calc_d_Sales_Figures_(Workfile)_____SLMNRCAP, ,SLMNRCAP,2103,,,,,
+z_Salesman_Summary_file_MTD_____SLMNSUM, ,SLMNSUM,2103,,,,,
+z_S/A_Item_Summary_MTD-Inventory_reports_____SLSASMT, ,SLSASMT,58148,,,,,
+z_S/A_Item_Summary_YTD-Inventory_reports_____SLSASYT, ,SLSASYT,10704,,,,,
+z_Sales_Description_Override_____SLSDSCOV, ,SLSDSCOV,165327,,,,,
+z_SLITTER_SET-UP_PRODUCED_(MADE)_ITEM_FILE_____SLTML, ,SLTML,3818,,,,,
+z_SLITTER_SET-UP_USED_ITEM_FILE_____SLTUL, ,SLTUL,9009,,,,,
+z_Service_Purchase_Order_Detail_File_____SPDETAIL, ,SPDETAIL,347067,,,,,
+z_Service_Purchase_Order_Header_File_____SPHEADER, ,SPHEADER,54512,,,,,
+z_SPO_Tracking_File_____SPOTRCK, ,SPOTRCK,385207,,,,,
+z_Surface_condition_____SURFCOND, ,SURFCOND,11,,,,,
+z_System_Parameter_Last_Maintained_Reference_File_____SYSCNSLM, ,SYSCNSLM,83,,,,,
+z_TAGBUILD_--Tag_Build_Up_____TAGBUILD, ,TAGBUILD,5511,,,,,
+z_Tag_Related_Comments_____TAGCMNT, ,TAGCMNT,5,,,,,
+z_Tag_Location_Movement_History_____TAGLOCMV, ,TAGLOCMV,508956,,,,,
+z_TAGTRAN_--_Tag_Status_transaction_____TAGTRAN, ,TAGTRAN,304505,,,,,
+z_Tax_Exemption_File_____TAXEXMPT, ,TAXEXMPT,845,,,,,
+z_Master_Terms_Code_File_____TERMS, ,TERMS,154,,,,,
+z_Tolerance_Details_for_Main_Lines_____TLDETAIL, ,TLDETAIL,112352,,,,,
+z_Tracking_Outputq_File_____TRKOUTQ, ,TRKOUTQ,90,,,,,
+z_User_Defined_Data_-_Validation_List_____UDFDATAL, ,UDFDATAL,9,,,,,
+z_User_Defined_Data_-_Data_Type_Definition_____UDFDATAT, ,UDFDATAT,2,,,,,
+z_User_Defined_Data_-_Data_Values_____UDFDATAV, ,UDFDATAV,2,,,,,
+z_Upload_Data_from_IFS_____UPINPF, ,UPINPF,115,,,,,
+z_Upload_PC_file_for_Batch_Scanners_____UPLOADPI, ,UPLOADPI,521,,,,,
+z_Used_line_pallet_info_____USEDBLD, ,USEDBLD,206158,,,,,
+z_Used_Line_File_____USEDLINE, ,USEDLINE,206285,,,,,
+z_Usetax_File_____USETAX, ,USETAX,52,,,,,
+z_Vendor_P.O._Instructions_____VENDINST, ,VENDINST,2,,,,,
+z_Vendor_Mail_To_Address_File_____VENDMAIL, ,VENDMAIL,802,,,,,
+z_VENDPFR_Vendor_Performance_File_____VENDPRFM, ,VENDPRFM,815,,,,,
+z_Vendor_Quality_Approval_File_____VENDQUAL, ,VENDQUAL,323,,,,,
+z_Vendor_Remit_To_Address_File_____VENDREMT, ,VENDREMT,730,,,,,
+z_Vendor_Ship_To_Address_File_____VENDSHIP, ,VENDSHIP,789,,,,,
+z_Vendor_Request_Header_File_____VNDREQHD, ,VNDREQHD,304,,,,,
+z_E/C_Customer_____WEBCUST, ,WEBCUST,4,,,,,
+z_fax/email_wire_transfer/ach_payments_____WFAP855W, ,WFAP855W,44,,,,,
+z_Work_file_to_hold_documents_to_be_faxed_____WFFAXEMAIL, ,WFFAXEMAIL,5575,,,,,
+z_Work_File_-_IN896_-_Inventory_Dollars_Sold_____WFIN8960, ,WFIN8960,9,,,,,
+z_Daily_invoicing_analysis_____WFOE895, ,WFOE895,70,,,,,
+z_WHMPTRC_--PF_File_Mask_____WHMPTRC, ,WHMPTRC,13,,,,,
+z_Whole_Order_Charge_Transaction_File_____WHOLORCH, ,WHOLORCH,1890,,,,,
+z_Warehouse_Order_Tracking_Code_File_____WHORDTRC, ,WHORDTRC,173,,,,,
+z_Warehouse_Process_Charges_Tracking_Code_File_____WHPCTRC, ,WHPCTRC,6,,,,,
+z_Warehouse_PO_Tracking_Code_File_____WHPOTRC, ,WHPOTRC,36,,,,,
+z_Warehouse:_District/Code_____WHSEMCOD, ,WHSEMCOD,6,,,,,
+z_Warehouse_Order_Tracking_Email_File_____WHTRCKEM, ,WHTRCKEM,26,,,,,
+z_outbound_820_ach_vendor_____X820OAB, ,X820OAB,2174,,,,,
+z_outbound_820_ach_detail_____X820OAD, ,X820OAD,14269,,,,,
+z_outbound_820_ach_header_____X820OAH, ,X820OAH,63,,,,,

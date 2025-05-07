@@ -1,0 +1,297 @@
+﻿NULL,NULL,,NULL,NULL,NULL,NULL
+NULL,NULL,Output file for DSPFD TYPE(*MBRLIST),NULL,NULL,NULL,NULL
+Accounts Payable (AP),APVHEXC,A/P Vendor History Exchange File,Vendor_Number_____VHCVND,VHCVND,276.0,742.0
+Accounts Payable (AP),APEDITR,A/P EDI transaction selection,Vendor_____EDVEND,EDVEND,1.0,905.0
+Accounts Payable (AP),APVEND,Vendor Master File,Vendor_#_____VVNDR,VVNDR,1.0,905.0
+Accounts Payable (AP),APVNDHST,Vendor Master History File,Vendor_#_____VHSVND,VHSVND,0.0,905.0
+Accounts Payable (AP),APINV,A/P Inventory Reconciliation File,TIME_STAMP_____VISTMP,VISTMP,100005042624.0,95958123124.0
+Accounts Payable (AP),APHCOD,A/P Handling Code File,Payment_Handling_Code_____ABHCOD,ABHCOD,OD,US
+Accounts Payable (AP),APVOID,A/P Void File - (Checks to be voided),From_Check_____VVCHKF,VVCHKF,10000.0,99100720.0
+Accounts Payable (AP),DBHWRK,A/P Debit Memo Print Workfile - Header,Debit_Memo_Number_____WHDEB#,WHDEB#,100101.0,100182.0
+Accounts Payable (AP),APDEBH,A/P Debit Header File,Debit_Memo_Number_____V1DEB#,V1DEB#,100101.0,100182.0
+Accounts Payable (AP),APWK856,A/P Check Register Work File,COMPANY_NUMBER_____WHCOMP,WHCOMP,1.0,1.0
+Accounts Payable (AP),APCHKR,A/P Check Reconcilement file,Check#_____PRCHCK,PRCHCK,10000.0,9993.0
+Accounts Payable (AP),APBANKCD,Bank Disbursement Master,AP_Disbursement_Code_____ABBCDE,ABBCDE,1.0,8.0
+Accounts Payable (AP),APPRC,A/P Processor Voucher Data File,A/P_Invoice#_____VAINV#,VAINV#,           4206, 5010HOU0020768
+Accounts Payable (AP),AP801WF,AP Discrepancy file - AP801 report,NULL,NULL,NULL,NULL
+Accounts Payable (AP),AP803CSV,csv file for ap803,NULL,NULL,NULL,NULL
+Accounts Payable (AP),AP803WF,AP Discrepancy file - AP803 report,NULL,NULL,NULL,NULL
+Accounts Payable (AP),APCHKH,A/P Check History,NULL,NULL,NULL,NULL
+Accounts Payable (AP),APDEBD,A/P Debit Detail File,NULL,NULL,NULL,NULL
+Accounts Payable (AP),APDIST,A/P G/L Distribution File,NULL,NULL,NULL,NULL
+Accounts Payable (AP),APHIST,A/P History,NULL,NULL,NULL,NULL
+Accounts Payable (AP),APOPEN,A/P Open Payable File,NULL,NULL,NULL,NULL
+Accounts Payable (AP),DBDWRK,A/P Debit Memo Print Workfile - Detail,NULL,NULL,NULL,NULL
+Accounts Payable (AP),WFAP855W,fax/email wire transfer/ach payments,NULL,NULL,NULL,NULL
+Accounts Receivable (AR),WFOE895,Daily invoicing analysis,Order_Number_____DLORDR,DLORDR,967017.0,970996.0
+Accounts Receivable (AR),ARLOCK,A/R Lock Box Code File,LOCK_BOX_CODE_____C6CODE,C6CODE,1.0,99.0
+Accounts Receivable (AR),ARREAS,Descrepancy Reason Code File,DESCREPANCY_REASON_CODE_____R1CODE,R1CODE,0001,DRC4
+Accounts Receivable (AR),ARDCRP,Discrepancy Code File,DESCREPANCY_CODE_____C1CODE,C1CODE,*C,BB
+Accounts Receivable (AR),ARCUSHST,Customer Master History File,CUSTOMER_NUMBER_____CHCUST,CHCUST,0.0,99999.0
+Accounts Receivable (AR),ARCUST_40,Customer Number for TS to be 40,CUSTOMER_NUMBER_____CCUST40,CCUST40,107.0,552.0
+Accounts Receivable (AR),ARCUST_01,Customer Number for TS to be 01,CUSTOMER_NUMBER_____CCUST01,CCUST01,1.0,99999.0
+Accounts Receivable (AR),ARCUST,Customer Master File,CUSTOMER_NUMBER_____CCUST,CCUST,1,99999
+Accounts Receivable (AR),ARCUST_B4,Customer Master File,CUSTOMER_NUMBER_____CCUST,CCUST,1.0,99999.0
+Accounts Receivable (AR),ARCHEXC,AR/Customer History Exchange File,Customer_Number_____AXCUST,AXCUST,1006.0,996.0
+Accounts Receivable (AR),CONTCODE,A/R Customer Contact Code,Contact_Type_____CCCTYP,CCCTYP,A,Y
+Accounts Receivable (AR),ARINFO,Customer A/R Information,A/R_Customer_Number_____C8CUST,C8CUST,0.0,994.0
+Accounts Receivable (AR),ARBOLCM,AR Profile BOL comments,NULL,NULL,NULL,NULL
+Accounts Receivable (AR),ARBTCH,A/R Batch Header for A/R Detail File,NULL,NULL,NULL,NULL
+Accounts Receivable (AR),ARCASH,A/R Cash Receipts,NULL,NULL,NULL,NULL
+Accounts Receivable (AR),ARCUSCHG,Changed Customer Log,NULL,NULL,NULL,NULL
+Accounts Receivable (AR),ARCUSYEH,Year End Summary of ARCUSHST,NULL,NULL,NULL,NULL
+Accounts Receivable (AR),ARDETAL,A/R Detail File,NULL,NULL,NULL,NULL
+Accounts Receivable (AR),ARECONCL,Additional Charge Reconciliation File,NULL,NULL,NULL,NULL
+Accounts Receivable (AR),ARGLTR,A/R Cash Receipts G/L Entries,NULL,NULL,NULL,NULL
+Accounts Receivable (AR),ARPAYHST,A/R Paymnt Hst--Key = dist/cust/yy/mm,NULL,NULL,NULL,NULL
+Additional Charges (ADD),ADDCPTAX,Additional Charge Provincial Tax File,Additional_Charge_Code_____AXPCCD,AXPCCD,CHR,TES
+Additional Charges (ADD),ADDCFTAX,Additional Charge Federal Tax File,Additional_Charge_Code_____AXFCCD,AXFCCD,CHR,TES
+Additional Charges (ADD),ADDCHRG,Additional Charge Code File,Additional_Charge_Code_____ACACCD,ACACCD,232,WRF
+Additional Charges (ADD),ADDCTRAN,Additional Charge Transaction File,NULL,NULL,NULL,NULL
+Additional Charges (ADD),CHGHST,Charge History File,NULL,NULL,NULL,NULL
+BuyOut,BDSEPR,BDSEPR - Buyout Override info,NULL,NULL,NULL,NULL
+BuyOut,BDSEPRBH,BDSEPR - Buyout Override info,NULL,NULL,NULL,NULL
+Credit,CRAPLHIS,Credit Application History File,CUSTOMER_NUMBER_____AHCUST,AHCUST,125.0,892.0
+Credit,CRHEADER,Credit Memo Header File,CREDIT_MEMO_NUMBER_____CRHORD,CRHORD,812278.0,971512.0
+Credit,CRANAL,Credit Analyst File,Credit_Analyst_Number_____CACANO,CACANO,1.0,6.0
+Credit,CRCOMMNT,Credit Comment File,NULL,NULL,NULL,NULL
+Credit,CRDETAIL,Credit Memo Detail File,NULL,NULL,NULL,NULL
+Credit,CRHIST,A/R History File,NULL,NULL,NULL,NULL
+CreditMemo,CMMINOR,Credit Memo Major Reason Code File,Minor_Reason_Code_____MNCODE,MNCODE, ,T
+CreditMemo,CMMAJOR,Credit Memo Major Reason Code File,Major_Reason_Code_Description_____MJDESC,MJDESC,ADMINISTRATION      ,WAREHOUSE           
+Customer,CUSPRCLS,Customer Price Class File,Customer_Price_Class_Code_____PCPRCL,PCPRCL,01,03
+Customer,CUSINVAD,Customer Invoice Address File,CUSTOMER_NUMBER_____CICUST,CICUST,1.0,99999.0
+Customer,COLCMT,Customer Collection Comments,CUSTOMER_NUMBER_____C9CUST,C9CUST,568.0,638.0
+Customer,CUSTADD,Customer Master Add Code File,Customer_Add_Code_____CDCACD,CDCACD,A,Y
+Customer,CUSTPARN,Customer Parent File,Cust_Parent_Code_____CPCODE,CPCODE,AIT ,WTHA
+Customer,CLIMITA, remove next rel,_____CCUST,CCUST,1003 ,998  
+Customer,CCLSMT,Customer Class Summary file MTD,NULL,NULL,NULL,NULL
+Customer,CCLSYT,Customer Class Summary file YTD,NULL,NULL,NULL,NULL
+Cutting,CUTTHEAD,Cutting Code Header File   _ quote# 1747  12/20/90,Cutting_Code_____CUCTCD,CUCTCD,ABCCUT ,YYYOSPR
+Cutting,CUTTOLD,District -- Cutting Code Tolerances,CUTTING_CODE_____CFCUCD,CFCUCD,ABCCUT ,UWROSPR
+Cutting,CUTTMTX,Cutting Code Matrix File   _quote# 1747  12/20/90,NULL,NULL,NULL,NULL
+CUTTING,SHEETANL,Sheet/Split Coil Analysis File,NULL,NULL,NULL,NULL
+EDI,EDICD2A,EDICD2A  -- EDI 2A position codes,35_POSITION_DESCRIPTION_____E2ADSC,E2ADSC,ALLOY                              ,WELD                               
+EDI,EDITAB66,EDI Process codes from TABLE 66,_____EDSCOD,EDSCOD,01,PN
+EDI,EDICD4,EDICD4  -- EDI 4 position codes,_____E4CODE,E4CODE,1.0,98.0
+EDI,EDICD3,EDICD2  -- EDI 3 position codes,_____E3CODE,E3CODE,1.0,996.0
+EDI,EDICD2,EDICD2  -- EDI 2 position codes,_____E2CODE,E2CODE,1.0,9.0
+EDI,EDICD1,EDICD1  -- EDI 1 position codes,NULL,NULL,NULL,NULL
+Employee,EMFORM_B4,Email forms,Program_____EFPROG,EFPROG,AP711CLF  ,ST651CL   
+Employee,EMPQUOTE,Employee Quote File,Employee#_____EQEMPL,EQEMPL,ABYRD     ,ZLUMSDEN  
+Employee,EMPPARMS,Employee Parms file,Employee#_____EPEMPL,EPEMPL,ABYRD     ,ZLUMSDEN  
+Employee,EMPLOYE,Employee File,Employee#_____EMEMPL,EMEMPL,ABYRD     ,ZLUMSDEN  
+Employee,EMPVALID,Empoyee validation/password,Employee#_____EMEMPL,EMEMPL,ACRUZ     ,ZLUMSDEN  
+Employee,EMFORM,Email forms,NULL,NULL,NULL,NULL
+Employee,EMLSTDAY,Last Day of Period File,NULL,NULL,NULL,NULL
+General Ledger,GLMAJHD,G/L Major Heading file,GL_Major_Heading#_Description_____GMHDCD,GMHDCD,100.0,999.0
+General Ledger,GLACCT,General Ledger Account file,GL_Account_Number_____GACCT,GACCT,1001100000.0,9999999999.0
+General Ledger,GLJRBA,G/L Journal Batch Header File,Batch_Number_____GBBTCH,GBBTCH,1000.0,999.0
+General Ledger,GLMAST,General Ledger Master File,Account_Number_____GMACCT,GMACCT,1001100000.0,9999999999.0
+General Ledger,GLDEBCRED,mp debits/credits from gl trans file,NULL,NULL,NULL,NULL
+General Ledger,GLJRDT,G/L Journal Detail File,NULL,NULL,NULL,NULL
+General Ledger,GLJRHD,G/L Journal Header File,NULL,NULL,NULL,NULL
+General Ledger,GLMASTHST,General Ledger Master File - HISTORY,NULL,NULL,NULL,NULL
+General Ledger,GLRPTF,General Ledger Report File,NULL,NULL,NULL,NULL
+General Ledger,GLTRANS,General Ledger Transaction File,NULL,NULL,NULL,NULL
+INVENTORY,SICODE,Standard Industry Code File,Standard_Industry_Code_____SISICD,SISICD,1521.0,9999.0
+INVENTORY,IRECONCL,Inventory Reconciliation File,Purchase_Order_Number_____IRPONO,IRPONO,517436.0,518974.0
+Inventory,WFIN8960,Work File - IN896 - Inventory Dollars Sold,3_POSITION_CLASS_____WFCL3,WFCL3,   ,XX 
+INVENTORY,REMOTEOH,Remote Inventory On Hand File,NULL,NULL,NULL,NULL
+INVENTORY,RESTOCK,Inventory Restock File,NULL,NULL,NULL,NULL
+Inventory Adjustment,IATRANS,IATRANS - Inventory Adj Transactions,Batch_Number_____IABAT#,IABAT#,15711.0,9855.0
+Inventory Adjustment,IATRANHS,IATRANS - History (Save Batch),NULL,NULL,NULL,NULL
+ITEM,ITEMONSU,Item on Hand Summary File,Three_Position_Item_Class_____ISCLS3,ISCLS3,ABC,XXX
+ITEM,ITEMTPHS,Tag Process History File,New_Tag_Number_____TPNTAG,TPNTAG,  10892,127157 
+ITEM,ITEMMPLV,MAP Level Code File,MAP_Level_Code_____MLMPLV,MLMPLV,0,4
+ITEM,ITEMONHD,Item on Hand File,ITEM_NUMBER_____IOITEM,IOITEM,50001,TSTPC
+ITEM,ITEMONHDXX,Item on Hand File,ITEM_NUMBER_____IOITEM,IOITEM,00009,U9999
+ITEM,ITEMBG,Item Master File,ITEM_NUMBER_____IMITEM,IMITEM,00001,01839
+ITEM,ITEMMAST,Item Master File,ITEM_NUMBER_____IMITEM,IMITEM,02099,TSTPC
+ITEM,ITEMMASTXX,Item Master File,ITEM_NUMBER_____IMITEM,IMITEM,01001,UWCTP
+ITEM,ITEMONCM,Item on hand comment file,ITEM_NUMBER_____I5ITEM,I5ITEM,00011,U9999
+ITEM,ITEMCLS2,Two Position Item Class File,Item_Class_Two_____I2CLAS,I2CLAS,AB,YY
+ITEM,ITEMCLS1,One Position Item Class File,Item_Class_One_____I1CLAS,I1CLAS,A,Y
+ITEM,ITEMCLSD,District Class File,3_POSITION_CLASS_____IDCLAS,IDCLAS,ABG,YYY
+ITEM,ITEMCLS3,Three Position Item Class File,3_POSITION_CLASS_____I3CLAS,I3CLAS,ABC,YYY
+ITEM,ITEMHCMT,Item Hist Comments (From IA Only),NULL,NULL,NULL,NULL
+ITEM,ITEMHIST,Item Transaction History,NULL,NULL,NULL,NULL
+ITEM,ITEMRMT,Item Summary - Begin Remote Inventory Balance,NULL,NULL,NULL,NULL
+ITEM,ITEMS,Base Item Description List,NULL,NULL,NULL,NULL
+ITEM,ITEMSMT,Item Summary MTD-Inventory reports,NULL,NULL,NULL,NULL
+ITEM,ITEMSYT,Item Summary YTD-Inventory reports,NULL,NULL,NULL,NULL
+ITEM,ITEMTAG,Tag Master File,NULL,NULL,NULL,NULL
+ITEM,ITEMTAGB4,Tag Master File,NULL,NULL,NULL,NULL
+ITEM,ITEMTAGLAH,Tag Master File,NULL,NULL,NULL,NULL
+ITEM,ITEMTRIF,Itemtrif - Item Tariff File,NULL,NULL,NULL,NULL
+ITEM,ITEMTUD,Item Tag User Defined fields,NULL,NULL,NULL,NULL
+ITEM,PRDSBCLS,Product Class/Subclass File,NULL,NULL,NULL,NULL
+ITEM,PRODFROM,Produced From,NULL,NULL,NULL,NULL
+ITEM,PRODPROC,PRODPROC --Production Process Codes,NULL,NULL,NULL,NULL
+LINE,LINECNST,Line Comment Code Constants,_____LSCODE,LSCODE,B,W
+LINE,LINECCHG,line comment changes,NULL,NULL,NULL,NULL
+LINE,LINECMNT,Line Related Comments,NULL,NULL,NULL,NULL
+MATERIAL PROCESSING,MNFEST,Manifest,Transaction_#_____MNORDR,MNORDR,820590.0,930168.0
+MATERIAL PROCESSING,MPHDRORD,Material Processing Order Header,Transaction_#_____MHORDR,MHORDR,400155.0,402186.0
+MATERIAL PROCESSING,MPPROFIL,Material Processing Order Profile,Transaction_#_____MFORDR,MFORDR,400155.0,402186.0
+MATERIAL PROCESSING,MPDETAIL,Material Processing Order Detail,Transaction_#_____MDORDR,MDORDR,400155.0,402186.0
+MATERIAL PROCESSING,MRTRANS,Material Rejection Transaction File,TAG_NUMBER_ALPHA_____MXTAG,MXTAG,  30793, 163533
+MATERIAL PROCESSING,PHYSTAGM,Physical Analysis File,PHYSICAL_SCREEN_MASK_NUMBER_____YTPHSM,YTPHSM,1.0,8.0
+MATERIAL PROCESSING,MPSETUP,MP Setup Control File,ORDER_NUMBER_____MSORDR,MSORDR,400008.0,402186.0
+MATERIAL PROCESSING,MPHSTRSK,M/P Final Restock,New_Tag_Number_____RLNTAG,RLNTAG,    569,127157 
+MATERIAL PROCESSING,MINREJ,Material Rejection Minor Cause codes,MINOR_REJECT._CODE_____RNCOD,RNCOD,AQ,YS
+MATERIAL PROCESSING,MPMISS,Output file for DSPFD TYPE(*MBRLIST),Member_____MLNAME,MLNAME,MPEDIT    ,OEID150149
+MATERIAL PROCESSING,MAJREJ,Material Rejection Major Cause code,MAJOR_CODE_____RJCOD,RJCOD,CH,WT
+MATERIAL PROCESSING,MACHINE,Machine File,Machine_Number_____MAMACH,MAMACH,1.0,2.0
+MATERIAL PROCESSING,MWARCUST,Customer Master File,CUSTOMER_NUMBER_____CCUST,CCUST,1.0,99999.0
+MATERIAL PROCESSING,MSWOCMNT,Setup Whole Order Line Related Comments,COMMENT_____MSCMNT,MSCMNT,C/F 2FT R/L FROM INCOMING PO#01501204   ,SURFACE ROCKWELL AND SINGLE QUAD ON EACH
+MATERIAL PROCESSING,MASSBPC,MASSBPC - Mass maint/base price,_____MBKEY,MBKEY,2.0,6.0
+MATERIAL PROCESSING,LISTHEAT,List / Heat Number,NULL,NULL,NULL,NULL
+MATERIAL PROCESSING,MAINTHIST,Maintenance history,NULL,NULL,NULL,NULL
+MATERIAL PROCESSING,MASSBPCIFS,MASSBPC - Mass maint/base price .CSV converter,NULL,NULL,NULL,NULL
+MATERIAL PROCESSING,MPHSTDET,M/P Final Detail,NULL,NULL,NULL,NULL
+MATERIAL PROCESSING,MPHSTHDR,M/P Final Header,NULL,NULL,NULL,NULL
+MATERIAL PROCESSING,MPHSTPRC,M/P Final Processing Charges,NULL,NULL,NULL,NULL
+MATERIAL PROCESSING,MPHSTUSE,M/P Final Used,NULL,NULL,NULL,NULL
+MATERIAL PROCESSING,MPTRCK,MP Tracking File,NULL,NULL,NULL,NULL
+MATERIAL PROCESSING,MPTRKHST,MP Tracking History File,NULL,NULL,NULL,NULL
+MATERIAL PROCESSING,MWRESET,mw100 reset audit trail,NULL,NULL,NULL,NULL
+ORDER ENTRY,OECRRELS,Credit-Held Order Release File,ORDER_NUMBER_____ORORDR,ORORDR,800977.0,971699.0
+ORDER ENTRY,OEPROFIL,Order Profile File,ORDER_NUMBER_____OPORDR,OPORDR,100934.0,99949.0
+ORDER ENTRY,OEOPNORD,Open Order File,ORDER_NUMBER_____OOORDR,OOORDR,100934.0,99949.0
+ORDER ENTRY,OEDETAIL,Order Detail File,NULL,NULL,NULL,NULL
+ORDER ENTRY,OEHISTRD,Quote / Order Detail History File,NULL,NULL,NULL,NULL
+ORDER ENTRY,OEHISTRY,Quote / Order History Header File,NULL,NULL,NULL,NULL
+ORDER ENTRY,OESHPINS,Order Ship Instructions,NULL,NULL,NULL,NULL
+ORDER ENTRY,ORDTRCK,Order Tracking File,NULL,NULL,NULL,NULL
+ORDER ENTRY,ORDTRHST,Order Tracking File,NULL,NULL,NULL,NULL
+other,TRKOUTQ,Tracking Outputq File,Time_____TRLMTM,TRLMTM,100519.0,95156.0
+other,SURFCOND,Surface condition,SURFACE_CONDITION_CODE_____SECODE,SECODE,1.0,9.0
+other,USETAX,Usetax File,State_Abbrev_Code_____UTSTAT,UTSTAT,AB,WY
+Other,DUTYRATE,Duty Rate,Shipping_Country_____DUSCTY,DUSCTY,CAN,VRC
+OTHER,RISKSTAT,Risk Status File,Risk_Status_Code_____RSCODE,RSCODE,00,B1
+OTHER,SFILEDFT,SUBFILE DISPLAY CONTROL OPTIONS FILE,Program/Screen_____SFPROG,SFPROG,AR416     ,WL320     
+Other,DISTRPRT,District Application Printer File,OUTPUT_QUEUE_____TPOUTQ,TPOUTQ,STBADMIN  ,STBWHS1   
+OTHER,PRTREQST,Print Request File,Order_Number_____PRTORD,PRTORD,400244.0,400581.0
+Other,BOOKINF,Bookings Information file,Item_Class_____BKCLS3,BKCLS3,ABH,SBH
+Other,INVMILL,Inventory Mill File,Inventory_Mill_Code_____MIMILL,MIMILL,ABS,ZHA
+Other,ENDUSE,Industry End Use Code File,Industry_End_Use_Code_____EUEUCD,EUEUCD,1001.0,7029.0
+Other,IMGINDX,Image Index Criteria Control File,IMAGE_TYPE_____IMGTYP,IMGTYP,APIV,TSRP
+Other,IMAGEPDF,Image PDF,IMAGE_NAME_____IMAGENM,IMAGENM,01847177.pdf                                                                                                                                          ,H01971699.pdf                                                                                                                                         
+Other,IC011SLSP,IC011 Filing exceptions,FILE_DATE_____EXDATE,EXDATE,2022-01-26 09:09:00.000,2025-05-01 11:51:31.000
+other,SYSCNSLM,System Parameter Last Maintained Reference File,Field_Name_____LMFLD,LMFLD,SCAICS,SDWOPR
+Other,BCCHECKS,Barcode Checks,Employee#_____BCEMPL,BCEMPL,ABYRD     ,ZLUMSDEN  
+Other,EMAILTYPE,MW Emall Type File,DOCUMENT_TYPE_____ETYPE,ETYPE,A/R STAT  ,WORK ORDER
+Other,METALFMG,Metalweb FMG interface,DOC.TYPE_____FMGDOC,FMGDOC,ACK ,WOR 
+Other,FASTPKEY,Fast Path Key - used to determine fields used,DESC_____FPDESC,FPDESC,Alloy     ,Width     
+Other,PARTXRF,Customer Part Number Cross Reference,CUSTOMER_PART_NUMBER_____IPPART,IPPART,102665(MAT10-6.00X4.00)  ,RS0825001                
+Other,FCPARTX,Forecast Rules partxrf,CUST_PART#_____IPPART,IPPART,108426-000003            ,R-4140C-04.250           
+Other,CURRCODE,Currency Code,Currency_Code_____CNCODE,CNCODE,CAD,USD
+Other,COUNTRY,Country File,Country_____CYCTRY,CYCTRY,A  ,ZW 
+Other,CHEMTAGM,Chemical Analysis,CHEM_SCREEN_MASK__NUMBER_____HTCHSM,HTCHSM,1.0,8.0
+Other,BUYER,Buyer File,Buyer_____BBUY#,BBUY#,1.0,5.0
+Other,IMAGEPDFB4,Image PDF,_____DATENT,DATENT,2020-06-01 09:56:02.000,2020-06-23 18:43:01.000
+Other,BILLDAYS,Billing Days: YTD/MTD Accumulator,NULL,NULL,NULL,NULL
+Other,CALENDAR,System Calendar File,NULL,NULL,NULL,NULL
+Other,COMPSMO,Company Standard Mill Order File (SMO),NULL,NULL,NULL,NULL
+Other,DISTRAFF,District Application Printer File,NULL,NULL,NULL,NULL
+Other,DPPFFD,Query Builder Physical File,NULL,NULL,NULL,NULL
+Other,EMADDTL,E-Mail additional copies,NULL,NULL,NULL,NULL
+Other,EMAILLOG,MW Email Log File,NULL,NULL,NULL,NULL
+Other,EXCHANGE,Currency Exchange File,NULL,NULL,NULL,NULL
+Other,EXHTRANS,Currency Exchange Transation File,NULL,NULL,NULL,NULL
+Other,FASTPATH,Fast Path Description File,NULL,NULL,NULL,NULL
+Other,FLASHINV,Daily Flash Reconciliation,NULL,NULL,NULL,NULL
+Other,FLASHRPT,Daily Flash Report,NULL,NULL,NULL,NULL
+Other,FRACDEC,Fraction/Decimal Control File,NULL,NULL,NULL,NULL
+Other,GENCPA,Generic CPA File,NULL,NULL,NULL,NULL
+Other,IMGPFDS,Image Index Available Fields with Descriptions,NULL,NULL,NULL,NULL
+Other,OPERINFO,Operational Information,NULL,NULL,NULL,NULL
+Other,PARTXMNT,partxml0,NULL,NULL,NULL,NULL
+Other,PCTRCK,PC Tracking File,NULL,NULL,NULL,NULL
+Other,TAXEXMPT,Tax Exemption File,NULL,NULL,NULL,NULL
+other,TERMS,Master Terms Code File,NULL,NULL,NULL,NULL
+other,TLDETAIL,Tolerance Details for Main Lines,NULL,NULL,NULL,NULL
+other,USEDBLD,Used line pallet info,NULL,NULL,NULL,NULL
+other,USEDLINE,Used Line File,NULL,NULL,NULL,NULL
+PROCESS CHARGES,PRCHCHRG,Process Charges  - Header,NULL,NULL,NULL,NULL
+PROCESS CHARGES,PRCHTQTY,Process Charges  - Test Quantity,NULL,NULL,NULL,NULL
+PROCESS CHARGES,PRCTCHRG,Process Charges  - Transactions,NULL,NULL,NULL,NULL
+PROCESS CHARGES,PRCTDIM,Process Charges  - Dimensions,NULL,NULL,NULL,NULL
+PURCHASE ORDER,PURCCOMM,Purchase Comments,Vendor_#_____A1VEND,A1VEND,119.0,348.0
+PURCHASE ORDER,POHEADER,Purchase Order Header File,Transaction_#_____BHPONO,BHPONO,0.0,999999.0
+PURCHASE ORDER,POHEADERBH,Purchase Order Header File,Transaction_#_____BHPONO,BHPONO,500001.0,500767.0
+PURCHASE ORDER,POCOMMNT,Purchase Order Comment File (Whole Order),Purchase_Order_Number_____BCPONO,BCPONO,512020.0,518978.0
+PURCHASE ORDER,PORTNTRY,Port of Entry File,PORT_OF_ENTRY_CODE_____PECODE,PECODE,1.0,5.0
+PURCHASE ORDER,POSTPRD,Posting Period File,Application_Code_____PPAPPL,PPAPPL,AP,ST
+PURCHASE ORDER,POCASHMV,P/O Cash Movement,NULL,NULL,NULL,NULL
+PURCHASE ORDER,POCHANGE,Purchase Order Change File,NULL,NULL,NULL,NULL
+PURCHASE ORDER,POCHGLOG,PO Delivery Date Change Log,NULL,NULL,NULL,NULL
+PURCHASE ORDER,POCMPSMO,PO Company SMO File,NULL,NULL,NULL,NULL
+PURCHASE ORDER,PODELET,Purchase order delete file,NULL,NULL,NULL,NULL
+PURCHASE ORDER,PODETAIL,Purchase Order Detail File,NULL,NULL,NULL,NULL
+PURCHASE ORDER,POMKPKLD,Purchase Order Mark/Pack/Load,NULL,NULL,NULL,NULL
+PURCHASE ORDER,POTRCK,PO Tracking File,NULL,NULL,NULL,NULL
+PURCHASE ORDER,POTRKHST,PO Tracking History File,NULL,NULL,NULL,NULL
+PURCHASE ORDER,RCPTCOST,Rcptcost - PO receipt cost history,NULL,NULL,NULL,NULL
+PURCHASE ORDER,RCPTHIST,Purchase Order Receipt History,NULL,NULL,NULL,NULL
+PURCHASE ORDER,RECONHST,RECONHST --Reconciliation History,NULL,NULL,NULL,NULL
+sales,PMATRX,Price Matrix File,Product_Class_____MTXCL3,MTXCL3,AB ,ST 
+sales,PMATRX_B4,Price Matrix File,Product_Class_____MTXCL3,MTXCL3,ABG,YYY
+SALES,SLMNRCAP,Salesman Recap - Calc_d Sales Figures (Workfile),NULL,NULL,NULL,NULL
+SALES,SLMNSUM,Salesman Summary file MTD,NULL,NULL,NULL,NULL
+SALES,SLSASMT,S/A Item Summary MTD-Inventory reports,NULL,NULL,NULL,NULL
+SALES,SLSASYT,S/A Item Summary YTD-Inventory reports,NULL,NULL,NULL,NULL
+SALES,SLSDSCOV,Sales Description Override,NULL,NULL,NULL,NULL
+SALES,SLTML,SLITTER SET-UP PRODUCED (MADE) ITEM FILE,NULL,NULL,NULL,NULL
+SALES,SLTUL,SLITTER SET-UP USED ITEM FILE,NULL,NULL,NULL,NULL
+SALES ANALYSIS,SALESMAN,Salesman Master File,Salesman_Number_____SMSMAN,SMSMAN,1.0,99.0
+SALES ANALYSIS,SAGPADJ,S/A Gross Profit Adjustment Physical file,Gross_Profit_Adj_Number_____GPADJ#,GPADJ#,1000.0,9999.0
+SALES ANALYSIS,SADAILY,Sales Analysis Daily file,3_POSITION_CLASS_____AYCLS3,AYCLS3,ABH,KTH
+SALES ANALYSIS,SALESBUD,Sales Budgeting File,NULL,NULL,NULL,NULL
+SALES ANALYSIS,SALESOBJ,Customer Sales Objective File,NULL,NULL,NULL,NULL
+SALES ANALYSIS,SALESTAX,Salestax File,NULL,NULL,NULL,NULL
+SALES ANALYSIS,SAMTHLY,Sales Analysis Monthly file,NULL,NULL,NULL,NULL
+SERVICE PURCHASE,SPDETAIL,Service Purchase Order Detail File,NULL,NULL,NULL,NULL
+SERVICE PURCHASE,SPHEADER,Service Purchase Order Header File,NULL,NULL,NULL,NULL
+SERVICE PURCHASE,SPOTRCK,SPO Tracking File,NULL,NULL,NULL,NULL
+Shipment,FCXREF,A/R -to- Frt/Claim Xref,Vendor#_____XRVNDR,XRVNDR,104.0,905.0
+Shipment,DELTRACK,Delivery Tracking Performance File,Transaction_#_____DPORDR,DPORDR,600082.0,971555.0
+Shipment,FRTHST,Freight Reconciliation File,Record_Code_____FSRECD,FSRECD,A,A
+Shipment,FRECONCL,Freight Reconciliation File,Record_Code_____FRRECD,FRRECD,A,A
+Shipment,PICKDTL,Picker Detail File,O/E_ORDER_#_____PIORDR,PIORDR,600014.0,971688.0
+Shipment,SHIPBCKG,Customer Ship To Background Information,Customer_Number_____SBCUST,SBCUST,264.0,546.0
+Shipment,SHIPADR,Customer Ship To Address File,NULL,NULL,NULL,NULL
+Shipment,SHIPDISP,ShipTo Dispatch info,NULL,NULL,NULL,NULL
+Shipment,SHIPMAST,Shipments File,NULL,NULL,NULL,NULL
+Shipment,SHPINST,Customer Ship To Instruction File,NULL,NULL,NULL,NULL
+Shipment,SHSUMM,Shipment Summary File,NULL,NULL,NULL,NULL
+System,UDFDATAL,User Defined Data - Validation List,LIST_DATA_VALUE_____XLVAL1,XLVAL1,000                      ,Y                        
+System,UDFDATAV,User Defined Data - Data Values,KEY_-_DATA_TYPE_CODE_____XVTYPE,XVTYPE,CALENDAR  ,EY250     
+System,UDFDATAT,User Defined Data - Data Type Definition,KEY_-_DATA_TYPE_CODE_____XDTYPE,XDTYPE,CALENDAR  ,EY250     
+System,WEBCUST,E/C Customer,Customer_ID_____ECCID,ECCID,00001     ,STATEMENT 
+System,X820OAH,outbound 820 ach header,Counter_____EDCNTR,EDCNTR,1.0,97.0
+System,X820OAB,outbound 820 ach vendor,CHECK_#_____EBCHCK,EBCHCK,99001013.0,99003398.0
+System,UPLOADPI,Upload PC file for Batch Scanners,_____SRCSEQ,SRCSEQ,1.0,99.0
+System,UPINPF,Upload Data from IFS,_____FIELD02,FIELD02,50022                                             ,52365                                             
+System,X820OAD,outbound 820 ach detail,NULL,NULL,NULL,NULL
+TAG,TAGBUILD,TAGBUILD --Tag Build Up,TAG_NUMBER_ALPHA_____TBTAG,TBTAG,    569,127157 
+TAG,TAGCMNT,Tag Related Comments,NULL,NULL,NULL,NULL
+TAG,TAGLOCMV,Tag Location Movement History,NULL,NULL,NULL,NULL
+TAG,TAGTRAN,TAGTRAN -- Tag Status transaction,NULL,NULL,NULL,NULL
+Vendor Management (VEND),VENDREMT,Vendor Remit To Address File,Vendor_Number_____VRVNDR,VRVNDR,1.0,905.0
+Vendor Management (VEND),ACHINFO,Vendor ACH Bank Info,Vendor_____ACHVND,ACHVND,1.0,905.0
+Vendor Management (VEND),VENDQUAL,Vendor Quality Approval File,Vendor_#_____V5VEND,V5VEND,1.0,898.0
+Vendor Management (VEND),VENDINST,Vendor P.O. Instructions,NULL,NULL,NULL,NULL
+Vendor Management (VEND),VENDMAIL,Vendor Mail To Address File,NULL,NULL,NULL,NULL
+Vendor Management (VEND),VENDPRFM,VENDPFR Vendor Performance File,NULL,NULL,NULL,NULL
+Vendor Management (VEND),VENDSHIP,Vendor Ship To Address File,NULL,NULL,NULL,NULL
+Vendor Management (VEND),VNDREQHD,Vendor Request Header File,NULL,NULL,NULL,NULL
+Warehouse,WHPOTRC,Warehouse PO Tracking Code File,Tracking_Code_____WPTRCK,WPTRCK,BREL,VNDC
+Warehouse,WHMPTRC,WHMPTRC --PF File Mask,Tracking_Code_____WMTRCK,WMTRCK,FPRT,MUNK
+Warehouse,WHSEMCOD,Warehouse: District/Code,Movement_Code_____MCCODE,MCCODE,A,F
+Warehouse,WHOLORCH,Whole Order Charge Transaction File,NULL,NULL,NULL,NULL
+Warehouse,WHORDTRC,Warehouse Order Tracking Code File,NULL,NULL,NULL,NULL
+Warehouse,WHPCTRC,Warehouse Process Charges Tracking Code File,NULL,NULL,NULL,NULL
+Warehouse,WHTRCKEM,Warehouse Order Tracking Email File,NULL,NULL,NULL,NULL
+Workfile,WFFAXEMAIL,Work file to hold documents to be faxed,NULL,NULL,NULL,NULL

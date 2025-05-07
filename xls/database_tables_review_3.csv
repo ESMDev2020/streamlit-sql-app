@@ -1,0 +1,324 @@
+﻿TableName,Column3,Rowcount,Prefix1,Suffix1,suffix2,suffix3,InferredName,Column1,TableCode,,Status,ProcessedTableCode,ProcessedTableName,Group,Prefix,Suffix1,Suffix2,Suffix3,Description
+z_Output_file_for_DSPFD_TYPE(*MBRLIST)_____$DSPFDA, ,1496,,,,,,,$DSPFDA,,ok,$DSPFDA,z_Output_file_for_DSPFD_TYPE(*MBRLIST)_____$DSPFDA,System Tools,$,DSPFD,A,,Output file for system display
+z_Vendor_ACH_Bank_Info_____ACHINFO, ,199,ACH,INFO,,,vendor ACH Info,,ACHINFO,,ok,ACHINFO,z_Vendor_ACH_Bank_Info_____ACHINFO,Vendor Management,ACH,INFO,,,Vendor ACH Information
+z_Additional_Charge_Federal_Tax_File_____ADDCFTAX, ,4,ADD,C,F,TAX,ADDitional CHaRGe Federal TAX file,,ADDCFTAX,,ok,ADDCFTAX,z_Additional_Charge_Federal_Tax_File_____ADDCFTAX,Additional Charges,ADD,C,F,TAX,Additional Charge Federal Tax
+z_Additional_Charge_Code_File_____ADDCHRG, ,32,ADD,CHRG,,,ADDitional CHaRGe,,ADDCHRG,,ok,ADDCHRG,z_Additional_Charge_Code_File_____ADDCHRG,Additional Charges,ADD,CHRG,,,Additional Charge Codes
+z_Additional_Charge_Provincial_Tax_File_____ADDCPTAX, ,3,ADD,C,P,TAX,ADDitional Charge Provincial Tax,,ADDCPTAX,,ok,ADDCPTAX,z_Additional_Charge_Provincial_Tax_File_____ADDCPTAX,Additional Charges,ADD,C,P,TAX,Additional Charge Provincial Tax
+z_Additional_Charge_Transaction_File_____ADDCTRAN, ,33,ADD,C,TRAN,,Additional Charge Transaction,,ADDCTRAN,,ok,ADDCTRAN,z_Additional_Charge_Transaction_File_____ADDCTRAN,Additional Charges,ADD,C,TRAN,,Additional Charge Transactions
+z_AP_Discrepancy_file_-_AP801_report_____AP801WF, ,166,AP,801,WF,,AccountsPayable 801 WorkFile,,AP801WF,,ok,AP801WF,z_AP_Discrepancy_file_-_AP801_report_____AP801WF,Accounts Payable,AP,801,WF,,AP Report 801 Work File
+z_AP_Discrepancy_file_-_AP803_report_____AP803WF, ,789,AP,803,WF,,AccountsPayable 803 WorkFile,,AP803WF,,ok,AP803WF,z_AP_Discrepancy_file_-_AP803_report_____AP803WF,Accounts Payable,AP,803,WF,,AP Report 803 Work File
+z_Bank_Disbursement_Master_____APBANKCD, ,8,AP,BANK,CD,,AccountsPayable BANK CoDe,,APBANKCD,,ok,APBANKCD,z_Bank_Disbursement_Master_____APBANKCD,Accounts Payable,AP,BANK,CD,,AP Bank Code
+z_A/P_Check_History_____APCHKH, ,27057,AP,CHK,H,,AccountsPayable CHecKHistory,,APCHKH,,ok,APCHKH,z_A/P_Check_History_____APCHKH,Accounts Payable,AP,CHK,H,,AP Check History
+z_A/P_Check_Reconcilement_file_____APCHKR, ,10,AP,CHK,R,,AccountsPayable CHecK Reconcilement,,APCHKR,,ok,APCHKR,z_A/P_Check_Reconcilement_file_____APCHKR,Accounts Payable,AP,CHK,R,,AP Check Reconcilement
+z_A/P_Debit_Detail_File_____APDEBD, ,81,AP,DEB,D,,AccountsPayable Debit Detail,,APDEBD,,ok,APDEBD,z_A/P_Debit_Detail_File_____APDEBD,Accounts Payable,AP,DEB,D,,AP Debit Detail
+z_A/P_Debit_Header_File_____APDEBH, ,79,AP,DEB,H,,AccountsPayable Debit Header,,APDEBH,,ok,APDEBH,z_A/P_Debit_Header_File_____APDEBH,Accounts Payable,AP,DEB,H,,AP Debit Header
+z_A/P_G/L_Distribution_File_____APDIST, ,165535,AP,DIST,,,AccountsPayable Distribution,,APDIST,,ok,APDIST,z_A/P_G/L_Distribution_File_____APDIST,Accounts Payable,AP,GL,DIST,,AP G/L Distribution
+z_A/P_EDI_transaction_selection_____APEDITR, ,202,AP,EDI,TR,,AccountsPayable EDI Transaction,,APEDITR,,ok,APEDITR,z_A/P_EDI_transaction_selection_____APEDITR,Accounts Payable,AP,EDI,TR,,AP EDI Transaction
+z_A/P_Handling_Code_File_____APHCOD, ,2,AP,H,COD,,AccountsPayable Handling CODe,,APHCOD,,ok,APHCOD,z_A/P_Handling_Code_File_____APHCOD,Accounts Payable,AP,H,COD,,AP Handling Code
+z_A/P_History_____APHIST, ,152136,AP,HIST,,,AccountsPayable History,,APHIST,,ok,APHIST,z_A/P_History_____APHIST,Accounts Payable,AP,HIST,,,AP History
+z_A/P_Inventory_Reconciliation_File_____APINV, ,9876,AP,INV,C,,AccountsPayable Inventory,,APINV,,ok,APINVC,z_A/P_Invoice_Control_File_____APINVC,Accounts Payable,AP,INV,C,,AP Invoice Control
+z_A/P_Open_Payable_File_____APOPEN, ,151611,AP,OPEN,,,AccountsPayable Open,,APOPEN,,ok,APOPEN,z_A/P_Open_Payable_File_____APOPEN,Accounts Payable,AP,OPEN,,,AP Open Payables
+z_A/P_Processor_Voucher_Data_File_____APPRC, ,159,AP,PRC,,,AccountsPayable Processor,,APPRC,,ok,APPRC,z_A/P_Processor_Voucher_Data_File_____APPRC,Accounts Payable,AP,PRC,,,AP Processor
+z_Vendor_Master_File_____APVEND, ,730,AP,VEND,,,AccountsPayable Vendor,,APVEND,,ok,APVEND,z_A/P_Vendor_Master_File_____APVEND,Accounts Payable,AP,VEND,,,AP Vendor Master
+z_A/P_Vendor_History_Exchange_File_____APVHEXC, ,4,AP,V,H,EXC,AccountsPayableHistoryExchange,,APVHEXC,,ok,APVHEXC,z_A/P_Vendor_History_Exchange_File_____APVHEXC,Accounts Payable,AP,V,H,EXC,AP Vendor History Exchange
+z_Vendor_Master_History_File_____APVNDHST, ,731,AP,VND,HST,,AccountsPayableVendorHistory,,APVNDHST,,ok,APPROFL,z_A/P_Profile_____APPROFL,Accounts Payable,AP,PROFL,,,AP Profile
+z_A/P_Void_File_-_(Checks_to_be_voided)_____APVOID, ,316,AP,VOID,,,AccountsPayable Void,,APVOID,,ok,APVOID,z_A/P_Void_File_____APVOID,Accounts Payable,AP,VOID,,,AP Void
+z_A/P_Check_Register_Work_File_____APWK856, ,1,AP,WK,856,,AccountsPayable WorkFile,,APWK856,,ok,APWK856,z_A/P_Check_Register_Work_File_____APWK856,Accounts Payable,AP,WK,856,,AP Work File 856
+z_AR_Profile_BOL_comments_____ARBOLCM, ,8,AR,BOL,CM,,AccountsReceivable BillOfLading Comments,,ARBOLCM,,Missing,,,,,,,,
+z_A/R_Batch_Header_for_A/R_Detail_File_____ARBTCH, ,20319,AR,BTCH,,,AccountsReceivable Batch Header,,ARBTCH,,ok,ARBTCH,z_A/R_Cash_Receipts_Distribution_-_Batch_____ARBTCH,Accounts Receivable,AR,BTCH,,,AR Batch
+z_A/R_Cash_Receipts_____ARCASH, ,46261,AR,CASH,,,AccountsReceivable Cash,,ARCASH,,ok,ARCASH,z_A/R_Cash_Receipts_____ARCASH,Accounts Receivable,AR,CASH,,,AR Cash Receipts
+z_AR/Customer_History_Exchange_File_____ARCHEXC, ,272,AR,C,H,EXC,AccountsReceivable Customer History Exchange,,ARCHEXC,,ok,ARCHEXC,z_AR/Customer_History_Exchange_File_____ARCHEXC,Accounts Receivable,AR,CH,EXC,,AR Customer History Exchange
+z_Changed_Customer_Log_____ARCUSCHG, ,4097,AR,CUS,CHG,,AccountsReceivable Customer Change,,ARCUSCHG,,Missing,,,,,,,,
+z_Customer_Master_History_File_____ARCUSHST, ,1279,AR,CUS,HST,,AccountsReceivable Customer History,,ARCUSHST,,Missing,,,,,,,,
+z_Customer_Master_File_____ARCUST, ,1278,AR,CUST,,,AccountsReceivable Customer,,ARCUST,,ok,ARCUST,z_Customer_Master_File_____ARCUST,Accounts Receivable,AR,CUST,,,AR Customer Master
+z_Customer_Number_for_TS_to_be_01_____ARCUST_01, ,383,AR,CUST,1,,AccountsReceivable Customer,,ARCUST_01,,Missing,,,,,,,,
+z_Customer_Number_for_TS_to_be_40_____ARCUST_40, ,55,AR,CUST,40,,AccountsReceivable Customer 40,,ARCUST_40,,Missing,,,,,,,,
+z_Customer_Master_File_____ARCUST_B4, ,438,AR,CUST,B4,,AccountsReceivable Customer B4,,ARCUST_B4,,,ARCUST_B4,z_Customer_Master_File_____ARCUST_B4,Accounts Receivable,AR,CUST,B4,,AR Customer Master Backup
+z_Year_End_Summary_of_ARCUSHST_____ARCUSYEH, ,6342,AR,CUS,YE,H,AccountsReceivable Customer YearEnd History,,ARCUSYEH,,Missing,,,,,,,,
+z_Discrepancy_Code_File_____ARDCRP, ,12,AR,DCRP,,,AccountsReceivable Discrepancy,,ARDCRP,,Missing,,,,,,,,
+z_A/R_Detail_File_____ARDETAL, ,147862,AR,DETAL,,,AccountsReceivable Detail,,ARDETAL,,ok,ARDETAL,z_A/R_Detail_____ARDETAL,Accounts Receivable,AR,DETAL,,,AR Detail
+z_Additional_Charge_Reconciliation_File_____ARECONCL, ,193,AR,ECONCL,,,AccountsReceivable rEconciliation,,ARECONCL,,ok,ARECONCL,z_AR_Receivable_Reconciliation_File_____ARECONCL,Accounts Receivable,AR,ECONCL,,,AR Receivable Reconciliation
+z_A/R_Cash_Receipts_G/L_Entries_____ARGLTR, ,340700,AR,GL,TR,,AccountsReceivable GeneralLedger Transaction,,ARGLTR,,Missing,,,,,,,,
+z_Customer_A/R_Information_____ARINFO, ,309,AR,INFO,,,AccountsReceivable Info,,ARINFO,,ok,ARINFO,z_Customer_A/R_Information_____ARINFO,Accounts Receivable,AR,INFO,,,AR Information
+z_A/R_Lock_Box_Code_File_____ARLOCK, ,8,AR,LOCK,,,AccountsReceivable Lock,,ARLOCK,,ok,ARLOCK,z_A/R_Lockbox_Codes_____ARLOCK,Accounts Receivable,AR,LOCK,,,AR Lockbox Codes
+z_A/R_Paymnt_Hst--Key_=_dist/cust/yy/mm_____ARPAYHST, ,90559,AR,PAY,HST,,AccountsReceivable Paymet History,,ARPAYHST,,Missing,,,,,,,,
+z_Descrepancy_Reason_Code_File_____ARREAS, ,9,AR,REAS,,,AccountsReceivable Reason,,ARREAS,,Missing,,,,,,,,
+z_Barcode_Checks_____BCCHECKS, ,99,BC,CHECKS,,,BarCode Checks,,BCCHECKS,,Missing,,,,,,,,
+z_BDSEPR_-_Buyout_Override_info_____BDSEPR, ,9667,BD,SEPR,,,BD SEPR,,BDSEPR,,ok,BDSEPR,z_BD_Revenue_Separator_____BDSEPR,Business Development,BD,SEPR,,,Business Development Revenue Separator
+z_BDSEPR_-_Buyout_Override_info_____BDSEPRBH, ,148,BD,SEPR,BH,,BD SEPR Buyout History,,BDSEPRBH,,Missing,,,,,,,,
+z_Billing_Days:_YTD/MTD_Accumulator_____BILLDAYS, ,7,BILLDAYS,BILLDAYS,,,Billing Days,,BILLDAYS,,ok,BILLDAYS,z_Billing_Days_file_____BILLDAYS,Billing,BILLDAYS,,,,Billing Days
+z_Bookings_Information_file_____BOOKINF, ,9,BOOK,BOOKINF,,,Booking Information,,BOOKINF,,ok,BOOKINF,z_Book_Information_File_____BOOKINF,Books,BOOK,INF,,,Book Information
+z_Buyer_File_____BUYER, ,14,BUYER,,,,Buyer,,BUYER,,ok,BUYER,z_Buyer_Master_File_____BUYER,Purchasing,BUYER,,,,Buyer Master
+z_System_Calendar_File_____CALENDAR, ,192,CALENDAR,,,,Calendar,,CALENDAR,,ok,CALENDAR,z_Calendar_File_____CALENDAR,System,CALENDAR,,,,Calendar
+z_Customer_Class_Summary_file_MTD_____CCLSMT, ,35540,C,CLS,MT,,Customer Class MonthToDate,,CCLSMT,,ok,CCLSMT,z_Customer_Class_-_Company_____%_%_____CCLSMT,Customer Management,C,CLS,MT,,Customer Class Company
+z_Customer_Class_Summary_file_YTD_____CCLSYT, ,9909,C,CLS,YT,,CustomerClassYearToDate,,CCLSYT,,Missing,,,,,,,,
+z_Chemical_Analysis_____CHEMTAGM, ,8,CHEM,TAG,M,,Chemicalanalysis TAG M,,CHEMTAGM,,ok,CHEMTAGM,z_Chemical_Analysis_____CHEMTAGM,Analysis,CHEM,TAGM,,,Chemical Analysis
+z_Charge_History_File_____CHGHST, ,68458,CHG,HST,,,Charge History,,CHGHST,,Missing,,,,,,,,
+z_Credit_Memo_Major_Reason_Code_File_____CMMAJOR, ,8,CM,MAJOR,,,CreditMemo Major,,CMMAJOR,,Missing,,,,,,,,
+z_Credit_Memo_Major_Reason_Code_File_____CMMINOR, ,17,CM,MINOR,,,CreditMemo Minor,,CMMINOR,,Missing,,,,,,,,
+z_Customer_Collection_Comments_____COLCMT, ,2,COL,CMT,,,Collection Comment,,COLCMT,,Missing,,,,,,,,
+z_Company_Standard_Mill_Order_File_(SMO)_____COMPSMO, ,287,COMP,SMO,,,Company StandardMillOrder,,COMPSMO,,Missing,,,,,,,,
+z_A/R_Customer_Contact_Code_____CONTCODE, ,12,CONT,CODE,,,Contact Code,,CONTCODE,,ok,CONTCODE,z_A/R_Customer_Contact_Code_____CONTCODE,Contact Management,CONT,CODE,,,Contact Code
+z_Country_File_____COUNTRY, ,171,COUNTRY,,,,Country,,COUNTRY,,ok,COUNTRY,z_Country_File_____COUNTRY,Geographic,COUNTRY,,,,Country
+z_Credit_Analyst_File_____CRANAL, ,5,CR,Anal,,,Credit Analysis,,CRANAL,,ok,CRANAL,z_Credit_Analysts_____CRANAL,Credit Management,CR,ANAL,,,Credit Analysts
+z_Credit_Application_History_File_____CRAPLHIS, ,33,CR,AP,HIS,,Credit Application History,,CRAPLHIS,,Missing,,,,,,,,
+z_Credit_Comment_File_____CRCOMMNT, ,22384,CR,COMMNT,,,Credit Comment,,CRCOMMNT,,ok,CRCOMMNT,z_Credit_Memo_Comment_____CRCOMMNT,Credit Management,CR,COMMNT,,,Credit Memo Comment
+z_Credit_Memo_Detail_File_____CRDETAIL, ,5452,CR,DETAIL,,,Credit Detail,,CRDETAIL,,ok,CRDETAIL,z_Credit_Memo_Detail_File_____CRDETAIL,Credit Management,CR,DETAIL,,,Credit Memo Detail
+z_Credit_Memo_Header_File_____CRHEADER, ,5450,CR,HEADER,,,Credit Header,,CRHEADER,,ok,CRHEADER,z_Credit_Memo_Header_File_____CRHEADER,Credit Management,CR,HEADER,,,Credit Memo Header
+z_A/R_History_File_____CRHIST, ,148980,CR,HIST,,,Credit History,,CRHIST,,Missing,,,,,,,,
+z_Currency_Code_____CURRCODE, ,2,CURR,CODE,,,Currency Code,,CURRCODE,,ok,CURRCODE,z_Currency_Code_____CURRCODE,Finance,CURR,CODE,,,Currency Code
+z_Customer_Invoice_Address_File_____CUSINVAD, ,1278,CUS,INV,AD,,CUStomer INVoice ADdress,,CUSINVAD,,Missing,,,,,,,,
+z_Customer_Price_Class_File_____CUSPRCLS, ,3,CUS,PR,CLS,,Customer Price Class,,CUSPRCLS,,Missing,,,,,,,,
+z_Customer_Master_Add_Code_File_____CUSTADD, ,7,CUST,ADD,,,Customer Add code,,CUSTADD,,ok,CUSTADD,z_Customer_Master_Add_Code_File_____CUSTADD,Customer Management,CUST,ADD,,,Customer Address
+z_Customer_Parent_File_____CUSTPARN, ,8,CUST,PARN,,,Customer Parent,,CUSTPARN,,ok,CUSTPARN,z_Customer_Parent_File_____CUSTPARN,Customer Management,CUST,PARN,,,Customer Parent
+z_Cutting_Code_Header_File____quote#_1747__12/20/90_____CUTTHEAD, ,383,CUTT,HEAD,,,CuttingCode Header,,CUTTHEAD,,ok,CUTTHEAD,z_Cutting_Code_Header_File____quote#_1747__12/20/90_____CUTTHEAD,Manufacturing,CUTT,HEAD,,,Cutting Code Header
+z_Cutting_Code_Matrix_File   _quote#_1747__12/20/90_____CUTTMTX, ,640,CUTT,MTX,,,CuttingCode Matrix,,CUTTMTX,,Missing,,,,,,,,
+z_District_--_Cutting_Code_Tolerances_____CUTTOLD, ,377,,,,,,,CUTTOLD,,Missing,,,,,,,,
+z_A/P_Debit_Memo_Print_Workfile_-_Detail_____DBDWRK, ,81,,,,,,,DBDWRK,,Missing,,,,,,,,
+z_A/P_Debit_Memo_Print_Workfile_-_Header_____DBHWRK, ,79,,,,,,,DBHWRK,,Missing,,,,,,,,
+z_Delivery_Tracking_Performance_File_____DELTRACK, ,3898,,,,,,,DELTRACK,,Missing,,,,,,,,
+z_District_Application_Printer_File_____DISTRAFF, ,329,,,,,,,DISTRAFF,,Missing,,,,,,,,
+z_District_Application_Printer_File_____DISTRPRT, ,2,,,,,,,DISTRPRT,,Missing,,,,,,,,
+z_Query_Builder_Physical_File_____DPPFFD, ,922,,,,,,,DPPFFD,,Missing,,,,,,,,
+z_Duty_Rate_____DUTYRATE, ,10,,,,,,,DUTYRATE,,Missing,,,,,,,,
+z_EDICD1__--_EDI_1_position_codes_____EDICD1, ,40,,,,,,,EDICD1,,Missing,,,,,,,,
+z_EDICD2__--_EDI_2_position_codes_____EDICD2, ,36,,,,,,,EDICD2,,Missing,,,,,,,,
+z_EDICD2A__--_EDI_2A_position_codes_____EDICD2A, ,94,,,,,,,EDICD2A,,Missing,,,,,,,,
+z_EDICD2__--_EDI_3_position_codes_____EDICD3, ,395,,,,,,,EDICD3,,Missing,,,,,,,,
+z_EDICD4__--_EDI_4_position_codes_____EDICD4, ,84,,,,,,,EDICD4,,Missing,,,,,,,,
+z_EDI_Process_codes_from_TABLE_66_____EDITAB66, ,189,,,,,,,EDITAB66,,Missing,,,,,,,,
+z_E-Mail_additional_copies_____EMADDTL, ,177,,,,,,,EMADDTL,,Missing,,,,,,,,
+z_MW_Email_Log_File_____EMAILLOG, ,7338,,,,,,,EMAILLOG,,Missing,,,,,,,,
+z_MW_Emall_Type_File_____EMAILTYPE, ,21,,,,,,,EMAILTYPE,,Missing,,,,,,,,
+z_Email_forms_____EMFORM, ,48,,,,,,,EMFORM,,Missing,,,,,,,,
+z_Email_forms_____EMFORM_B4, ,12,,,,,,,EMFORM_B4,,Missing,,,,,,,,
+z_Last_Day_of_Period_File_____EMLSTDAY, ,130,,,,,,,EMLSTDAY,,Missing,,,,,,,,
+z_Employee_File_____EMPLOYE, ,99,,,,,,,EMPLOYE,,Missing,,,,,,,,
+z_Employee_Parms_file_____EMPPARMS, ,99,,,,,,,EMPPARMS,,Missing,,,,,,,,
+z_Employee_Quote_File_____EMPQUOTE, ,99,,,,,,,EMPQUOTE,,Missing,,,,,,,,
+z_Empoyee_validation/password_____EMPVALID, ,21,,,,,,,EMPVALID,,Missing,,,,,,,,
+z_Industry_End_Use_Code_File_____ENDUSE, ,139,,,,,,,ENDUSE,,Missing,,,,,,,,
+z_Currency_Exchange_File_____EXCHANGE, ,2336,,,,,,,EXCHANGE,,Missing,,,,,,,,
+z_Currency_Exchange_Transation_File_____EXHTRANS, ,44326,,,,,,,EXHTRANS,,Missing,,,,,,,,
+z_Fast_Path_Description_File_____FASTPATH, ,5443,,,,,,,FASTPATH,,Missing,,,,,,,,
+z_Fast_Path_Key_-_used_to_determine_fields_used_____FASTPKEY, ,10,,,,,,,FASTPKEY,,Missing,,,,,,,,
+z_Forecast_Rules_partxrf_____FCPARTX, ,3,,,,,,,FCPARTX,,Missing,,,,,,,,
+z_A/R_-to-_Frt/Claim_Xref_____FCXREF, ,571,,,,,,,FCXREF,,Missing,,,,,,,,
+z_Daily_Flash_Reconciliation_____FLASHINV, ,2998,,,,,,,FLASHINV,,Missing,,,,,,,,
+z_Daily_Flash_Report_____FLASHRPT, ,40464,,,,,,,FLASHRPT,,Missing,,,,,,,,
+z_Fraction/Decimal_Control_File_____FRACDEC, ,120,,,,,,,FRACDEC,,Missing,,,,,,,,
+z_Freight_Reconciliation_File_____FRECONCL, ,0,,,,,,,FRECONCL,,Missing,,,,,,,,
+z_Freight_Reconciliation_File_____FRTHST, ,0,,,,,,,FRTHST,,Missing,,,,,,,,
+z_Generic_CPA_File_____GENCPA, ,42,,,,,,,GENCPA,,Missing,,,,,,,,
+z_General_Ledger_Account_file_____GLACCT, ,258,,,,,,,GLACCT,,Missing,,,,,,,,
+z_mp_debits/credits_from_gl_trans_file_____GLDEBCRED, ,1658,,,,,,,GLDEBCRED,,Missing,,,,,,,,
+z_G/L_Journal_Batch_Header_File_____GLJRBA, ,1406,,,,,,,GLJRBA,,Missing,,,,,,,,
+z_G/L_Journal_Detail_File_____GLJRDT, ,17036,,,,,,,GLJRDT,,Missing,,,,,,,,
+z_G/L_Journal_Header_File_____GLJRHD, ,2474,,,,,,,GLJRHD,,Missing,,,,,,,,
+z_G/L_Major_Heading_file_____GLMAJHD, ,28,,,,,,,GLMAJHD,,Missing,,,,,,,,
+z_General_Ledger_Master_File_____GLMAST, ,258,,,,,,,GLMAST,,Missing,,,,,,,,
+z_General_Ledger_Master_File_-_HISTORY_____GLMASTHST, ,1508,,,,,,,GLMASTHST,,Missing,,,,,,,,
+z_General_Ledger_Report_File_____GLRPTF, ,109,,,,,,,GLRPTF,,Missing,,,,,,,,
+z_General_Ledger_Transaction_File_____GLTRANS, ,2944807,,,,,,,GLTRANS,,Missing,,,,,,,,
+z_IATRANS_-_History_(Save_Batch)_____IATRANHS, ,493031,,,,,,,IATRANHS,,Missing,,,,,,,,
+z_IATRANS_-_Inventory_Adj_Transactions_____IATRANS, ,27,,,,,,,IATRANS,,Missing,,,,,,,,
+z_IC011_Filing_exceptions_____IC011SLSP, ,353,,,,,,,IC011SLSP,,Missing,,,,,,,,
+z_Image_PDF_____IMAGEPDF, ,108347,,,,,,,IMAGEPDF,,Missing,,,,,,,,
+z_Image_PDF_____IMAGEPDFB4, ,494,,,,,,,IMAGEPDFB4,,Missing,,,,,,,,
+z_Image_Index_Criteria_Control_File_____IMGINDX, ,13,,,,,,,IMGINDX,,Missing,,,,,,,,
+z_Image_Index_Available_Fields_with_Descriptions_____IMGPFDS, ,42,,,,,,,IMGPFDS,,Missing,,,,,,,,
+z_Inventory_Mill_File_____INVMILL, ,74,,,,,,,INVMILL,,Missing,,,,,,,,
+z_Inventory_Reconciliation_File_____IRECONCL, ,26,,,,,,,IRECONCL,,Missing,,,,,,,,
+z_Item_Master_File_____ITEMBG, ,1781,,,,,,,ITEMBG,,Missing,,,,,,,,
+z_One_Position_Item_Class_File_____ITEMCLS1, ,16,,,,,,,ITEMCLS1,,Missing,,,,,,,,
+z_Two_Position_Item_Class_File_____ITEMCLS2, ,69,,,,,,,ITEMCLS2,,Missing,,,,,,,,
+z_Three_Position_Item_Class_File_____ITEMCLS3, ,172,,,,,,,ITEMCLS3,,Missing,,,,,,,,
+z_District_Class_File_____ITEMCLSD, ,144,,,,,,,ITEMCLSD,,Missing,,,,,,,,
+z_Item_Hist_Comments_(From_IA_Only)_____ITEMHCMT, ,106616,,,,,,,ITEMHCMT,,Missing,,,,,,,,
+z_Item_Transaction_History_____ITEMHIST, ,722325,,,,,,,ITEMHIST,,Missing,,,,,,,,
+z_Item_Master_File_____ITEMMAST, ,2613,,,,,,,ITEMMAST,,Missing,,,,,,,,
+z_Item_Master_File_____ITEMMASTXX, ,30170,,,,,,,ITEMMASTXX,,Missing,,,,,,,,
+z_MAP_Level_Code_File_____ITEMMPLV, ,5,,,,,,,ITEMMPLV,,Missing,,,,,,,,
+z_Item_on_hand_comment_file_____ITEMONCM, ,1079,,,,,,,ITEMONCM,,Missing,,,,,,,,
+z_Item_on_Hand_File_____ITEMONHD, ,2612,,,,,,,ITEMONHD,,Missing,,,,,,,,
+z_Item_on_Hand_File_____ITEMONHDXX, ,10234,,,,,,,ITEMONHDXX,,Missing,,,,,,,,
+z_Item_on_Hand_Summary_File_____ITEMONSU, ,28,,,,,,,ITEMONSU,,Missing,,,,,,,,
+z_Item_Summary_-_Begin_Remote_Inventory_Balance_____ITEMRMT, ,59062,,,,,,,ITEMRMT,,Missing,,,,,,,,
+z_Base_Item_Description_List_____ITEMS, ,134053,,,,,,,ITEMS,,Missing,,,,,,,,
+z_Item_Summary_MTD-Inventory_reports_____ITEMSMT, ,179635,,,,,,,ITEMSMT,,Missing,,,,,,,,
+z_Item_Summary_YTD-Inventory_reports_____ITEMSYT, ,19369,,,,,,,ITEMSYT,,Missing,,,,,,,,
+z_Tag_Master_File_____ITEMTAG, ,289140,,,,,,,ITEMTAG,,Missing,,,,,,,,
+z_Tag_Master_File_____ITEMTAGB4, ,238501,,,,,,,ITEMTAGB4,,Missing,,,,,,,,
+z_Tag_Master_File_____ITEMTAGLAH, ,238502,,,,,,,ITEMTAGLAH,,Missing,,,,,,,,
+z_Tag_Process_History_File_____ITEMTPHS, ,7100,,,,,,,ITEMTPHS,,Missing,,,,,,,,
+z_Itemtrif_-_Item_Tariff_File_____ITEMTRIF, ,263,,,,,,,ITEMTRIF,,Missing,,,,,,,,
+z_Item_Tag_User_Defined_fields_____ITEMTUD, ,196770,,,,,,,ITEMTUD,,Missing,,,,,,,,
+z_line_comment_changes_____LINECCHG, ,13320,,,,,,,LINECCHG,,Missing,,,,,,,,
+z_Line_Related_Comments_____LINECMNT, ,933555,,,,,,,LINECMNT,,Missing,,,,,,,,
+z_Line_Comment_Code_Constants_____LINECNST, ,14,,,,,,,LINECNST,,Missing,,,,,,,,
+z_List_/_Heat_Number_____LISTHEAT, ,19662,,,,,,,LISTHEAT,,Missing,,,,,,,,
+z_Machine_File_____MACHINE, ,2,,,,,,,MACHINE,,Missing,,,,,,,,
+z_Maintenance_history_____MAINTHIST, ,6363,,,,,,,MAINTHIST,,Missing,,,,,,,,
+z_Material_Rejection_Major_Cause_code_____MAJREJ, ,17,,,,,,,MAJREJ,,Missing,,,,,,,,
+z_MASSBPC_-_Mass_maint/base_price_____MASSBPC, ,5,,,,,,,MASSBPC,,Missing,,,,,,,,
+z_MASSBPC_-_Mass_maint/base_price_.CSV_converter_____MASSBPCIFS, ,6,,,,,,,MASSBPCIFS,,Missing,,,,,,,,
+z_Metalweb_FMG_interface_____METALFMG, ,8,,,,,,,METALFMG,,Missing,,,,,,,,
+z_Material_Rejection_Minor_Cause_codes_____MINREJ, ,26,,,,,,,MINREJ,,Missing,,,,,,,,
+z_Manifest_____MNFEST, ,374,,,,,,,MNFEST,,Missing,,,,,,,,
+z_Material_Processing_Order_Detail_____MPDETAIL, ,455,,,,,,,MPDETAIL,,Missing,,,,,,,,
+z_Material_Processing_Order_Header_____MPHDRORD, ,456,,,,,,,MPHDRORD,,Missing,,,,,,,,
+z_M/P_Final_Detail_____MPHSTDET, ,1872,,,,,,,MPHSTDET,,Missing,,,,,,,,
+z_M/P_Final_Header_____MPHSTHDR, ,1869,,,,,,,MPHSTHDR,,Missing,,,,,,,,
+z_M/P_Final_Processing_Charges_____MPHSTPRC, ,6167,,,,,,,MPHSTPRC,,Missing,,,,,,,,
+z_M/P_Final_Restock_____MPHSTRSK, ,7656,,,,,,,MPHSTRSK,,Missing,,,,,,,,
+z_M/P_Final_Used_____MPHSTUSE, ,6554,,,,,,,MPHSTUSE,,Missing,,,,,,,,
+z_Output_file_for_DSPFD_TYPE(*MBRLIST)_____MPMISS, ,2,,,,,,,MPMISS,,Missing,,,,,,,,
+z_Material_Processing_Order_Profile_____MPPROFIL, ,456,,,,,,,MPPROFIL,,Missing,,,,,,,,
+z_MP_Setup_Control_File_____MPSETUP, ,1924,,,,,,,MPSETUP,,Missing,,,,,,,,
+z_MP_Tracking_File_____MPTRCK, ,1748,,,,,,,MPTRCK,,Missing,,,,,,,,
+z_MP_Tracking_History_File_____MPTRKHST, ,26661,,,,,,,MPTRKHST,,Missing,,,,,,,,
+z_Material_Rejection_Transaction_File_____MRTRANS, ,21,,,,,,,MRTRANS,,Missing,,,,,,,,
+z_Setup_Whole_Order_Line_Related_Comments_____MSWOCMNT, ,7,,,,,,,MSWOCMNT,,Missing,,,,,,,,
+z_Customer_Master_File_____MWARCUST, ,980,,,,,,,MWARCUST,,Missing,,,,,,,,
+z_mw100_reset_audit_trail_____MWRESET, ,1824,,,,,,,MWRESET,,Missing,,,,,,,,
+z_Credit-Held_Order_Release_File_____OECRRELS, ,48601,,,,,,,OECRRELS,,Missing,,,,,,,,
+z_Order_Detail_File_____OEDETAIL, ,151243,,,,,,,OEDETAIL,,Missing,,,,,,,,
+z_Quote_/_Order_Detail_History_File_____OEHISTRD, ,293623,,,,,,,OEHISTRD,,Missing,,,,,,,,
+z_Quote_/_Order_History_Header_File_____OEHISTRY, ,299363,,,,,,,OEHISTRY,,Missing,,,,,,,,
+z_Open_Order_File_____OEOPNORD, ,153764,,,,,,,OEOPNORD,,Missing,,,,,,,,
+z_Order_Profile_File_____OEPROFIL, ,153770,,,,,,,OEPROFIL,,Missing,,,,,,,,
+z_Order_Ship_Instructions_____OESHPINS, ,186850,,,,,,,OESHPINS,,Missing,,,,,,,,
+z_Operational_Information_____OPERINFO, ,6705,,,,,,,OPERINFO,,Missing,,,,,,,,
+z_Order_Tracking_File_____ORDTRCK, ,151170,,,,,,,ORDTRCK,,Missing,,,,,,,,
+z_Order_Tracking_File_____ORDTRHST, ,2840862,,,,,,,ORDTRHST,,Missing,,,,,,,,
+z_partxml0_____PARTXMNT, ,3733,,,,,,,PARTXMNT,,Missing,,,,,,,,
+z_Customer_Part_Number_Cross_Reference_____PARTXRF, ,28,,,,,,,PARTXRF,,Missing,,,,,,,,
+z_PC_Tracking_File_____PCTRCK, ,41606,,,,,,,PCTRCK,,Missing,,,,,,,,
+z_Physical_Analysis_File_____PHYSTAGM, ,8,,,,,,,PHYSTAGM,,Missing,,,,,,,,
+z_Picker_Detail_File_____PICKDTL, ,147991,,,,,,,PICKDTL,,Missing,,,,,,,,
+z_Price_Matrix_File_____PMATRX, ,13,,,,,,,PMATRX,,Missing,,,,,,,,
+z_Price_Matrix_File_____PMATRX_B4, ,149,,,,,,,PMATRX_B4,,Missing,,,,,,,,
+z_P/O_Cash_Movement_____POCASHMV, ,1302,,,,,,,POCASHMV,,Missing,,,,,,,,
+z_Purchase_Order_Change_File_____POCHANGE, ,1261,,,,,,,POCHANGE,,Missing,,,,,,,,
+z_PO_Delivery_Date_Change_Log_____POCHGLOG, ,4558,,,,,,,POCHGLOG,,Missing,,,,,,,,
+z_PO_Company_SMO_File_____POCMPSMO, ,45504,,,,,,,POCMPSMO,,Missing,,,,,,,,
+z_Purchase_Order_Comment_File_(Whole_Order)_____POCOMMNT, ,558,,,,,,,POCOMMNT,,Missing,,,,,,,,
+z_Purchase_order_delete_file_____PODELET, ,103,,,,,,,PODELET,,Missing,,,,,,,,
+z_Purchase_Order_Detail_File_____PODETAIL, ,5000,,,,,,,PODETAIL,,Missing,,,,,,,,
+z_Purchase_Order_Header_File_____POHEADER, ,5026,,,,,,,POHEADER,,Missing,,,,,,,,
+z_Purchase_Order_Header_File_____POHEADERBH, ,743,,,,,,,POHEADERBH,,Missing,,,,,,,,
+z_Purchase_Order_Mark/Pack/Load_____POMKPKLD, ,2835,,,,,,,POMKPKLD,,Missing,,,,,,,,
+z_Port_of_Entry_File_____PORTNTRY, ,5,,,,,,,PORTNTRY,,Missing,,,,,,,,
+z_Posting_Period_File_____POSTPRD, ,9,,,,,,,POSTPRD,,Missing,,,,,,,,
+z_PO_Tracking_File_____POTRCK, ,17262,,,,,,,POTRCK,,Missing,,,,,,,,
+z_PO_Tracking_History_File_____POTRKHST, ,112129,,,,,,,POTRKHST,,Missing,,,,,,,,
+z_Process_Charges__-_Header_____PRCHCHRG, ,38830,,,,,,,PRCHCHRG,,Missing,,,,,,,,
+z_Process_Charges__-_Test_Quantity_____PRCHTQTY, ,34992,,,,,,,PRCHTQTY,,Missing,,,,,,,,
+z_Process_Charges__-_Transactions_____PRCTCHRG, ,68534,,,,,,,PRCTCHRG,,Missing,,,,,,,,
+z_Process_Charges__-_Dimensions_____PRCTDIM, ,32,,,,,,,PRCTDIM,,Missing,,,,,,,,
+z_Product_Class/Subclass_File_____PRDSBCLS, ,412,,,,,,,PRDSBCLS,,Missing,,,,,,,,
+z_Produced_From_____PRODFROM, ,47861,,,,,,,PRODFROM,,Missing,,,,,,,,
+z_PRODPROC_--Production_Process_Codes_____PRODPROC, ,105,,,,,,,PRODPROC,,Missing,,,,,,,,
+z_Print_Request_File_____PRTREQST, ,5,,,,,,,PRTREQST,,Missing,,,,,,,,
+z_Purchase_Comments_____PURCCOMM, ,7,,,,,,,PURCCOMM,,Missing,,,,,,,,
+z_Rcptcost_-_PO_receipt_cost_history_____RCPTCOST, ,36297,,,,,,,RCPTCOST,,Missing,,,,,,,,
+z_Purchase_Order_Receipt_History_____RCPTHIST, ,15489,,,,,,,RCPTHIST,,Missing,,,,,,,,
+z_RECONHST_--Reconciliation_History_____RECONHST, ,92067,,,,,,,RECONHST,,Missing,,,,,,,,
+z_Remote_Inventory_On_Hand_File_____REMOTEOH, ,1141,,,,,,,REMOTEOH,,Missing,,,,,,,,
+z_Inventory_Restock_File_____RESTOCK, ,113922,,,,,,,RESTOCK,,Missing,,,,,,,,
+z_Risk_Status_File_____RISKSTAT, ,9,,,,,,,RISKSTAT,,Missing,,,,,,,,
+z_Sales_Analysis_Daily_file_____SADAILY, ,5,,,,,,,SADAILY,,Missing,,,,,,,,
+z_S/A_Gross_Profit_Adjustment_Physical_file_____SAGPADJ, ,18854,,,,,,,SAGPADJ,,Missing,,,,,,,,
+z_Sales_Budgeting_File_____SALESBUD, ,1302,,,,,,,SALESBUD,,Missing,,,,,,,,
+z_Salesman_Master_File_____SALESMAN, ,36,,,,,,,SALESMAN,,Missing,,,,,,,,
+z_Customer_Sales_Objective_File_____SALESOBJ, ,10042,,,,,,,SALESOBJ,,Missing,,,,,,,,
+z_Salestax_File_____SALESTAX, ,60,,,,,,,SALESTAX,,Missing,,,,,,,,
+z_Sales_Analysis_Monthly_file_____SAMTHLY, ,312,,,,,,,SAMTHLY,,Missing,,,,,,,,
+z_SUBFILE_DISPLAY_CONTROL_OPTIONS_FILE_____SFILEDFT, ,49,,,,,,,SFILEDFT,,Missing,,,,,,,,
+z_Sheet/Split_Coil_Analysis_File_____SHEETANL, ,20020,,,,,,,SHEETANL,,Missing,,,,,,,,
+z_Customer_Ship_To_Address_File_____SHIPADR, ,3295,,,,,,,SHIPADR,,Missing,,,,,,,,
+z_Customer_Ship_To_Background_Information_____SHIPBCKG, ,2,,,,,,,SHIPBCKG,,Missing,,,,,,,,
+z_ShipTo_Dispatch_info_____SHIPDISP, ,658,,,,,,,SHIPDISP,,Missing,,,,,,,,
+z_Shipments_File_____SHIPMAST, ,150390,,,,,,,SHIPMAST,,Missing,,,,,,,,
+z_Customer_Ship_To_Instruction_File_____SHPINST, ,731,,,,,,,SHPINST,,Missing,,,,,,,,
+z_Shipment_Summary_File_____SHSUMM, ,35983,,,,,,,SHSUMM,,Missing,,,,,,,,
+z_Standard_Industry_Code_File_____SICODE, ,427,,,,,,,SICODE,,Missing,,,,,,,,
+z_Salesman_Recap_-_Calc_d_Sales_Figures_(Workfile)_____SLMNRCAP, ,2103,,,,,,,SLMNRCAP,,Missing,,,,,,,,
+z_Salesman_Summary_file_MTD_____SLMNSUM, ,2103,,,,,,,SLMNSUM,,Missing,,,,,,,,
+z_S/A_Item_Summary_MTD-Inventory_reports_____SLSASMT, ,58148,,,,,,,SLSASMT,,Missing,,,,,,,,
+z_S/A_Item_Summary_YTD-Inventory_reports_____SLSASYT, ,10704,,,,,,,SLSASYT,,Missing,,,,,,,,
+z_Sales_Description_Override_____SLSDSCOV, ,165327,,,,,,,SLSDSCOV,,Missing,,,,,,,,
+z_SLITTER_SET-UP_PRODUCED_(MADE)_ITEM_FILE_____SLTML, ,3818,,,,,,,SLTML,,Missing,,,,,,,,
+z_SLITTER_SET-UP_USED_ITEM_FILE_____SLTUL, ,9009,,,,,,,SLTUL,,Missing,,,,,,,,
+z_Service_Purchase_Order_Detail_File_____SPDETAIL, ,347067,,,,,,,SPDETAIL,,Missing,,,,,,,,
+z_Service_Purchase_Order_Header_File_____SPHEADER, ,54512,,,,,,,SPHEADER,,Missing,,,,,,,,
+z_SPO_Tracking_File_____SPOTRCK, ,385207,,,,,,,SPOTRCK,,Missing,,,,,,,,
+z_Surface_condition_____SURFCOND, ,11,,,,,,,SURFCOND,,Missing,,,,,,,,
+z_System_Parameter_Last_Maintained_Reference_File_____SYSCNSLM, ,83,,,,,,,SYSCNSLM,,Missing,,,,,,,,
+z_TAGBUILD_--Tag_Build_Up_____TAGBUILD, ,5511,,,,,,,TAGBUILD,,Missing,,,,,,,,
+z_Tag_Related_Comments_____TAGCMNT, ,5,,,,,,,TAGCMNT,,Missing,,,,,,,,
+z_Tag_Location_Movement_History_____TAGLOCMV, ,508956,,,,,,,TAGLOCMV,,Missing,,,,,,,,
+z_TAGTRAN_--_Tag_Status_transaction_____TAGTRAN, ,304505,,,,,,,TAGTRAN,,Missing,,,,,,,,
+z_Tax_Exemption_File_____TAXEXMPT, ,845,,,,,,,TAXEXMPT,,Missing,,,,,,,,
+z_Master_Terms_Code_File_____TERMS, ,154,,,,,,,TERMS,,Missing,,,,,,,,
+z_Tolerance_Details_for_Main_Lines_____TLDETAIL, ,112352,,,,,,,TLDETAIL,,Missing,,,,,,,,
+z_Tracking_Outputq_File_____TRKOUTQ, ,90,,,,,,,TRKOUTQ,,Missing,,,,,,,,
+z_User_Defined_Data_-_Validation_List_____UDFDATAL, ,9,,,,,,,UDFDATAL,,Missing,,,,,,,,
+z_User_Defined_Data_-_Data_Type_Definition_____UDFDATAT, ,2,,,,,,,UDFDATAT,,Missing,,,,,,,,
+z_User_Defined_Data_-_Data_Values_____UDFDATAV, ,2,,,,,,,UDFDATAV,,Missing,,,,,,,,
+z_Upload_Data_from_IFS_____UPINPF, ,115,,,,,,,UPINPF,,Missing,,,,,,,,
+z_Upload_PC_file_for_Batch_Scanners_____UPLOADPI, ,521,,,,,,,UPLOADPI,,Missing,,,,,,,,
+z_Used_line_pallet_info_____USEDBLD, ,206158,,,,,,,USEDBLD,,Missing,,,,,,,,
+z_Used_Line_File_____USEDLINE, ,206285,,,,,,,USEDLINE,,Missing,,,,,,,,
+z_Usetax_File_____USETAX, ,52,,,,,,,USETAX,,Missing,,,,,,,,
+z_Vendor_P.O._Instructions_____VENDINST, ,2,,,,,,,VENDINST,,Missing,,,,,,,,
+z_Vendor_Mail_To_Address_File_____VENDMAIL, ,802,,,,,,,VENDMAIL,,Missing,,,,,,,,
+z_VENDPFR_Vendor_Performance_File_____VENDPRFM, ,815,,,,,,,VENDPRFM,,Missing,,,,,,,,
+z_Vendor_Quality_Approval_File_____VENDQUAL, ,323,,,,,,,VENDQUAL,,Missing,,,,,,,,
+z_Vendor_Remit_To_Address_File_____VENDREMT, ,730,,,,,,,VENDREMT,,Missing,,,,,,,,
+z_Vendor_Ship_To_Address_File_____VENDSHIP, ,789,,,,,,,VENDSHIP,,Missing,,,,,,,,
+z_Vendor_Request_Header_File_____VNDREQHD, ,304,,,,,,,VNDREQHD,,Missing,,,,,,,,
+z_E/C_Customer_____WEBCUST, ,4,,,,,,,WEBCUST,,Missing,,,,,,,,
+z_fax/email_wire_transfer/ach_payments_____WFAP855W, ,44,,,,,,,WFAP855W,,Missing,,,,,,,,
+z_Work_file_to_hold_documents_to_be_faxed_____WFFAXEMAIL, ,5575,,,,,,,WFFAXEMAIL,,Missing,,,,,,,,
+z_Work_File_-_IN896_-_Inventory_Dollars_Sold_____WFIN8960, ,9,,,,,,,WFIN8960,,Missing,,,,,,,,
+z_Daily_invoicing_analysis_____WFOE895, ,70,,,,,,,WFOE895,,Missing,,,,,,,,
+z_WHMPTRC_--PF_File_Mask_____WHMPTRC, ,13,,,,,,,WHMPTRC,,Missing,,,,,,,,
+z_Whole_Order_Charge_Transaction_File_____WHOLORCH, ,1890,,,,,,,WHOLORCH,,Missing,,,,,,,,
+z_Warehouse_Order_Tracking_Code_File_____WHORDTRC, ,173,,,,,,,WHORDTRC,,Missing,,,,,,,,
+z_Warehouse_Process_Charges_Tracking_Code_File_____WHPCTRC, ,6,,,,,,,WHPCTRC,,Missing,,,,,,,,
+z_Warehouse_PO_Tracking_Code_File_____WHPOTRC, ,36,,,,,,,WHPOTRC,,Missing,,,,,,,,
+z_Warehouse:_District/Code_____WHSEMCOD, ,6,,,,,,,WHSEMCOD,,Missing,,,,,,,,
+z_Warehouse_Order_Tracking_Email_File_____WHTRCKEM, ,26,,,,,,,WHTRCKEM,,Missing,,,,,,,,
+z_outbound_820_ach_vendor_____X820OAB, ,2174,,,,,,,X820OAB,,Missing,,,,,,,,
+z_outbound_820_ach_detail_____X820OAD, ,14269,,,,,,,X820OAD,,Missing,,,,,,,,
+z_outbound_820_ach_header_____X820OAH, ,63,,,,,,,X820OAH,,Missing,,,,,,,,
+,,,,,,,,,,,error,APVDSTFM,z_A/P_Vendor_Distress_File_Format_____APVDSTFM,Accounts Payable,AP,V,DST,FM,AP Vendor Distress Format
+,,,,,,,,,,,error,APVNDHST,z_A/P_Vendor_History_File_____APVNDHST,Accounts Payable,AP,VND,HST,,AP Vendor History
+,,,,,,,,,,,error,APVOHST,z_A/P_Voucher_History_File_____APVOHST,Accounts Payable,AP,VO,HST,,AP Voucher History
+,,,,,,,,,,,error,ARBILL1,z_A/R_BILL1__-_RM_____ARBILL1,Accounts Receivable,AR,BILL,1,,AR Billing 1
+,,,,,,,,,,,error,ARBOL,z_A/R_Bill_of_Lading_File_____ARBOL,Accounts Receivable,AR,BOL,,,AR Bill of Lading
+,,,,,,,,,,,error,ARCUSGL,z_Customer_-_Credit_Customer_to_GL_Account_____ARCUSGL,Accounts Receivable,AR,CUS,GL,,AR Customer to GL
+,,,,,,,,,,,error,ARCUSHST,z_Customer_Master_History_File_____ARCUSHST,Accounts Receivable,AR,CUS,HST,,AR Customer History
+,,,,,,,,,,,error,ARCUSPAY,z_Customer_-_Method_of_Payment_____ARCUSPAY,Accounts Receivable,AR,CUS,PAY,,AR Customer Payment Method
+,,,,,,,,,,,error,ARCUSREAS,z_AR/CUS_reasoncode_File_____ARCUSREAS,Accounts Receivable,AR,CUS,REAS,,AR Customer Reason Code
+,,,,,,,,,,,error,ARDELINQ,z_Delinquent_Accounts_File_____ARDELINQ,Accounts Receivable,AR,DELINQ,,,AR Delinquent Accounts
+,,,,,,,,,,,error,ARINVHST,z_AR/Invoice_History_File_____ARINVHST,Accounts Receivable,AR,INV,HST,,AR Invoice History
+,,,,,,,,,,,error,ARTOTAL,z_AR/Total_Distribution_File_____ARTOTAL,Accounts Receivable,AR,TOTAL,,,AR Total Distribution
+,,,,,,,,,,,error,BADCHECKS,z_AR_Bad_Checks_____BADCHECKS,Accounts Receivable,BAD,CHECKS,,,Bad Checks
+,,,,,,,,,,,error,BOOKNUM,z_Book_Number_File_____BOOKNUM,Books,BOOK,NUM,,,Book Number
+,,,,,,,,,,,error,BDSEPR_B4,z_BD_Revenue_Separator_____BDSEPR_B4,Business Development,BD,SEPR,B4,,Business Development Revenue Separator Backup
+,,,,,,,,,,,error,CCLSTAG,z_Customer_Class_-_Tag_____%_%_____CCLSTAG,Customer Management,C,CLS,TAG,,Customer Class Tag
+,,,,,,,,,,,error,CHGPOHST,z_Change_PO_History_File_____CHGPOHST,Change History,CHG,PO,HST,,Change PO History
+,,,,,,,,,,,error,CMMAST,z_CM_Master_____CMMAST,CM Management,CM,MAST,,,CM Master
+,,,,,,,,,,,error,CMMITEMF,z_CM_Item_File_____CMMITEMF,CM Management,CM,M,ITEMF,,CM Item File
+,,,,,,,,,,,error,COLCODES,z_Collector_Codes_____COLCODES,Collections,COL,CODES,,,Collector Codes
+,,,,,,,,,,,error,COMAJOR,z_Company_-_Major_____%_%_____COMAJOR,Company,CO,MAJOR,,,Company Major
+,,,,,,,,,,,error,COMINOR,z_Company_-_Minor_____%_%_____COMINOR,Company,CO,MINOR,,,Company Minor
+,,,,,,,,,,,error,COMPCMT,z_Company_Comment_File_____COMPCMT,Company,COMP,CMT,,,Company Comment
+,,,,,,,,,,,error,COMPSMOV,z_Company_-_Ship_Method_Override_____COMPSMOV,Company,COMP,SM,OV,,Company Ship Method Override
+,,,,,,,,,,,error,CRAP,z_Credit_Memo_-_Apply_to_AP_____CRAP,Credit Management,CR,AP,,,Credit Memo Apply to AP
+,,,,,,,,,,,error,CRAPPLY,z_Credit_Memo_Apply_File_____CRAPPLY,Credit Management,CR,APPLY,,,Credit Memo Apply
+,,,,,,,,,,,error,CUSINFO,z_Customer_Information_____CUSINFO,Customer Management,CUS,INFO,,,Customer Information
+,,,,,,,,,,,error,CUSINSP,z_Customer_Inspection_____CUSINSP,Customer Management,CUS,INSP,,,Customer Inspection
+,,,,,,,,,,,error,CUSPR,z_Customer_Price_Class_____CUSPR,Customer Management,CUS,PR,,,Customer Price Class

@@ -1,0 +1,159 @@
+﻿TableName,TableRowCount,PkFound,ColumnPK,MinRange,MaxRange
+_Instructions_____VENDINST, 2 ,PK found,Vendor_Number_____VNVEND,N/A,N/A
+z_***_remove_next_rel_____CLIMITA, 236 ,PK found,_____CCUST,    1 003,     998
+z______DELCODE, 5 ,PK found,Delivery_Code_____DCCODE,A,X
+z______ITEMEXP, 2 ,PK found,ITEM_NUMBER_____IEITEM,    51 357,    51 373
+z______ITEMLIST," 44,827 ",PK found,ITEM_NUMBER_____IMITEM,01001,UWCTP
+z______POHSTDET," 9,589 ",PK found,P/O_Receiving_Batch/Register_Seq_Number_____BDBTCH,    10 519,    20 353
+z______POHSTHDR," 9,589 ",PK found,P/O_Receiving_Batch/Register_Seq_Number_____BHBTCH,    10 519,    20 353
+z______USEDSEQ," 206,158 ",PK found,TAG_NUMBER_NUMERIC_____UBSEQ7,    100 000,    99 999
+z_A/P_Check_Reconcilement_file_____APCHKR, 10 ,PK found,Check#_____PRCHCK,    10 000,    9 993
+z_A/P_Check_Register_Work_File_____APWK856, 1 ,PK found,COMPANY_NUMBER_____WHCOMP,     1,     1
+z_A/P_Debit_Header_File_____APDEBH, 79 ,PK found,Debit_Memo_Number_____V1DEB#,    100 101,    100 182
+z_A/P_Debit_Memo_Print_Workfile_-_Header_____DBHWRK, 79 ,PK found,Debit_Memo_Number_____WHDEB#,    100 101,    100 182
+z_A/P_EDI_transaction_selection_____APEDITR, 202 ,PK found,Vendor_____EDVEND,     1,     905
+z_A/P_Handling_Code_File_____APHCOD, 2 ,PK found,Payment_Handling_Code_____ABHCOD,OD,US
+z_A/P_Inventory_Reconciliation_File_____APINV," 9,876 ",PK found,TIME_STAMP_____VISTMP,  100 005 042 624,  95 958 123 124
+z_A/P_Processor_Voucher_Data_File_____APPRC, 159 ,PK found,A/P_Invoice#_____VAINV#,    4 206,5010HOU0020768
+z_A/P_Vendor_History_Exchange_File_____APVHEXC, 4 ,PK found,Vendor_Number_____VHCVND,     276,     870
+z_A/P_Void_File_-_(Checks_to_be_voided)_____APVOID, 316 ,PK found,From_Check_____VVCHKF,    10 000,   99 100 720
+z_A/R_Customer_Contact_Code_____CONTCODE, 12 ,PK found,Contact_Type_____CCCTYP,A,Y
+z_A/R_Lock_Box_Code_File_____ARLOCK, 8 ,PK found,LOCK_BOX_CODE_____C6CODE,     1,     99
+z_A/R_-to-_Frt/Claim_Xref_____FCXREF, 571 ,PK found,Vendor#_____XRVNDR,     104,     905
+z_Additional_Charge_Code_File_____ADDCHRG, 32 ,PK found,Additional_Charge_Code_____ACACCD,     232,WRF
+z_Additional_Charge_Federal_Tax_File_____ADDCFTAX, 4 ,PK found,Additional_Charge_Code_____AXFCCD,CHR,TES
+z_Additional_Charge_Provincial_Tax_File_____ADDCPTAX, 3 ,PK found,Additional_Charge_Code_____AXPCCD,CHR,TES
+z_AR/Customer_History_Exchange_File_____ARCHEXC, 272 ,PK found,Customer_Number_____AXCUST,    1 000,     996
+z_Bank_Disbursement_Master_____APBANKCD, 8 ,PK found,AP_Disbursement_Code_____ABBCDE,     1,     8
+z_Barcode_Checks_____BCCHECKS, 99 ,PK found,Employee#_____BCEMPL,ABYRD     ,ZLUMSDEN  
+z_Bookings_Information_file_____BOOKINF, 9 ,PK found,Item_Class_____BKCLS3,ABH,SBH
+z_Buyer_File_____BUYER, 14 ,PK found,Buyer_____BBUY#,     1,     5
+z_Chemical_Analysis_____CHEMTAGM, 8 ,PK found,CHEM_SCREEN_MASK__NUMBER_____HTCHSM,     1,     8
+z_Country_File_____COUNTRY, 171 ,PK found,Country_____CYCTRY,A  ,ZW 
+z_Credit_Analyst_File_____CRANAL, 5 ,PK found,Credit_Analyst_Number_____CACANO,     1,     6
+z_Credit_Application_History_File_____CRAPLHIS, 33 ,PK found,CUSTOMER_NUMBER_____AHCUST,     125,     892
+z_Credit_Memo_Header_File_____CRHEADER," 5,450 ",PK found,CREDIT_MEMO_NUMBER_____CRHORD,    812 278,    971 341
+z_Credit_Memo_Major_Reason_Code_File_____CMMAJOR, 8 ,PK found,Major_Reason_Code_Description_____MJDESC,ADMINISTRATION      ,WAREHOUSE           
+z_Credit_Memo_Major_Reason_Code_File_____CMMINOR, 17 ,PK found,Minor_Reason_Code_____MNCODE, ,T
+z_Credit-Held_Order_Release_File_____OECRRELS," 48,601 ",PK found,ORDER_NUMBER_____ORORDR,    800 977,    971 387
+z_Currency_Code_____CURRCODE, 2 ,PK found,Currency_Code_____CNCODE,CAD,USD
+z_Customer_A/R_Information_____ARINFO, 309 ,PK found,A/R_Customer_Number_____C8CUST,     ,     994
+z_Customer_Collection_Comments_____COLCMT, 2 ,PK found,CUSTOMER_NUMBER_____C9CUST,     568,     638
+z_Customer_Invoice_Address_File_____CUSINVAD," 1,278 ",PK found,CUSTOMER_NUMBER_____CICUST,     1,    99 999
+z_Customer_Master_Add_Code_File_____CUSTADD, 7 ,PK found,Customer_Add_Code_____CDCACD,A,Y
+z_Customer_Master_File_____ARCUST," 1,278 ",PK found,CUSTOMER_NUMBER_____CCUST,     1,    99 999
+z_Customer_Master_File_____ARCUST_B4, 438 ,PK found,CUSTOMER_NUMBER_____CCUST,     1,    99 999
+z_Customer_Master_File_____MWARCUST, 980 ,PK found,CUSTOMER_NUMBER_____CCUST,     1,    99 999
+z_Customer_Master_History_File_____ARCUSHST," 1,279 ",PK found,CUSTOMER_NUMBER_____CHCUST,     ,    99 999
+z_Customer_Number_for_TS_to_be_01_____ARCUST_01, 383 ,PK found,CUSTOMER_NUMBER_____CCUST01,     1,    99 999
+z_Customer_Number_for_TS_to_be_40_____ARCUST_40, 55 ,PK found,CUSTOMER_NUMBER_____CCUST40,     107,     552
+z_Customer_Parent_File_____CUSTPARN, 8 ,PK found,Cust_Parent_Code_____CPCODE,AIT ,WTHA
+z_Customer_Part_Number_Cross_Reference_____PARTXRF, 28 ,PK found,CUSTOMER_PART_NUMBER_____IPPART,102665(MAT10-6.00X4.00)  ,RS0825001                
+z_Customer_Price_Class_File_____CUSPRCLS, 3 ,PK found,Customer_Price_Class_Code_____PCPRCL,01,03
+z_Customer_Ship_To_Background_Information_____SHIPBCKG, 2 ,PK found,Customer_Number_____SBCUST,     264,     546
+z_Cutting_Code_Header_File____quote#_1747__12/20/90_____CUTTHEAD, 383 ,PK found,Cutting_Code_____CUCTCD,ABCCUT ,YYYOSPR
+z_Daily_invoicing_analysis_____WFOE895, 70 ,PK found,Order_Number_____DLORDR,    967 017,    970 996
+z_Delivery_Tracking_Performance_File_____DELTRACK," 3,898 ",PK found,Transaction_#_____DPORDR,    600 082,    971 299
+z_Descrepancy_Reason_Code_File_____ARREAS, 9 ,PK found,DESCREPANCY_REASON_CODE_____R1CODE,0001,DRC4
+z_Discrepancy_Code_File_____ARDCRP, 12 ,PK found,DESCREPANCY_CODE_____C1CODE,*C,BB
+z_District_--_Cutting_Code_Tolerances_____CUTTOLD, 377 ,PK found,CUTTING_CODE_____CFCUCD,ABCCUT ,UWROSPR
+z_District_Application_Printer_File_____DISTRPRT, 2 ,PK found,OUTPUT_QUEUE_____TPOUTQ,STBADMIN  ,STBWHS1   
+z_District_Class_File_____ITEMCLSD, 144 ,PK found,3_POSITION_CLASS_____IDCLAS,ABG,YYY
+z_Duty_Rate_____DUTYRATE, 10 ,PK found,Shipping_Country_____DUSCTY,CAN,VRC
+z_E/C_Customer_____WEBCUST, 4 ,PK found,Customer_ID_____ECCID,00001     ,STATEMENT 
+z_EDI_Process_codes_from_TABLE_66_____EDITAB66, 189 ,PK found,_____EDSCOD,01,PN
+z_EDICD2__--_EDI_2_position_codes_____EDICD2, 36 ,PK found,_____E2CODE,     1,     9
+z_EDICD2__--_EDI_3_position_codes_____EDICD3, 395 ,PK found,_____E3CODE,     1,     996
+z_EDICD2A__--_EDI_2A_position_codes_____EDICD2A, 94 ,PK found,35_POSITION_DESCRIPTION_____E2ADSC,ALLOY                              ,WELD                               
+z_EDICD4__--_EDI_4_position_codes_____EDICD4, 84 ,PK found,_____E4CODE,     1,     98
+z_Email_forms_____EMFORM_B4, 12 ,PK found,Program_____EFPROG,AP711CLF  ,ST651CL   
+z_Employee_File_____EMPLOYE, 99 ,PK found,Employee#_____EMEMPL,ABYRD     ,ZLUMSDEN  
+z_Employee_Parms_file_____EMPPARMS, 99 ,PK found,Employee#_____EPEMPL,ABYRD     ,ZLUMSDEN  
+z_Employee_Quote_File_____EMPQUOTE, 99 ,PK found,Employee#_____EQEMPL,ABYRD     ,ZLUMSDEN  
+z_Empoyee_validation/password_____EMPVALID, 21 ,PK found,Employee#_____EMEMPL,ACRUZ     ,ZLUMSDEN  
+z_Fast_Path_Key_-_used_to_determine_fields_used_____FASTPKEY, 10 ,PK found,DESC_____FPDESC,Alloy     ,Width     
+z_Forecast_Rules_partxrf_____FCPARTX, 3 ,PK found,CUST_PART#_____IPPART,108426-000003            ,R-4140C-04.250           
+z_Freight_Reconciliation_File_____FRECONCL, -   ,PK found,Record_Code_____FRRECD,NULL,NULL
+z_Freight_Reconciliation_File_____FRTHST, -   ,PK found,Record_Code_____FSRECD,NULL,NULL
+z_G/L_Journal_Batch_Header_File_____GLJRBA," 1,406 ",PK found,Batch_Number_____GBBTCH,    1 000,     999
+z_G/L_Major_Heading_file_____GLMAJHD, 28 ,PK found,GL_Major_Heading#_Description_____GMHDCD,     100,     999
+z_General_Ledger_Account_file_____GLACCT, 258 ,PK found,GL_Account_Number_____GACCT,  1 001 100 000,  9 999 999 999
+z_General_Ledger_Master_File_____GLMAST, 258 ,PK found,Account_Number_____GMACCT,  1 001 100 000,  9 999 999 999
+z_IATRANS_-_Inventory_Adj_Transactions_____IATRANS, 27 ,PK found,Batch_Number_____IABAT#,    15 711,    9 855
+z_IC011_Filing_exceptions_____IC011SLSP, 353 ,PK found,FILE_DATE_____EXDATE,    44 587,    45 770
+z_Image_Index_Criteria_Control_File_____IMGINDX, 13 ,PK found,IMAGE_TYPE_____IMGTYP,APIV,TSRP
+z_Image_PDF_____IMAGEPDF," 108,347 ",PK found,IMAGE_NAME_____IMAGENM,01847177.pdf                                                                                                                                          ,H01971387.pdf                                                                                                                                         
+z_Image_PDF_____IMAGEPDFB4, 494 ,PK found,_____DATENT,    43 983,    44 006
+z_Industry_End_Use_Code_File_____ENDUSE, 139 ,PK found,Industry_End_Use_Code_____EUEUCD,    1 001,    7 029
+z_inferred_relationships," 146,400,856 ",PK found,relationship_id,     1,   146 400 856
+z_Inventory_Mill_File_____INVMILL, 74 ,PK found,Inventory_Mill_Code_____MIMILL,ABS,ZHA
+z_Inventory_Reconciliation_File_____IRECONCL, 26 ,PK found,Purchase_Order_Number_____IRPONO,    517 436,    518 955
+z_Item_Master_File_____ITEMBG," 1,781 ",PK found,ITEM_NUMBER_____IMITEM,00001,01839
+z_Item_Master_File_____ITEMMAST," 2,613 ",PK found,ITEM_NUMBER_____IMITEM,02099,TSTPC
+z_Item_Master_File_____ITEMMASTXX," 30,170 ",PK found,ITEM_NUMBER_____IMITEM,01001,UWCTP
+z_Item_on_hand_comment_file_____ITEMONCM," 1,079 ",PK found,ITEM_NUMBER_____I5ITEM,00011,U9999
+z_Item_on_Hand_File_____ITEMONHD," 2,612 ",PK found,ITEM_NUMBER_____IOITEM,    50 001,TSTPC
+z_Item_on_Hand_File_____ITEMONHDXX," 10,234 ",PK found,ITEM_NUMBER_____IOITEM,00009,U9999
+z_Item_on_Hand_Summary_File_____ITEMONSU, 28 ,PK found,Three_Position_Item_Class_____ISCLS3,ABC,XXX
+z_Line_Comment_Code_Constants_____LINECNST, 14 ,PK found,_____LSCODE,B,W
+z_M/P_Final_Restock_____MPHSTRSK," 7,656 ",PK found,New_Tag_Number_____RLNTAG,     569,    127 157
+z_Machine_File_____MACHINE, 2 ,PK found,Machine_Number_____MAMACH,     1,     2
+z_Manifest_____MNFEST, 374 ,PK found,Transaction_#_____MNORDR,    820 590,    930 168
+z_MAP_Level_Code_File_____ITEMMPLV, 5 ,PK found,MAP_Level_Code_____MLMPLV,     ,     4
+z_MASSBPC_-_Mass_maint/base_price_____MASSBPC, 5 ,PK found,_____MBKEY,     2,     6
+z_Material_Processing_Order_Detail_____MPDETAIL, 455 ,PK found,Transaction_#_____MDORDR,    400 155,    402 184
+z_Material_Processing_Order_Header_____MPHDRORD, 456 ,PK found,Transaction_#_____MHORDR,    400 155,    402 184
+z_Material_Processing_Order_Profile_____MPPROFIL, 456 ,PK found,Transaction_#_____MFORDR,    400 155,    402 184
+z_Material_Rejection_Major_Cause_code_____MAJREJ, 17 ,PK found,MAJOR_CODE_____RJCOD,CH,WT
+z_Material_Rejection_Minor_Cause_codes_____MINREJ, 26 ,PK found,MINOR_REJECT._CODE_____RNCOD,AQ,YS
+z_Material_Rejection_Transaction_File_____MRTRANS, 21 ,PK found,TAG_NUMBER_ALPHA_____MXTAG,    30 793,    163 533
+z_Metalweb_FMG_interface_____METALFMG, 8 ,PK found,DOC.TYPE_____FMGDOC,ACK ,WOR 
+z_MP_Setup_Control_File_____MPSETUP," 1,924 ",PK found,ORDER_NUMBER_____MSORDR,    400 008,    402 184
+z_MW_Emall_Type_File_____EMAILTYPE, 21 ,PK found,DOCUMENT_TYPE_____ETYPE,A/R STAT  ,WORK ORDER
+z_One_Position_Item_Class_File_____ITEMCLS1, 16 ,PK found,Item_Class_One_____I1CLAS,A,Y
+z_Open_Order_File_____OEOPNORD," 153,764 ",PK found,ORDER_NUMBER_____OOORDR,    100 934,    99 949
+z_Order_Profile_File_____OEPROFIL," 153,770 ",PK found,ORDER_NUMBER_____OPORDR,    100 934,    99 949
+z_outbound_820_ach_header_____X820OAH, 63 ,PK found,Counter_____EDCNTR,     1,     97
+z_outbound_820_ach_vendor_____X820OAB," 2,174 ",PK found,CHECK_#_____EBCHCK,   99 001 013,   99 003 347
+z_Output_file_for_DSPFD_TYPE(*MBRLIST)_____$DSPFDA," 1,496 ",PK found,Member_____MLNAME,ADCWHLL0  ,ZONEL0    
+z_Output_file_for_DSPFD_TYPE(*MBRLIST)_____MPMISS, 2 ,PK found,Member_____MLNAME,MPEDIT    ,OEID150149
+z_Physical_Analysis_File_____PHYSTAGM, 8 ,PK found,PHYSICAL_SCREEN_MASK_NUMBER_____YTPHSM,     1,     8
+z_Picker_Detail_File_____PICKDTL," 147,991 ",PK found,O/E_ORDER_#_____PIORDR,    600 014,    971 350
+z_Port_of_Entry_File_____PORTNTRY, 5 ,PK found,PORT_OF_ENTRY_CODE_____PECODE,     1,     5
+z_Posting_Period_File_____POSTPRD, 9 ,PK found,Application_Code_____PPAPPL,AP,ST
+z_Price_Matrix_File_____PMATRX, 13 ,PK found,Product_Class_____MTXCL3,AB ,ST 
+z_Price_Matrix_File_____PMATRX_B4, 149 ,PK found,Product_Class_____MTXCL3,ABG,YYY
+z_Print_Request_File_____PRTREQST, 5 ,PK found,Order_Number_____PRTORD,    400 244,    400 581
+z_Purchase_Comments_____PURCCOMM, 7 ,PK found,Vendor_#_____A1VEND,     119,     348
+z_Purchase_Order_Comment_File_(Whole_Order)_____POCOMMNT, 558 ,PK found,Purchase_Order_Number_____BCPONO,    512 020,    518 952
+z_Purchase_Order_Header_File_____POHEADER," 5,026 ",PK found,Transaction_#_____BHPONO,     ,    999 999
+z_Purchase_Order_Header_File_____POHEADERBH, 743 ,PK found,Transaction_#_____BHPONO,    500 001,    500 767
+z_Risk_Status_File_____RISKSTAT, 9 ,PK found,Risk_Status_Code_____RSCODE,00,B1
+z_S/A_Gross_Profit_Adjustment_Physical_file_____SAGPADJ," 18,854 ",PK found,Gross_Profit_Adj_Number_____GPADJ#,    1 000,    9 999
+z_Sales_Analysis_Daily_file_____SADAILY, 5 ,PK found,3_POSITION_CLASS_____AYCLS3,ABH,SBH
+z_Salesman_Master_File_____SALESMAN, 36 ,PK found,Salesman_Number_____SMSMAN,     1,     99
+z_Setup_Whole_Order_Line_Related_Comments_____MSWOCMNT, 7 ,PK found,COMMENT_____MSCMNT,C/F 2FT R/L FROM INCOMING PO#01501204   ,SURFACE ROCKWELL AND SINGLE QUAD ON EACH
+z_Standard_Industry_Code_File_____SICODE, 427 ,PK found,Standard_Industry_Code_____SISICD,    1 521,    9 999
+z_SUBFILE_DISPLAY_CONTROL_OPTIONS_FILE_____SFILEDFT, 49 ,PK found,Program/Screen_____SFPROG,AR416     ,WL320     
+z_Surface_condition_____SURFCOND, 11 ,PK found,SURFACE_CONDITION_CODE_____SECODE,     1,     9
+z_System_Parameter_Last_Maintained_Reference_File_____SYSCNSLM, 83 ,PK found,Field_Name_____LMFLD,SCAICS,SDWOPR
+z_Tag_Process_History_File_____ITEMTPHS," 7,100 ",PK found,New_Tag_Number_____TPNTAG,    10 892,    127 157
+z_TAGBUILD_--Tag_Build_Up_____TAGBUILD," 5,511 ",PK found,TAG_NUMBER_ALPHA_____TBTAG,     569,    127 157
+z_Three_Position_Item_Class_File_____ITEMCLS3, 172 ,PK found,3_POSITION_CLASS_____I3CLAS,ABC,YYY
+z_Tracking_Outputq_File_____TRKOUTQ, 90 ,PK found,Time_____TRLMTM,    100 519,    95 156
+z_Two_Position_Item_Class_File_____ITEMCLS2, 69 ,PK found,Item_Class_Two_____I2CLAS,AB,YY
+z_Upload_Data_from_IFS_____UPINPF, 115 ,PK found,_____FIELD02,    50 022,    52 365
+z_Upload_PC_file_for_Batch_Scanners_____UPLOADPI, 521 ,PK found,_____SRCSEQ,     1,     99
+z_User_Defined_Data_-_Data_Type_Definition_____UDFDATAT, 2 ,PK found,KEY_-_DATA_TYPE_CODE_____XDTYPE,CALENDAR  ,EY250     
+z_User_Defined_Data_-_Data_Values_____UDFDATAV, 2 ,PK found,KEY_-_DATA_TYPE_CODE_____XVTYPE,CALENDAR  ,EY250     
+z_User_Defined_Data_-_Validation_List_____UDFDATAL, 9 ,PK found,LIST_DATA_VALUE_____XLVAL1,000                      ,Y                        
+z_Usetax_File_____USETAX, 52 ,PK found,State_Abbrev_Code_____UTSTAT,AB,WY
+z_Vendor_ACH_Bank_Info_____ACHINFO, 199 ,PK found,Vendor_____ACHVND,     1,     905
+z_Vendor_Master_File_____APVEND, 730 ,PK found,Vendor_#_____VVNDR,     1,     905
+z_Vendor_Master_History_File_____APVNDHST, 731 ,PK found,Vendor_#_____VHSVND,     ,     905
+z_Vendor_Quality_Approval_File_____VENDQUAL, 323 ,PK found,Vendor_#_____V5VEND,     1,     898
+z_Vendor_Remit_To_Address_File_____VENDREMT, 730 ,PK found,Vendor_Number_____VRVNDR,     1,     905
+z_Warehouse:_District/Code_____WHSEMCOD, 6 ,PK found,Movement_Code_____MCCODE,A,F
+z_Warehouse_PO_Tracking_Code_File_____WHPOTRC, 36 ,PK found,Tracking_Code_____WPTRCK,BREL,VNDC
+z_WHMPTRC_--PF_File_Mask_____WHMPTRC, 13 ,PK found,Tracking_Code_____WMTRCK,FPRT,MUNK
+z_Work_File_-_IN896_-_Inventory_Dollars_Sold_____WFIN8960, 9 ,PK found,3_POSITION_CLASS_____WFCL3,   ,XX 

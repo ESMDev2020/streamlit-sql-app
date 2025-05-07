@@ -339,16 +339,27 @@ SELECT * FROM [mrs].[PKRangeResults] WHERE [IsError] = 1 ORDER BY [TableName];
 TRANSLATE ONE QUERY
 ***************************************************************************************/
 DECLARE @output NVARCHAR(MAX); DECLARE @SQLQuery NVARCHAR(MAX)
-DECLARE @input NVARCHAR(MAX) = N'SELECT DISTINCT ''customer summary'', [ARCUST].[CDIST] * 100000 + [ARCUST].[CCUST], [ARCUST].[CALPHA], [ARCUST].[CLIMIT], [ARCUST].[CISMD1] * 100 + [ARCUST].[CISLM1], [ARCUST].[CSMDI1] * 100 + [ARCUST].[CSLMN1], [SALESMAN].[SMNAME] FROM [ARCUST] [ARCUST], [SALESMAN] [SALESMAN] WHERE [ARCUST].[CISMD1] = [SALESMAN].[SMDIST] AND [ARCUST].[CISLM1] = [SALESMAN].[SMSMAN] ORDER BY [ARCUST].[CALPHA];';
+--DECLARE @input NVARCHAR(MAX) = N'SELECT DISTINCT ''customer summary'', [ARCUST].[CDIST] * 100000 + [ARCUST].[CCUST], [ARCUST].[CALPHA], [ARCUST].[CLIMIT], [ARCUST].[CISMD1] * 100 + [ARCUST].[CISLM1], [ARCUST].[CSMDI1] * 100 + [ARCUST].[CSLMN1], [SALESMAN].[SMNAME] FROM [ARCUST] [ARCUST], [SALESMAN] [SALESMAN] WHERE [ARCUST].[CISMD1] = [SALESMAN].[SMDIST] AND [ARCUST].[CISLM1] = [SALESMAN].[SMSMAN] ORDER BY [ARCUST].[CALPHA];';
+--DECLARE @input NVARCHAR(MAX) = N'SET NOCOUNT ON; SELECT DISTINCT ''customer summary'', [mrs].[z_Customer_Master_File_____ARCUST].[CUSTOMER_DISTRICT_NUMBER_____CDIST] * 100000 + [mrs].[z_Customer_Master_File_____ARCUST].[CUSTOMER_NUMBER_____CCUST], [mrs].[z_Customer_Master_File_____ARCUST].[Customer_Alpha_Name_____CALPHA], [mrs].[z_Customer_Master_File_____ARCUST].[Credit_Limit_____CLIMIT], [mrs].[z_Customer_Master_File_____ARCUST].[Inside_Salesman_District_Number_____CISMD1] * 100 + [mrs].[z_Customer_Master_File_____ARCUST].[Inside_Salesman_Number_____CISLM1], [mrs].[z_Customer_Master_File_____ARCUST].[Salesman_One_District_Number_____CSMDI1] * 100 + [mrs].[z_Customer_Master_File_____ARCUST].[Salesman_One_Number_____CSLMN1], [mrs].[z_Salesman_Master_File_____SALESMAN].[Salesman_Name_____SMNAME] FROM [mrs].[z_Customer_Master_File_____ARCUST] [z_Customer_Master_File_____ARCUST], [mrs].[z_Salesman_Master_File_____SALESMAN] [z_Salesman_Master_File_____SALESMAN] WHERE [z_Customer_Master_File_____ARCUST].[Inside_Salesman_District_Number_____CISMD1] = [z_Salesman_Master_File_____SALESMAN].[Salesman_District_Number_____SMDIST] AND [z_Customer_Master_File_____ARCUST].[Inside_Salesman_Number_____CISLM1] = [z_Salesman_Master_File_____SALESMAN].[Salesman_Number_____SMSMAN] ORDER BY [z_Customer_Master_File_____ARCUST].[Customer_Alpha_Name_____CALPHA];'
+DECLARE @input NVARCHAR(MAX) = N'SELECT [GACDES], [GARP3] FROM [mrs].[GLACCT]; SELECT [GLACCT], [GLAPPL], [GLDESC], [GLPGM], [GLRECD], [GLREF], [GLRP#], [GLRPTY], [GLUSER] FROM [mrs].[GLDEBCRED]; SELECT [GLACCT], [GLAMTQ], [GLAPPL], [GLDESC], [GLPGM], [GLRECD], [GLREF], [GLRP#], [GLRPTY], [GLTRDS], [GLTRN#], [GLTRNT], [GLTYPE], [GLUSER] FROM [mrs].[GLTRANS];';
+
 DECLARE @DebugMode INT; DECLARE @Execution INT;
 -- Execute the procedure
 --  EXEC dbo.sp_translate_sql_query @input_query = @input, @translated_query = @output OUTPUT;  -- translate with spaces
 --  EXEC mrs.sp_translate_sql_query @input_query = @input, @translated_query = @output OUTPUT;  -- translate with spaces
 -- EXEC [mrs].[my_sp_translate_sql_query] @input_query = @input, @translated_query = @output OUTPUT;  -- translate with spaces
---EXEC [mrs].[usp_TranslateSQLQuery] @p_InputQuery = @input,  @p_TranslatedQuery = @output OUTPUT --, @Execution = 1; --v2
-EXEC [mrs].[usp_TranslateSQLQuery] @SQLQuery = @input,  @TranslatedQuery = @output OUTPUT, @DebugMode = 1, @Execution = 1; --, @Execution = 1;
-
-
+ --EXEC [mrs].[usp_TranslateSQLQuery] @p_InputQuery = @input,  @p_TranslatedQuery = @output OUTPUT --, @Execution = 1; --v2
+ EXEC [mrs].[usp_TranslateSQLQuery] @SQLQuery = @input,  @TranslatedQuery = @output OUTPUT, @DebugMode = 1, @Execution = 1; --, @Execution = 1; --V4
 SELECT @output
+
+
+SET NOCOUNT ON; SELECT DISTINCT 'customer summary', [mrs].[z_Customer_Master_File_____ARCUST].[CUSTOMER_DISTRICT_NUMBER_____CDIST] * 100000 + [z_Customer_Master_File_____ARCUST].[CUSTOMER_NUMBER_____CCUST], [mrs].[z_Customer_Master_File_____ARCUST].[Customer_Alpha_Name_____CALPHA], [mrs].[z_Customer_Master_File_____ARCUST].[Credit_Limit_____CLIMIT], [mrs].[z_Customer_Master_File_____ARCUST].[Inside_Salesman_District_Number_____CISMD1] * 100 + [z_Customer_Master_File_____ARCUST].[Inside_Salesman_Number_____CISLM1], [mrs].[z_Customer_Master_File_____ARCUST].[Salesman_One_District_Number_____CSMDI1] * 100 + [z_Customer_Master_File_____ARCUST].[Salesman_One_Number_____CSLMN1], [mrs].[z_Salesman_Master_File_____SALESMAN].[Salesman_Name_____SMNAME] FROM [mrs].[z_Customer_Master_File_____ARCUST] [z_Customer_Master_File_____ARCUST], [mrs].[z_Salesman_Master_File_____SALESMAN] [z_Salesman_Master_File_____SALESMAN] WHERE [z_Customer_Master_File_____ARCUST].[Inside_Salesman_District_Number_____CISMD1] = [z_Salesman_Master_File_____SALESMAN].[Salesman_District_Number_____SMDIST] AND [z_Customer_Master_File_____ARCUST].[Inside_Salesman_Number_____CISLM1] = [z_Salesman_Master_File_____SALESMAN].[Salesman_Number_____SMSMAN] ORDER BY [z_Customer_Master_File_____ARCUST].[Customer_Alpha_Name_____CALPHA];
+SET NOCOUNT ON; SELECT DISTINCT 'customer summary' AS Summary, cust.[CUSTOMER_DISTRICT_NUMBER_____CDIST] * 100000 + cust.[CUSTOMER_NUMBER_____CCUST] AS CustomerID, cust.[Customer_Alpha_Name_____CALPHA] AS CustomerName, cust.[Credit_Limit_____CLIMIT] AS CreditLimit, cust.[Inside_Salesman_District_Number_____CISMD1] * 100 + cust.[Inside_Salesman_Number_____CISLM1] AS InsideSalesmanID, cust.[Salesman_One_District_Number_____CSMDI1] * 100 + cust.[Salesman_One_Number_____CSLMN1] AS SalesmanOneID, sm.[Salesman_Name_____SMNAME] AS SalesmanName FROM [mrs].[z_Customer_Master_File_____ARCUST] AS cust, [mrs].[z_Salesman_Master_File_____SALESMAN] AS sm WHERE cust.[Inside_Salesman_District_Number_____CISMD1] = sm.[Salesman_District_Number_____SMDIST] AND cust.[Inside_Salesman_Number_____CISLM1] = sm.[Salesman_Number_____SMSMAN] ORDER BY CustomerName;
+
+
+
+
+
+
 
 

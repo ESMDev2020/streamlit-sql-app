@@ -1,0 +1,117 @@
+Group,TableCode,Prefix,Suffix,TableName
+Accounts Payable,APBANKCD,AP,,Bank Disbursement Master
+Accounts Payable,APCHKR,AP,,A/P Check Reconcilement file
+Accounts Payable,APDEBH,AP,,A/P Debit Header File
+Accounts Payable,APEDITR,AP,,A/P EDI transaction selection
+Accounts Payable,APHCOD,AP,,A/P Handling Code File
+Accounts Payable,APINVC,AP,,A/P Invoice Control File
+Accounts Payable,APPROFL,AP,,A/P Profile
+Accounts Payable,APVHEXC,APV,HEXC,A/P Vendor History Exchange File
+Accounts Payable,APVOHST,APV,OHST,A/P Voucher History File
+Accounts Payable,APVEND,APV,END,A/P Vendor Master File
+Accounts Payable,APVNDHST,APV,NDHST,A/P Vendor History File
+Accounts Payable,APWK856,AP,WK,A/P Check Register Work File
+Accounts Receivable,ARCHEXC,AR,CHEXC,AR/Customer History Exchange File
+Accounts Receivable,ARCUSHST,ARCU,SHST,Customer Master History File
+Accounts Receivable,ARCUST,ARCU,ST,Customer Master File
+Accounts Receivable,ARCUST_B4,ARCU,ST_B4,Customer Master File
+Accounts Receivable,ARDELINQ,AR,DELINQ,Delinquent Accounts File
+Accounts Receivable,ARINFO,AR,INFO,Customer A/R Information
+Accounts Receivable,ARLOCK,AR,LOCK,A/R Lockbox Codes
+Accounts Receivable,ARDCNTP,AR,DCNTP,Discount Penalties
+Accounts Receivable,FCXREF,FC,XREF,Freight Carrier Cross Reference
+Accounts Receivable,CONTCODE,CONT,CODE,A/R Customer Contact Code
+General Ledger,GLACCT,GL,ACCT,Chart of Accounts
+General Ledger,GLJRBA,GL,JRBA,G/L Journal Batch Header
+General Ledger,GLMAJHD,GLMA,JHD,G/L Major Heading file
+General Ledger,GLMAST,GLMA,ST,General Ledger Master File
+Inventory Items,ITEMCLSD,ITEM,CLSD,District Class File
+Inventory Items,ITEMBG,ITEM,BG,Item Master File
+Inventory Items,ITEMMAST,ITEM,MAST,Item Master File
+Inventory Items,ITEMCLS3,ITEM,CLS3,3 Position Class Description File
+Inventory Items,ITEMCLS6,ITEM,CLS6,6 Position Class Description File
+Inventory Items,ITEMCLS9,ITEM,CLS9,9 Position Class Description File
+Inventory Items,ITEMHEAP,ITEM,HEAP,Finished Heat Item File
+Inventory Items,ITEMHEAT,ITEM,HEAT,Heat Number File
+Inventory Items,ITEMONHD,ITEM,ONHD,Item On Hand File
+Inventory Items,ITEMPCS,ITEM,PCS,Item Master Pieces File
+Inventory Items,ITEMPK,ITEM,PK,Item Packaging File
+Inventory Items,ITEMSHIP,ITEM,SHIP,Item In-Transit
+Inventory Items,ITEMVEND,ITEM,VEND,Item Vendor File
+Inventory Items,INVMAST,INV,MAST,Inventory Master File
+Inventory Items,ENDUSER,END,USER,End User File
+Inventory Items,UNKNOWN,UNK,NOWN,Unknown Item File
+Inventory Items,USET1,US,ET1,User Type 1
+Material Processing,MPDETAIL,MP,DETAIL,Material Processing Detail
+Material Processing,MPHDRORD,MP,HDRORD,Material Processing Header Order
+Material Processing,MPPROF,MP,PROF,Material Processing Profile
+Material Processing,MPSEQWRK,MP,SEQWRK,Material Processing Sequence Work
+Material Processing,MPSAWCAL,MP,SAWCAL,Saw Calculation File
+Material Processing,MPHISTCH,MP,HISTCH,Material Processing History Changes
+Customer Management,CUSTADD,CUST,ADD,Customer Master Add Code File
+Customer Management,CUSTPARN,CUST,PARN,Customer Parent File
+Customer Management,CUSINFO,CUS,INFO,Customer Information
+Customer Management,CUSINSP,CUS,INSP,Customer Inspection
+Customer Management,CUSPR,CUS,PR,Customer Price Class
+Customer Management,SHIPINFO,SHIP,INFO,Customer Shipping Information
+Customer Management,MWARCUST,MWAR,CUST,Customer Master File
+Customer Management,WEBCUST,WEB,CUST,E/C Customer
+Customer Management,WFOED,WF,OED,Web Order Entry Detail
+Customer Management,PART1,PART,1,Part Number Translation File
+Vendor Management,ACHINFO,ACH,INFO,Vendor ACH Bank Info
+Vendor Management,APVEND,APV,END,A/P Vendor Master File
+Vendor Management,VENDQUAL,VEND,QUAL,Vendor Quality Approval File
+Vendor Management,VENDREMT,VEND,REMT,Vendor Remit To Address File
+Warehouse,WHSE,WH,SE,Warehouse Code File
+Warehouse,WHPOTRC,WH,POTRC,Purchase Order Tracking
+Warehouse,WHMPTRC,WH,MPTRC,Material Process Tracking Charges
+Credit Management,CRAPPLY,CRAP,PLY,Credit Memo Apply File
+Credit Management,CRHEADER,CRHE,ADER,Credit Memo Header File
+Credit Management,OECRCMF,OECR,CMF,Credit Profile
+Order Entry,OEOP,OE,OP,Order Entry Options
+Order Entry,OEPROF,OE,PROF,Order Entry Profile
+Order Entry,OECRCMF,OE,CRCMF,Credit Profile
+Order Entry,MPMISC,MP,MISC,Miscellaneous Order
+Order Entry,WFOED,WF,OED,Web Order Entry Detail
+Human Resources,EMFOHST,EMF,OHST,Employee File History
+Human Resources,EMPLOYEE,EMP,LOYEE,Employee File
+Human Resources,EMPPARMS,EMP,PARMS,Employee Parameters
+Human Resources,EMPQUOTE,EMP,QUOTE,Employee Quote File
+Human Resources,EMPVAU,EMP,VAU,Employee Vacation
+EDI Codes,EDICD2,EDIC,D2,EDI 2 position codes
+EDI Codes,EDICD3,EDIC,D3,EDI 3 position codes
+EDI Codes,EDICD2A,EDIC,D2A,EDI 2A position codes
+EDI Codes,EDITTYPE,EDIT,TYPE,Edit Type Table
+Additional Charges,ADDCFTAX,ADDC,FTAX,Additional Charge Federal Tax File
+Additional Charges,ADDCHRG,ADDC,HRG,Additional Charge Code File
+Additional Charges,ADDCPTAX,ADDC,PTAX,Additional Charge Provincial Tax File
+User Defined Data,UDFDATAL,UDFD,ATAL,User Defined Data - Validation List
+User Defined Data,UDFDATAT,UDFD,ATAT,User Defined Data - Data Type Definition
+User Defined Data,UDFDATAV,UDFD,ATAV,User Defined Data - Data Values
+Cutting Codes,CUTTHEAD,CUTT,HEAD,Cutting Code Header File
+Cutting Codes,CUTTOLD,CUTT,OLD,District - Cutting Code Tolerances
+Image Storage,IMAGEPDF,IMAG,EPDF,Image PDF
+Image Storage,IMAGEPDFB4,IMAG,EPDFB4,Image PDF
+Price Matrix,PMATRX,PM,ATRX,Price Matrix File
+Price Matrix,PMATRX_B4,PM,ATRX_B4,Price Matrix File
+Purchase Orders,POHEADER,POHE,ADER,Purchase Order Header File
+Purchase Orders,POHEADERBH,POHE,ADERBH,Purchase Order Header File
+Sales,SALESMAN,SALES,MAN,Salesperson Master File
+Inventory Tags,TAGBUILD,TAG,BUILD,Tag Building File
+Other,BCCHKHST,BC,CHKHST,Bank Check History
+Other,BOOKNUM,BOOK,NUM,Book Number File
+Other,BUYER,BUYER,,Buyer Master File
+Other,CHEMTAGM,CHEM,TAGM,Chemical Analysis
+Other,COUNTRY,COU,NTRY,Country File
+Other,CRANFILE,CRAN,FILE,Crane File
+Other,CMMAST,CM,MAST,CM Master
+Other,CMMITEMF,CM,MITEMF,CM Item File
+Other,CURRCODE,CURR,CODE,Currency Code
+Other,COLCODES,COL,CODES,Collector Codes
+Other,DELVTERM,DEL,VTERM,Delivery Terms
+Other,DISTBILL,DIST,BILL,Distribution Billing
+Other,DUTYFILE,DUTY,FILE,Duty File
+Other,EMAIL,EMAIL,,Email
+Other,FASTPKEY,FAST,PKEY,Fast Path Keys
+Other,FCPARAMP,FCP,ARAMP,FC Parameter File
+Other,FRECONCL,FREC,ONCL,Freight Reconciliati

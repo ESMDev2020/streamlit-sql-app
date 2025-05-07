@@ -1034,3 +1034,37 @@ from  myRenamedSchema.z_Shipments_File_____SHIPMAST
 
 
 
+/*******************************************************************************/
+
+SELECT ''Sales analysis, SPO'' AS QueryName, CAST(CAST([z_Order_Detail_File_____OEDETAIL].[O/E_District_#_____ODDIST] AS DECIMAL(18, 2)) AS INT) * 1000000 + CAST(CAST([z_Order_Detail_File_____OEDETAIL].[Transaction_#_____ODORDR] AS DECIMAL(18, 2)) AS INT) AS Order_districtPlusTransaction, [z_Salesman_Master_File_____SALESMAN].[Salesman_Name_____SMNAME], [z_Open_Order_File_____OEOPNORD].[Order_Type_____OOTYPE], CAST(CAST([z_Order_Detail_File_____OEDETAIL].[CUSTOMER_DISTRICT_____ODCDIS] AS DECIMAL(18, 2)) AS INT) * 100000 + CAST(CAST([z_Order_Detail_File_____OEDETAIL].[CUSTOMER_NUMBER_____ODCUST] AS DECIMAL(18, 2)) AS INT) AS Customer_DistrictPlusCustomer, [z_Customer_Master_File_____ARCUST].[Customer_Alpha_Name_____CALPHA], CAST(CAST([z_Open_Order_File_____OEOPNORD].[INVOICE_CENTURY_____OOICC] AS DECIMAL(18, 2)) AS INT) * 1000000 + CAST(CAST([z_Open_Order_File_____OEOPNORD].[INVOICE_YEAR_____OOIYY] AS DECIMAL(18, 2)) AS INT) * 10000 + CAST(CAST([z_Open_Order_File_____OEOPNORD].[INVOICE_MONTH_____OOIMM] AS DECIMAL(18, 2)) AS INT) * 100 + CAST(CAST([z_Open_Order_File_____OEOPNORD].[INVOICE_DAY_____OOIDD] AS DECIMAL(18, 2)) AS INT) AS InvoiceDate_OOI, [z_Order_Detail_File_____OEDETAIL].[ITEM_NUMBER_____ODITEM], [z_Service_Purchase_Order_Header_File_____SPHEADER].[Ship_To_Vendor_#_____BSSVEN], [z_Service_Purchase_Order_Header_File_____SPHEADER].[Multiple_SPO_____BSSPS#] FROM [mrs].[z_Customer_Master_File_____ARCUST] AS [z_Customer_Master_File_____ARCUST], [mrs].[z_Order_Detail_File_____OEDETAIL] AS [z_Order_Detail_File_____OEDETAIL], [mrs].[z_Open_Order_File_____OEOPNORD] AS [z_Open_Order_File_____OEOPNORD], [mrs].[z_Salesman_Master_File_____SALESMAN] AS [z_Salesman_Master_File_____SALESMAN], [mrs].[z_Service_Purchase_Order_Header_File_____SPHEADER] AS [z_Service_Purchase_Order_Header_File_____SPHEADER] WHERE CAST(CAST([z_Order_Detail_File_____OEDETAIL].[O/E_District_#_____ODDIST] AS DECIMAL(18, 2)) AS INT) = CAST(CAST([z_Open_Order_File_____OEOPNORD].[O/E_Dist#_____OODIST] AS DECIMAL(18, 2)) AS INT) AND CAST(CAST([z_Order_Detail_File_____OEDETAIL].[Transaction_#_____ODORDR] AS DECIMAL(18, 2)) AS INT) = CAST(CAST([z_Open_Order_File_____OEOPNORD].[ORDER_NUMBER_____OOORDR] AS DECIMAL(18, 2)) AS INT) AND CAST(CAST([z_Open_Order_File_____OEOPNORD].[CUSTOMER_DISTRICT_____OOCDIS] AS DECIMAL(18, 2)) AS INT) = CAST(CAST([z_Customer_Master_File_____ARCUST].[CUSTOMER_DISTRICT_NUMBER_____CDIST] AS DECIMAL(18, 2)) AS INT) AND CAST(CAST([z_Open_Order_File_____OEOPNORD].[CUSTOMER_NUMBER_____OOCUST] AS DECIMAL(18, 2)) AS INT) = CAST(CAST([z_Customer_Master_File_____ARCUST].[CUSTOMER_NUMBER_____CCUST] AS DECIMAL(18, 2)) AS INT) AND CAST(CAST([z_Open_Order_File_____OEOPNORD].[INSIDE_SALESMAN_DISTRICT_____OOISMD] AS DECIMAL(18, 2)) AS INT) = CAST(CAST([z_Salesman_Master_File_____SALESMAN].[Salesman_District_Number_____SMDIST] AS DECIMAL(18, 2)) AS INT) AND CAST(CAST([z_Open_Order_File_____OEOPNORD].[INSIDE_SALESMAN_NUMBER_____OOISMN] AS DECIMAL(18, 2)) AS INT) = CAST(CAST([z_Salesman_Master_File_____SALESMAN].[Salesman_Number_____SMSMAN] AS DECIMAL(18, 2)) AS INT) AND CAST(CAST([z_Order_Detail_File_____OEDETAIL].[O/E_District_#_____ODDIST] AS DECIMAL(18, 2)) AS INT) = CAST(CAST([z_Service_Purchase_Order_Header_File_____SPHEADER].[DISTRICT_NUMBER_____BSDIST] AS DECIMAL(18, 2)) AS INT) AND CAST(CAST([z_Order_Detail_File_____OEDETAIL].[Transaction_#_____ODORDR] AS DECIMAL(18, 2)) AS INT) = CAST(CAST([z_Service_Purchase_Order_Header_File_____SPHEADER].[Transaction_#_____BSORDR] AS DECIMAL(18, 2)) AS INT) AND (([z_Open_Order_File_____OEOPNORD].[Order_Type_____OOTYPE] IN (''A'',''B'')) AND ([z_Open_Order_File_____OEOPNORD].[Record_Code_____OORECD] = ''W'') AND CAST(CAST([z_Order_Detail_File_____OEDETAIL].[O/E_District_#_____ODDIST] AS DECIMAL(18, 2)) AS INT) = 1 AND CAST(CAST([z_Order_Detail_File_____OEDETAIL].[Transaction_#_____ODORDR] AS DECIMAL(18, 2)) AS INT) > @SPOTransactionNumber) ORDER BY [z_Order_Detail_File_____OEDETAIL].[Transaction_#_____ODORDR];
+
+--find columns for GL
+SELECT [TableAS400Name], [ColumnAS400Name] FROM [mrs].[01_AS400_MSSQL_Equivalents_Columns] WHERE [ColumnAS400Name] IN ('GLRECD', 'GARP3', 'GLACCT', 'GACDES', 'YYMMDD', 'GLDESC', 'GLREF', 'GLAMTQ', 'GLAPPL', 'GLPGM', 'GLUSER', 'GLRPTY', 'GLRP#', 'GLTRNT', 'GLTYPE', 'GLTRDS', 'GLTRN#', 'DATE') ORDER BY [TableAS400Name], [ColumnAS400Name];
+
+
+--GL Query
+SELECT [g1].[Description_____GACDES] AS [GACDES], [g1].[Description_____GARP3] AS [GARP3], [g2].[Description_____GLACCT] AS [GLACCT_DEBC], [g2].[Description_____GLAPPL] AS [GLAPPL_DEBC], [g2].[Description_____GLDESC] AS [GLDESC_DEBC], [g2].[Description_____GLPGM] AS [GLPGM_DEBC], [g2].[Description_____GLRECD] AS [GLRECD_DEBC], [g2].[Description_____GLREF] AS [GLREF_DEBC], [g2].[Description_____GLRP#] AS [GLRP#_DEBC], [g2].[Description_____GLRPTY] AS [GLRPTY_DEBC], [g2].[Description_____GLUSER] AS [GLUSER_DEBC], [g3].[Description_____GLACCT] AS [GLACCT_TRAN], [g3].[Description_____GLAMTQ] AS [GLAMTQ], [g3].[Description_____GLAPPL] AS [GLAPPL_TRAN], [g3].[Description_____GLDESC] AS [GLDESC_TRAN], [g3].[Description_____GLPGM] AS [GLPGM_TRAN], [g3].[Description_____GLRECD] AS [GLRECD_TRAN], [g3].[Description_____GLREF] AS [GLREF_TRAN], [g3].[Description_____GLRP#] AS [GLRP#_TRAN], [g3].[Description_____GLRPTY] AS [GLRPTY_TRAN], [g3].[Description_____GLTRDS] AS [GLTRDS], [g3].[Description_____GLTRN#] AS [GLTRN#], [g3].[Description_____GLTRNT] AS [GLTRNT], [g3].[Description_____GLTYPE] AS [GLTYPE], [g3].[Description_____GLUSER] AS [GLUSER_TRAN]
+FROM [mrs].[z_GL_Account_Master_____GLACCT] AS [g1]
+JOIN [mrs].[z_GL_Debit_Credit_____GLDEBCRED] AS [g2] ON [g1].[Description_____SOME_KEY] = [g2].[Description_____SOME_KEY] JOIN [mrs].[z_GL_Transactions_____GLTRANS] AS [g3] ON [g1].[Description_____SOME_KEY] = [g3].[Description_____SOME_KEY]
+
+
+
+
+
+
+SELECT   
+        OE.[Transaction_#_____ODORDR],
+        A.[Customer_Alpha_Name_____CALPHA],
+        SP.[Ship_To_Vendor_#_____BSSVEN],
+        * 
+FROM     [mrs].[z_Order_Detail_File_____OEDETAIL] OE
+LEFT JOIN [mrs].[z_Customer_Master_File_____ARCUST] A
+        ON OE.[CUSTOMER_NUMBER_____ODCUST] = A.[CUSTOMER_NUMBER_____CCUST]
+LEFT JOIN [mrs].[z_Service_Purchase_Order_Header_File_____SPHEADER] SP
+        ON CAST(CAST(OE.[Transaction_#_____ODORDR] AS DECIMAL(18, 2)) AS INT) = 
+           CAST(CAST(SP.[Transaction_#_____BSORDR] AS DECIMAL(18, 2)) AS INT)
+WHERE CAST(CAST(OE.[Transaction_#_____ODORDR] AS DECIMAL(18, 2)) AS INT) = 968207
+
+
+select * from     [mrs].[z_Open_Order_File_____OEOPNORD]  WHERE   [z_Order_Detail_File_____OEDETAIL].[Transaction_#_____ODORDR] = '968207'
+
