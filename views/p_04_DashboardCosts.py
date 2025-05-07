@@ -36,16 +36,16 @@ myCon_strDbUsername = "admin"
 # !! Warning: Hardcoding passwords is insecure. Use st.secrets for production. !!
 myCon_strDbPassword = "Er1c41234$"
 
-# ============================================================================
+# ==============================================================================================================================================
 # 🧱 FUNCTIONS & SUBPROCEDURES
-# ============================================================================
+# ==============================================================================================================================================
 # Description: Define reusable functions for database connection, data fetching,
 #              and UI display logic for various reports.
 # ----------------------------------------------------------------------------
 
 # Note before the function:
 # This function establishes a connection to the MSSQL database using SQLAlchemy
-# and pytds based on the predefined constants. It returns the engine object.
+# and pymssql based on the predefined constants. It returns the engine object.
 def fun_connectToDb(myPar_strUser, myPar_strPassword, myPar_strServer, myPar_strDatabase):
     """
     Creates and returns a SQLAlchemy database engine object.
@@ -53,7 +53,7 @@ def fun_connectToDb(myPar_strUser, myPar_strPassword, myPar_strServer, myPar_str
     Description:
         Uses the provided credentials and server information to create a
         database engine connecting to a Microsoft SQL Server database via
-        the pytds driver. Includes basic error handling for connection issues.
+        the pymssql driver. Includes basic error handling for connection issues.
 
     Variables Used:
         - myPar_strUser (str): Database username.
@@ -71,7 +71,7 @@ def fun_connectToDb(myPar_strUser, myPar_strPassword, myPar_strServer, myPar_str
 
     try:
         # Construct the connection string
-        myVar_strConnectionString = f"mssql+pytds://{myPar_strUser}:{myPar_strPassword}@{myPar_strServer}:1433/{myPar_strDatabase}"
+        myVar_strConnectionString = f"mssql+pymssql://{myPar_strUser}:{myPar_strPassword}@{myPar_strServer}:1433/{myPar_strDatabase}"
         # Create the engine
         myVar_objDbEngine = create_engine(myVar_strConnectionString)
         # Test connection briefly to ensure it works
@@ -87,9 +87,9 @@ def fun_connectToDb(myPar_strUser, myPar_strPassword, myPar_strServer, myPar_str
         # Return None to indicate failure
         return None
 
-#****************************************************************************
+#********************************************************************************************************************************************************
 #-- COST BY ORDER - ARCUST, OEDETAIL
-#****************************************************************************
+#********************************************************************************************************************************************************
 # Note before the subprocedure:
 # Fetches and displays cost details for a specific order number entered by the user.
 # Handles database query execution and displays results or errors.
@@ -173,9 +173,9 @@ def sub_displayCostByOrder(myPar_objDbEngine):
             # Handle case where no order number was entered
             Com_st.warning("Please enter an Order Number.")
 
-#****************************************************************************
+#********************************************************************************************************************************************************
 #-- SHIPMENT QUERY BY ORDER
-#****************************************************************************
+#********************************************************************************************************************************************************
 # Note before the subprocedure:
 # Fetches and displays shipment details for a specific order number.
 # Formats the output if only one record is found, otherwise displays a table.
@@ -277,9 +277,9 @@ def sub_displayShipmentByOrder(myPar_objDbEngine):
              # Handle case where no order number was entered
              Com_st.warning("Please enter an Order Number.")
 
-#****************************************************************************
+#********************************************************************************************************************************************************
 #-- MATERIAL PROCESSING BY ORDER GLTRANS, GLACCT
-#****************************************************************************
+#********************************************************************************************************************************************************
 # Note before the subprocedure:
 # Fetches and displays Material Processing (MP) details related to an order number
 # by searching the GLTRANS and GLACCT tables based on a LIKE match in GLREF.

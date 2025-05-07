@@ -132,9 +132,9 @@ def generate_item_report(myPar_objDbEngine, myPar_strItemId: str):
         # Return failure and error message
         return {"success": False, "error": str(myVar_err)}
 
-# =================================================================================================================================================
+# =============================
 # FUNCTION: Show Full ROP Table
-# =================================================================================================================================================
+# =============================
 # Note before the function:
 # Fetches the entire content of the 'e_ROP' table.
 def get_rop_table(myPar_objDbEngine):

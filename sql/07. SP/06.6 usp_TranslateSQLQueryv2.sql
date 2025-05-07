@@ -242,6 +242,14 @@ GO
 DECLARE @Input NVARCHAR(MAX);
 DECLARE @Output NVARCHAR(MAX);
 
+SET @Input = N'SELECT * FROM [VNDREQHD]';
+SET @Output = NULL; -- Reset output variable
+EXEC [mrs].[usp_TranslateSQLQuery] @p_InputQuery = @Input, @p_TranslatedQuery = @Output OUTPUT;
+PRINT 'TRANSLATION (Debug OFF):';
+PRINT @Output;
+
+
+
 -- Example 1: Simple query, Debug OFF (Default)
 SET @Input = N'SELECT [COL1], [COL2] FROM [TABLE1] WHERE [COL1] > 100';
 SET @Output = NULL; -- Reset output variable

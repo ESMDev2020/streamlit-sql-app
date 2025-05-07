@@ -395,3 +395,9 @@ WHERE OEDETAIL.ODDIST = OEOPNORD.OODIST AND OEDETAIL.ODORDR = OEOPNORD.OOORDR AN
 
 EXEC [mrs].[usp_TranslateSQLQuery] @p_InputQuery = @myVarInputSQL, @p_TranslatedQuery = @myVarOutputSQL OUTPUT,  @p_DebugMode = 0;
 SELECT @myVarOutputSQL
+
+
+
+
+**************************************************************************
+

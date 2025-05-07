@@ -178,6 +178,7 @@ BEGIN
 END;
 GO
 
+/*
 -- Example Usage:
 
 USE SigmaTB;
@@ -238,3 +239,5 @@ SELECT @ResultC4 AS Translated_MSSQL_Col_NoContext; -- Should be BSORDR (if TOP 
 DECLARE @Result5 NVARCHAR(500);
 EXEC mrs.usp_TranslateObjectName @InputName = 'NON_EXISTENT_NAME', @ContextTableName = 'SPHEADER', @TranslatedName = @Result5 OUTPUT;
 SELECT @Result5 AS Translated_NonExistent; -- Should be NULL
+
+*/
