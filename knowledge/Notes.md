@@ -363,7 +363,7 @@ WHEN USING SQL
         git remote set-head origin -a
 
     DOCUWARE
--       	User:			esaavedra
+       	User:			esaavedra
 	        Pwd:			Sigmatb2013
 	        Database:		dwdata
 	        TCP/IP Server	stb-app02

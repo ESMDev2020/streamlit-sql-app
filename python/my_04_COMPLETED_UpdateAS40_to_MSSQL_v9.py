@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 COMPLETE DATABASE SYNCHRONIZATION SCRIPT
-DOCUMENTATION: Synchronizes data between AS400 and MSSQL using year-based partitioning
-               with automatic fiscal year column detection.
+DOCUMENTATION: Synchronizes data between source database (AS400 or MySQL) and MSSQL 
+               using year-based partitioning with automatic fiscal year column detection.
 """
 
-# ====================================================================================================================================================================================
+# =============================================
 # IMPORTS SECTION
-# ====================================================================================================================================================================================
+# =============================================
 import pyodbc
 from tqdm import tqdm
 import threading
@@ -20,9 +20,9 @@ from queue import Queue, Empty
 print_lock = threading.Lock()
 
 
-# ====================================================================================================================================================================================
+# =============================================
 # CONSTANTS SECTION
-# ====================================================================================================================================================================================
+# =============================================
 # Configuration dictionary
 myDictConfig = {
     # AS400 settings
@@ -33,14 +33,13 @@ myDictConfig = {
         'TIMEOUT': 30,
         'LIBRARY': "MW4FILE"
     },
-     # MySQL settings
+    # MySQL settings (updated to use DSN approach)
     'MYSQL': {
-        'HOST': "stb-app02",
-        'PORT': 3306,
-        'DB': "DocuWare",
-        'UID': "esaavedra",
-        'PWD': "Sigmatb2013",
-        'SCHEMA': "DocuWare"  # Adjust as needed
+        'DSN': "DocuWare",
+        'UID': "your_username",
+        'PWD': "your_password",
+        'TIMEOUT': 30,
+        'SCHEMA': "dwdata"
     },
     # SQL Server settings
     'SQL_SERVER': {
@@ -51,12 +50,12 @@ myDictConfig = {
         'PWD': "Er1c41234$",
         'SCHEMA': "mrs"
     },
-     # Source selection
-    'SOURCE_TYPE': 'AS400',  # Change to 'MYSQL' when needed
-
+    # Source selection
+    'SOURCE_TYPE': 'MYSQL',  # 'AS400' or 'MYSQL'
+    
     # Operation settings
     'BATCH_SIZE': 10000,
-    'MAX_THREADS': 20,
+    'MAX_THREADS': 1,
     'MAX_RETRIES': 3,
     'RETRY_DELAY': 5,
     'LOG_FILE': "failed_inserts.log",
@@ -67,9 +66,9 @@ myDictConfig = {
 myConStrVbCrLf = "\r\n"
 myConStrTimestampFormat = '%Y-%m-%d %H:%M:%S'
 
-# ====================================================================================================================================================================================
+# =============================================
 # CLASSES SECTION
-# ====================================================================================================================================================================================
+# =============================================
 class clsConnectionPool:
     """
     Thread-safe connection pool implementation.
@@ -138,16 +137,16 @@ class clsConnectionPool:
                 pass
 
 # Global connection pool variables
-myObjAs400Pool = None
+myObjSourcePool = None
 myObjSqlPool = None
-global_table_results = []           #To print the report
+global_table_results = []  # To print the report
 
-# ====================================================================================================================================================================================
+# =============================================
 # FUNCTIONS SECTION
-# ====================================================================================================================================================================================
+# =============================================
 def fun_InitializeConnectionPools():
     """
-    Initialize connection pools for AS400 and SQL Server.
+    Initialize connection pools for source database (AS400 or MySQL) and SQL Server.
     DOCUMENTATION: Creates thread-safe connection pools for both database systems.
     """
     global myObjSourcePool, myObjSqlPool
@@ -156,22 +155,13 @@ def fun_InitializeConnectionPools():
         """Create a new AS400 connection"""
         fun_PrintStatus("", "Creating AS400 connection", "process")
         varStrConnString = f"DSN={myDictConfig['AS400']['DSN']};UID={myDictConfig['AS400']['UID']};PWD={myDictConfig['AS400']['PWD']};Timeout={myDictConfig['AS400']['TIMEOUT']}"
-        return pyodbc.connect(varStrConnString, autocommit=False
-    )
-
+        return pyodbc.connect(varStrConnString, autocommit=False)
+    
     def fun_CreateMySQLConnection():
         """Create a new MySQL connection"""
         fun_PrintStatus("", "Creating MySQL connection", "process")
-        import pymysql  # Add this import at the top of your script
-        return pymysql.connect(
-            host=myDictConfig['MYSQL']['HOST'],
-            port=myDictConfig['MYSQL']['PORT'],
-            user=myDictConfig['MYSQL']['UID'],
-            password=myDictConfig['MYSQL']['PWD'],
-            database=myDictConfig['MYSQL']['DB'],
-            charset='utf8mb4',
-            autocommit=False
-    )
+        varStrConnString = f"DSN={myDictConfig['MYSQL']['DSN']}"
+        return pyodbc.connect(varStrConnString, autocommit=False)
     
     def fun_CreateSqlConnection():
         """Create a new SQL Server connection"""
@@ -184,17 +174,16 @@ def fun_InitializeConnectionPools():
             f"PWD={myDictConfig['SQL_SERVER']['PWD']};"
             "Encrypt=yes;TrustServerCertificate=yes;Connection Timeout=30;"
         )
-
         return pyodbc.connect(varStrConnString, autocommit=False)
     
-    #myObjSourcePool = clsConnectionPool(fun_CreateAs400Connection, myDictConfig['MAX_THREADS'])
-    # Initialize appropriate source pool based on configuration
+    # Create connection pool based on source type
     if myDictConfig['SOURCE_TYPE'] == 'AS400':
+        fun_PrintStatus("SYSTEM", "Initializing AS400 connection pool", "process")
         myObjSourcePool = clsConnectionPool(fun_CreateAs400Connection, myDictConfig['MAX_THREADS'])
-    else:  # 'MYSQL'
+    else:  # MYSQL
+        fun_PrintStatus("SYSTEM", "Initializing MySQL connection pool", "process")
         myObjSourcePool = clsConnectionPool(fun_CreateMySQLConnection, myDictConfig['MAX_THREADS'])
     
-
     myObjSqlPool = clsConnectionPool(fun_CreateSqlConnection, myDictConfig['MAX_THREADS'])
 
 def fun_PrintStatus(varStrTableName, varStrStatus, varStrIcon):
@@ -223,11 +212,11 @@ def fun_PrintStatus(varStrTableName, varStrStatus, varStrIcon):
     with print_lock:
         print(f"[{varStrTimestamp}] {varStrIcon} {varStrTableName.ljust(20)}: {varStrStatus}")
 
-def fun_GetOneColumnMetadata(varObjAs400Cursor, varObjMSSQLCursor, varStrSchema, varStrTable):
+def fun_GetOneColumnMetadata(varObjSourceCursor, varObjMSSQLCursor, varStrSchema, varStrTable):
     """
     Retrieve column names and descriptions with fallback to actual structure.
     INPUT:
-        varObjAs400Cursor - AS400 cursor
+        varObjSourceCursor - Source database cursor (AS400 or MySQL)
         varObjMSSQLCursor - MSSQL cursor
         varStrSchema - Schema name
         varStrTable - Table name
@@ -235,19 +224,33 @@ def fun_GetOneColumnMetadata(varObjAs400Cursor, varObjMSSQLCursor, varStrSchema,
         List of tuples (column_name, column_description)
     """
     try:
-        # First try to get metadata
-        varObjAs400Cursor.execute(f"""
-            SELECT COLUMN_NAME, COLUMN_TEXT FROM QSYS2.SYSCOLUMNS
-            WHERE TABLE_SCHEMA = '{varStrSchema}' AND TABLE_NAME = '{varStrTable}'
-            ORDER BY ORDINAL_POSITION
-        """)
-        varListMetadataCols = [
-            (col[0].strip(), (col[1] or "").strip().replace(" ", "_").replace("'", "_").replace(']', ']]').replace('?', 'q')) 
-            for col in varObjAs400Cursor.fetchall()
-        ]
+        # Different metadata queries based on source type
+        if myDictConfig['SOURCE_TYPE'] == 'AS400':
+            # AS400 metadata query
+            varObjSourceCursor.execute(f"""
+                SELECT COLUMN_NAME, COLUMN_TEXT FROM QSYS2.SYSCOLUMNS
+                WHERE TABLE_SCHEMA = '{varStrSchema}' AND TABLE_NAME = '{varStrTable}'
+                ORDER BY ORDINAL_POSITION
+            """)
+            varListMetadataCols = [
+                (col[0].strip(), (col[1] or "").strip().replace(" ", "_").replace("'", "_").replace(']', ']]').replace('?', 'q')) 
+                for col in varObjSourceCursor.fetchall()
+            ]
+        else:  # MYSQL
+            # MySQL metadata query
+            varObjSourceCursor.execute(f"""
+                SELECT COLUMN_NAME, COLUMN_COMMENT 
+                FROM INFORMATION_SCHEMA.COLUMNS
+                WHERE TABLE_SCHEMA = '{varStrSchema}' AND TABLE_NAME = '{varStrTable}'
+                ORDER BY ORDINAL_POSITION
+            """)
+            varListMetadataCols = [
+                (col[0].strip(), (col[1] or col[0]).strip().replace(" ", "_").replace("'", "_").replace(']', ']]').replace('?', 'q')) 
+                for col in varObjSourceCursor.fetchall()
+            ]
         
         # Get actual columns to verify
-        varListActualCols = fun_GetActualColumnNames(varObjAs400Cursor, varStrSchema, varStrTable)
+        varListActualCols = fun_GetActualColumnNames(varObjSourceCursor, varStrSchema, varStrTable)
         
         if len(varListMetadataCols) != len(varListActualCols):
             fun_PrintStatus(varStrTable, "Metadata mismatch - Using actual column names", "warning")
@@ -256,7 +259,7 @@ def fun_GetOneColumnMetadata(varObjAs400Cursor, varObjMSSQLCursor, varStrSchema,
         return varListMetadataCols
     except Exception as varExcError:
         fun_PrintStatus(varStrTable, f"Metadata query failed: {str(varExcError)} - Using actual names", "warning")
-        varListActualCols = fun_GetActualColumnNames(varObjAs400Cursor, varStrSchema, varStrTable)
+        varListActualCols = fun_GetActualColumnNames(varObjSourceCursor, varStrSchema, varStrTable)
         return [(col, col) for col in varListActualCols]
 
 def fun_GetActualColumnNames(varObjCursor, varStrSchema, varStrTable):
@@ -270,32 +273,50 @@ def fun_GetActualColumnNames(varObjCursor, varStrSchema, varStrTable):
         List of column names
     """
     try:
-        varObjCursor.execute(f"SELECT * FROM {varStrSchema}.{varStrTable} WHERE 1=0")
+        # Different syntax for AS400 vs MySQL
+        if myDictConfig['SOURCE_TYPE'] == 'AS400':
+            varObjCursor.execute(f"SELECT * FROM {varStrSchema}.{varStrTable} WHERE 1=0")
+        else:  # MYSQL
+            varObjCursor.execute(f"SELECT * FROM `{varStrSchema}`.`{varStrTable}` WHERE 1=0")
+            
         return [column[0] for column in varObjCursor.description]
     except Exception as varExcError:
         fun_PrintStatus(varStrTable, f"Error getting actual columns: {str(varExcError)}", "failure")
         return []
 
-def fun_DetectFiscalYearColumn(varObjAs400Cursor, varStrSchema, varStrTable):
+def fun_DetectFiscalYearColumn(varObjSourceCursor, varStrSchema, varStrTable):
     """
     Detect fiscal year column by finding the first column ending with 'YY'
     INPUT:
-        varObjAs400Cursor - AS400 database cursor
+        varObjSourceCursor - Source database cursor (AS400 or MySQL)
         varStrSchema - Schema name
         varStrTable - Table name
     OUTPUT:
         String - Name of fiscal year column or None if not found
     """
     try:
-        varObjAs400Cursor.execute(f"""
-            SELECT COLUMN_NAME 
-            FROM QSYS2.SYSCOLUMNS 
-            WHERE TABLE_SCHEMA = '{varStrSchema}' 
-              AND TABLE_NAME = '{varStrTable}'
-              AND COLUMN_NAME LIKE '%YY'
-            ORDER BY ORDINAL_POSITION
-        """)
-        varObjResult = varObjAs400Cursor.fetchone()
+        if myDictConfig['SOURCE_TYPE'] == 'AS400':
+            # AS400 metadata query
+            varObjSourceCursor.execute(f"""
+                SELECT COLUMN_NAME 
+                FROM QSYS2.SYSCOLUMNS 
+                WHERE TABLE_SCHEMA = '{varStrSchema}' 
+                  AND TABLE_NAME = '{varStrTable}'
+                  AND COLUMN_NAME LIKE '%YY'
+                ORDER BY ORDINAL_POSITION
+            """)
+        else:  # MYSQL
+            # MySQL metadata query
+            varObjSourceCursor.execute(f"""
+                SELECT COLUMN_NAME 
+                FROM INFORMATION_SCHEMA.COLUMNS 
+                WHERE TABLE_SCHEMA = '{varStrSchema}' 
+                  AND TABLE_NAME = '{varStrTable}'
+                  AND COLUMN_NAME LIKE '%YY'
+                ORDER BY ORDINAL_POSITION
+            """)
+            
+        varObjResult = varObjSourceCursor.fetchone()
         return varObjResult[0] if varObjResult else None
     except Exception as varExcError:
         fun_PrintStatus(varStrTable, f"Error detecting fiscal year column: {str(varExcError)}", "failure")
@@ -304,15 +325,26 @@ def fun_DetectFiscalYearColumn(varObjAs400Cursor, varStrSchema, varStrTable):
 def fun_GetTableRowCountWithCondition(varObjCursor, varStrSchema, varStrTable, varStrCondition):
     """
     Get row count for a table with a specific condition.
-    Handles MSSQL type conversion with proper column bracketing.
+    Handles different SQL syntax for AS400, MySQL, and MSSQL.
+    
+    INPUT:
+        varObjCursor - Database cursor
+        varStrSchema - Schema name
+        varStrTable - Table name
+        varStrCondition - WHERE condition 
+    OUTPUT:
+        Integer - Row count or -1 on error
     """
     try:
-        if varStrSchema == myDictConfig['AS400']['LIBRARY']:
+        if myDictConfig['SOURCE_TYPE'] == 'AS400' and varStrSchema == myDictConfig['AS400']['LIBRARY']:
             # AS400 query - no special handling needed
-            varStrQuery = f"SELECT COUNT(*) FROM {varStrSchema}.{varStrTable} WHERE {varStrCondition}"
+            sql = f"SELECT COUNT(*) FROM {varStrSchema}.{varStrTable} WHERE {varStrCondition}"
+        elif myDictConfig['SOURCE_TYPE'] == 'MYSQL' and varStrSchema == myDictConfig['MYSQL']['SCHEMA']:
+            # MySQL query - use backticks for identifiers
+            sql = f"SELECT COUNT(*) FROM `{varStrSchema}`.`{varStrTable}` WHERE {varStrCondition}"
         else:
             # MSSQL query - parse condition and apply proper formatting
-            varStrQuery = f"SELECT COUNT(*) FROM [{varStrSchema}].[{varStrTable}] WHERE "
+            varStrBase = f"SELECT COUNT(*) FROM [{varStrSchema}].[{varStrTable}] WHERE "
             
             # Split compound conditions
             varListConditions = varStrCondition.split(" AND ")
@@ -331,119 +363,150 @@ def fun_GetTableRowCountWithCondition(varObjCursor, varStrSchema, varStrTable, v
                     varStrCol, varStrValue = varStrSingleCondition.split(varStrOperator, 1)
                     varStrCol = varStrCol.strip()
                     
-                    # Ensure column is properly bracketed
-                    #if not varStrCol.startswith('['):
-                    #    varStrCol = f"[{varStrCol.replace('.', '].[')}]"
+                    # Process condition - Apply TRY_CAST to column if it's fiscal year
+                    if "FiscalYearCol" in varStrCol:
+                        varStrProcessedCondition = f"TRY_CAST({varStrCol} AS DECIMAL(18,2)) {varStrOperator} {varStrValue.strip()}"
+                    else:
+                        varStrProcessedCondition = f"{varStrCol} {varStrOperator} {varStrValue.strip()}"
                     
-                    # Apply TRY_CAST to column
-                    #varStrProcessedCondition = f"TRY_CAST({varStrCol} AS DECIMAL(18,2)) {varStrOperator} {varStrValue.strip()}"
-                    varStrProcessedCondition = f"{varStrCol}  {varStrOperator} {varStrValue.strip()}"
                     varListProcessedConditions.append(varStrProcessedCondition)
                 else:
-                    # Keep non-comparison conditions as-is (with proper bracketing)
-                    if '=' in varStrSingleCondition or ' ' in varStrSingleCondition:
-                        parts = varStrSingleCondition.split(None, 1)
-                        if not parts[0].startswith('['):
-                            parts[0] = f"[{parts[0].replace('.', '].[')}]"
-                        varStrSingleCondition = f"{parts[0]} {parts[1]}" if len(parts) > 1 else parts[0]
+                    # Keep non-comparison conditions as-is
                     varListProcessedConditions.append(varStrSingleCondition)
             
-            varStrQuery += " AND ".join(varListProcessedConditions)
+            sql = varStrBase + " AND ".join(varListProcessedConditions)
         
-        varObjCursor.execute(varStrQuery)
-        return varObjCursor.fetchone()[0]
+        varObjCursor.execute(sql)
+        result = varObjCursor.fetchone()[0]
+        return result
     except Exception as varExcError:
         fun_PrintStatus(varStrTable, f"Row count error for condition '{varStrCondition}': {str(varExcError)}", "failure")
         return -1
 
+def fun_CheckTableExists(varObjCursor, varStrSchema, varStrTable):
+    """Check if a table exists in the database"""
+    try:
+        varObjCursor.execute(f"""
+            SELECT 1 FROM INFORMATION_SCHEMA.TABLES 
+            WHERE TABLE_SCHEMA = '{varStrSchema}'
+            AND TABLE_NAME = '{varStrTable}'
+        """)
+        return varObjCursor.fetchone() is not None
+    except Exception as varExcError:
+        fun_PrintStatus(varStrTable, f"Table existence check failed: {str(varExcError)}", "warning")
+        return False
 
-def fun_CompareRowCountPerYear(varObjAs400Cursor, varObjMSSQLCursor, varStrAs400Table, varStrSqlTable):
+def fun_CreateTable(varObjCursor, varStrSchema, varStrSqlTable, varListCols):
+    """Create a new table in the target database"""
+    try:
+        columns_sql = ', '.join([f'[{col[1]}_____{col[0]}] NVARCHAR(MAX)' for col in varListCols])
+        sql = f"""
+            CREATE TABLE [{varStrSchema}].[{varStrSqlTable}] (
+                {columns_sql}
+            )
+        """
+        varObjCursor.execute(sql)
+        varObjCursor.connection.commit()
+        return True
+    except Exception as e:
+        if "already an object named" in str(e):
+            fun_PrintStatus(varStrSqlTable, "Table already exists (possibly created by another process)", "warning")
+            return True
+        else:
+            fun_PrintStatus(varStrSqlTable, f"Error creating table: {str(e)}", "failure")
+            return False
+
+def fun_CompareRowCountPerYear(varObjSourceCursor, varObjMSSQLCursor, varStrSourceTable, varStrSqlTable):
     """
-    Compare row counts between AS400 and MSSQL tables per fiscal year.
-    Returns dictionary with separate conditions for AS400 and MSSQL.
+    Compare row counts between source and MSSQL tables per fiscal year.
+    Returns dictionary with separate conditions for source and MSSQL.
     
     INPUT:
-        varObjAs400Cursor - AS400 database cursor
+        varObjSourceCursor - Source database cursor
         varObjMSSQLCursor - MSSQL database cursor
-        varStrAs400Table - Source table name in AS400
+        varStrSourceTable - Source table name
         varStrSqlTable - Destination table name in MSSQL
-        
     OUTPUT:
-        Dictionary with structure:
-        {
-            'Historical': {
-                'as400_count': int,
-                'mssql_count': int,
-                'as400_condition': str,
-                'mssql_condition': str,
-                'needs_sync': bool,
-                'as400_fiscal_col': str,
-                'mssql_fiscal_col': str
-            },
-            'MidTerm': { ... },
-            'Current': { ... }
-        }
+        Dictionary with year ranges and comparison results
     """
-    # Detect fiscal year column in AS400
-    varStrAs400FiscalCol = fun_DetectFiscalYearColumn(
-        varObjAs400Cursor,
-        myDictConfig['AS400']['LIBRARY'],
-        varStrAs400Table
+    # Get schema name based on source type
+    if myDictConfig['SOURCE_TYPE'] == 'AS400':
+        varStrSourceSchema = myDictConfig['AS400']['LIBRARY']
+    else:
+        varStrSourceSchema = myDictConfig['MYSQL']['SCHEMA']
+        
+    # Detect fiscal year column in source
+    varStrSourceFiscalCol = fun_DetectFiscalYearColumn(
+        varObjSourceCursor,
+        varStrSourceSchema,
+        varStrSourceTable
     )
     
-    if not varStrAs400FiscalCol:
-        fun_PrintStatus(varStrAs400Table, "No fiscal year column found - using full table comparison", "warning")
+    if not varStrSourceFiscalCol:
+        fun_PrintStatus(varStrSourceTable, "No fiscal year column found - using full table comparison", "warning")
         return {'FullTable': {'needs_sync': True}}
     
     # Find corresponding MSSQL column name
-    varStrMssqlFiscalCol = None
     try:
         varObjMSSQLCursor.execute(f"""
             SELECT COLUMN_NAME 
             FROM INFORMATION_SCHEMA.COLUMNS 
             WHERE TABLE_SCHEMA = '{myDictConfig['SQL_SERVER']['SCHEMA']}'
               AND TABLE_NAME = '{varStrSqlTable}'
-              AND COLUMN_NAME LIKE '%{varStrAs400FiscalCol}'
+              AND COLUMN_NAME LIKE '%{varStrSourceFiscalCol}'
         """)
         varObjResult = varObjMSSQLCursor.fetchone()
         varStrMssqlFiscalCol = varObjResult[0] if varObjResult else None
     except Exception as varExcError:
         fun_PrintStatus(varStrSqlTable, f"Error finding MSSQL fiscal column: {str(varExcError)}", "failure")
+        varStrMssqlFiscalCol = None
     
     if not varStrMssqlFiscalCol:
-        fun_PrintStatus(varStrSqlTable, f"No matching MSSQL column found for {varStrAs400FiscalCol}", "warning")
+        fun_PrintStatus(varStrSqlTable, f"No matching MSSQL column found for {varStrSourceFiscalCol}", "warning")
         return {'FullTable': {'needs_sync': True}}
     
     varIntCurrentYear = datetime.now().year
 
     listYearRanges = [
         ("Historical", 
-        f"{varStrAs400FiscalCol} <= 12",
+        f"{varStrSourceFiscalCol} <= 12",
         f"TRY_CAST([{varStrMssqlFiscalCol}] AS DECIMAL(18,2)) <= 12")
     ]
 
-    # Add individual years from 2012 to 2025 (or current year - 1)
+    # Add individual years from 2012 to current year
     for year in range(2012, varIntCurrentYear):
+        # For AS400 we use 2-digit years, for MySQL we might use 4-digit
+        if myDictConfig['SOURCE_TYPE'] == 'AS400':
+            source_year = year - 2000  # Convert to 2-digit year for AS400
+        else:
+            source_year = year  # MySQL might use 4-digit years
+            
         listYearRanges.append(
             (str(year),
-            f"{varStrAs400FiscalCol} = {year - 2000}",  # AS400 uses 2-digit years
-            f"TRY_CAST([{varStrMssqlFiscalCol}] AS DECIMAL(18,2)) = {year}")  # MSSQL uses 4-digit
+            f"{varStrSourceFiscalCol} = {source_year}",
+            f"TRY_CAST([{varStrMssqlFiscalCol}] AS DECIMAL(18,2)) = {year}")
         )
 
     # Add current year and beyond
+    if myDictConfig['SOURCE_TYPE'] == 'AS400':
+        current_source_year = varIntCurrentYear - 2000  # 2-digit
+    else:
+        current_source_year = varIntCurrentYear  # 4-digit
+        
     listYearRanges.append(
         ("Current and Future", 
-        f"{varStrAs400FiscalCol} >= {varIntCurrentYear - 2000}",
+        f"{varStrSourceFiscalCol} >= {current_source_year}",
         f"TRY_CAST([{varStrMssqlFiscalCol}] AS DECIMAL(18,2)) >= {varIntCurrentYear}")
-    )    
+    )
+    
     dictResults = {}
-    for varStrLabel, varStrAs400Condition, varStrMssqlCondition in listYearRanges:
-        # Get AS400 count
-        varIntAs400Count = fun_GetTableRowCountWithCondition(
-            varObjAs400Cursor, 
-            myDictConfig['AS400']['LIBRARY'], 
-            varStrAs400Table,
-            varStrAs400Condition
+    for varStrLabel, varStrSourceCondition, varStrMssqlCondition in listYearRanges:
+        # Get source count
+        varIntSourceCount = fun_GetTableRowCountWithCondition(
+            varObjSourceCursor, 
+            varStrSourceSchema, 
+            varStrSourceTable,
+            varStrSourceCondition
         )
         
         # Get MSSQL count
@@ -455,63 +518,116 @@ def fun_CompareRowCountPerYear(varObjAs400Cursor, varObjMSSQLCursor, varStrAs400
         )
         
         dictResults[varStrLabel] = {
-            'as400_count': varIntAs400Count,
+            'source_count': varIntSourceCount,
             'mssql_count': varIntMssqlCount,
-            'as400_condition': varStrAs400Condition,
+            'source_condition': varStrSourceCondition,
             'mssql_condition': varStrMssqlCondition,
-            'needs_sync': varIntAs400Count != varIntMssqlCount,
-            'as400_fiscal_col': varStrAs400FiscalCol,
+            'needs_sync': varIntSourceCount != varIntMssqlCount,
+            'source_fiscal_col': varStrSourceFiscalCol,
             'mssql_fiscal_col': varStrMssqlFiscalCol
         }
     
     return dictResults
 
-def fun_FullTableSync(varObjAs400Cursor, varObjMSSQLCursor, varStrAs400Table, varStrSqlTable, dictResults):
+def fun_BulkInsertYearRange(varObjSourceCursor, varObjMSSQLCursor, varStrSourceTable, varStrSqlTable, varStrYearCondition, varStrFiscalYearCol):
     """
-    Perform full table sync when fiscal year column is not found
+    Bulk insert data for a specific year range.
+    
+    INPUT:
+        varObjSourceCursor - Source database cursor
+        varObjMSSQLCursor - MSSQL database cursor
+        varStrSourceTable - Source table name
+        varStrSqlTable - Destination table name
+        varStrYearCondition - Year range condition
+        varStrFiscalYearCol - Fiscal year column name
+    OUTPUT:
+        Integer - Number of records inserted
     """
-    try:
-        fun_PrintStatus(varStrAs400Table, "Starting full table sync", "process")
+    # Get source schema based on source type
+    if myDictConfig['SOURCE_TYPE'] == 'AS400':
+        varStrSourceSchema = myDictConfig['AS400']['LIBRARY']
+    else:
+        varStrSourceSchema = myDictConfig['MYSQL']['SCHEMA']
+    
+    # Get column metadata
+    varListColumns = fun_GetOneColumnMetadata(
+        varObjSourceCursor, 
+        varObjMSSQLCursor,
+        varStrSourceSchema, 
+        varStrSourceTable
+    )
+    
+    # Get count for progress bar
+    varObjCountCursor = varObjSourceCursor.connection.cursor()
+    
+    if myDictConfig['SOURCE_TYPE'] == 'AS400':
+        count_sql = f"""
+            SELECT COUNT(*) 
+            FROM {varStrSourceSchema}.{varStrSourceTable}
+            WHERE {varStrYearCondition}
+        """
+    else:  # MySQL
+        count_sql = f"""
+            SELECT COUNT(*) 
+            FROM `{varStrSourceSchema}`.`{varStrSourceTable}`
+            WHERE {varStrYearCondition}
+        """
         
-        # Get total count for progress bar
-        varObjCountCursor = varObjAs400Cursor.connection.cursor()
-        varObjCountCursor.execute(f"SELECT COUNT(*) FROM {myDictConfig['AS400']['LIBRARY']}.{varStrAs400Table}")
-        varIntTotalRecords = varObjCountCursor.fetchone()[0]
-        varObjCountCursor.close()
-        
-        # Truncate destination table
-        varObjMSSQLCursor.execute(f"TRUNCATE TABLE [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]")
-        dictResults['rows_deleted'] = dictResults['initial_mssql_count']
-        
-        # Get column metadata
-        varListColumns = fun_GetOneColumnMetadata(varObjAs400Cursor, varObjMSSQLCursor,
-                                               myDictConfig['AS400']['LIBRARY'], varStrAs400Table)
-        
-        # Prepare for bulk insert
-        varStrColNames = ", ".join([f"[{varTupleCol[1]}_____{varTupleCol[0]}]" for varTupleCol in varListColumns])
-        varStrPlaceholders = ", ".join(["?"] * len(varListColumns))
-        varIntBatchSize = myDictConfig['BATCH_SIZE']
-        varIntTotalInserted = 0
+    varObjCountCursor.execute(count_sql)
+    varIntTotalRecords = varObjCountCursor.fetchone()[0]
+    varObjCountCursor.close()
+    
+    # Prepare for bulk insert
+    varStrColNames = ", ".join([f"[{varTupleCol[1]}_____{varTupleCol[0]}]" for varTupleCol in varListColumns])
+    varStrPlaceholders = ", ".join(["?"] * len(varListColumns))
+    varIntBatchSize = myDictConfig['BATCH_SIZE']
+    varIntTotalInserted = 0
 
-        # Execute source query
-        varObjAs400Cursor.execute(f"SELECT * FROM {myDictConfig['AS400']['LIBRARY']}.{varStrAs400Table}")
+    # Execute source query
+    if myDictConfig['SOURCE_TYPE'] == 'AS400':
+        query_sql = f"""
+            SELECT * 
+            FROM {varStrSourceSchema}.{varStrSourceTable}
+            WHERE {varStrYearCondition}
+        """
+    else:  # MySQL
+        query_sql = f"""
+            SELECT * 
+            FROM `{varStrSourceSchema}`.`{varStrSourceTable}`
+            WHERE {varStrYearCondition}
+        """
+        
+    varObjSourceCursor.execute(query_sql)
 
-        with tqdm(total=varIntTotalRecords, desc=f"Inserting {varStrAs400Table}") as varObjProgressBar:
-            while True:
-                varListBatch = varObjAs400Cursor.fetchmany(varIntBatchSize)
-                if not varListBatch:
-                    break
+    with tqdm(total=varIntTotalRecords, desc=f"Inserting {varStrSourceTable} {varStrYearCondition}") as varObjProgressBar:
+        while True:
+            varListBatch = varObjSourceCursor.fetchmany(varIntBatchSize)
+            if not varListBatch:
+                break
+            
+            # Safe conversion of values with NULL handling
+            varListNormalizedBatch = []
+            for row in varListBatch:
+                normalized_row = []
+                for val in row:
+                    # First check if the value is None to avoid any comparison issues
+                    if val is None:
+                        normalized_row.append(None)
+                    # Convert Decimal to float for MSSQL, safely handling potential errors
+                    elif isinstance(val, Decimal):
+                        try:
+                            normalized_row.append(float(val))
+                        except (TypeError, ValueError):
+                            # If conversion fails, use None
+                            normalized_row.append(None)
+                    # Keep everything else as-is
+                    else:
+                        normalized_row.append(val)
                 
-                # Convert Decimal to float for MSSQL
-                varListNormalizedBatch = [
-                    tuple(
-                        float(val) if isinstance(val, Decimal) else val
-                        for val in row
-                    )
-                    for row in varListBatch
-                ]
-                
-                # Bulk insert
+                varListNormalizedBatch.append(tuple(normalized_row))
+            
+            # Bulk insert
+            try:
                 varObjMSSQLCursor.fast_executemany = True
                 varObjMSSQLCursor.executemany(
                     f"""
@@ -521,41 +637,584 @@ def fun_FullTableSync(varObjAs400Cursor, varObjMSSQLCursor, varStrAs400Table, va
                     varListNormalizedBatch
                 )
                 
-                varIntTotalInserted += len(varListBatch)
+                varIntTotalInserted += len(varListNormalizedBatch)
+            except Exception as e:
+                fun_PrintStatus(varStrSourceTable, f"Batch insert error: {str(e)}", "warning")
+                
+                # If batch fails, try individual inserts as fallback
+                fun_PrintStatus(varStrSourceTable, "Attempting row-by-row insert as fallback", "info")
+                successful_rows = 0
+                
+                for row in varListNormalizedBatch:
+                    try:
+                        # Additional validation for problematic rows
+                        validated_row = []
+                        for val in row:
+                            if val is None:
+                                validated_row.append(None)
+                            elif isinstance(val, datetime):
+                                # Convert datetime to string to avoid driver issues
+                                validated_row.append(val.strftime('%Y-%m-%d %H:%M:%S'))
+                            else:
+                                validated_row.append(val)
+                        
+                        # Single row insert
+                        varObjMSSQLCursor.execute(
+                            f"""
+                            INSERT INTO [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]
+                            ({varStrColNames}) VALUES ({varStrPlaceholders})
+                            """,
+                            tuple(validated_row)
+                        )
+                        successful_rows += 1
+                        varIntTotalInserted += 1
+                    except Exception as row_err:
+                        fun_PrintStatus(varStrSourceTable, f"Row insert error: {str(row_err)}", "warning")
+                
+                fun_PrintStatus(varStrSourceTable, 
+                               f"Row-by-row fallback completed: {successful_rows}/{len(varListNormalizedBatch)} rows inserted", 
+                               "info")
+            
+            varObjProgressBar.update(len(varListBatch))
+            
+            # Commit periodically
+            if varIntTotalInserted % (varIntBatchSize * 10) == 0:
+                varObjMSSQLCursor.connection.commit()
+                fun_PrintStatus(varStrSourceTable, 
+                               f"Inserted {varIntTotalInserted} of {varIntTotalRecords} records for {varStrYearCondition}", 
+                               "update")
+
+    # Final commit
+    varObjMSSQLCursor.connection.commit()
+    return varIntTotalInserted
+
+def fun_FullTableSync(varObjSourceCursor, varObjMSSQLCursor, varStrSourceTable, varStrSqlTable, dictResults):
+    """
+    Perform full table sync when fiscal year column is not found.
+    Handles both AS400 and MySQL as sources.
+    
+    INPUT:
+        varObjSourceCursor - Source database cursor
+        varObjMSSQLCursor - MSSQL database cursor
+        varStrSourceTable - Source table name
+        varStrSqlTable - Destination table name
+        dictResults - Dictionary to update with results
+    OUTPUT:
+        Dictionary - Updated results with sync details
+    """
+    try:
+        fun_PrintStatus(varStrSourceTable, "Starting full table sync", "process")
+        
+        # Get source schema based on source type
+        if myDictConfig['SOURCE_TYPE'] == 'AS400':
+            varStrSourceSchema = myDictConfig['AS400']['LIBRARY']
+        else:
+            varStrSourceSchema = myDictConfig['MYSQL']['SCHEMA']
+            
+        # Get total count for progress bar
+        varObjCountCursor = varObjSourceCursor.connection.cursor()
+        
+        if myDictConfig['SOURCE_TYPE'] == 'AS400':
+            count_sql = f"SELECT COUNT(*) FROM {varStrSourceSchema}.{varStrSourceTable}"
+        else:  # MySQL
+            count_sql = f"SELECT COUNT(*) FROM `{varStrSourceSchema}`.`{varStrSourceTable}`"
+            
+        varObjCountCursor.execute(count_sql)
+        varIntTotalRecords = varObjCountCursor.fetchone()[0]
+        varObjCountCursor.close()
+        
+        # Truncate destination table
+        varObjMSSQLCursor.execute(f"TRUNCATE TABLE [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]")
+        dictResults['rows_deleted'] = dictResults['initial_mssql_count']
+        
+        # Get column metadata
+        varListColumns = fun_GetOneColumnMetadata(
+            varObjSourceCursor,
+            varObjMSSQLCursor,
+            varStrSourceSchema, 
+            varStrSourceTable
+        )
+        
+        # Prepare for bulk insert
+        varStrColNames = ", ".join([f"[{varTupleCol[1]}_____{varTupleCol[0]}]" for varTupleCol in varListColumns])
+        varStrPlaceholders = ", ".join(["?"] * len(varListColumns))
+        varIntBatchSize = myDictConfig['BATCH_SIZE']
+        varIntTotalInserted = 0
+
+        # Execute source query
+        if myDictConfig['SOURCE_TYPE'] == 'AS400':
+            query_sql = f"SELECT * FROM {varStrSourceSchema}.{varStrSourceTable}"
+        else:  # MySQL
+            query_sql = f"SELECT * FROM `{varStrSourceSchema}`.`{varStrSourceTable}`"
+            
+        varObjSourceCursor.execute(query_sql)
+
+        with tqdm(total=varIntTotalRecords, desc=f"Inserting {varStrSourceTable}") as varObjProgressBar:
+            while True:
+                varListBatch = varObjSourceCursor.fetchmany(varIntBatchSize)
+                if not varListBatch:
+                    break
+                
+                # Safe conversion of values with NULL handling
+                varListNormalizedBatch = []
+                for row in varListBatch:
+                    normalized_row = []
+                    for val in row:
+                        # First check if the value is None to avoid any comparison issues
+                        if val is None:
+                            normalized_row.append(None)
+                        # Convert Decimal to float for MSSQL, safely handling potential errors
+                        elif isinstance(val, Decimal):
+                            try:
+                                normalized_row.append(float(val))
+                            except (TypeError, ValueError):
+                                # If conversion fails, use None
+                                normalized_row.append(None)
+                        # Handle datetime conversion
+                        elif isinstance(val, datetime):
+                            normalized_row.append(val.strftime('%Y-%m-%d %H:%M:%S'))
+                        # Keep everything else as-is
+                        else:
+                            normalized_row.append(val)
+                    
+                    varListNormalizedBatch.append(tuple(normalized_row))
+                
+                # Bulk insert
+                try:
+                    varObjMSSQLCursor.fast_executemany = True
+                    varObjMSSQLCursor.executemany(
+                        f"""
+                        INSERT INTO [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]
+                        ({varStrColNames}) VALUES ({varStrPlaceholders})
+                        """,
+                        varListNormalizedBatch
+                    )
+                    
+                    varIntTotalInserted += len(varListNormalizedBatch)
+                except Exception as e:
+                    fun_PrintStatus(varStrSourceTable, f"Batch insert error: {str(e)}", "warning")
+                    
+                    # If batch fails, try individual inserts as fallback
+                    fun_PrintStatus(varStrSourceTable, "Attempting row-by-row insert as fallback", "info")
+                    successful_rows = 0
+                    
+                    for row in varListNormalizedBatch:
+                        try:
+                            # Additional validation for problematic rows
+                            validated_row = []
+                            for val in row:
+                                if val is None:
+                                    validated_row.append(None)
+                                elif isinstance(val, datetime):
+                                    # Convert datetime to string to avoid driver issues
+                                    validated_row.append(val.strftime('%Y-%m-%d %H:%M:%S'))
+                                else:
+                                    validated_row.append(val)
+                            
+                            # Single row insert
+                            varObjMSSQLCursor.execute(
+                                f"""
+                                INSERT INTO [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]
+                                ({varStrColNames}) VALUES ({varStrPlaceholders})
+                                """,
+                                tuple(validated_row)
+                            )
+                            successful_rows += 1
+                            varIntTotalInserted += 1
+                        except Exception as row_err:
+                            fun_PrintStatus(varStrSourceTable, f"Row insert error: {str(row_err)}", "warning")
+                    
+                    fun_PrintStatus(varStrSourceTable, 
+                                   f"Row-by-row fallback completed: {successful_rows}/{len(varListNormalizedBatch)} rows inserted", 
+                                   "info")
+                
                 varObjProgressBar.update(len(varListBatch))
                 
                 # Commit periodically
                 if varIntTotalInserted % (varIntBatchSize * 10) == 0:
                     varObjMSSQLCursor.connection.commit()
-                    fun_PrintStatus(varStrAs400Table, 
+                    fun_PrintStatus(varStrSourceTable, 
                                    f"Inserted {varIntTotalInserted} of {varIntTotalRecords} records", 
                                    "update")
 
         # Final commit and update results
         varObjMSSQLCursor.connection.commit()
         dictResults['rows_inserted'] = varIntTotalInserted
-        dictResults['final_as400_count'] = dictResults['initial_as400_count']
+        dictResults['final_source_count'] = dictResults['initial_source_count']
         dictResults['final_mssql_count'] = varIntTotalInserted
         
         # Print summary
         fun_PrintSyncSummary(dictResults)
         
-        fun_PrintStatus(varStrAs400Table, "Full table sync completed", "success")
+        fun_PrintStatus(varStrSourceTable, "Full table sync completed", "success")
         return dictResults
         
     except Exception as varExcError:
-        fun_PrintStatus(varStrAs400Table, f"Full sync failed: {str(varExcError)}", "failure")
+        fun_PrintStatus(varStrSourceTable, f"Full sync failed: {str(varExcError)}", "failure")
         varObjMSSQLCursor.connection.rollback()
         dictResults['error'] = str(varExcError)
         return dictResults
 
+def fun_CompareAndSyncTables(varObjSourceCursor, varObjMSSQLCursor, varStrSourceTable, varStrSqlTable):
+    """
+    Compare and sync tables year by year with detailed reporting.
+    Handles both AS400 and MySQL as sources.
+    
+    INPUT:
+        varObjSourceCursor - Source database cursor
+        varObjMSSQLCursor - MSSQL database cursor
+        varStrSourceTable - Source table name
+        varStrSqlTable - Destination table name
+    OUTPUT:
+        Dictionary - Results with sync details
+    """
+    # Get source schema based on source type
+    if myDictConfig['SOURCE_TYPE'] == 'AS400':
+        varStrSourceSchema = myDictConfig['AS400']['LIBRARY']
+    else:
+        varStrSourceSchema = myDictConfig['MYSQL']['SCHEMA']
+        
+    # Initialize results dictionary with additional table_created flag
+    dictResults = {
+        'table_name': varStrSourceTable,
+        'mssql_table': varStrSqlTable,
+        'years': {},
+        'initial_source_count': 0,
+        'initial_mssql_count': 0,
+        'final_source_count': 0,
+        'final_mssql_count': 0,
+        'rows_deleted': 0,
+        'rows_inserted': 0,
+        'table_created': False
+    }
+        
+    table_result = {
+        'table_name': varStrSourceTable,
+        'initial_source': 0,
+        'initial_mssql': 0,
+        'final_source': 0,
+        'final_mssql': 0,
+        'status': 'error',
+        'rows_inserted': 0,
+        'rows_deleted': 0,
+        'table_created': False
+    }
+
+    try:
+        # First check if MSSQL table exists
+        table_exists = fun_CheckTableExists(
+            varObjMSSQLCursor, 
+            myDictConfig['SQL_SERVER']['SCHEMA'],
+            varStrSqlTable
+        )
+
+        if not table_exists:
+            fun_PrintStatus(varStrSourceTable, "Destination table not found - creating it", "process")
+            
+            try:
+                # Get verified column metadata
+                varListCols = fun_GetOneColumnMetadata(
+                    varObjSourceCursor, 
+                    varObjMSSQLCursor,
+                    varStrSourceSchema, 
+                    varStrSourceTable
+                )
+                
+                # Create the table
+                table_created = fun_CreateTable(
+                    varObjMSSQLCursor,
+                    myDictConfig['SQL_SERVER']['SCHEMA'],
+                    varStrSqlTable,
+                    varListCols
+                )
+                
+                if table_created:
+                    dictResults['table_created'] = True
+                    fun_PrintStatus(varStrSourceTable, "Destination table created successfully", "success")
+                else:
+                    raise Exception("Failed to create destination table")
+                    
+            except Exception as create_error:
+                # If table was created by another process between our check and creation attempt
+                if "already an object named" in str(create_error):
+                    fun_PrintStatus(varStrSourceTable, "Table already exists (possibly created by another process)", "warning")
+                else:
+                    raise create_error  # Re-raise other errors
+
+        # Get initial total counts
+        
+        # Source total count
+        if myDictConfig['SOURCE_TYPE'] == 'AS400':
+            count_sql = f"SELECT COUNT(*) FROM {varStrSourceSchema}.{varStrSourceTable}"
+        else:  # MySQL
+            count_sql = f"SELECT COUNT(*) FROM `{varStrSourceSchema}`.`{varStrSourceTable}`"
+            
+        varObjSourceCursor.execute(count_sql)
+        dictResults['initial_source_count'] = varObjSourceCursor.fetchone()[0]
+        
+        # MSSQL total count (will be 0 if table was just created)
+        varObjMSSQLCursor.execute(f"SELECT COUNT(*) FROM [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]")
+        dictResults['initial_mssql_count'] = varObjMSSQLCursor.fetchone()[0]
+        
+        fun_PrintStatus(varStrSourceTable, 
+                       f"Initial counts - Source: {dictResults['initial_source_count']}, MSSQL: {dictResults['initial_mssql_count']}", 
+                       "info")
+
+        # Report
+        initial_source = dictResults['initial_source_count']
+        initial_mssql = dictResults['initial_mssql_count']
+        table_result.update({
+            'initial_source': initial_source,
+            'initial_mssql': initial_mssql,
+            'final_source': initial_source,  # Default to same as initial
+            'final_mssql': initial_mssql     # Default to same as initial
+        })
+
+        # If rowcount is equal, we skip
+        if (dictResults['initial_source_count'] == dictResults['initial_mssql_count']):
+            fun_PrintStatus(varStrSourceTable, 
+                        f"Initial counts are equal......... skipping...", 
+                        "info")
+            global_table_results.append({
+                'table-name': varStrSourceTable,
+                'initial_source': dictResults['initial_source_count'],
+                'initial_mssql': dictResults['initial_mssql_count'],
+                'final_source': dictResults['initial_source_count'],
+                'final_mssql': dictResults['initial_mssql_count'],
+                'status': 'skipped',
+                'rows_inserted': 0,
+                'rows_deleted': 0,
+                'table_created': dictResults.get('table_created', False)
+            })
+            return dictResults
+
+        # Detect fiscal year column
+        varStrFiscalYearCol = fun_DetectFiscalYearColumn(
+            varObjSourceCursor,
+            varStrSourceSchema,
+            varStrSourceTable
+        )
+        
+        if not varStrFiscalYearCol:
+            fun_PrintStatus(varStrSourceTable, "No fiscal year column found - performing full table sync", "warning")
+            return fun_FullTableSync(varObjSourceCursor, varObjMSSQLCursor, varStrSourceTable, varStrSqlTable, dictResults)
+
+        # Find corresponding MSSQL fiscal year column
+        try:
+            varObjMSSQLCursor.execute(f"""
+                SELECT COLUMN_NAME 
+                FROM INFORMATION_SCHEMA.COLUMNS 
+                WHERE TABLE_SCHEMA = '{myDictConfig['SQL_SERVER']['SCHEMA']}'
+                  AND TABLE_NAME = '{varStrSqlTable}'
+                  AND COLUMN_NAME LIKE '%{varStrFiscalYearCol}'
+            """)
+            varObjResult = varObjMSSQLCursor.fetchone()
+            varStrMssqlFiscalCol = varObjResult[0] if varObjResult else None
+        except Exception as varExcError:
+            fun_PrintStatus(varStrSqlTable, f"Error finding MSSQL fiscal column: {str(varExcError)}", "warning")
+            varStrMssqlFiscalCol = None
+
+        # Define year ranges to process
+        varIntCurrentYear = datetime.now().year
+        
+        # For AS400 we use 2-digit years in conditions, for MySQL we might use 4-digit
+        if myDictConfig['SOURCE_TYPE'] == 'AS400':
+            # Historical range
+            listYearRanges = [("Historical", f"{varStrFiscalYearCol} < 12")]  # Before 2012 (11 = 2011, 10 = 2010, etc.)
+            
+            # Add yearly ranges
+            for year in range(2012, varIntCurrentYear + 1):
+                listYearRanges.append((str(year), f"{varStrFiscalYearCol} = {year - 2000}"))
+                
+            # Future years
+            listYearRanges.append(("Future", f"{varStrFiscalYearCol} > {varIntCurrentYear - 2000}"))
+        else:
+            # For MySQL, need to determine if it uses 2 or 4 digit years
+            # This is a simplified approach - might need adjustment based on actual MySQL data
+            listYearRanges = [("Historical", f"{varStrFiscalYearCol} < 12")]
+            
+            # Add yearly ranges
+            for year in range(2012, varIntCurrentYear + 1):
+                listYearRanges.append((str(year), f"{varStrFiscalYearCol} = {year - 2000}"))
+                
+            # Future years
+            listYearRanges.append(("Future", f"{varStrFiscalYearCol} > {varIntCurrentYear - 2000}"))
+
+        # Process each year range
+        for varStrLabel, varStrYearCondition in listYearRanges:
+            # Get row counts for this year range
+            varIntSourceCount = fun_GetTableRowCountWithCondition(
+                varObjSourceCursor,
+                varStrSourceSchema,
+                varStrSourceTable,
+                varStrYearCondition
+            )
+            
+            if varStrMssqlFiscalCol:
+                varStrMssqlCondition = varStrYearCondition.replace(varStrFiscalYearCol, f"TRY_CAST([{varStrMssqlFiscalCol}] AS DECIMAL(18,2))")
+            else:
+                varStrMssqlCondition = "1=1"  # Fallback to all records if we can't map the column
+            
+            varIntMssqlCount = fun_GetTableRowCountWithCondition(
+                varObjMSSQLCursor,
+                myDictConfig['SQL_SERVER']['SCHEMA'],
+                varStrSqlTable,
+                varStrMssqlCondition
+            )
+            
+            # Store year results
+            dictResults['years'][varStrLabel] = {
+                'source_count': varIntSourceCount,
+                'mssql_count': varIntMssqlCount,
+                'synced': False
+            }
+            
+            fun_PrintStatus(
+                varStrSourceTable,
+                f"{varStrLabel} {varStrYearCondition} year range - Source: {varIntSourceCount}, MSSQL: {varIntMssqlCount}",
+                "info"
+            )
+
+            # Only sync if counts differ
+            if varIntSourceCount != varIntMssqlCount:
+                fun_PrintStatus(varStrSourceTable, f"Counts differ - syncing {varStrLabel} year range", "failure")
+                
+                # Delete existing data for this year range in MSSQL
+                if varStrMssqlFiscalCol:
+                    varObjMSSQLCursor.execute(f"""
+                        DELETE FROM [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]
+                        WHERE {varStrMssqlCondition}
+                    """)
+                    varObjMSSQLCursor.connection.commit()
+                    dictResults['rows_deleted'] += varIntMssqlCount
+                
+                # Insert fresh data from source
+                varIntInserted = fun_BulkInsertYearRange(
+                    varObjSourceCursor,
+                    varObjMSSQLCursor,
+                    varStrSourceTable,
+                    varStrSqlTable,
+                    varStrYearCondition,
+                    varStrFiscalYearCol
+                )
+                
+                dictResults['rows_inserted'] += varIntInserted
+                dictResults['years'][varStrLabel]['synced'] = True
+                dictResults['years'][varStrLabel]['rows_inserted'] = varIntInserted
+
+        # Get final total counts
+        fun_PrintStatus(varStrSourceTable, "Getting final row counts", "process")
+        
+        # Source total count
+        if myDictConfig['SOURCE_TYPE'] == 'AS400':
+            final_source_sql = f"SELECT COUNT(*) FROM {varStrSourceSchema}.{varStrSourceTable}"
+        else:  # MySQL
+            final_source_sql = f"SELECT COUNT(*) FROM `{varStrSourceSchema}`.`{varStrSourceTable}`"
+            
+        varObjSourceCursor.execute(final_source_sql)
+        dictResults['final_source_count'] = varObjSourceCursor.fetchone()[0]
+        
+        # MSSQL total count
+        varObjMSSQLCursor.execute(f"SELECT COUNT(*) FROM [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]")
+        dictResults['final_mssql_count'] = varObjMSSQLCursor.fetchone()[0]
+        
+        fun_PrintStatus(varStrSourceTable, 
+                       f"Final counts - Source: {dictResults['final_source_count']}, MSSQL: {dictResults['final_mssql_count']}", 
+                       "info")
+
+        # Update the result with sync details
+        table_result.update({
+            'final_source': dictResults.get('final_source_count', initial_source),
+            'final_mssql': dictResults.get('final_mssql_count', initial_mssql),
+            'status': 'synced',
+            'rows_inserted': dictResults.get('rows_inserted', 0),
+            'rows_deleted': dictResults.get('rows_deleted', 0),
+            'table_created': dictResults.get('table_created', False)
+        })
+        
+        # Add to global results
+        global_table_results.append({
+            'table-name': varStrSourceTable,
+            'initial_source': dictResults['initial_source_count'],
+            'initial_mssql': dictResults['initial_mssql_count'],
+            'final_source': dictResults['final_source_count'],
+            'final_mssql': dictResults['final_mssql_count'],
+            'status': 'synced',
+            'rows_inserted': dictResults.get('rows_inserted', 0),
+            'rows_deleted': dictResults.get('rows_deleted', 0),
+            'table_created': dictResults.get('table_created', False)
+        })
+        
+        return dictResults
+    
+    except Exception as varExcError:
+        fun_PrintStatus(varStrSourceTable, f"Sync failed: {str(varExcError)}", "failure")
+        varObjMSSQLCursor.connection.rollback()
+        dictResults['error'] = str(varExcError)
+        
+        # Add failed result to global
+        global_table_results.append({
+            'table-name': varStrSourceTable,
+            'initial_source': dictResults.get('initial_source_count', 0),
+            'initial_mssql': dictResults.get('initial_mssql_count', 0),
+            'final_source': dictResults.get('initial_source_count', 0),
+            'final_mssql': dictResults.get('initial_mssql_count', 0),
+            'status': 'failed',
+            'rows_inserted': 0,
+            'rows_deleted': 0,
+            'table_created': dictResults.get('table_created', False),
+            'error': str(varExcError)
+        })
+        
+        return dictResults
+
+def fun_PrintSyncSummary(dictResults):
+    """
+    Print detailed sync summary report.
+    Works with both AS400 and MySQL as sources.
+    
+    INPUT:
+        dictResults - Results dictionary with sync details
+    """
+    source_name = "AS400" if myDictConfig['SOURCE_TYPE'] == 'AS400' else "MySQL"
+    
+    print("\n" + "="*80)
+    print(f"SYNC SUMMARY REPORT - {dictResults['table_name']}")
+    print("="*80)
+    print(f"Source Table ({source_name}): {dictResults['table_name']}")
+    print(f"Target Table (MSSQL): {dictResults['mssql_table']}")
+    print("-"*80)
+    print(f"Initial Source Count: {dictResults.get('initial_source_count', dictResults.get('initial_as400_count', 0))}")
+    print(f"Initial MSSQL Count: {dictResults['initial_mssql_count']}")
+    print("-"*80)
+    
+    # Year range details
+    print("\nYEAR RANGE SYNC DETAILS:")
+    for varStrYearRange, dictYearData in dictResults['years'].items():
+        print(f"\n{varStrYearRange}:")
+        print(f"  Source Count: {dictYearData.get('source_count', dictYearData.get('as400_count', 0))}")
+        print(f"  MSSQL Count: {dictYearData['mssql_count']}")
+        if dictYearData.get('synced', False):
+            print(f"  ACTION: Synced ({dictYearData.get('rows_inserted', 0)} rows inserted)")
+        else:
+            print("  ACTION: No sync needed (counts matched)")
+    
+    print("\n" + "-"*80)
+    print(f"Total Rows Deleted: {dictResults.get('rows_deleted', 0)}")
+    print(f"Total Rows Inserted: {dictResults.get('rows_inserted', 0)}")
+    print("-"*80)
+    print(f"Final Source Count: {dictResults.get('final_source_count', dictResults.get('final_as400_count', 0))}")
+    print(f"Final MSSQL Count: {dictResults['final_mssql_count']}")
+    print("="*80 + "\n")
 
 def fun_PrintFinalSummary():
     """Print a comprehensive summary of all table processing results"""
+    source_name = "AS400" if myDictConfig['SOURCE_TYPE'] == 'AS400' else "MySQL"
+    
     print("\n" + "="*80)
-    print("FINAL MIGRATION SUMMARY REPORT")
+    print(f"FINAL MIGRATION SUMMARY REPORT: {source_name} to MSSQL")
     print("="*80)
-    print(f"{'#':<4}{'Table':<20}{'Initial AS400':>15}{'Initial MSSQL':>15}{'Final AS400':>15}{'Final MSSQL':>15}{'Status':>15}{'Rows Ins':>10}{'Rows Del':>10}{'Created':>10}")
+    print(f"{'#':<4}{'Table':<20}{'Initial Source':>15}{'Initial MSSQL':>15}{'Final Source':>15}{'Final MSSQL':>15}{'Status':>15}{'Rows Ins':>10}{'Rows Del':>10}{'Created':>10}")
     print("-"*120)
     
     for idx, result in enumerate(global_table_results, 1):
@@ -566,9 +1225,10 @@ def fun_PrintFinalSummary():
             
         # Safely get all values with defaults
         table_name = str(result.get('table-name', 'UNKNOWN'))[:20]  # Ensure string and slice
-        initial_as400 = result.get('initial_as400', 0)
+        # Rename field names based on source type
+        initial_source = result.get('initial_source', result.get('initial_as400', 0))
         initial_mssql = result.get('initial_mssql', 0)
-        final_as400 = result.get('final_as400', 0)
+        final_source = result.get('final_source', result.get('final_as400', 0))
         final_mssql = result.get('final_mssql', 0)
         status = result.get('status', 'UNKNOWN')
         rows_inserted = result.get('rows_inserted', 0)
@@ -577,9 +1237,9 @@ def fun_PrintFinalSummary():
 
         print(f"{idx:<4}"
               f"{table_name:<20}"
-              f"{initial_as400:>15}"
+              f"{initial_source:>15}"
               f"{initial_mssql:>15}"
-              f"{final_as400:>15}"
+              f"{final_source:>15}"
               f"{final_mssql:>15}"
               f"{status:>15}"
               f"{rows_inserted:>10}"
@@ -602,620 +1262,88 @@ def fun_PrintFinalSummary():
     print(f"         Rows Inserted={total_inserted} | Rows Deleted={total_deleted} | Tables Created={total_created}")
     print("="*80 + "\n")
 
-
-def fun_CompareAndSyncTables(varObjAs400Cursor, varObjMSSQLCursor, varStrAs400Table, varStrSqlTable):
-    """
-    Compare and sync tables year by year with detailed reporting
-    """
-    # Initialize results dictionary with additional table_created flag
-    dictResults = {
-        'table_name': varStrAs400Table,
-        'mssql_table': varStrSqlTable,
-        'years': {},
-        'initial_as400_count': 0,
-        'initial_mssql_count': 0,
-        'final_as400_count': 0,
-        'final_mssql_count': 0,
-        'rows_deleted': 0,
-        'rows_inserted': 0,
-        'table_created': False
-    }
-        
-    table_result = {
-        'table_name': varStrAs400Table,
-        'initial_as400': 0,
-        'initial_mssql': 0,
-        'final_as400': 0,
-        'final_mssql': 0,
-        'status': 'error',
-        'rows_inserted': 0,
-        'rows_deleted': 0,
-        'table_created': False
-    }
-
-    try:
-        # First check if MSSQL table exists
-        #fun_PrintStatus(varStrAs400Table, "Checking if destination table exists", "process")
-        try:
-            varObjMSSQLCursor.execute(f"""
-                SELECT 1 FROM INFORMATION_SCHEMA.TABLES 
-                WHERE TABLE_SCHEMA = '{myDictConfig['SQL_SERVER']['SCHEMA']}'
-                AND TABLE_NAME = '{varStrSqlTable}'
-            """)
-            table_exists = varObjMSSQLCursor.fetchone() is not None
-        except Exception as e:
-            table_exists = False
-
-        if not table_exists:
-            fun_PrintStatus(varStrAs400Table, "Destination table not found - creating it", "process")
-            
-            # Get AS400 table structure (using numeric indices for compatibility)
-            varObjAs400Cursor.execute(f"""
-                SELECT COLUMN_NAME, DATA_TYPE, LENGTH 
-                FROM QSYS2.SYSCOLUMNS 
-                WHERE TABLE_SCHEMA = '{myDictConfig['AS400']['LIBRARY']}' 
-                AND TABLE_NAME = '{varStrAs400Table}'
-                ORDER BY ORDINAL_POSITION
-            """)
-            columns = varObjAs400Cursor.fetchall()
-        
-            # Create new table
-        
-            try:
-
-                # Get verified column metadata
-                varListCols = fun_GetOneColumnMetadata(varObjAs400Cursor, varObjMSSQLCursor, 
-                                                    myDictConfig['AS400']['LIBRARY'], varStrAs400Table)
-                
-                # Verify against actual structure
-                varListActualCols = fun_GetActualColumnNames(varObjAs400Cursor, myDictConfig['AS400']['LIBRARY'], varStrAs400Table)
-                if len(varListCols) != len(varListActualCols):
-                    fun_PrintStatus(varStrAs400Table, "Column count mismatch in rebuild - Using actual columns", "warning")
-                    varListCols = [(col, col) for col in varListActualCols]
-                    
-                fun_PrintStatus(varStrSqlTable, "Creating destination table", "process")
-                varStrCreateTableSql = f"""
-                    CREATE TABLE [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}] (
-                        {', '.join([f'[{col[1]}_____{col[0]}] NVARCHAR(MAX)' for col in varListCols])}
-                    )
-                    """
-                varObjMSSQLCursor.execute(varStrCreateTableSql)
-                varObjMSSQLCursor.connection.commit()
-
-                # Execute creation and commit immediately
-                dictResults['table_created'] = True
-                fun_PrintStatus(varStrAs400Table, "Destination table created successfully", "success")
-            except Exception as create_error:
-                # If table was created by another process between our check and creation attempt
-                if "already an object named" in str(create_error):
-                    fun_PrintStatus(varStrAs400Table, "Table already exists (possibly created by another process)", "warning")
-                else:
-                    raise create_error  # Re-raise other errors
-
-        # Get initial total counts
-        #fun_PrintStatus(varStrAs400Table, "Getting initial row counts", "process")
-        
-        # AS400 total count
-        varObjAs400Cursor.execute(f"SELECT COUNT(*) FROM {myDictConfig['AS400']['LIBRARY']}.{varStrAs400Table}")
-        dictResults['initial_as400_count'] = varObjAs400Cursor.fetchone()[0]
-        
-        # MSSQL total count (will be 0 if table was just created)
-        varObjMSSQLCursor.execute(f"SELECT COUNT(*) FROM [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]")
-        dictResults['initial_mssql_count'] = varObjMSSQLCursor.fetchone()[0]
-        
-        fun_PrintStatus(varStrAs400Table, 
-                       f"Initial counts - AS400: {dictResults['initial_as400_count']}, MSSQL: {dictResults['initial_mssql_count']}", 
-                       "info")
-
-        #Report
-        initial_as400 = dictResults['initial_as400_count']
-        initial_mssql = dictResults['initial_mssql_count']
-        table_result.update({
-            'initial_as400': initial_as400,
-            'initial_mssql': initial_mssql,
-            'final_as400': initial_as400,  # Default to same as initial
-            'final_mssql': initial_mssql   # Default to same as initial
-        })
-
-        ## If rowcount is equal, we skip
-        if (dictResults['initial_as400_count'] == dictResults['initial_mssql_count']):
-            fun_PrintStatus(varStrAs400Table, 
-                        f"Initial counts are equal......... skipping...", 
-                        "info")
-            global_table_results.append({
-                'table-name': {varStrAs400Table},
-                'initial_as400': dictResults['initial_as400_count'],
-                'initial_mssql': dictResults['initial_mssql_count'],
-                'final_as400': dictResults['final_as400_count'],
-                'final_mssql': dictResults['final_mssql_count'],
-                'status': 'skipped' if dictResults['initial_as400_count'] == dictResults['initial_mssql_count'] else 'synced',
-                'rows_inserted': dictResults.get('rows_inserted', 0),
-                'rows_deleted': dictResults.get('rows_deleted', 0),
-                'table_created': dictResults.get('table_created', False)
-            })
-            return dictResults
-
-        # Rest of your original function remains unchanged...
-        # Detect fiscal year column
-        varStrFiscalYearCol = fun_DetectFiscalYearColumn(
-            varObjAs400Cursor,
-            myDictConfig['AS400']['LIBRARY'],
-            varStrAs400Table
-        )
-        
-        if not varStrFiscalYearCol:
-            fun_PrintStatus(varStrAs400Table, "No fiscal year column found - performing full table sync", "warning")
-            return fun_FullTableSync(varObjAs400Cursor, varObjMSSQLCursor, varStrAs400Table, varStrSqlTable, dictResults)
-
-        # Find corresponding MSSQL fiscal year column
-        varStrMssqlFiscalCol = None
-        try:
-            varObjMSSQLCursor.execute(f"""
-                SELECT COLUMN_NAME 
-                FROM INFORMATION_SCHEMA.COLUMNS 
-                WHERE TABLE_SCHEMA = '{myDictConfig['SQL_SERVER']['SCHEMA']}'
-                  AND TABLE_NAME = '{varStrSqlTable}'
-                  AND COLUMN_NAME LIKE '%{varStrFiscalYearCol}'
-            """)
-            varObjResult = varObjMSSQLCursor.fetchone()
-            varStrMssqlFiscalCol = varObjResult[0] if varObjResult else None
-        except Exception as varExcError:
-            fun_PrintStatus(varStrSqlTable, f"Error finding MSSQL fiscal column: {str(varExcError)}", "warning")
-
-        # Define year ranges to process
-        varIntCurrentYear = datetime.now().year
-        listYearRanges = [
-            ("Historical", f"{varStrFiscalYearCol} < 12"),  # Before 2012 (11 = 2011, 10 = 2010, etc.)
-            ("2012", f"{varStrFiscalYearCol} = 12"),
-            ("2013", f"{varStrFiscalYearCol} = 13"), 
-            ("2014", f"{varStrFiscalYearCol} = 14"),
-            ("2015", f"{varStrFiscalYearCol} = 15"),
-            ("2016", f"{varStrFiscalYearCol} = 16"),
-            ("2017", f"{varStrFiscalYearCol} = 17"),
-            ("2018", f"{varStrFiscalYearCol} = 18"),
-            ("2019", f"{varStrFiscalYearCol} = 19"),
-            ("2020", f"{varStrFiscalYearCol} = 20"),
-            ("2021", f"{varStrFiscalYearCol} = 21"),
-            ("2022", f"{varStrFiscalYearCol} = 22"),
-            ("2023", f"{varStrFiscalYearCol} = 23"),
-            ("2024", f"{varStrFiscalYearCol} = 24"),
-            ("Current", f"{varStrFiscalYearCol} = {varIntCurrentYear - 2000}"),  # Just current year
-            ("Future", f"{varStrFiscalYearCol} > {varIntCurrentYear - 2000}")   # Future years
-        ]
-
-        # Process each year range
-        for varStrLabel, varStrYearCondition in listYearRanges:
-            # Get row counts for this year range
-            varIntAs400Count = fun_GetTableRowCountWithCondition(
-                varObjAs400Cursor,
-                myDictConfig['AS400']['LIBRARY'],
-                varStrAs400Table,
-                varStrYearCondition
-            )
-            
-            if varStrMssqlFiscalCol:
-                varStrMssqlCondition = varStrYearCondition.replace(varStrFiscalYearCol, f"TRY_CAST([{varStrMssqlFiscalCol}] AS DECIMAL(18,2))")
-            else:
-                varStrMssqlCondition = "1=1"  # Fallback to all records if we can't map the column
-            
-            varIntMssqlCount = fun_GetTableRowCountWithCondition(
-                varObjMSSQLCursor,
-                myDictConfig['SQL_SERVER']['SCHEMA'],
-                varStrSqlTable,
-                varStrMssqlCondition
-            )
-            
-            # Store year results
-            dictResults['years'][varStrLabel] = {
-                'as400_count': varIntAs400Count,
-                'mssql_count': varIntMssqlCount,
-                'synced': False
-            }
-            
-            fun_PrintStatus(
-                varStrAs400Table,
-                f"{varStrLabel} {varStrYearCondition} year range - AS400: {varIntAs400Count}, MSSQL: {varIntMssqlCount}",
-                "info"
-            )
-
-            # Only sync if counts differ
-            if varIntAs400Count != varIntMssqlCount:
-                fun_PrintStatus(varStrAs400Table, f"Counts differ - syncing {varStrLabel} year range", "failure")
-                
-                # Delete existing data for this year range in MSSQL
-                if varStrMssqlFiscalCol:
-                    varObjMSSQLCursor.execute(f"""
-                        DELETE FROM [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]
-                        WHERE {varStrMssqlCondition}
-                    """)
-                    dictResults['rows_deleted'] += varIntMssqlCount
-
-                # Commit after delete
-                varObjMSSQLCursor.connection.commit()    
-                
-                # Insert fresh data from AS400
-                varIntInserted = fun_BulkInsertYearRange(
-                    varObjAs400Cursor,
-                    varObjMSSQLCursor,
-                    varStrAs400Table,
-                    varStrSqlTable,
-                    varStrYearCondition,
-                    varStrFiscalYearCol
-                )
-                
-                # Commit after insert
-                varObjMSSQLCursor.connection.commit()
-                dictResults['rows_inserted'] += varIntInserted
-                dictResults['years'][varStrLabel]['synced'] = True
-                dictResults['years'][varStrLabel]['rows_inserted'] = varIntInserted
-
-        # Get final total counts
-        fun_PrintStatus(varStrAs400Table, "Getting final row counts", "process")
-        
-        # AS400 total count
-        varObjAs400Cursor.execute(f"SELECT COUNT(*) FROM {myDictConfig['AS400']['LIBRARY']}.{varStrAs400Table}")
-        dictResults['final_as400_count'] = varObjAs400Cursor.fetchone()[0]
-        
-        # MSSQL total count
-        varObjMSSQLCursor.execute(f"SELECT COUNT(*) FROM [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]")
-        dictResults['final_mssql_count'] = varObjMSSQLCursor.fetchone()[0]
-        
-        fun_PrintStatus(varStrAs400Table, 
-                       f"Final counts - AS400: {dictResults['final_as400_count']}, MSSQL: {dictResults['final_mssql_count']}", 
-                       "info")
-
-        # Update the result with sync details
-        table_result.update({
-            'final_as400': dictResults.get('final_as400_count', initial_as400),
-            'final_mssql': dictResults.get('final_mssql_count', initial_mssql),
-            'status': 'synced',
-            'rows_inserted': dictResults.get('rows_inserted', 0),
-            'rows_deleted': dictResults.get('rows_deleted', 0),
-            'table_created': dictResults.get('table_created', False)
-        })
-        return dictResults
-    
-    
-
-    except Exception as varExcError:
-        fun_PrintStatus(varStrAs400Table, f"Sync failed: {str(varExcError)}", "failure")
-        varObjMSSQLCursor.connection.rollback()
-        dictResults['error'] = str(varExcError)
-        return dictResults
-    
-
-def fun_BulkInsertYearRange(varObjAs400Cursor, varObjMSSQLCursor, varStrAs400Table, varStrSqlTable, varStrYearCondition, varStrFiscalYearCol):
-    """
-    Bulk insert data for a specific year range
-    """
-    # Get column metadata
-    varListColumns = fun_GetOneColumnMetadata(varObjAs400Cursor, varObjMSSQLCursor,
-                                           myDictConfig['AS400']['LIBRARY'], varStrAs400Table)
-    
-    # Get count for progress bar
-    varObjCountCursor = varObjAs400Cursor.connection.cursor()
-    varObjCountCursor.execute(f"""
-        SELECT COUNT(*) 
-        FROM {myDictConfig['AS400']['LIBRARY']}.{varStrAs400Table}
-        WHERE {varStrYearCondition}
-    """)
-    varIntTotalRecords = varObjCountCursor.fetchone()[0]
-    varObjCountCursor.close()
-
-    # Prepare for bulk insert
-    varStrColNames = ", ".join([f"[{varTupleCol[1]}_____{varTupleCol[0]}]" for varTupleCol in varListColumns])
-    varStrPlaceholders = ", ".join(["?"] * len(varListColumns))
-    varIntBatchSize = myDictConfig['BATCH_SIZE']
-    varIntTotalInserted = 0
-
-    # Execute source query
-    varObjAs400Cursor.execute(f"""
-        SELECT * 
-        FROM {myDictConfig['AS400']['LIBRARY']}.{varStrAs400Table}
-        WHERE {varStrYearCondition}
-    """)
-
-    with tqdm(total=varIntTotalRecords, desc=f"Inserting {varStrAs400Table} {varStrYearCondition}") as varObjProgressBar:
-        while True:
-            varListBatch = varObjAs400Cursor.fetchmany(varIntBatchSize)
-            if not varListBatch:
-                break
-            
-            # Convert Decimal to float for MSSQL
-            varListNormalizedBatch = [
-                tuple(
-                    float(val) if isinstance(val, Decimal) else val
-                    for val in row
-                )
-                for row in varListBatch
-            ]
-            
-            # Bulk insert
-            varObjMSSQLCursor.fast_executemany = True
-            varObjMSSQLCursor.executemany(
-                f"""
-                INSERT INTO [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]
-                ({varStrColNames}) VALUES ({varStrPlaceholders})
-                """,
-                varListNormalizedBatch
-            )
-            
-            varIntTotalInserted += len(varListBatch)
-            varObjProgressBar.update(len(varListBatch))
-            
-            # Commit periodically
-            if varIntTotalInserted % (varIntBatchSize * 10) == 0:
-                varObjMSSQLCursor.connection.commit()
-                fun_PrintStatus(varStrAs400Table, 
-                              f"Inserted {varIntTotalInserted} of {varIntTotalRecords} records for {varStrYearCondition}", 
-                              "update")
-
-    # Final commit
-    varObjMSSQLCursor.connection.commit()
-    return varIntTotalInserted
-
-def fun_PrintSyncSummary(dictResults):
-    """
-    Print detailed sync summary report
-    """
-    print("\n" + "="*80)
-    print(f"SYNC SUMMARY REPORT - {dictResults['table_name']}")
-    print("="*80)
-    print(f"Source Table (AS400): {dictResults['table_name']}")
-    print(f"Target Table (MSSQL): {dictResults['mssql_table']}")
-    print("-"*80)
-    print(f"Initial AS400 Count: {dictResults['initial_as400_count']}")
-    print(f"Initial MSSQL Count: {dictResults['initial_mssql_count']}")
-    print("-"*80)
-    
-    # Year range details
-    print("\nYEAR RANGE SYNC DETAILS:")
-    for varStrYearRange, dictYearData in dictResults['years'].items():
-        print(f"\n{varStrYearRange}:")
-        print(f"  AS400 Count: {dictYearData['as400_count']}")
-        print(f"  MSSQL Count: {dictYearData['mssql_count']}")
-        if dictYearData.get('synced', False):
-            print(f"  ACTION: Synced ({dictYearData.get('rows_inserted', 0)} rows inserted)")
-        else:
-            print("  ACTION: No sync needed (counts matched)")
-    
-    print("\n" + "-"*80)
-    print(f"Total Rows Deleted: {dictResults.get('rows_deleted', 0)}")
-    print(f"Total Rows Inserted: {dictResults.get('rows_inserted', 0)}")
-    print("-"*80)
-    print(f"Final AS400 Count: {dictResults['final_as400_count']}")
-    print(f"Final MSSQL Count: {dictResults['final_mssql_count']}")
-    print("="*80 + "\n")
-
-def fun_SyncTableByYear(varObjAs400Cursor, varObjMSSQLCursor, varStrAs400Table, varStrSqlTable, varStrSyncCondition, varStrFiscalYearCol):
-    """
-    Full year replacement approach - drops and recreates data for each year
-    """
-    try:
-        # Get column metadata
-        varListColumns = fun_GetOneColumnMetadata(varObjAs400Cursor, varObjMSSQLCursor,
-                                               myDictConfig['AS400']['LIBRARY'], varStrAs400Table)
-        
-        # Get total count for progress bar
-        varObjCountCursor = varObjAs400Cursor.connection.cursor()
-        varObjCountCursor.execute(f"""
-            SELECT COUNT(*) 
-            FROM {myDictConfig['AS400']['LIBRARY']}.{varStrAs400Table}
-            WHERE {varStrSyncCondition}
-        """)
-        varIntTotalRecords = varObjCountCursor.fetchone()[0]
-        varObjCountCursor.close()
-
-        # Delete existing data for this year range
-        fun_PrintStatus(varStrAs400Table, "Clearing existing data for year range", "drop")
-        
-        # Find the fiscal year column in MSSQL
-        varStrMssqlFiscalCol = None
-        try:
-            varObjMSSQLCursor.execute(f"""
-                SELECT COLUMN_NAME 
-                FROM INFORMATION_SCHEMA.COLUMNS 
-                WHERE TABLE_SCHEMA = '{myDictConfig['SQL_SERVER']['SCHEMA']}'
-                  AND TABLE_NAME = '{varStrSqlTable}'
-                  AND COLUMN_NAME LIKE '%{varStrFiscalYearCol}'
-            """)
-            varObjResult = varObjMSSQLCursor.fetchone()
-            varStrMssqlFiscalCol = varObjResult[0] if varObjResult else None
-        except Exception as varExcError:
-            fun_PrintStatus(varStrSqlTable, f"Error finding MSSQL fiscal column: {str(varExcError)}", "warning")
-        
-        if varStrMssqlFiscalCol:
-            # Delete using the fiscal year condition
-            varObjMSSQLCursor.execute(f"""
-                DELETE FROM [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]
-                WHERE TRY_CAST([{varStrMssqlFiscalCol}] AS DECIMAL(18,2)) {
-                    varStrSyncCondition.split(varStrFiscalYearCol)[1].strip()
-                }
-            """)
-        else:
-            # If we can't find the column, delete everything (full refresh)
-            fun_PrintStatus(varStrSqlTable, "Fiscal column not found - performing full refresh", "warning")
-            varObjMSSQLCursor.execute(f"""
-                TRUNCATE TABLE [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]
-            """)
-
-        # Insert fresh data for this year range
-        fun_PrintStatus(varStrAs400Table, "Loading new data", "insert")
-        varObjAs400Cursor.execute(f"""
-            SELECT * 
-            FROM {myDictConfig['AS400']['LIBRARY']}.{varStrAs400Table}
-            WHERE {varStrSyncCondition}
-        """)
-
-        # Prepare for bulk insert
-        varStrColNames = ", ".join([f"[{varTupleCol[1]}_____{varTupleCol[0]}]" for varTupleCol in varListColumns])
-        varStrPlaceholders = ", ".join(["?"] * len(varListColumns))
-        varIntBatchSize = myDictConfig['BATCH_SIZE']
-        varIntTotalInserted = 0
-
-        with tqdm(total=varIntTotalRecords, desc=f"Loading {varStrAs400Table}") as varObjProgressBar:
-            while True:
-                varListBatch = varObjAs400Cursor.fetchmany(varIntBatchSize)
-                if not varListBatch:
-                    break
-                
-                # Convert Decimal to float for MSSQL
-                varListNormalizedBatch = [
-                    tuple(
-                        float(val) if isinstance(val, Decimal) else val
-                        for val in row
-                    )
-                    for row in varListBatch
-                ]
-                
-                # Bulk insert
-                varObjMSSQLCursor.fast_executemany = True
-                varObjMSSQLCursor.executemany(
-                    f"""
-                    INSERT INTO [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]
-                    ({varStrColNames}) VALUES ({varStrPlaceholders})
-                    """,
-                    varListNormalizedBatch
-                )
-                
-                varIntTotalInserted += len(varListBatch)
-                varObjProgressBar.update(len(varListBatch))
-                
-                # Commit periodically
-                if varIntTotalInserted % (varIntBatchSize * 10) == 0:
-                    varObjMSSQLCursor.connection.commit()
-                    fun_PrintStatus(varStrAs400Table, 
-                                  f"Inserted {varIntTotalInserted} of {varIntTotalRecords} records", 
-                                  "update")
-
-        # Final commit
-        varObjMSSQLCursor.connection.commit()
-        fun_PrintStatus(varStrAs400Table, 
-                      f"Completed year range sync - Inserted {varIntTotalInserted} records", 
-                      "success")
-        
-        return True
-        
-    except Exception as varExcError:
-        fun_PrintStatus(varStrAs400Table, f"Sync failed: {str(varExcError)}", "failure")
-        varObjMSSQLCursor.connection.rollback()
-        return False    
-
-def fun_RebuildTable(varObjAs400Cursor, varObjMSSQLCursor, varStrSqlTable, myDictConfig):
-    """
-    Rebuild destination table with verified column structure.
-    INPUT:
-        varObjAs400Cursor - AS400 cursor
-        varObjMSSQLCursor - MSSQL cursor
-        varStrSqlTable - Destination table name
-        myDictConfig - Configuration dictionary
-    OUTPUT:
-        Tuple (table_name, column_list, placeholders) or None on failure
-    """
-    # Get source table name by removing prefix
-    varStrAs400Table = varStrSqlTable.rsplit('_____', 1)[-1]
-    
-    try:
-        # Get verified column metadata
-        varListCols = fun_GetOneColumnMetadata(varObjAs400Cursor, varObjMSSQLCursor, 
-                                             myDictConfig['AS400']['LIBRARY'], varStrAs400Table)
-        
-        # Verify against actual structure
-        varListActualCols = fun_GetActualColumnNames(varObjAs400Cursor, myDictConfig['AS400']['LIBRARY'], varStrAs400Table)
-        if len(varListCols) != len(varListActualCols):
-            fun_PrintStatus(varStrAs400Table, "Column count mismatch in rebuild - Using actual columns", "warning")
-            varListCols = [(col, col) for col in varListActualCols]
-        
-        # Drop destination table
-        varObjMSSQLCursor.execute(f"DROP TABLE IF EXISTS [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}]")
-        
-        # Build column definitions
-        varStrColList = ", ".join([f"[{col[1]}_____{col[0]}]" for col in varListCols])
-        varStrPlaceholders = ", ".join(["?"] * len(varListCols))
-        
-        # Create new table
-        fun_PrintStatus(varStrSqlTable, "Creating destination table", "process")
-        varStrCreateTableSql = f"""
-        CREATE TABLE [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{varStrSqlTable}] (
-            {', '.join([f'[{col[1]}_____{col[0]}] NVARCHAR(MAX)' for col in varListCols])}
-        )
-        """
-        varObjMSSQLCursor.execute(varStrCreateTableSql)
-        varObjMSSQLCursor.connection.commit()
-
-        return varStrSqlTable, varStrColList, varStrPlaceholders
-        
-    except Exception as varExcError:
-        fun_PrintStatus(varStrAs400Table, f"Rebuild failed: {str(varExcError)}", "failure")
-        return None
-
 def fun_ProcessTable(varTupleTableInfo, varObjLogLock, varObjReportLock):
-    varObjAs400Conn = None
-    varObjSqlConn = None
-    varObjAs400Conn = None
-    varObjSqlConn = None
-    varStrAs400Table, varStrSqlTable = varTupleTableInfo
-
+    """
+    Process a single table with source to destination synchronization.
+    Handles both AS400 and MySQL as sources using pyodbc.
     
-    try:
-        varStrAs400Table, varStrSqlTable = varTupleTableInfo
+    INPUT:
+        varTupleTableInfo - Tuple containing (SourceTable, DestinationTable)
+        varObjLogLock - Thread lock for logging
+        varObjReportLock - Thread lock for report generation
+    OUTPUT:
+        None - Results added to global_table_results for final reporting
+    """
+    varObjSourceConn = None
+    varObjSqlConn = None
+    varStrSourceTable, varStrSqlTable = varTupleTableInfo
 
+    try:
         # Get connections with retry logic
         for _ in range(myDictConfig['MAX_RETRIES']):
             try:
-                varObjAs400Conn = myObjAs400Pool.fun_GetConnection()
+                varObjSourceConn = myObjSourcePool.fun_GetConnection()
                 varObjSqlConn = myObjSqlPool.fun_GetConnection()
                 break
             except Exception as e:
                 time.sleep(myDictConfig['RETRY_DELAY'])
                 continue
         
-        if not varObjAs400Conn or not varObjSqlConn:
+        if not varObjSourceConn or not varObjSqlConn:
             raise Exception("Failed to get database connections")
         
         with varObjLogLock:
-            fun_PrintStatus(varStrSqlTable, f"Processing {varStrAs400Table} -> {varStrSqlTable}", "process")        
-   
+            fun_PrintStatus(varStrSqlTable, f"Processing {varStrSourceTable} -> {varStrSqlTable}", "process")        
    
         # Get cursors
-        varObjAs400Cursor = varObjAs400Conn.cursor()
+        varObjSourceCursor = varObjSourceConn.cursor()
         varObjMSSQLCursor = varObjSqlConn.cursor()
-
-
         
+        # Compare and sync tables
         dictResults = fun_CompareAndSyncTables(
-            varObjAs400Cursor,
+            varObjSourceCursor,
             varObjMSSQLCursor,
-            varStrAs400Table,
+            varStrSourceTable,
             varStrSqlTable)
-
-         # Log results
-        #with varObjReportLock:
-            #fun_PrintSyncSummary(dictResults)
-
-
+            
+        # Commit changes
+        varObjSourceConn.commit()
+        varObjSqlConn.commit()
     
     except Exception as varExcError:
         with varObjLogLock:
-            fun_PrintStatus(varStrAs400Table, f"Error: {str(varExcError)}", "failure")
+            fun_PrintStatus(varStrSourceTable, f"Error: {str(varExcError)}", "failure")
             traceback.print_exc()
+        
+        # Rollback on error
         if varObjSqlConn:
             varObjSqlConn.rollback()
+        if varObjSourceConn:
+            varObjSourceConn.rollback()
+            
+        # Add error to global results
+        global_table_results.append({
+            'table-name': varStrSourceTable,
+            'status': 'failed',
+            'error': str(varExcError)
+        })
+            
     finally:
-        if varObjAs400Conn:
-            myObjAs400Pool.sub_ReturnConnection(varObjAs400Conn)
+        # Return connections to pool
+        if varObjSourceConn:
+            myObjSourcePool.sub_ReturnConnection(varObjSourceConn)
         if varObjSqlConn:
             myObjSqlPool.sub_ReturnConnection(varObjSqlConn)
 
-# ====================================================================================================================================================================================
+# =============================================
 # MAIN EXECUTION SECTION
-# ====================================================================================================================================================================================
+# =============================================
 if __name__ == "__main__":
     try:
         # Initialize
         varStrStartTime = datetime.now().strftime(myConStrTimestampFormat)
         print(f"[{varStrStartTime}] Starting execution")
-        fun_PrintStatus("SYSTEM", "Starting migration process", "process")
+        fun_PrintStatus("SYSTEM", f"Starting {myDictConfig['SOURCE_TYPE']} to MSSQL migration process", "process")
         
         fun_InitializeConnectionPools()
         
@@ -1226,15 +1354,27 @@ if __name__ == "__main__":
             varListAllTables = []
             
             try:
-                # Query the equivalents table
+                # Determine which mapping table to use based on source type
+                if myDictConfig['SOURCE_TYPE'] == 'AS400':
+                    mappingTable = "01_AS400_MSSQL_Equivalents"
+                    sourceColName = "AS400_TableName"
+                else:  # MYSQL
+                    mappingTable = "01_mysql_MSSQL_Equivalents"
+                    sourceColName = "mysql_TableName"
+                
+                # Query the appropriate equivalents table
                 varObjCursor.execute(
-                    f"SELECT MSSQL_TableName, AS400_TableName "
-                    f"FROM [{myDictConfig['SQL_SERVER']['SCHEMA']}].[01_AS400_MSSQL_Equivalents]"
+                    f"SELECT MSSQL_TableName, {sourceColName} "
+                    f"FROM [{myDictConfig['SQL_SERVER']['SCHEMA']}].[{mappingTable}]"
                 )
                 
                 for varTupleRow in varObjCursor.fetchall():
-                    # Standardize table name format
-                    varStrStandardizedName = f"z_____{varTupleRow[1]}" if not varTupleRow[0].startswith('z_') else varTupleRow[0]
+                    # Standardize table name format based on source type
+                    if myDictConfig['SOURCE_TYPE'] == 'AS400':
+                        varStrStandardizedName = f"z_____{varTupleRow[1]}" if not str(varTupleRow[0]).startswith('z_') else varTupleRow[0]
+                    else:  # MYSQL
+                        varStrStandardizedName = f"mysql_____{varTupleRow[1]}" if not str(varTupleRow[0]).startswith('mysql_') else varTupleRow[0]
+                        
                     varListAllTables.append((varTupleRow[1], varStrStandardizedName))
                     
                 fun_PrintStatus("SYSTEM", f"Found {len(varListAllTables)} tables to process", "success")
@@ -1255,9 +1395,7 @@ if __name__ == "__main__":
         for varTupleTableInfo in varListAllTables:
             varObjWorkQueue.put(varTupleTableInfo)
         
-        # Worker function - Improved version
-        from queue import Empty
-
+        # Worker function
         def fun_Worker():
             while True:
                 try:
@@ -1300,17 +1438,17 @@ if __name__ == "__main__":
         except Exception as e:
             fun_PrintStatus("SYSTEM", f"Thread management error: {str(e)}", "failure")
         
-        # Clean up with additional safety checks
+        # Clean up
         try:
-            myObjAs400Pool.sub_CloseAllConnections()
+            myObjSourcePool.sub_CloseAllConnections()
             myObjSqlPool.sub_CloseAllConnections()
         except Exception as e:
             fun_PrintStatus("SYSTEM", f"Cleanup error: {str(e)}", "failure")
         
         varStrEndTime = datetime.now().strftime(myConStrTimestampFormat)
         print(f"[{varStrEndTime}] Execution completed")
-        # Add this right before:
-        # varStrEndTime = datetime.now().strftime(myConStrTimestampFormat)
+        
+        # Print final summary
         fun_PrintFinalSummary()
         fun_PrintStatus("SYSTEM", "Migration completed successfully", "success")
         
@@ -1319,9 +1457,10 @@ if __name__ == "__main__":
         traceback.print_exc()
         winsound.Beep(1000, 1000)
     finally:
+        # Close all connections in pools
         try:
-            if 'myObjAs400Pool' in globals() and myObjAs400Pool:
-                myObjAs400Pool.sub_CloseAllConnections()
+            if 'myObjSourcePool' in globals() and myObjSourcePool:
+                myObjSourcePool.sub_CloseAllConnections()
             if 'myObjSqlPool' in globals() and myObjSqlPool:
                 myObjSqlPool.sub_CloseAllConnections()
         except Exception as e:
