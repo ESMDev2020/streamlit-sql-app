@@ -51,7 +51,7 @@ myDictConfig = {
         'SCHEMA': "mrs"
     },
     # Source selection
-    'SOURCE_TYPE': 'MYSQL',  # 'AS400' or 'MYSQL'
+    'SOURCE_TYPE': 'AS400',  # 'AS400' or 'MYSQL'
     
     # Operation settings
     'BATCH_SIZE': 10000,
@@ -233,7 +233,8 @@ def fun_GetOneColumnMetadata(varObjSourceCursor, varObjMSSQLCursor, varStrSchema
                 ORDER BY ORDINAL_POSITION
             """)
             varListMetadataCols = [
-                (col[0].strip(), (col[1] or "").strip().replace(" ", "_").replace("'", "_").replace(']', ']]').replace('?', 'q')) 
+                (col[0].strip(), (col[1] or "").strip().replace(" ", "_").replace("'", "_")
+                 .replace(']', ']]').replace('?', 'q').replace('/', '_')) 
                 for col in varObjSourceCursor.fetchall()
             ]
         else:  # MYSQL
@@ -245,9 +246,11 @@ def fun_GetOneColumnMetadata(varObjSourceCursor, varObjMSSQLCursor, varStrSchema
                 ORDER BY ORDINAL_POSITION
             """)
             varListMetadataCols = [
-                (col[0].strip(), (col[1] or col[0]).strip().replace(" ", "_").replace("'", "_").replace(']', ']]').replace('?', 'q')) 
+                (col[0].strip(), (col[1] or col[0]).strip().replace(" ", "_").replace("'", "_")
+                 .replace(']', ']]').replace('?', 'q').replace('/', '_')) 
                 for col in varObjSourceCursor.fetchall()
             ]
+        
         
         # Get actual columns to verify
         varListActualCols = fun_GetActualColumnNames(varObjSourceCursor, varStrSchema, varStrTable)
@@ -887,18 +890,6 @@ def fun_CompareAndSyncTables(varObjSourceCursor, varObjMSSQLCursor, varStrSource
         'rows_inserted': 0,
         'table_created': False
     }
-        
-    table_result = {
-        'table_name': varStrSourceTable,
-        'initial_source': 0,
-        'initial_mssql': 0,
-        'final_source': 0,
-        'final_mssql': 0,
-        'status': 'error',
-        'rows_inserted': 0,
-        'rows_deleted': 0,
-        'table_created': False
-    }
 
     try:
         # First check if MSSQL table exists
@@ -960,27 +951,22 @@ def fun_CompareAndSyncTables(varObjSourceCursor, varObjMSSQLCursor, varStrSource
                        f"Initial counts - Source: {dictResults['initial_source_count']}, MSSQL: {dictResults['initial_mssql_count']}", 
                        "info")
 
-        # Report
-        initial_source = dictResults['initial_source_count']
-        initial_mssql = dictResults['initial_mssql_count']
-        table_result.update({
-            'initial_source': initial_source,
-            'initial_mssql': initial_mssql,
-            'final_source': initial_source,  # Default to same as initial
-            'final_mssql': initial_mssql     # Default to same as initial
-        })
-
         # If rowcount is equal, we skip
         if (dictResults['initial_source_count'] == dictResults['initial_mssql_count']):
             fun_PrintStatus(varStrSourceTable, 
                         f"Initial counts are equal......... skipping...", 
                         "info")
+            
+            # Set final counts equal to initial counts since no changes were made
+            dictResults['final_source_count'] = dictResults['initial_source_count']
+            dictResults['final_mssql_count'] = dictResults['initial_mssql_count']
+            
             global_table_results.append({
                 'table-name': varStrSourceTable,
                 'initial_source': dictResults['initial_source_count'],
                 'initial_mssql': dictResults['initial_mssql_count'],
-                'final_source': dictResults['initial_source_count'],
-                'final_mssql': dictResults['initial_mssql_count'],
+                'final_source': dictResults['final_source_count'],
+                'final_mssql': dictResults['final_mssql_count'],
                 'status': 'skipped',
                 'rows_inserted': 0,
                 'rows_deleted': 0,
@@ -1102,7 +1088,7 @@ def fun_CompareAndSyncTables(varObjSourceCursor, varObjMSSQLCursor, varStrSource
                 dictResults['years'][varStrLabel]['synced'] = True
                 dictResults['years'][varStrLabel]['rows_inserted'] = varIntInserted
 
-        # Get final total counts
+        # Get final total counts - CRITICAL for accurate reporting
         fun_PrintStatus(varStrSourceTable, "Getting final row counts", "process")
         
         # Source total count
@@ -1122,26 +1108,16 @@ def fun_CompareAndSyncTables(varObjSourceCursor, varObjMSSQLCursor, varStrSource
                        f"Final counts - Source: {dictResults['final_source_count']}, MSSQL: {dictResults['final_mssql_count']}", 
                        "info")
 
-        # Update the result with sync details
-        table_result.update({
-            'final_source': dictResults.get('final_source_count', initial_source),
-            'final_mssql': dictResults.get('final_mssql_count', initial_mssql),
-            'status': 'synced',
-            'rows_inserted': dictResults.get('rows_inserted', 0),
-            'rows_deleted': dictResults.get('rows_deleted', 0),
-            'table_created': dictResults.get('table_created', False)
-        })
-        
-        # Add to global results
+        # Add to global results - IMPORTANT: Use the final counts here
         global_table_results.append({
             'table-name': varStrSourceTable,
             'initial_source': dictResults['initial_source_count'],
             'initial_mssql': dictResults['initial_mssql_count'],
-            'final_source': dictResults['final_source_count'],
-            'final_mssql': dictResults['final_mssql_count'],
+            'final_source': dictResults['final_source_count'],  # Updated final count
+            'final_mssql': dictResults['final_mssql_count'],    # Updated final count
             'status': 'synced',
-            'rows_inserted': dictResults.get('rows_inserted', 0),
-            'rows_deleted': dictResults.get('rows_deleted', 0),
+            'rows_inserted': dictResults['rows_inserted'],
+            'rows_deleted': dictResults['rows_deleted'],
             'table_created': dictResults.get('table_created', False)
         })
         
@@ -1152,21 +1128,27 @@ def fun_CompareAndSyncTables(varObjSourceCursor, varObjMSSQLCursor, varStrSource
         varObjMSSQLCursor.connection.rollback()
         dictResults['error'] = str(varExcError)
         
-        # Add failed result to global
+        # Make sure to set the final counts even in error cases
+        dictResults['final_source_count'] = dictResults['initial_source_count']  # Default to initial on error
+        dictResults['final_mssql_count'] = dictResults['initial_mssql_count']    # Default to initial on error
+        
+        # Add failed result to global with proper counts
         global_table_results.append({
             'table-name': varStrSourceTable,
-            'initial_source': dictResults.get('initial_source_count', 0),
-            'initial_mssql': dictResults.get('initial_mssql_count', 0),
-            'final_source': dictResults.get('initial_source_count', 0),
-            'final_mssql': dictResults.get('initial_mssql_count', 0),
+            'initial_source': dictResults['initial_source_count'],
+            'initial_mssql': dictResults['initial_mssql_count'],
+            'final_source': dictResults['final_source_count'],  # Use updated value
+            'final_mssql': dictResults['final_mssql_count'],    # Use updated value
             'status': 'failed',
-            'rows_inserted': 0,
-            'rows_deleted': 0,
+            'rows_inserted': dictResults.get('rows_inserted', 0),
+            'rows_deleted': dictResults.get('rows_deleted', 0),
             'table_created': dictResults.get('table_created', False),
             'error': str(varExcError)
         })
         
         return dictResults
+
+
 
 def fun_PrintSyncSummary(dictResults):
     """
