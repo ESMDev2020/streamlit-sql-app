@@ -1,0 +1,188 @@
+
+# -*- coding: utf-8 -*-
+import pyodbc
+from tqdm import tqdm
+import sys
+import traceback
+from decimal import Decimal
+
+# --------------------------------------------
+# CONFIGURATION BLOCK
+# --------------------------------------------
+
+# AS400 connection settings
+myStrAS400Dsn = "METALNET"
+myStrAS400Uid = "ESAAVEDR"
+myStrAS400Pwd = "ESM25"
+myIntAS400Timeout = 30
+
+# SQL Server connection settings
+myStrSQLDriver = "{ODBC Driver 17 for SQL Server}"
+myStrSQLServer = "database-3.c67ymu6q22o1.us-east-1.rds.amazonaws.com,1433"
+myStrSQLDb = "SigmaTB"
+myStrSQLUid = "admin"
+myStrSQLPwd = "Er1c41234$"
+
+# AS400 and SQL Server schema
+myStrAS400Library = "MW4FILE"
+myStrSQLSchema = "mrs"
+
+# Tables to copy: format ('AS400TableName', 'placeholder')
+myLstTablesToCopy = [('ITEMLIST', 'placeholder')]
+
+# Optional flags
+myBoolClearTargetTables = False
+myIntBatchSize = 1000
+
+# --------------------------------------------
+# FUNCTION DEFINITIONS
+# --------------------------------------------
+
+# Establish connection to AS/400
+def connect_as400(myDsn, myUid, myPwd, myTimeout):
+    myStrConn = f"DSN={myDsn};UID={myUid};PWD={myPwd};Timeout={myTimeout}"
+    return pyodbc.connect(myStrConn, autocommit=False)
+
+# Establish connection to SQL Server
+def connect_sql_server(myDriver, myServer, myDb, myUid, myPwd):
+    myStrConn = (
+        f"DRIVER={myDriver};SERVER={myServer};DATABASE={myDb};UID={myUid};PWD={myPwd};"
+        "Encrypt=yes;TrustServerCertificate=yes;Connection Timeout=30;"
+    )
+    return pyodbc.connect(myStrConn, autocommit=False)
+
+# Retrieve table description from AS/400
+def get_table_description(myCursor, mySchema, myTable):
+    myCursor.execute(f"""
+        SELECT TABLE_TEXT FROM QSYS2.SYSTABLES
+        WHERE TABLE_SCHEMA = '{mySchema}' AND TABLE_NAME = '{myTable}'
+    """)
+    myRow = myCursor.fetchone()
+    return myRow[0].strip().replace(" ", "_") if myRow else myTable
+
+# Retrieve column names and descriptions from AS/400
+def get_column_metadata(myCursor, mySchema, myTable):
+    myCursor.execute(f"""
+        SELECT COLUMN_NAME, COLUMN_TEXT FROM QSYS2.SYSCOLUMNS
+        WHERE TABLE_SCHEMA = '{mySchema}' AND TABLE_NAME = '{myTable}'
+    """)
+    return [(col[0].strip(), (col[1] or "").strip().replace(" ", "_")) for col in myCursor.fetchall()]
+
+# Normalize decimal values in batch
+def normalize_batch(myLstBatch):
+
+    print(f"  Normalize batch")
+
+    #Normalize batch________________________________________________________
+    myLstNormalized = []
+    for myRow in myLstBatch:
+        myLstNewRow = []
+        for myVal in myRow:
+            if isinstance(myVal, Decimal):
+                myLstNewRow.append(float(myVal))
+            else:
+                myLstNewRow.append(myVal)
+        myLstNormalized.append(tuple(myLstNewRow))
+    return myLstNormalized
+
+    #Normalize table________________________________________________________
+    myStrDestTable = f"z_{myStrTableDesc}_____{myStrAS400Table}"
+    myStrDestTableEscaped = myStrDestTable.replace(']', ']]')
+
+    myLstDestColumns = [f"[{myStrColDesc}_____{myStrColName}]" for myStrColName, myStrColDesc in myLstColumns]
+    myStrPlaceholderStr = ", ".join(["?"] * len(myLstColumns))
+    myStrDestColList = ", ".join(myLstDestColumns)
+
+#######################################################
+#######################################################
+def myFunGetTable(myCursorAS400, myStrAS400Library, myStrAS400Table):
+    # Step 1: Get table and column metadata
+    print(f"  Read metadata from AS400")
+    myStrTableDesc = get_table_description(myCursorAS400, myStrAS400Library, myStrAS400Table)
+    myLstColumns = get_column_metadata(myCursorAS400, myStrAS400Library, myStrAS400Table)
+
+    if not myLstColumns:
+        print(f"  ⚠️ Skipping {myStrAS400Table}: No columns found.")
+        return None, None, None, None
+
+    print(f"  Build target table for SQL Server")
+
+    # Step 2: Sanitize table and column names
+    sanitizedDesc = myStrTableDesc.replace(" ", "_").replace(";", "_").replace("'", "_").replace("]", "]]")
+    sanitizedTable = myStrAS400Table.replace(" ", "_").replace(";", "_").replace("'", "_").replace("]", "]]")
+    myStrDestTableName = f"z_{sanitizedDesc}_____{sanitizedTable}"
+
+    myLstDestColumns = []
+    for myStrColName, myStrColDesc in myLstColumns:
+        cleanColName = myStrColName.replace(" ", "_").replace(";", "_").replace("'", "_").replace("]", "]]")
+        cleanColDesc = myStrColDesc.replace(" ", "_").replace(";", "_").replace("'", "_").replace("]", "]]")
+        myLstDestColumns.append(f"[{cleanColDesc}_____{cleanColName}]")
+
+    myStrPlaceholderStr = ", ".join(["?"] * len(myLstColumns))
+    myStrDestColList = ", ".join(myLstDestColumns)
+
+    return myStrDestTableName, myLstDestColumns, myStrPlaceholderStr, myStrDestColList
+
+# --------------------------------------------
+# MAIN EXECUTION BLOCK
+# --------------------------------------------
+
+# Establish both connections
+myConnAS400 = connect_as400(myStrAS400Dsn, myStrAS400Uid, myStrAS400Pwd, myIntAS400Timeout)
+myConnSQLServer = connect_sql_server(myStrSQLDriver, myStrSQLServer, myStrSQLDb, myStrSQLUid, myStrSQLPwd)
+
+myCursorAS400 = myConnAS400.cursor()
+myCursorSQLServer = myConnSQLServer.cursor()
+myCursorSQLServer.fast_executemany = True
+
+# Process each table
+for myStrAS400Table, _ in tqdm(myLstTablesToCopy, desc="Copying Tables", unit="table", ncols=100):
+    print(f"\n▶️ Processing: {myStrAS400Table}")
+    myStrQualifiedSource = f"{myStrAS400Library}.{myStrAS400Table}"
+
+    try:
+        #STEP 1Get the table________________________________________________________
+        myDictTableInfo = {}
+        myStrDestTableName, myLstDestColumns, myStrPlaceholderStr, myStrDestColList = myFunGetTable(
+        myCursorAS400, myStrAS400Library, myStrAS400Table
+        )
+
+
+        #STEP 2 Prepare the insert________________________________________________________
+        myStrInsertSQL = f"INSERT INTO [{myStrSQLSchema}].[{myStrDestTableName}] ({myStrDestColList}) VALUES ({myStrPlaceholderStr})"
+        #myStrInsertSQL = f"INSERT INTO [{myStrSQLSchema}].[{myStrDestTableEscaped}] ({myStrDestColList}) VALUES ({myStrPlaceholderStr})"
+        print(f"  ✅ Prepared insert into: {myStrInsertSQL}")
+
+        # Step 4: Fetch source data and insert in batches
+        print(f"  Get the source table")
+        myCursorAS400.execute(f"SELECT * FROM {myStrQualifiedSource}")
+        myLstBatch = myCursorAS400.fetchmany(myIntBatchSize)
+        myIntTotalInserted = 0
+        
+        while myLstBatch:
+            
+            myLstBatch = normalize_batch(myLstBatch)
+            myCursorSQLServer.executemany(myStrInsertSQL, myLstBatch)
+            myIntTotalInserted += len(myLstBatch)
+            print(f"    📦 Inserted batch. Total rows so far: {myIntTotalInserted}")
+            myLstBatch = myCursorAS400.fetchmany(myIntBatchSize)
+
+        myConnSQLServer.commit()
+        print(f"  ✅ Completed table: {myStrAS400Table} | Total rows inserted: {myIntTotalInserted}")
+
+    except Exception as myEx:
+        print(f"  ❌ ERROR processing {myStrAS400Table}: {myEx}")
+        traceback.print_exc()
+        myConnSQLServer.rollback()
+
+# --------------------------------------------
+# CLEANUP BLOCK
+# --------------------------------------------
+myCursorAS400.close()
+myCursorSQLServer.close()
+myConnAS400.close()
+myConnSQLServer.close()
+print("\n✅ All connections closed. Script finished.")
+
+
+

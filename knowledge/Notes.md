@@ -362,6 +362,13 @@ WHEN USING SQL
         git branch -u origin/SigmaBranch SigmaBranch
         git remote set-head origin -a
 
+    DOCUWARE
+-       	User:			esaavedra
+	        Pwd:			Sigmatb2013
+	        Database:		dwdata
+	        TCP/IP Server	stb-app02
+	        Port			3306
+	
 
 
 
