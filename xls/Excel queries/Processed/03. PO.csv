@@ -1,0 +1,11 @@
+﻿(No column name),Transaction_#_____BDPONO,Vendor_#_____BDVNDR,Vendor_Name_____VNAME,Record_Code_____BDRECD,ITEM_NUMBER_____BDITEM,CRT_Description_____BDCRTD,RevisedPromiseDate,Original_Inventory_Quantity_____BDOQOO,Inventory_UOM_____BDIUOM,Current_Inv._Quantity_Ordered_/_Received_____BDCQOO,Original_Ordered__Quantity_____BDOOQ,Total_Inventory_Quantity_Received_____BDTIQR,PurchaseOrderDate,ReceivedDate
+Purchase order query,518946.0,130.0,METALLUS                           ,A,50002,5.250 BAR HF 4130 M7               ,20250616,270.0,FT ,270.0,20000.0,0.0,20250422,0
+Purchase order query,518291.0,130.0,METALLUS                           ,C,50002,5.250 BAR HF 4130 M7               ,20250219,281.16699999999997,FT ,0.0,20000.0,329.66699999999997,20241106,20250220
+Purchase order query,516749.0,130.0,METALLUS                           ,C,50002,5.250 BAR HF 4130 M7               ,20231204,360.0,FT ,0.0,26484.0,352.08300000000003,20231005,20231206
+Purchase order query,515418.0,130.0,METALLUS                           ,C,50002,5.250 BAR HF 4130 M7 ANN           ,20230713,532.0,FT ,0.0,40000.0,543.91700000000003,20230109,20230714
+Purchase order query,513824.0,130.0,METALLUS                           ,C,50002,5.250 BAR HF 4130 M7 ANN           ,20221017,540.0,FT ,0.0,40000.0,592.66600000000005,20220220,20221028
+Purchase order query,518417.0,130.0,METALLUS                           ,C,50005,6.000 BAR HF 4130 M7 ANN           ,20250131,200.0,FT ,0.0,20000.0,277.66699999999997,20241212,20250130
+Purchase order query,515489.0,130.0,METALLUS                           ,C,50005,6.000 BAR HF 4130 M7 HR            ,20230623,420.0,FT ,0.0,40000.0,123.5,20221004,20230623
+Purchase order query,514978.0,130.0,METALLUS                           ,C,50005,6.000 BAR HF 4130 M7 ANN           ,20230217,620.0,FT ,0.0,60000.0,706.25099999999998,20220615,20230220
+Purchase order query,518694.0,183.0,DUFERCO STEEL INC.                 ,C,50007,6.750 BAR HF 8620 AR               ,20250220,96.0,FT ,0.0,11800.0,94.667000000000002,20250219,20250221
+Purchase order query,518823.0,130.0,METALLUS                           ,A,50009,7.000 BAR HF 8630 AR               ,20250602,160.667,FT ,160.667,20000.0,0.0,20250318,0
