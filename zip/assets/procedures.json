@@ -1,0 +1,42 @@
+{
+  "SQL Translation": [
+    {
+      "name": "TranslateSQLQuery",
+      "description": "Translates SQL queries from legacy format to the new naming convention format",
+      "code": "DECLARE @output NVARCHAR(MAX); \nDECLARE @SQLQuery NVARCHAR(MAX) = N'[OEDETAIL],[OEOPNORD], [PODETAIL],[SPHEADER]';\nDECLARE @DebugMode INT = 0; \nDECLARE @Execution INT = 0;\n\nEXEC [mrs].[usp_TranslateSQLQuery] \n    @SQLQuery = @SQLQuery, \n    @TranslatedQuery = @output OUTPUT, \n    @DebugMode = @DebugMode, \n    @Execution = @Execution;\n    \nSELECT @output AS TranslatedQuery;",
+      "parameters": {
+        "SQLQuery": "[OEDETAIL],[OEOPNORD], [PODETAIL],[SPHEADER]",
+        "DebugMode": "0",
+        "Execution": "0"
+      }
+    }
+  ],
+  "Column Search": [
+    {
+      "name": "FindColumnProperties",
+      "description": "Find column properties and search for specific values in columns",
+      "code": "EXEC [mrs].[sub_FindColumnPropertiesAndSearch] \n    @myVarVARCHARParamColumnCode = N'%ORD%', \n    @myVarBITDebugMode = 1,\n    @myVarVARCHARParamSearchValue = N'%968207%';",
+      "parameters": {
+        "myVarVARCHARParamColumnCode": "%ORD%",
+        "myVarBITDebugMode": "1",
+        "myVarVARCHARParamSearchValue": "%968207%"
+      }
+    }
+  ],
+  "Data Analysis": [
+    {
+      "name": "CustomerSummary",
+      "description": "Get a summary of customer data including sales information",
+      "code": "SELECT DISTINCT 'customer summary', \n       [mrs].[z_Customer_Master_File_____ARCUST].[CUSTOMER_DISTRICT_NUMBER_____CDIST] * 100000 + \n       [mrs].[z_Customer_Master_File_____ARCUST].[CUSTOMER_NUMBER_____CCUST] AS CustomerID, \n       [mrs].[z_Customer_Master_File_____ARCUST].[Customer_Alpha_Name_____CALPHA] AS CustomerName, \n       [mrs].[z_Customer_Master_File_____ARCUST].[Credit_Limit_____CLIMIT] AS CreditLimit, \n       [mrs].[z_Customer_Master_File_____ARCUST].[Inside_Salesman_District_Number_____CISMD1] * 100 + \n       [mrs].[z_Customer_Master_File_____ARCUST].[Inside_Salesman_Number_____CISLM1] AS InsideSalesmanID, \n       [mrs].[z_Customer_Master_File_____ARCUST].[Salesman_One_District_Number_____CSMDI1] * 100 + \n       [mrs].[z_Customer_Master_File_____ARCUST].[Salesman_One_Number_____CSLMN1] AS SalesmanID, \n       [mrs].[z_Salesman_Master_File_____SALESMAN].[Salesman_Name_____SMNAME] AS SalesmanName \nFROM [mrs].[z_Customer_Master_File_____ARCUST] [z_Customer_Master_File_____ARCUST], \n     [mrs].[z_Salesman_Master_File_____SALESMAN] [z_Salesman_Master_File_____SALESMAN] \nWHERE [z_Customer_Master_File_____ARCUST].[Inside_Salesman_District_Number_____CISMD1] = \n      [z_Salesman_Master_File_____SALESMAN].[Salesman_District_Number_____SMDIST] \nAND [z_Customer_Master_File_____ARCUST].[Inside_Salesman_Number_____CISLM1] = \n    [z_Salesman_Master_File_____SALESMAN].[Salesman_Number_____SMSMAN] \nORDER BY [z_Customer_Master_File_____ARCUST].[Customer_Alpha_Name_____CALPHA];",
+      "parameters": {}
+    }
+  ],
+  "Accounting": [
+    {
+      "name": "GLAccountQuery",
+      "description": "Query GL account data across multiple tables",
+      "code": "SELECT [GACDES] AS Description, [GARP3] AS ReportingProperty \nFROM [mrs].[GLACCT]; \n\nSELECT [GLACCT] AS Account, \n       [GLAPPL] AS Application, \n       [GLDESC] AS Description, \n       [GLPGM] AS Program, \n       [GLRECD] AS RecordDate, \n       [GLREF] AS Reference, \n       [GLRP#] AS ReportNumber, \n       [GLRPTY] AS ReportType, \n       [GLUSER] AS UserID \nFROM [mrs].[GLDEBCRED]; \n\nSELECT [GLACCT] AS Account, \n       [GLAMTQ] AS Amount, \n       [GLAPPL] AS Application, \n       [GLDESC] AS Description, \n       [GLPGM] AS Program, \n       [GLRECD] AS RecordDate, \n       [GLREF] AS Reference, \n       [GLRP#] AS ReportNumber, \n       [GLRPTY] AS ReportType, \n       [GLTRDS] AS TransactionDescription, \n       [GLTRN#] AS TransactionNumber, \n       [GLTRNT] AS TransactionType, \n       [GLTYPE] AS Type, \n       [GLUSER] AS UserID \nFROM [mrs].[GLTRANS];",
+      "parameters": {}
+    }
+  ]
+}

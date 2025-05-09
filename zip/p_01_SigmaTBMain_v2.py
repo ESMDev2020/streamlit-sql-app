@@ -23,7 +23,6 @@ try:
     from views import p_02_ROP
     from views import p_03_Dashboard #as p_03_Dashboard
     from views import p_04_DashboardCosts
-    from views import p_05_StoredProcedures
 except ImportError as myVar_errImport:
      myCom_Streamlit.error(f"🔴 Failed to import view modules (p_02_ROP, p_03_Dashboard, p_04_DashboardCosts): {myVar_errImport}")
      myCom_Streamlit.error("Ensure these files exist in the 'views' directory.")
@@ -77,7 +76,7 @@ myCom_Streamlit.write(f"🟢 Execution started at: {datetime.now().strftime('%Y-
 # ────────────────────────────────────────────────────────────────────────────
 myCom_Streamlit.sidebar.image("assets/SigmaTube-Bar.jpeg", use_container_width=True)
 myVar_strMainSection = myCom_Streamlit.sidebar.selectbox(
-    label="📁 Main Section", options=[ "📊 Dashboard", "📦 ROP Reports", "💰 Cost Analysis", "🗄️ Stored Procedures"]
+    label="📁 Main Section", options=[ "📊 Dashboard", "📦 ROP Reports", "💰 Cost Analysis"]
 )
 
 # ────────────────────────────────────────────────────────────────────────────
@@ -221,20 +220,6 @@ elif myVar_strMainSection == "📊 Dashboard":
     except Exception as myVar_errGeneral:
          myCom_Streamlit.error(f"🔴 An unexpected error occurred in the Dashboard section: {myVar_errGeneral}")
          myCom_Streamlit.code(traceback.format_exc())
-
-
-elif myVar_strMainSection == "🗄️ Stored Procedures":
-    try:
-        # This function will handle the entire stored procedures UI
-        p_05_StoredProcedures.sub_displayStoredProceduresView(myVar_objAppDbEngine)
-    except AttributeError as myVar_errAttr:
-         myCom_Streamlit.error(f"🔴 Error calling function for 'Stored Procedures': {myVar_errAttr}")
-         myCom_Streamlit.error("Ensure 'sub_displayStoredProceduresView(engine)' exists in p_05_StoredProcedures.py.")
-    except Exception as myVar_errGeneral:
-         myCom_Streamlit.error(f"🔴 An unexpected error occurred in the Stored Procedures section: {myVar_errGeneral}")
-         myCom_Streamlit.code(traceback.format_exc())
-
-
 
 
 # ────────────────────────────────────────────────────────────────────────────
