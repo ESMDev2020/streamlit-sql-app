@@ -1,9 +1,0 @@
-streamlit==1.43.2
-pandas==2.2.3
-sqlalchemy==2.0.37
-altair==5.5.0
-matplotlib==3.10.0
-seaborn==0.13.2
-plotly==5.21.0
-tqdm>=4.66.0
-pyodbc>=4.0.39  # Added for SQL Server and MySQL ODBC connections
