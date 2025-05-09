@@ -469,7 +469,7 @@ if __name__ == "__main__":
     myVar_objTestDbEngine = None
     try:
         # Updated connection string to use SQLAlchemy with pymssql driver
-        myCon_strTestConnectionString = f"mssql+pymssql://{myCon_strLclUser}:{myCon_strLclPassword}@{myCon_strLclServer}:1433/{myCon_strLclDatabase}"
+        myCon_strTestConnectionString = f"mssql+pytds://{myCon_strLclUser}:{myCon_strLclPassword}@{myCon_strLclServer}:1433/{myCon_strLclDatabase}"
         myVar_objTestDbEngine = create_engine(myCon_strTestConnectionString)
         with myVar_objTestDbEngine.connect() as myVar_objTestDbConnection:
              Com_st.sidebar.success("🔌 Local Test DB Connected.")

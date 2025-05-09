@@ -71,7 +71,8 @@ def fun_connectToDb(myPar_strUser, myPar_strPassword, myPar_strServer, myPar_str
 
     try:
         # Construct the connection string
-        myVar_strConnectionString = f"mssql+pymssql://{myPar_strUser}:{myPar_strPassword}@{myPar_strServer}:1433/{myPar_strDatabase}"
+        myVar_strConnectionString = f"mssql+pytds://{myPar_strUser}:{myPar_strPassword}@{myPar_strServer}:1433/{myPar_strDatabase}"
+
         # Create the engine
         myVar_objDbEngine = create_engine(myVar_strConnectionString)
         # Test connection briefly to ensure it works

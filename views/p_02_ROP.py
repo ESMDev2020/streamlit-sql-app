@@ -304,7 +304,7 @@ if __name__ == "__main__":
     myCom_Streamlit.markdown("---")
 
     # --- Create a LOCAL engine instance FOR TESTING ONLY ---
-    myVar_strTestConnectionString = f"mssql+pymssql://{myCon_strUser}:{myCon_strPassword}@{myCon_strServer}:1433/{myCon_strDatabase}"
+    myVar_strTestConnectionString = f"mssql+pytds://{myCon_strUser}:{myCon_strPassword}@{myCon_strServer}:1433/{myCon_strDatabase}"
     myVar_objTestDbEngine = None
     try:
         myVar_objTestDbEngine = create_engine(myVar_strTestConnectionString)

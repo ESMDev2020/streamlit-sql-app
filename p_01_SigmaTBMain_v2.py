@@ -44,8 +44,8 @@ def fun_connectToDb(myPar_strUser, myPar_strPassword, myPar_strServer, myPar_str
     """ Creates and returns a SQLAlchemy database engine object (Cached). """
     myCom_Streamlit.write("Attempting to create DB engine...") # Log attempt
     try:
-        # Updated to use sqlalchemy with pymssql driver instead of pymssql
-        myVar_strConnectionString = f"mssql+pymssql://{myPar_strUser}:{myPar_strPassword}@{myPar_strServer}:1433/{myPar_strDatabase}"
+        # Changed to use sqlalchemy with pytds driver instead of pymssql
+        myVar_strConnectionString = f"mssql+pytds://{myPar_strUser}:{myPar_strPassword}@{myPar_strServer}:1433/{myPar_strDatabase}"
         myVar_objDbEngine = create_engine(myVar_strConnectionString)
         with myVar_objDbEngine.connect() as myVar_objDbConnectionTest: pass
         myCom_Streamlit.write("DB engine created successfully.") # Log success
