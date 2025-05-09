@@ -15,6 +15,8 @@ import os
 from datetime import datetime
 import traceback
 import re
+import base64
+import io
 
 # ────────────────────────────────────────────────────────────────────────────
 # 📜 CONSTANTS
@@ -89,6 +91,11 @@ def fun_executeProcedure(myPar_objDbEngine, myPar_strQuery, myPar_dictParams=Non
         # Apply parameter substitutions if provided
         if myPar_dictParams:
             for myVar_strParam, myVar_strValue in myPar_dictParams.items():
+                # Handle the special case for SQL query translation
+                if myVar_strParam == "SQLQuery" and "@SQLQuery" in myVar_strProcessedQuery:
+                    myVar_strProcessedQuery = myVar_strProcessedQuery.replace("@SQLQuery", myVar_strValue)
+                    continue
+                
                 # Pattern to match parameter declarations, capturing relevant parts for replacement
                 myVar_strPattern = r'(@\s*' + re.escape(myVar_strParam) + r'\s*=\s*)[^,\s)]+(\s*)'
                 
@@ -139,6 +146,31 @@ def fun_parseParameters(myPar_strQuery):
         myVar_dictParams[myVar_strParamName] = myVar_strValue.strip()
     
     return myVar_dictParams
+
+def fun_getDownloadLink(myPar_strText, myPar_strFileName="result.txt", myPar_strLinkText="Download"):
+    """
+    Creates a download link for text content.
+    
+    Args:
+        myPar_strText (str): The text content to download
+        myPar_strFileName (str): The name of the downloaded file
+        myPar_strLinkText (str): The text to display for the download link
+    
+    Returns:
+        str: HTML for the download link
+    """
+    # Create a BytesIO object
+    myVar_objBuffer = io.BytesIO()
+    myVar_objBuffer.write(myPar_strText.encode())
+    myVar_objBuffer.seek(0)
+    
+    # Base64 encode the BytesIO content
+    myVar_strB64 = base64.b64encode(myVar_objBuffer.read()).decode()
+    
+    # Create the download link
+    myVar_strHref = f'<a href="data:file/txt;base64,{myVar_strB64}" download="{myPar_strFileName}">{myPar_strLinkText}</a>'
+    
+    return myVar_strHref
 
 # ────────────────────────────────────────────────────────────────────────────
 # 🎨 UI COMPONENTS & FUNCTIONS
@@ -282,17 +314,52 @@ def sub_displayExecuteProcedure(myPar_objDbEngine, myPar_dictProcedure, myPar_st
     if myPar_dictProcedure.get("description"):
         Com_st.info(myPar_dictProcedure["description"])
     
-    # SQL Code editor
-    myVar_strEditedCode = Com_st.text_area(
-        "SQL Code (Editable)",
-        value=myVar_strCode,
-        height=250,
-        key=f"exec_code_{myVar_strProcedureName}"
-    )
+    # SQL Code editor - Only for non-translation procedures
+    if myVar_strProcedureName != "Translate Query":
+        myVar_strEditedCode = Com_st.text_area(
+            "SQL Code (Editable)",
+            value=myVar_strCode,
+            height=250,
+            key=f"exec_code_{myVar_strProcedureName}"
+        )
+    else:
+        # For SQL translation, we don't need to show the code
+        myVar_strEditedCode = myVar_strCode
     
     # Parameter inputs
     myVar_dictParamValues = {}
-    if myVar_dictParameters:
+    
+    # Special handling for "Translate Query" procedure
+    if myVar_strProcedureName == "Translate Query":
+        # Input query - larger text area for SQL to translate
+        myVar_dictParamValues["SQLQuery"] = Com_st.text_area(
+            "SQL Query to Translate",
+            value=myVar_dictParameters.get("SQLQuery", ""),
+            height=200,
+            key="translate_query_input"
+        )
+        
+        # Debug and Execution options in columns
+        myVar_colDM, myVar_colEM = Com_st.columns(2)
+        
+        with myVar_colDM:
+            myVar_dictParamValues["DebugMode"] = "1" if Com_st.checkbox(
+                "Debug Mode",
+                value=myVar_dictParameters.get("DebugMode", "0") == "1",
+                key="debug_mode"
+            ) else "0"
+            Com_st.caption("Shows detailed processing info")
+        
+        with myVar_colEM:
+            myVar_dictParamValues["Execution"] = "1" if Com_st.checkbox(
+                "Execution Mode",
+                value=myVar_dictParameters.get("Execution", "0") == "1",
+                key="execution_mode"
+            ) else "0"
+            Com_st.caption("Execute the translated query")
+    
+    # Standard parameters for other procedures
+    elif myVar_dictParameters:
         Com_st.subheader("Parameters")
         
         # Create columns for parameters (3 columns per row)
@@ -338,8 +405,53 @@ def sub_displayExecuteProcedure(myPar_objDbEngine, myPar_dictProcedure, myPar_st
                 # Display results
                 Com_st.success(f"✅ Execution completed at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
                 
-                # Check if results exist
-                if len(myVar_dictResult["data"]) > 0:
+                # Special handling for "Translate Query" procedure
+                if myVar_strProcedureName == "Translate Query" and "TranslatedQuery" in myVar_dictResult["data"].columns:
+                    myVar_strTranslatedQuery = myVar_dictResult["data"].iloc[0]['TranslatedQuery']
+                    
+                    # Display translated query
+                    Com_st.subheader("Translated Query")
+                    Com_st.code(myVar_strTranslatedQuery, language="sql")
+                    
+                    # Download options
+                    myVar_colCopy, myVar_colDownloadSQL, myVar_colDownloadCSV = Com_st.columns(3)
+                    
+                    # Copy to clipboard button
+                    with myVar_colCopy:
+                        Com_st.markdown("""
+                        <button onclick="navigator.clipboard.writeText(document.getElementById('translated-query-text').innerText); alert('Copied to clipboard!');" 
+                                style="background-color: #007BFF; color: white; border: none; padding: 0.5em 1em; border-radius: 4px; cursor: pointer;">
+                            📋 Copy to Clipboard
+                        </button>
+                        
+                        <div id="translated-query-text" style="display: none;">
+                        {}
+                        </div>
+                        """.format(myVar_strTranslatedQuery.replace('\n', '\\n').replace('"', '\\"')), unsafe_allow_html=True)
+                    
+                    # Download as SQL file
+                    with myVar_colDownloadSQL:
+                        Com_st.download_button(
+                            label="💾 Download as SQL",
+                            data=myVar_strTranslatedQuery,
+                            file_name="translated_query.sql",
+                            mime="text/plain",
+                            key="download_sql"
+                        )
+                    
+                    # Download as CSV file
+                    with myVar_colDownloadCSV:
+                        myVar_pdDf = Com_pd.DataFrame({'TranslatedQuery': [myVar_strTranslatedQuery]})
+                        Com_st.download_button(
+                            label="📊 Download as CSV",
+                            data=myVar_pdDf.to_csv(index=False),
+                            file_name="translated_query.csv",
+                            mime="text/csv",
+                            key="download_csv"
+                        )
+                
+                # Standard results display for other procedures
+                elif len(myVar_dictResult["data"]) > 0:
                     Com_st.subheader("Results")
                     
                     # Show results in interactive data table
